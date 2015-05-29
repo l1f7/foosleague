@@ -1,0 +1,11 @@
+{
+  "name": "lift-project-starter",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "normalize-scss": "3.0.2+normalize.3.0.2",
+    "bourbon": "~4.2",
+    "neat": "1.7.1",
+    "sass-easing": "*"
+  }
+}

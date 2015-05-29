@@ -1,0 +1,67 @@
+// Hide text for image replacements
+// @ref: http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+%hide-text{
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// Vertically align anything
+// You have to make sure there is a height on it's containing element
+// or it will normally show up halfway out the top of it's container
+// @ref: http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+%vertical-align {
+  position: relative;
+  top: 50%;
+  @include transform( translateY(-50%) );
+}
+
+ // Center an element
+%center{
+  margin: 0 auto;
+}
+
+%ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// padding-left creates the indent,
+// while text-indent pulls the first line
+// back to the edge.
+@mixin hanging-indent ($indent: 1em) {
+  padding-left: $indent;
+  text-indent: -$indent;
+}
+
+%hanging-indent {
+  @include hanging-indent;
+}
+
+// If you need a block of text to be italicized, but you
+// want elements that would normally be italicized to show
+// up as "normal" text, then use this:
+@mixin reverse-italics ($elements: null) {
+  $element-list: em, cite, i;
+  font-style: italic;
+  #{join($element-list, $elements)} {
+    font-style: normal;
+  }
+}
+
+%reverse-italics {
+  @include reverse-italics;
+}
+
+.u-textcenter {
+  text-align: center;
+}
+
+.u-textleft {
+  text-align: left;
+}
+
+.u-textright {
+  text-align: right;
+}

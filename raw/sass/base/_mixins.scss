@@ -1,0 +1,19 @@
+//-----------------------------------------------------------
+// MIXINS
+//-----------------------------------------------------------
+
+@mixin omega-reset($nth) {
+  &:nth-child(#{$nth}) { margin-right: flex-gutter(); }
+  &:nth-child(#{$nth}+1) { clear: none }
+}
+
+@mixin cover($background:false) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  @if $background {
+    background: $background;
+  }
+}

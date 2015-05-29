@@ -1,0 +1,19 @@
+//-----------------------------------------------------------
+// GRID
+//-----------------------------------------------------------
+
+@import "neat/app/assets/stylesheets/neat-helpers";
+
+$mobile-size: em(640);
+$tablet-size: em(1024);
+$desktop-size: em(1300);
+
+$column: modular-scale(3, 1em, $golden);
+$gutter: modular-scale(1, 1em, $golden);
+$grid-columns: 12;
+$max-width: em(1100);
+
+$mobile: new-breakpoint(max-width ($mobile-size - 0.01) 4);
+$tablet: new-breakpoint(min-width $mobile-size max-width ($tablet-size - 0.01) 8);
+$desktop: new-breakpoint(min-width $tablet-size);
+$largedesktop: new-breakpoint(min-width $desktop-size 12);

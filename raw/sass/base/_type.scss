@@ -1,0 +1,176 @@
+//------------------------------------
+//  TYPOGRAPHY
+//------------------------------------
+
+// bourbon reference:
+// https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/functions/_modular-scale.scss
+// ---
+// $minor-second:     1.067;
+// $major-second:     1.125;
+// $minor-third:      1.2;
+// $major-third:      1.25;
+// $perfect-fourth:   1.333;
+// $augmented-fourth: 1.414;
+// $perfect-fifth:    1.5;
+// $minor-sixth:      1.6;
+// $golden:           1.618;
+// $major-sixth:      1.667;
+// $minor-seventh:    1.778;
+// $major-seventh:    1.875;
+// $octave:           2;
+// $major-tenth:      2.5;
+// $major-eleventh:   2.667;
+// $major-twelfth:    3;
+// $double-octave:    4;
+
+$base-font-heading: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$base-font-body: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$base-font-alt: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$base-size: 19;
+$base-size-tablet: 17;
+$base-size-mobile: 15;
+
+$base-lineheight: 1.6em !default;
+$base-spacing: 0.5em !default;
+
+$modular-scale-ratio: $perfect-fourth;
+$modular-scale-base: em($base-size);
+
+@mixin font($font-size: $base-size, $font-weight: 400, $font-lineheight: $base-lineheight, $font-family: $base-font-body) {
+  font-weight: $font-weight;
+  font-size: rem($font-size);
+  font-family: $font-family;
+  line-height: $font-lineheight;
+}
+
+//
+// Typography Defaults
+//
+body {
+  color: $base-type;
+  -webkit-font-smoothing: antialiased;
+  @include font($base-size);
+
+  @include media($tablet) {
+    @include font($base-size-tablet);
+  }
+
+  @include media($mobile) {
+    @include font($base-size-mobile);
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include font($base-size, 700, 1.1);
+  color: $base-type;
+  margin: $base-spacing*3 0 $base-spacing;
+
+  @include media($tablet) {
+    @include font($base-size-tablet, 700, 1.1);
+  }
+
+  @include media($mobile) {
+    @include font($base-size-mobile, 700, 1.1);
+  }
+}
+
+h1 {
+  margin-top: 0;
+}
+
+p {
+  margin-bottom: $base-spacing*2.5;
+}
+
+a{
+  color: $blue;
+  text-decoration: none;
+
+  &:hover {
+    color: $blue-t-50;
+  }
+}
+
+
+//
+// Modular Scales
+//
+@for $i from 0 through 16 {
+  .ms-n#{$i} {
+    font-size: modular-scale(-$i);
+
+    @include media($tablet) {
+      font-size: modular-scale(-$i, em($base-size-tablet));
+    }
+
+    @include media($mobile) {
+      font-size: modular-scale(-$i, em($base-size-mobile));
+    }
+  }
+}
+
+@for $i from 0 through 16 {
+  .ms-#{$i} {
+    font-size: modular-scale($i);
+
+    @include media($tablet) {
+      font-size: modular-scale($i, em($base-size-tablet));
+    }
+
+    @include media($mobile) {
+      font-size: modular-scale($i, em($base-size-mobile));
+    }
+  }
+}
+
+//
+// Type Styles
+//
+.ts-bold {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ts-light {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.ts-alt {
+  font-family: $base-font-alt;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.richtext {
+  > h1 {
+    @extend .ms-4;
+  }
+
+  > h2 {
+    @extend .ms-3;
+  }
+
+  > h3 {
+    @extend .ms-2;
+  }
+
+  > h4 {
+    @extend .ms-1;
+  }
+
+  > h5 {
+    @extend .ms-1;
+    font-weight: 400;
+  }
+
+  blockquote {
+    text-align: center;
+
+    p {
+      @extend .ms-1;
+      @extend .ts-alt;
+    }
+  }
+}

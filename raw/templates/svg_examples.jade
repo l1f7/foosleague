@@ -1,0 +1,21 @@
+extend _base
+
+block vars
+  - var model = 'home'
+
+block content
+
+  h4 SVG Symbols with External Sprite
+  svg.accessibility-dims
+    use(xlink:href="/assets/svgs/icons.svg#accessibility")
+  svg.account-balance-dims
+    use(xlink:href="/assets/svgs/icons.svg#account-balance")
+  svg.add-shopping-cart-dims
+    use(xlink:href="/assets/svgs/icons.svg#add-shopping-cart")
+
+
+  hr
+  h4 SVG Sprites for Background Image
+  div.background.background--1 background_1
+  div.background.background--2 background_2
+  div.background.background--3 background_3

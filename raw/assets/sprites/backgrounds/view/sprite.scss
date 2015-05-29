@@ -1,0 +1,34 @@
+%svg-common {
+	background: url(backgrounds-view.svg) no-repeat;
+}
+
+.background_1 {
+	@extend %svg-common;
+	background-position: 0 0;
+}
+
+.background_1-dims {
+	width: 600px;
+	height: 530px;
+}
+
+.background_2 {
+	@extend %svg-common;
+	background-position: 100% 0;
+}
+
+.background_2-dims {
+	width: 600px;
+	height: 530px;
+}
+
+.background_3 {
+	@extend %svg-common;
+	background-position: 0 100%;
+}
+
+.background_3-dims {
+	width: 600px;
+	height: 530px;
+}
+

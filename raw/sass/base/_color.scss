@@ -1,0 +1,36 @@
+//-----------------------------------------------------------
+// COLOR
+//-----------------------------------------------------------
+// Colors specific to this project
+
+//
+// Primary Brand Colors
+// ------------------------------------------
+$white             : #ffffff;
+$black             : #333333;
+
+$blue              : #5198FB;
+  $blue-t-10       : mix($blue, $white, 10%);
+  $blue-t-20       : mix($blue, $white, 20%);
+  $blue-t-30       : mix($blue, $white, 30%);
+  $blue-t-40       : mix($blue, $white, 40%);
+  $blue-t-50       : mix($blue, $white, 50%);
+
+$green             : #65B429;
+  $green-t-20      : mix($green, $white, 20%);
+
+$red                : #F66262;
+  $red-t-20         : mix($red, $white, 20%);
+
+$yellow            : #ffd03b;
+  $yellow-t-20     : mix($yellow, $white, 20%);
+
+$orange            : #F58220;
+  $orange-t-20     : mix($orange, $white, 20%);
+  $orange-d-10     : darken($orange, 10%);
+  $orange-d-25     : darken($orange, 25%);
+
+
+$base-heading       : darken(#586375, 5%);
+$base-type          : darken(#848B97, 5%);
+$base-type-light    : lighten(#848B97,10%);

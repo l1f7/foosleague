@@ -1,0 +1,48 @@
+# Python
+*.py[cod]
+*.egg*
+local_dev.py
+
+# Sphinx Docs
+build
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
+*~
+
+# Tags file
+tags
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+*.db
+
+# OS generated files
+.DS_Store*
+thumbs.db
+Icon?
+Thumbs.db
+Desktop.ini
+
+# Front-end files
+node_modules
+raw/bower
+.sass-cache
+
+foosleague/foosleague/foosleague/settings/local_production.py
+foosleague/foosleague/foosleague/settings/local_dev.py
+foosleague/foosleague/media/*
