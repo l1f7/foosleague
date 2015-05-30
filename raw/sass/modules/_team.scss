@@ -1,0 +1,15 @@
+.team {
+  display: block;
+  padding: 10px;
+}
+
+.team-name {
+  margin: 0 0 10px;
+  padding: 0 0 5px;
+  display: block;
+  @extend .ms-n1;
+  @extend .ts-alt;
+  @extend .ts-light;
+  @extend .ts-uppercase;
+  border-bottom: 1px solid $c-game-border;
+}

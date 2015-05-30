@@ -1,0 +1,44 @@
+.player {
+  display: block;
+}
+
+.player-avatar {
+  width: 24px;
+  height: 24px;
+  display: block;
+  float: left;
+  border-radius: 3px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+.player-img {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.player-name {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  @include font(16, 400, 1, $base-font-alt);
+  @extend .ts-alt;
+  @extend .ts-uppercase;
+
+  strong {
+    font-weight: 400;
+    color: $black;
+  }
+}
+
+.player--large {
+  .player-avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .player-name {
+    padding: 19px 0;
+    @include font(24, 400, 1, $base-font-alt);
+  }
+}

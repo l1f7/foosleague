@@ -1,0 +1,24 @@
+.stat {
+  display: inline-block;
+  text-align: center;
+  margin: 5px 0 0;
+  padding: 0 10px;
+}
+
+.stat-number {
+  margin: 0;
+  padding: 0;
+  color: $black;
+  @extend .ms-7;
+  @extend .ts-uppercase;
+  @extend .ts-alt;
+}
+
+.stat-title {
+  margin: 0;
+  padding: 0;
+  @extend .ms-n1;
+  @extend .ts-alt;
+  @extend .ts-uppercase;
+  @extend .ts-light;
+}

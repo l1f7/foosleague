@@ -1,247 +1,66 @@
 //
 // MODULES
 //
+@import "modules/_account";
+@import "modules/_branding";
 @import "modules/_btn";
+@import "modules/_game";
+@import "modules/_league";
+@import "modules/_nav";
+@import "modules/_player";
+@import "modules/_profile";
+@import "modules/_stats";
+@import "modules/_team";
 
-.branding {
-  display: inline-block;
-  float: left;
-}
-
-.branding-link {
-  margin: 0;
-  padding: 13px 30px;
-  display: block;
-  color: $black;
-  @include font(24, 600, 1, $base-font-alt);
-  @extend .ts-alt;
-  @extend .ts-uppercase;
-  text-align: center;
-}
-
-.league {
-  padding: 20px 0;
-  @include clearfix;
-}
-
-.league-logo {
-  float: left;
-  width: 80px;
-  height: 80px;
-  float: left;
-  border-radius: 3px;
-  margin-right: 20px;
-}
-
-.league-img {
-  width: 100%;
-  border-radius: 3px;
-}
-
-.league-name {
-  margin: 0;
-  padding: 20px 0;
-  display: inline-block;
-  @extend .ms-6;
-  @extend .ts-uppercase;
-}
-
-.nav {
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid $c-nav-border;
-}
-
-.nav-menu {
-  margin: 0;
-  padding: 0;
-  @include clearfix;
-}
-
-.nav-item {
-  display: inline-block;
-  margin: 0 10px -1px;
-  padding: 0;
-  float: left;
-  border-bottom: 3px solid transparent;
-
-  &.is-right {
-    float: right;
-  }
-
-  &.is-active {
-    border-color: $c-navitem-border--active;
-
-    .nav-link {
-      font-weight: 600;
-      color: $c-navlink-color--active;
-    }
-  }
-}
-
-.nav-link {
-  padding: 15px 8px;
-  display: block;
-  color: $c-navlink-color;
-  @include font(17, 400, 1);
-
-  &:hover {
-    color: $c-navlink-color--hover;
-  }
-}
-
-.nav-btn {
-  margin: 8px 0 0;
-}
-
-.title {
-  padding: 0 0 30px;
-}
-
-.title-heading {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  @extend .ms-5;
-  @extend .ts-uppercase;
-}
-
-.account {
-  margin-right: 30px;
-  padding: 10px 0;
-  float: right;
-  @include clearfix;
-}
-
-.account-avatar {
-  width: 28px;
-  height: 28px;
-  display: block;
-  float: left;
-  border-radius: 3px;
-  margin-right: 10px;
-}
-
-.account-img {
-  width: 100%;
-  border-radius: 3px;
-}
-
-.account-name {
-  margin: 0;
-  padding: 6px 0;
-  display: inline-block;
-  color: $black;
-  @extend .ms-n1;
-  @extend .ts-alt;
-  @extend .ts-uppercase;
-}
-
-.games {
-}
-
-.game {
+.standing {
+  position: relative;
   border-radius: 3px;
   margin-bottom: 5px;
-  border: 1px solid $c-game-border;
-  background: $c-game-bg;
+  border: 1px solid $c-standing-border;
+  background: $c-standing-bg;
   @include row();
+  @include clearfix;
 }
 
-.game--1 {
-  border-left: 3px solid $c-game-border--win;
-
-  .game-score--winner {
-    border-color: $c-game-border--win;
-    color: $c-game-color--win;
-  }
-}
-
-.game--2 {
-  border-left: 3px solid $c-game-border--lose;
-
-  .game-score--winner {
-    border-color: $c-game-border--lose;
-    color: $c-game-color--lose;
-  }
-}
-
-.game-team {
-  @include span-columns(6);
-}
-
-.game-team--home {
-  .game-score {
-    margin-left: 20px;
-    float: right;
-  }
-}
-
-.game-team--away {
-  .game-score {
-    margin-right: 20px;
-    float: left;
-  }
-}
-
-.game-score {
-  border-radius: 3px;
-  display: inline-block;
-  margin: 12px 0 20px;
-  padding: 10px 2px;
-  width: 30px;
+.standing-count {
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: $c-standing-border;
+  color: $black;
+  border-radius: 30px;
   text-align: center;
-  border: 1px solid $c-game-border;
-  background: $white;
-  @extend .ms-1;
-  @extend .ts-alt;
-  @extend .ts-uppercase;
+  @include font(13, 600, 1);
+  @include transform(translateY(-50%));
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translateX(-50%) translateY(-50%));
+  }
 }
 
-.team {
-  display: block;
-  padding: 10px;
+.standing-count--1 {
+  width: 28px;
+  height: 28px;
+  left: -14px;
+  background: $gold;
 }
 
-.team-name {
-  margin: 0 0 10px;
-  padding: 0 0 5px;
-  display: block;
-  @extend .ms-n1;
-  @extend .ts-alt;
-  @extend .ts-light;
-  @extend .ts-uppercase;
-  border-bottom: 1px solid $c-game-border;
+.standing-count--2 {
+  width: 26px;
+  height: 26px;
+  left: -13px;
+  background: $silver;
 }
 
-.player {
-  display: block;
-}
-
-.player-avatar {
+.standing-count--3 {
   width: 24px;
   height: 24px;
-  display: block;
-  float: left;
-  border-radius: 3px;
-  margin-right: 10px;
-}
-
-.player-img {
-  width: 100%;
-  border-radius: 3px;
-}
-
-.player-name {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  @include font(16, 400, 1, $base-font-alt);
-  @extend .ts-alt;
-  @extend .ts-uppercase;
-
-  strong {
-    font-weight: 400;
-    color: $black;
-  }
+  left: -12px;
+  background: $bronze;
 }

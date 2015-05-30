@@ -1,0 +1,64 @@
+extend _base
+
+block vars
+  - var model = 'profile'
+  - var active = 'Profile'
+
+block content
+  section.profile
+    .profile-avatar
+      img.profile-img(src="https://pbs.twimg.com/profile_images/515019774552973312/_jmdIroR_400x400.jpeg")
+    h1.profile-name Adrian Gyuricska
+    .profile-stats
+      .stat
+        .stat-number 999
+        .stat-title Wins
+      .stat
+        .stat-number 999
+        .stat-title Losses
+
+  .l-columns.l-columns--sideright
+    .l-col
+      .games
+        - for (var i = 0; i < 30; ++i) {
+          - var win = Math.floor(Math.random() * 2)+1;
+          .game(class="game--#{win}")
+            .game-team.game-team--home
+              - if (win == 2)
+                .game-score.game-score--winner 10
+              - else
+                .game-score 8
+              .team
+                h1.team-name Dolphin Snakes
+                .team-player.player
+                  .player-avatar
+                    img.player-img(src="http://liftinteractive.com/media/images/Staff_0004_Laura.focus-none.max-300x300.jpg")
+                  .player-name Laura Salter
+                .team-player.player
+                  .player-avatar
+                    img.player-img(src="http://liftinteractive.com/media/images/Staff_0005_Clint.focus-none.max-300x300.jpg")
+                  .player-name Clint Robinson
+            .game-team.game-team--away
+              - if (win == 1)
+                .game-score.game-score--winner 10
+              - else
+                .game-score 8
+              .team
+                h1.team-name Butterfly Monsters
+                .team-player.player
+                  .player-avatar
+                    img.player-img(src="http://liftinteractive.com/media/images/adrian_Exqvi9i.focus-none.max-300x300.jpg")
+                  .player-name
+                    strong Adrian Gyuricska
+                .team-player.player
+                  .player-avatar
+                    img.player-img(src="http://liftinteractive.com/media/images/katie_MIJAeJb.focus-none.max-300x300.jpg")
+                  .player-name Katie Owen
+        - }
+
+    .l-col.l-col--side
+      section.box
+        .box-container
+          h1.box-heading Current Streaks
+          .box-content
+

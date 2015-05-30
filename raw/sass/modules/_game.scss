@@ -1,0 +1,61 @@
+.games {
+
+}
+
+.game {
+  border-radius: 3px;
+  margin-bottom: 5px;
+  border: 1px solid $c-game-border;
+  background: $c-game-bg;
+  @include row();
+}
+
+.game--1 {
+  border-left: 3px solid $c-game-border--win;
+
+  .game-score--winner {
+    border-color: $c-game-border--win;
+    color: $c-game-color--win;
+  }
+}
+
+.game--2 {
+  border-left: 3px solid $c-game-border--lose;
+
+  .game-score--winner {
+    border-color: $c-game-border--lose;
+    color: $c-game-color--lose;
+  }
+}
+
+.game-team {
+  @include span-columns(6);
+}
+
+.game-team--home {
+  .game-score {
+    margin-left: 20px;
+    float: right;
+  }
+}
+
+.game-team--away {
+  .game-score {
+    margin-right: 20px;
+    float: left;
+  }
+}
+
+.game-score {
+  border-radius: 3px;
+  display: inline-block;
+  margin: 12px 0 20px;
+  padding: 10px 2px;
+  width: 30px;
+  text-align: center;
+  border: 1px solid $c-game-border;
+  background: $white;
+  @extend .ms-1;
+  @extend .ts-alt;
+  @extend .ts-uppercase;
+}

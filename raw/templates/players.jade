@@ -1,0 +1,20 @@
+extend _base
+
+block vars
+  - var model = 'players'
+  - var active = 'Players'
+
+block content
+  .l-columns.l-columns--sideright
+    .l-col
+      .standings
+        - for (var i = 0; i < 15; ++i) {
+          .standing
+            .standing-count(class="standing-count--#{i+1}")
+              span #{i+1}
+            .standing-player.player
+              .player.player--large
+                .player-avatar
+                  img.player-img(src="http://liftinteractive.com/media/images/Staff_0005_Clint.focus-none.max-300x300.jpg")
+                .player-name Clint Robinson
+        - }

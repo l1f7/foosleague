@@ -1,0 +1,15 @@
+.branding {
+  display: inline-block;
+  float: left;
+}
+
+.branding-link {
+  margin: 0;
+  padding: 13px 30px;
+  display: block;
+  color: $black;
+  @include font(24, 600, 1, $base-font-alt);
+  @extend .ts-alt;
+  @extend .ts-uppercase;
+  text-align: center;
+}

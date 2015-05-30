@@ -1,0 +1,30 @@
+.account {
+  margin-right: 30px;
+  padding: 10px 0;
+  float: right;
+  @include clearfix;
+}
+
+.account-avatar {
+  width: 28px;
+  height: 28px;
+  display: block;
+  float: left;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.account-img {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.account-name {
+  margin: 0;
+  padding: 6px 0;
+  display: inline-block;
+  color: $black;
+  @extend .ms-n1;
+  @extend .ts-alt;
+  @extend .ts-uppercase;
+}

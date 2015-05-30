@@ -31,6 +31,9 @@ $orange            : #F58220;
   $orange-d-25     : darken($orange, 25%);
 
 $tan                : #EFD9AF;
+$gold               : #cca55c;
+$silver             : #C9D1D3;
+$bronze             : #7A6248;
 
 $base-heading       : $black;
 $base-type          : lighten($black, 20%);
@@ -59,8 +62,11 @@ $c-topbar-border   :  darken($white, 15%);
 $c-header-bg       :  $white;
 $c-header-border   :  darken($white, 15%);
 
+$c-standing-bg       :  $white;
+$c-standing-border   :  darken($white, 15%);
+
 $c-game-bg       :  $white;
-$c-game-border   :  darken($white, 10%);
+$c-game-border   :  darken($white, 15%);
 
 $c-game-bg--win       :  lighten($green, 30%);
 $c-game-border--win   :  $green;

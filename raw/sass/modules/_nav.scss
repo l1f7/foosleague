@@ -1,0 +1,47 @@
+.nav {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid $c-nav-border;
+}
+
+.nav-menu {
+  margin: 0;
+  padding: 0;
+  @include clearfix;
+}
+
+.nav-item {
+  display: inline-block;
+  margin: 0 10px -1px;
+  padding: 0;
+  float: left;
+  border-bottom: 3px solid transparent;
+
+  &.is-right {
+    float: right;
+  }
+
+  &.is-active {
+    border-color: $c-navitem-border--active;
+
+    .nav-link {
+      font-weight: 600;
+      color: $c-navlink-color--active;
+    }
+  }
+}
+
+.nav-link {
+  padding: 15px 8px;
+  display: block;
+  color: $c-navlink-color;
+  @include font(17, 400, 1);
+
+  &:hover {
+    color: $c-navlink-color--hover;
+  }
+}
+
+.nav-btn {
+  margin: 8px 0 0;
+}
