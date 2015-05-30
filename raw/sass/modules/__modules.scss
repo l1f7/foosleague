@@ -47,26 +47,37 @@
 }
 
 .nav {
-
+  margin: 10px 0;
 }
 
 .nav-menu {
-  padding: 20px;
+  margin: 0;
+  padding: 0;
+  border-left: 1px solid $color-nav-border;
+  @include clearfix;
 }
 
 .nav-item {
-  display: block;
-  margin: 0 0 5px;
-  padding: 3px 0;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  float: left;
+  border-right: 1px solid $color-nav-border;
+
+   &.is-right {
+    border-right: 0;
+    float: right;
+  }
 }
 
 .nav-link {
+  padding: 5px 20px;
   display: block;
   color: $black;
 }
 
 .title {
-  padding: 2em 0;
+  padding: 0 0 30px;
 }
 
 .title-heading {
@@ -114,9 +125,82 @@
   background: $color-game-bg;
 }
 
-
 .game {
   margin-bottom: 5px;
   border: 1px solid $color-game-border;
   background: $color-game-bg;
+  @include row();
+}
+
+.game-team {
+  @include span-columns(6);
+}
+
+.game-team--home {
+  .game-score {
+    margin-left: 20px;
+    float: right;
+  }
+}
+
+.game-team--away {
+  .game-score {
+    margin-right: 20px;
+    float: left;
+  }
+
+  .team {
+    float: right;
+  }
+
+  .player-avatar {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+  }
+}
+
+.game-score {
+  border-radius: 3px;
+  display: inline-block;
+  margin: 15px 0;
+  padding: 10px 2px;
+  width: 30px;
+  text-align: center;
+  border: 1px solid $color-game-border;
+  @extend .ms-1;
+  @extend .ts-alt;
+  @extend .ts-uppercase;
+}
+
+.team {
+  padding: 10px;
+}
+
+.player {
+  display: block;
+}
+
+.player-avatar {
+  width: 24px;
+  height: 24px;
+  display: block;
+  float: left;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.player-img {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.player-name {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  color: $black;
+  @include font(16, 400, 1, $base-font-alt);
+  @extend .ts-alt;
+  @extend .ts-uppercase;
 }

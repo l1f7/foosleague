@@ -20,11 +20,6 @@ body {
 
 .l-page {
   position: relative;
-  @include span-columns(9);
-}
-
-.l-nav {
-  @include span-columns(3);
 }
 
 .l-topbar {
@@ -115,12 +110,6 @@ body {
   }
 
   .l-nav {
-    z-index: 5;
-  }
-
-  .l-page {
-    padding: 1em 0;
-    margin-left: 0;
     z-index: 5;
   }
 

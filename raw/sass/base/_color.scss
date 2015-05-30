@@ -46,8 +46,7 @@ $color-btn-color--hover    : $white;
 $color-site-bg       : darken($white, 2%);
 $color-page-bg       : $white;
 
-$color-nav-bg        :  lighten($tan, 12%);
-$color-nav-border    :  lighten($tan, 8%);
+$color-nav-border    :  darken($white, 10%);
 
 $color-topbar-bg       :  $white;
 $color-topbar-border   :  darken($white, 10%);

@@ -562,13 +562,13 @@ a {
     .ms-0 {
       font-size: 0.9375em; } }
 
-.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p {
+.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score {
   font-size: 1.19531em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score {
       font-size: 1.125em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score {
       font-size: 1.05469em; } }
 
 .ms-2, .richtext > h3 {
@@ -706,7 +706,7 @@ a {
     .ms-16 {
       font-size: 6.1718em; } }
 
-.ts-uppercase, .branding-link, .league-name, .title-heading, .account-name {
+.ts-uppercase, .branding-link, .league-name, .title-heading, .account-name, .game-score, .player-name {
   font-weight: 600;
   text-transform: uppercase; }
 
@@ -714,7 +714,7 @@ a {
   font-weight: 400;
   text-transform: uppercase; }
 
-.ts-alt, .richtext blockquote p, .branding-link, .account-name {
+.ts-alt, .richtext blockquote p, .branding-link, .account-name, .game-score, .player-name {
   font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.1;
   font-weight: 600; }
@@ -741,21 +741,7 @@ body {
   background: #fafafa; }
 
 .l-page {
-  position: relative;
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 74.41059%; }
-  .l-page:last-child {
-    margin-right: 0; }
-
-.l-nav {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 23.23176%; }
-  .l-nav:last-child {
-    margin-right: 0; }
+  position: relative; }
 
 .l-topbar {
   position: fixed;
@@ -856,10 +842,6 @@ body {
     left: 0; }
   .l-nav {
     z-index: 5; }
-  .l-page {
-    padding: 1em 0;
-    margin-left: 0;
-    z-index: 5; }
   .l-container {
     padding: 0 1em; }
   .l-col {
@@ -951,20 +933,35 @@ body {
   padding: 30px 0;
   display: inline-block; }
 
+.nav {
+  margin: 10px 0; }
+
 .nav-menu {
-  padding: 20px; }
+  margin: 0;
+  padding: 0;
+  border-left: 1px solid #e6e6e6; }
+  .nav-menu::after {
+    clear: both;
+    content: "";
+    display: table; }
 
 .nav-item {
-  display: block;
-  margin: 0 0 5px;
-  padding: 3px 0; }
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  float: left;
+  border-right: 1px solid #e6e6e6; }
+  .nav-item.is-right {
+    border-right: 0;
+    float: right; }
 
 .nav-link {
+  padding: 5px 20px;
   display: block;
   color: #333333; }
 
 .title {
-  padding: 2em 0; }
+  padding: 0 0 30px; }
 
 .title-heading {
   margin: 0;
@@ -1006,7 +1003,71 @@ body {
 .game {
   margin-bottom: 5px;
   border: 1px solid #e6e6e6;
-  background: #ffffff; }
+  background: #ffffff;
+  display: block; }
+  .game::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.game-team {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%; }
+  .game-team:last-child {
+    margin-right: 0; }
+
+.game-team--home .game-score {
+  margin-left: 20px;
+  float: right; }
+
+.game-team--away .game-score {
+  margin-right: 20px;
+  float: left; }
+.game-team--away .team {
+  float: right; }
+.game-team--away .player-avatar {
+  float: right;
+  margin-left: 10px;
+  margin-right: 0; }
+
+.game-score {
+  border-radius: 3px;
+  display: inline-block;
+  margin: 15px 0;
+  padding: 10px 2px;
+  width: 30px;
+  text-align: center;
+  border: 1px solid #e6e6e6; }
+
+.team {
+  padding: 10px; }
+
+.player {
+  display: block; }
+
+.player-avatar {
+  width: 24px;
+  height: 24px;
+  display: block;
+  float: left;
+  border-radius: 3px;
+  margin-right: 10px; }
+
+.player-img {
+  width: 100%;
+  border-radius: 3px; }
+
+.player-name {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  color: #333333;
+  font-weight: 400;
+  font-size: 1rem;
+  font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1; }
 
 .accessibility-dims {
   width: 48px;

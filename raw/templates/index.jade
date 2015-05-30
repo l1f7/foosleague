@@ -10,9 +10,31 @@ block content
   .l-columns.l-columns--sideright
     .l-col
       .games
-        - for (var i = 0; i < 20; ++i) {
+        - for (var i = 0; i < 30; ++i) {
+          - var win = Math.floor(Math.random() * 2)+1;
           .game
-            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget aliquet justo, non consequat lectus. Cras sagittis magna ut tristique vestibulum. Duis volutpat, arcu ac imperdiet scelerisque, risus ipsum imperdiet magna, sed ornare ligula velit ut metus. Aliquam efficitur gravida venenatis. Vestibulum gravida enim lacus, quis placerat libero fermentum id. Morbi lobortis fermentum nibh, quis tristique orci elementum ac. Duis tincidunt ex vitae dui varius, vel interdum dui pretium. Vivamus porta ac justo ut scelerisque. Cras suscipit neque eu facilisis semper. Sed dapibus nec libero vel egestas. In facilisis erat purus, eget rutrum elit interdum a.
+            .game-team.game-team--home
+              .game-score 10
+              .team
+                .team-player.player
+                  .player-avatar
+                    img.player-img(src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg")
+                  .player-name Adrian Gyuricska
+                .team-player.player
+                  .player-avatar
+                    img.player-img(src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg")
+                  .player-name Adrian Gyuricska
+            .game-team.game-team--away
+              .game-score 8
+              .team
+                .team-player.player
+                  .player-avatar
+                    img.player-img(src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg")
+                  .player-name Adrian Gyuricska
+                .team-player.player
+                  .player-avatar
+                    img.player-img(src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg")
+                  .player-name Adrian Gyuricska
         - }
 
     .l-col.l-col--side
