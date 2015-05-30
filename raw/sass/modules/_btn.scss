@@ -1,0 +1,28 @@
+.btn {
+  display: inline-block;
+  text-align: center;
+  padding: 15px 25px;
+  border: 1px solid $color-btn-border;
+  color: $color-btn-color;
+  background: $color-btn-bg;
+  @include font(20, 600, 1);
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 5px;
+  @include transition(0.35s);
+
+  &:hover {
+    border: 1px solid $color-btn-border--hover;
+    color: $color-btn-color--hover;
+    background: $color-btn-bg--hover;
+  }
+}
+
+.btn--small {
+  padding: 10px 20px;
+  @include font(16, 600, 1);
+}
+
+.btn--full {
+  display: block;
+}

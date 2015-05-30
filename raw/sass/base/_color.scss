@@ -36,13 +36,24 @@ $base-heading       : $black;
 $base-type          : lighten($black, 20%);
 $base-type-light    : lighten($black, 40%);
 
+$color-btn-border   : $green;
+$color-btn-bg       : transparent;
+$color-btn-color    : $green;
+$color-btn-border--hover   : $green;
+$color-btn-bg--hover       : $green;
+$color-btn-color--hover    : $white;
+
+$color-site-bg       : darken($white, 2%);
 $color-page-bg       : $white;
 
 $color-nav-bg        :  lighten($tan, 12%);
 $color-nav-border    :  lighten($tan, 8%);
 
-$color-topbar-bg       :  $green;
-$color-topbar-border   :  darken($green, 5%);
+$color-topbar-bg       :  $white;
+$color-topbar-border   :  darken($white, 10%);
+
+$color-header-bg       :  $white;
+$color-header-border   :  darken($white, 10%);
 
 $color-game-bg       :  $white;
-$color-game-border   :  darken($white, 0%);
+$color-game-border   :  darken($white, 10%);

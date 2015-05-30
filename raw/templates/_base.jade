@@ -4,31 +4,36 @@ include _includes/_head
 
 body
   .l-site(data-template="#{template}")
-    .l-nav
+    .l-topbar
+      h1.branding
+        a.branding-link(href="/index.html") Foosleague
+
       .account
         .account-avatar
           img.account-img(src="https://unsplash.imgix.net/photo-1429095687696-3227bb0aa9a8?dpr=2&fit=crop&fm=jpg&h=50&q=75&w=50")
         .account-name Adrian Gyuricska
 
-      nav.nav
-        .nav-menu
-          .nav-item
-            a.nav-link(href="#") Dashboard
-          .nav-item
-            a.nav-link(href="#") Players
-          .nav-item
-            a.nav-link(href="#") Teams
-          .nav-item
-            a.nav-link(href="#") Profile
-
-    .l-topbar
-      h1.branding
-        a.branding-link(href="/index.html") Foosleague
-
-
-
-    .l-page
+    .l-header
       .l-container
+        section.league
+          .league-logo
+            img.league-img(src="https://unsplash.imgix.net/photo-1429105049372-8d928fd29ba1?dpr=2&fit=crop&fm=jpg&h=250&q=75&w=250")
+          h1.league-name Lift Interactive
+    .l-container
+      .l-nav
+        nav.nav
+          .nav-menu
+            .nav-item
+              a.btn.btn--small.btn--full(href="#") Create Game
+            .nav-item
+              a.nav-link(href="#") Dashboard
+            .nav-item
+              a.nav-link(href="#") Players
+            .nav-item
+              a.nav-link(href="#") Teams
+            .nav-item
+              a.nav-link(href="#") Profile
+      .l-page
         block content
 
   include _includes/_scripts

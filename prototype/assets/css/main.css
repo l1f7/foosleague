@@ -571,13 +571,13 @@ a {
     .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p {
       font-size: 1.05469em; } }
 
-.ms-2, .richtext > h3, .title-heading {
+.ms-2, .richtext > h3 {
   font-size: 1.34473em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-2, .richtext > h3, .title-heading {
+    .ms-2, .richtext > h3 {
       font-size: 1.26562em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-2, .richtext > h3, .title-heading {
+    .ms-2, .richtext > h3 {
       font-size: 1.18652em; } }
 
 .ms-3, .richtext > h2 {
@@ -589,31 +589,31 @@ a {
     .ms-3, .richtext > h2 {
       font-size: 1.33484em; } }
 
-.ms-4, .richtext > h1, .branding-link {
+.ms-4, .richtext > h1 {
   font-size: 1.70192em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-4, .richtext > h1, .branding-link {
+    .ms-4, .richtext > h1 {
       font-size: 1.60181em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-4, .richtext > h1, .branding-link {
+    .ms-4, .richtext > h1 {
       font-size: 1.50169em; } }
 
-.ms-5 {
+.ms-5, .title-heading {
   font-size: 1.91466em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-5 {
+    .ms-5, .title-heading {
       font-size: 1.80203em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-5 {
+    .ms-5, .title-heading {
       font-size: 1.68941em; } }
 
-.ms-6 {
+.ms-6, .league-name {
   font-size: 2.15399em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-6 {
+    .ms-6, .league-name {
       font-size: 2.02729em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-6 {
+    .ms-6, .league-name {
       font-size: 1.90058em; } }
 
 .ms-7 {
@@ -706,7 +706,7 @@ a {
     .ms-16 {
       font-size: 6.1718em; } }
 
-.ts-uppercase, .branding-link, .title-heading, .account-name {
+.ts-uppercase, .branding-link, .league-name, .title-heading, .account-name {
   font-weight: 600;
   text-transform: uppercase; }
 
@@ -737,28 +737,25 @@ body {
   margin: 0 auto;
   max-width: 1800px;
   position: relative;
-  z-index: 1; }
+  z-index: 1;
+  background: #fafafa; }
 
 .l-page {
-  margin-left: 200px;
-  margin-top: 70px;
-  padding: 3em 0;
   position: relative;
-  background: #ffffff;
-  z-index: 2;
-  -webkit-transition: 0.35s;
-  transition: 0.35s; }
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 74.41059%; }
+  .l-page:last-child {
+    margin-right: 0; }
 
 .l-nav {
-  position: fixed;
-  top: 0;
+  float: left;
   display: block;
-  top: 70px;
-  left: 0;
-  bottom: 0;
-  width: 200px;
-  z-index: 5;
-  background: #f9f1e2; }
+  margin-right: 2.35765%;
+  width: 23.23176%; }
+  .l-nav:last-child {
+    margin-right: 0; }
 
 .l-topbar {
   position: fixed;
@@ -766,16 +763,27 @@ body {
   top: 0;
   right: 0;
   text-align: center;
-  height: 70px;
+  height: 60px;
   display: block;
-  background: #56B784;
-  border-bottom: 1px solid #49ab77;
+  background: #ffffff;
+  border-bottom: 1px solid #e6e6e6;
   z-index: 10; }
 
+.l-header {
+  margin: 60px 0 30px;
+  display: block;
+  background: #ffffff;
+  border-bottom: 1px solid #e6e6e6; }
+
 .l-container {
+  display: block;
   margin: 0 auto;
   padding: 0 3em;
   max-width: 1100px; }
+  .l-container::after {
+    clear: both;
+    content: "";
+    display: table; }
 
 .l-columns {
   width: 100%;
@@ -873,22 +881,90 @@ body {
     .l-columns--split .l-col:last-child {
       margin-right: 0; } }
 
+.btn {
+  display: inline-block;
+  text-align: center;
+  padding: 15px 25px;
+  border: 1px solid #56B784;
+  color: #56B784;
+  background: transparent;
+  font-weight: 600;
+  font-size: 1.25rem;
+  font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 5px;
+  -webkit-transition: 0.35s;
+  transition: 0.35s; }
+  .btn:hover {
+    border: 1px solid #56B784;
+    color: #ffffff;
+    background: #56B784; }
+
+.btn--small {
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1; }
+
+.btn--full {
+  display: block; }
+
 .branding {
-  display: inline-block; }
+  display: inline-block;
+  float: left; }
 
 .branding-link {
   margin: 0;
   padding: 18px 30px;
-  height: 70px;
   display: block;
-  color: #ffffff;
+  color: #333333;
+  font-weight: 600;
+  font-size: 1.5rem;
+  font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1;
   text-align: center; }
+
+.league {
+  padding: 20px 0; }
+  .league::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.league-logo {
+  float: left;
+  width: 100px;
+  height: 100px;
+  float: left;
+  border-radius: 3px;
+  margin-right: 30px; }
+
+.league-img {
+  width: 100%;
+  border-radius: 3px; }
+
+.league-name {
+  margin: 0;
+  padding: 30px 0;
+  display: inline-block; }
 
 .nav-menu {
   padding: 20px; }
 
+.nav-item {
+  display: block;
+  margin: 0 0 5px;
+  padding: 3px 0; }
+
+.nav-link {
+  display: block;
+  color: #333333; }
+
 .title {
-  padding: 30px 0; }
+  padding: 2em 0; }
 
 .title-heading {
   margin: 0;
@@ -897,29 +973,39 @@ body {
 
 .account {
   margin-right: 30px;
-  padding: 15px 0;
+  padding: 17px 0;
   float: right; }
+  .account::after {
+    clear: both;
+    content: "";
+    display: table; }
 
 .account-avatar {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
   display: block;
   float: left;
   border-radius: 3px;
   margin-right: 10px; }
 
 .account-img {
-  width: 40px;
+  width: 100%;
   border-radius: 3px; }
 
 .account-name {
   margin: 0;
-  padding: 10px 0;
-  display: inline-block; }
+  padding: 6px 0;
+  display: inline-block;
+  color: #333333; }
+
+.games {
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  background: #ffffff; }
 
 .game {
-  margin-bottom: 15px;
-  border: 1px solid white;
+  margin-bottom: 5px;
+  border: 1px solid #e6e6e6;
   background: #ffffff; }
 
 .accessibility-dims {

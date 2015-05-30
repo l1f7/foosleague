@@ -1,22 +1,49 @@
 //
 // MODULES
 //
-
+@import "modules/_btn";
 
 .branding {
-  display: inline-block
+  display: inline-block;
+  float: left;
 }
 
 .branding-link {
   margin: 0;
   padding: 18px 30px;
-  height: 70px;
   display: block;
-  color: $white;
-  @extend .ms-4;
+  color: $black;
+  @include font(24, 600, 1, $base-font-alt);
   @extend .ts-alt;
   @extend .ts-uppercase;
   text-align: center;
+}
+
+.league {
+  padding: 20px 0;
+  @include clearfix;
+}
+
+.league-logo {
+  float: left;
+  width: 100px;
+  height: 100px;
+  float: left;
+  border-radius: 3px;
+  margin-right: 30px;
+}
+
+.league-img {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.league-name {
+  margin: 0;
+  padding: 30px 0;
+  display: inline-block;
+  @extend .ms-6;
+  @extend .ts-uppercase;
 }
 
 .nav {
@@ -27,27 +54,39 @@
   padding: 20px;
 }
 
+.nav-item {
+  display: block;
+  margin: 0 0 5px;
+  padding: 3px 0;
+}
+
+.nav-link {
+  display: block;
+  color: $black;
+}
+
 .title {
-  padding: 30px 0;
+  padding: 2em 0;
 }
 
 .title-heading {
   margin: 0;
   padding: 0;
   display: inline-block;
-  @extend .ms-2;
+  @extend .ms-5;
   @extend .ts-uppercase;
 }
 
 .account {
   margin-right: 30px;
-  padding: 15px 0;
+  padding: 17px 0;
   float: right;
+  @include clearfix;
 }
 
 .account-avatar {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
   display: block;
   float: left;
   border-radius: 3px;
@@ -55,21 +94,29 @@
 }
 
 .account-img {
-  width: 40px;
+  width: 100%;
   border-radius: 3px;
 }
 
 .account-name {
   margin: 0;
-  padding: 10px 0;
+  padding: 6px 0;
   display: inline-block;
+  color: $black;
   @extend .ms-n1;
   @extend .ts-alt;
   @extend .ts-uppercase;
 }
 
+.games {
+  padding: 5px;
+  border: 1px solid $color-game-border;
+  background: $color-game-bg;
+}
+
+
 .game {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   border: 1px solid $color-game-border;
   background: $color-game-bg;
 }
