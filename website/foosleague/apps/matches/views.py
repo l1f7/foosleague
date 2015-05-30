@@ -1,10 +1,19 @@
+from datetime import datetime
+from django.http.response import HttpResponseRedirect
+from django.core.urlresolvers import reverse_lazy
+
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
+from django.contrib.messages import success, error
 
 from mixins.views import LoginRequiredMixin
+
+from teams.models import Team
+from seasons.models import Season
 from .models import Match
 from .forms import MatchForm
+
 
 class MatchListView(LoginRequiredMixin, ListView):
     model = Match
@@ -14,6 +23,7 @@ class MatchListView(LoginRequiredMixin, ListView):
 class MatchDetailView(LoginRequiredMixin, DetailView):
     model = Match
     template_name = "matches/detail.html"
+
 
 class MatchCompleteView(LoginRequiredMixin, DetailView):
     model = Match
@@ -39,11 +49,33 @@ class MatchCompleteView(LoginRequiredMixin, DetailView):
             error(self.request, "You must be apart of this match to close the game.")
             return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
 
+
 class MatchCreateView(LoginRequiredMixin, CreateView):
     model = Match
     form_class = MatchForm
-    template_name= 'matches/create.html'
+    template_name = 'matches/create.html'
 
     def get_form(self, *args, **kwargs):
         form = self.form_class(self.request.POST or None)
         return form
+
+    def form_valid(self, form, *args, **kwargs):
+
+        date = datetime.today()
+        # team_1, _ = Team.objects.get_or_create(players__in=[self.cleaned_data['player_1'], self.cleaned_data['player_2']], id=1)
+        # team_2, _ = Team.objects.get_or_create(players__in=[self.cleaned_data['player_3'], self.cleaned_data['player_4']], id=2)
+        team_1 = Team.objects.get(id=1)
+        team_2 = Team.objects.get(id=1)
+        seasons = Season.objects.filter(start__gte=date, end__lte=date)
+        season = None
+        if seasons.count():
+            season = seasons[0]
+
+        match = Match(team_1=team_1, team_2=team_2,
+                      team_1_score=form.cleaned_data[
+                          'team_1_score'], team_2_score=form.cleaned_data['team_2_score'],
+                      completed=form.cleaned_data['completed'], season=season)
+        match.save()
+        success(self.request, "Match has been created!")
+        return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
+

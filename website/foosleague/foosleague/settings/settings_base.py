@@ -214,6 +214,7 @@ SUIT_CONFIG = {
         {'app': 'bookie', 'icon': 'icon-asterisk'},
         {'app': 'leagues', 'icon': 'icon-bookmark'},
         {'app': 'seasons', 'icon': 'icon-calendar'},
+        '--',
         'sites',
         {'label': 'Users', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
         {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
