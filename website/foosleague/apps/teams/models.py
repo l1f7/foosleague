@@ -10,6 +10,7 @@ class Team(TimeStampedModel):
 
     # player_1 = models.ForeignKey(Player, verbose_name=_("Player 1"), related_name='player_1')
     # player_2 = models.ForeignKey(Player, verbose_name=_("Player 2"), related_name='player_2')
+    players = models.ManyToManyField("players.Player")
     trueskill = models.FloatField(_("TrueSkill"), default=20)
     streak = models.IntegerField(
         _("Current Streak"), default=0, help_text='De-normalized field to help with slack integration')

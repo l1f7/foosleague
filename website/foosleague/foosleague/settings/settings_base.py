@@ -183,12 +183,45 @@ LOCAL_APPS = (
     'matches',
     'seasons',
     'leagues',
+    'bookie',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 ########## END APP CONFIGURATION
+SUIT_CONFIG = {
+    # header
+    # 'ADMIN_NAME': 'Django Suit',
+    # 'HEADER_DATE_FORMAT': 'l, j. F Y',
+    # 'HEADER_TIME_FORMAT': 'H:i',
 
+    # forms
+    # 'SHOW_REQUIRED_ASTERISK': True,  # Default True
+    # 'CONFIRM_UNSAVED_CHANGES': True, # Default True
+
+    # menu
+    'SEARCH_URL': '/foosadmin/teams/team/',
+    # 'MENU_ICONS': {
+    #    'sites': 'icon-leaf',
+    #    'auth': 'icon-lock',
+    # },
+    # 'MENU_OPEN_FIRST_CHILD': True, # Default True
+    # 'MENU_EXCLUDE': ('auth.group',),
+    'MENU': (
+        {'app': 'teams', 'icon':'icon-cog'},
+        {'app': 'players', 'icon': 'icon-user'},
+        {'app': 'matches', 'icon': 'icon-random'},
+        {'app': 'bookie', 'icon': 'icon-asterisk'},
+        {'app': 'leagues', 'icon': 'icon-bookmark'},
+        {'app': 'seasons', 'icon': 'icon-calendar'},
+        'sites',
+        {'label': 'Users', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+        {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
+    ),
+
+    # misc
+    # 'LIST_PER_PAGE': 15
+}
 
 ########## LOGGING CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#logging
