@@ -15,8 +15,8 @@ urlpatterns = patterns('',
 
     url(r'^teams/', include('teams.urls')),
     url(r'^players/', include('players.urls')),
-    # url(r'^matches/', include('matches.urls')),
-
+    url(r'^matches/', include('matches.urls')),
+    url(r'^seasons/', include('seasons.urls')),
     url(r'^robots\.txt/$', TemplateView.as_view(template_name='robots.txt',
         content_type='text/plain')),
 

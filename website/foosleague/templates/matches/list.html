@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html>
+<body>
+{% for match in object_list %}
+    <a href='{{match.get_absolute_url}}'>{{match}}</a><br />
+{% endfor %}
+</body>
+</html>

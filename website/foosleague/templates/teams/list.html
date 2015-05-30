@@ -1,7 +1,7 @@
 <html>
 <body>
     {% for team in object_list %}
-        {{team}}<br />
+        <a href='{{team.get_absolute_url}}'>{{team}}</a><br />
     {% endfor %}
 </body>
 </html>
