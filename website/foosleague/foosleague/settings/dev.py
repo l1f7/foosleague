@@ -20,6 +20,7 @@ TEMPLATE_DEBUG = DEBUG
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ########## END EMAIL CONFIGURATION
 
+SECRET_KEY = r"t4%w_uy@-hr!_e@pm9h4694&amp;t2*=r^mp4vw#dsvfh_+41$yfx+"
 
 ########## DATABASE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
