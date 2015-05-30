@@ -10,9 +10,12 @@ from teams.models import Team
 class Player(TimeStampedModel):
     user = models.OneToOneField(User, blank=False)
     nickname = models.CharField(_("Nickname"), max_length=200, blank=True, default="")
-    team = models.ForeignKey(Team)
+    team = models.ForeignKey(Team, blank=True, null=True)
     trueskill = models.FloatField(_("TrueSkill"), default=20)
 
+    slack_username = models.CharField(_("Slack Username"), blank=True, max_length=100, help_text="This will be used for any slack integrations", default="")
+
+    fooscoin = models.FloatField(_("FoosCoin"), default=500.00)
 
     class Meta:
         verbose_name = 'Player'
