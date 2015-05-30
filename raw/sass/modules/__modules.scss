@@ -1,3 +1,75 @@
 //
 // MODULES
 //
+
+
+.branding {
+  display: inline-block
+}
+
+.branding-link {
+  margin: 0;
+  padding: 18px 30px;
+  height: 70px;
+  display: block;
+  color: $white;
+  @extend .ms-4;
+  @extend .ts-alt;
+  @extend .ts-uppercase;
+  text-align: center;
+}
+
+.nav {
+
+}
+
+.nav-menu {
+  padding: 20px;
+}
+
+.title {
+  padding: 30px 0;
+}
+
+.title-heading {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  @extend .ms-2;
+  @extend .ts-uppercase;
+}
+
+.account {
+  margin-right: 30px;
+  padding: 15px 0;
+  float: right;
+}
+
+.account-avatar {
+  width: 40px;
+  height: 40px;
+  display: block;
+  float: left;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.account-img {
+  width: 40px;
+  border-radius: 3px;
+}
+
+.account-name {
+  margin: 0;
+  padding: 10px 0;
+  display: inline-block;
+  @extend .ms-n1;
+  @extend .ts-alt;
+  @extend .ts-uppercase;
+}
+
+.game {
+  margin-bottom: 15px;
+  border: 1px solid $color-game-border;
+  background: $color-game-bg;
+}

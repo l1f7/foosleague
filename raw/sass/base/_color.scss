@@ -16,7 +16,7 @@ $blue              : #5198FB;
   $blue-t-40       : mix($blue, $white, 40%);
   $blue-t-50       : mix($blue, $white, 50%);
 
-$green             : #65B429;
+$green             : #56B784;
   $green-t-20      : mix($green, $white, 20%);
 
 $red                : #F66262;
@@ -30,7 +30,19 @@ $orange            : #F58220;
   $orange-d-10     : darken($orange, 10%);
   $orange-d-25     : darken($orange, 25%);
 
+$tan                : #EFD9AF;
 
-$base-heading       : darken(#586375, 5%);
-$base-type          : darken(#848B97, 5%);
-$base-type-light    : lighten(#848B97,10%);
+$base-heading       : $black;
+$base-type          : lighten($black, 20%);
+$base-type-light    : lighten($black, 40%);
+
+$color-page-bg       : $white;
+
+$color-nav-bg        :  lighten($tan, 12%);
+$color-nav-border    :  lighten($tan, 8%);
+
+$color-topbar-bg       :  $green;
+$color-topbar-border   :  darken($green, 5%);
+
+$color-game-bg       :  $white;
+$color-game-border   :  darken($white, 0%);

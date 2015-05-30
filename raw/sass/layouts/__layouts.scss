@@ -1,0 +1,155 @@
+//
+// LAYOUTS / VIEWS / TEMPLATES
+//
+
+$site-width: 1800px;
+$nav-width: 200px;
+$topbar-height: 70px;
+
+body {
+  background: $white;
+}
+
+.l-site {
+  margin: 0 auto;
+  max-width: $site-width;
+  position: relative;
+  z-index: 1;
+}
+
+.l-page {
+  margin-left: $nav-width;
+  margin-top: $topbar-height;
+  padding: 3em 0;
+  position: relative;
+  background: $color-page-bg;
+  z-index: 2;
+  @include transition(0.35s);
+}
+
+.l-nav {
+  position: fixed;
+  top: 0;
+  display: block;
+  top: $topbar-height;
+  left: 0;
+  bottom: 0;
+  width: $nav-width;
+  z-index: 5;
+  background: $color-nav-bg;
+}
+
+.l-topbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  text-align: center;
+  height: $topbar-height;
+  display: block;
+  background: $color-topbar-bg;
+  border-bottom: 1px solid $color-topbar-border;
+  z-index: 10;
+}
+
+.l-container {
+  margin: 0 auto;
+  padding: 0 3em;
+  max-width: 1100px;
+}
+
+
+.l-columns {
+  @include fill-parent();
+  @include row();
+}
+
+.l-columns--thirds {
+  .l-col {
+    @include span-columns(4);
+  }
+}
+
+.l-columns--split {
+  .l-col {
+    @include span-columns(6);
+  }
+}
+
+.l-col {
+  position: relative;
+  vertical-align: top;
+}
+
+.l-columns--sideright {
+  .l-col {
+    @include span-columns(8);
+  }
+
+  .l-col--side {
+    @include span-columns(4);
+  }
+}
+
+.l-columns--sideleft {
+  .l-col {
+    @include span-columns(8);
+    @include shift(4);
+  }
+
+  .l-col--side {
+    @include span-columns(4);
+    @include shift(-12);
+  }
+}
+
+
+@include media($tablet) {
+  .l-page {
+    padding: 2em 0;
+  }
+
+  .l-container {
+    padding: 0 2em;
+  }
+}
+
+@include media($mobile) {
+  .l-topbar {
+    left: 0;
+  }
+
+  .l-nav {
+    z-index: 5;
+  }
+
+  .l-page {
+    padding: 1em 0;
+    margin-left: 0;
+    z-index: 5;
+  }
+
+  .l-container {
+    padding: 0 1em;
+  }
+
+  .l-col {
+    margin-bottom: 2em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .l-columns--thirds {
+    .l-col {
+      @include span-columns(4);
+    }
+  }
+
+  .l-columns--split {
+    .l-col {
+      @include span-columns(4);
+    }
+  }
+}
