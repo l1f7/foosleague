@@ -23,18 +23,18 @@
 // $major-twelfth:    3;
 // $double-octave:    4;
 
-$base-font-heading: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$base-font-heading: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $base-font-body: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$base-font-alt: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$base-font-alt: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-$base-size: 19;
-$base-size-tablet: 17;
+$base-size: 17;
+$base-size-tablet: 16;
 $base-size-mobile: 15;
 
 $base-lineheight: 1.6em !default;
 $base-spacing: 0.5em !default;
 
-$modular-scale-ratio: $perfect-fourth;
+$modular-scale-ratio: $major-second;
 $modular-scale-base: em($base-size);
 
 @mixin font($font-size: $base-size, $font-weight: 400, $font-lineheight: $base-lineheight, $font-family: $base-font-body) {
@@ -62,16 +62,16 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @include font($base-size, 700, 1.1);
-  color: $base-type;
+  @include font($base-size, 700, 1.1, $base-font-heading);
+  color: $base-heading;
   margin: $base-spacing*3 0 $base-spacing;
 
   @include media($tablet) {
-    @include font($base-size-tablet, 700, 1.1);
+    @include font($base-size-tablet, 700, 1.1, $base-font-heading);
   }
 
   @include media($mobile) {
-    @include font($base-size-mobile, 700, 1.1);
+    @include font($base-size-mobile, 700, 1.1, $base-font-heading);
   }
 }
 
@@ -127,8 +127,8 @@ a{
 //
 // Type Styles
 //
-.ts-bold {
-  font-weight: 700;
+.ts-uppercase {
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -139,8 +139,8 @@ a{
 
 .ts-alt {
   font-family: $base-font-alt;
-  line-height: 1.4;
-  font-weight: 400;
+  line-height: 1.1;
+  font-weight: 600;
 }
 
 .richtext {

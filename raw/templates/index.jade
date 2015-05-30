@@ -1,8 +1,23 @@
 extend _base
 
 block vars
-  - var model = 'home'
+  - var model = 'dashboard'
 
 block content
+  .title
+    h1.title-heading Dashboard
 
-  h1 Home Page
+  .l-columns.l-columns--sideright
+    .l-col
+      .games
+        - for (var i = 0; i < 20; ++i) {
+          .game
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget aliquet justo, non consequat lectus. Cras sagittis magna ut tristique vestibulum. Duis volutpat, arcu ac imperdiet scelerisque, risus ipsum imperdiet magna, sed ornare ligula velit ut metus. Aliquam efficitur gravida venenatis. Vestibulum gravida enim lacus, quis placerat libero fermentum id. Morbi lobortis fermentum nibh, quis tristique orci elementum ac. Duis tincidunt ex vitae dui varius, vel interdum dui pretium. Vivamus porta ac justo ut scelerisque. Cras suscipit neque eu facilisis semper. Sed dapibus nec libero vel egestas. In facilisis erat purus, eget rutrum elit interdum a.
+        - }
+
+    .l-col.l-col--side
+      section.box
+        .box-container
+          h1.box-heading
+          .box-content
+
