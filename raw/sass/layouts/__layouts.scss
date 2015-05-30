@@ -71,6 +71,14 @@ body {
   vertical-align: top;
 }
 
+
+.l-columns--centered {
+  .l-col {
+    @include span-columns(6);
+    @include shift(3);
+  }
+}
+
 .l-columns--sideright {
   .l-col {
     @include span-columns(8);

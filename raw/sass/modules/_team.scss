@@ -13,3 +13,32 @@
   @extend .ts-uppercase;
   border-bottom: 1px solid $c-game-border;
 }
+
+.team-players {
+  @include row();
+}
+
+.team--inline {
+  .team-player {
+    display: inline-block;
+    @include span-columns(6);
+  }
+}
+
+.team--medium {
+  padding: 0;
+
+  .team-name {
+    padding-bottom: 10px;
+    @extend .ms-1;
+  }
+}
+
+.team--large {
+  padding: 0;
+
+  .team-name {
+    padding-bottom: 15px;
+    @extend .ms-3;
+  }
+}

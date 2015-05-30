@@ -1,7 +1,7 @@
 .profile {
   position: relative;
   border-radius: 3px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   padding: 20px;
   border: 1px solid $c-game-border;
   background: $c-game-bg;
@@ -38,4 +38,8 @@
   right: 20px;
   top: 50%;
   @include transform(translateY(-50%));
+}
+
+.profile-stats--team {
+  margin-top: 30px;
 }

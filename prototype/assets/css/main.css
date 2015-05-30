@@ -562,13 +562,13 @@ a {
     .ms-0 {
       font-size: 0.9375em; } }
 
-.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score {
+.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .team--medium .team-name {
   font-size: 1.19531em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .team--medium .team-name {
       font-size: 1.125em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .team--medium .team-name {
       font-size: 1.05469em; } }
 
 .ms-2, .richtext > h3 {
@@ -580,13 +580,13 @@ a {
     .ms-2, .richtext > h3 {
       font-size: 1.18652em; } }
 
-.ms-3, .richtext > h2 {
+.ms-3, .richtext > h2, .team--large .team-name {
   font-size: 1.51282em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-3, .richtext > h2 {
+    .ms-3, .richtext > h2, .team--large .team-name {
       font-size: 1.42383em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-3, .richtext > h2 {
+    .ms-3, .richtext > h2, .team--large .team-name {
       font-size: 1.33484em; } }
 
 .ms-4, .richtext > h1 {
@@ -798,6 +798,15 @@ body {
 .l-col {
   position: relative;
   vertical-align: top; }
+
+.l-columns--centered .l-col {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  margin-left: 25.58941%; }
+  .l-columns--centered .l-col:last-child {
+    margin-right: 0; }
 
 .l-columns--sideright .l-col {
   float: left;
@@ -1040,7 +1049,7 @@ body {
   display: block;
   color: #666666;
   font-weight: 400;
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1; }
   .nav-link:hover {
@@ -1058,7 +1067,7 @@ body {
   display: block;
   float: left;
   border-radius: 3px;
-  margin-right: 10px;
+  margin: 0 10px 0 0;
   overflow: hidden; }
 
 .player-img {
@@ -1078,10 +1087,10 @@ body {
     color: #333333; }
 
 .player--large .player-avatar {
-  width: 60px;
-  height: 60px; }
+  width: 50px;
+  height: 50px; }
 .player--large .player-name {
-  padding: 19px 0;
+  padding: 14px 0;
   font-weight: 400;
   font-size: 1.5rem;
   font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -1090,7 +1099,7 @@ body {
 .profile {
   position: relative;
   border-radius: 3px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   padding: 20px;
   border: 1px solid #d9d9d9;
   background: #ffffff;
@@ -1131,6 +1140,9 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%); }
 
+.profile-stats--team {
+  margin-top: 30px; }
+
 .stat {
   display: inline-block;
   text-align: center;
@@ -1156,7 +1168,34 @@ body {
   display: block;
   border-bottom: 1px solid #d9d9d9; }
 
+.team-players {
+  display: block; }
+  .team-players::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.team--inline .team-player {
+  display: inline-block;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%; }
+  .team--inline .team-player:last-child {
+    margin-right: 0; }
+
+.team--medium {
+  padding: 0; }
+  .team--medium .team-name {
+    padding-bottom: 10px; }
+
+.team--large {
+  padding: 0; }
+  .team--large .team-name {
+    padding-bottom: 15px; }
+
 .standing {
+  padding: 10px;
   position: relative;
   border-radius: 3px;
   margin-bottom: 5px;
@@ -1175,9 +1214,9 @@ body {
 .standing-count {
   position: absolute;
   top: 50%;
-  left: -10px;
-  width: 20px;
-  height: 20px;
+  left: -12px;
+  width: 24px;
+  height: 24px;
   display: block;
   background: #d9d9d9;
   color: #333333;
