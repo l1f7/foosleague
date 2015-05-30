@@ -35,7 +35,7 @@
   padding: 15px 8px;
   display: block;
   color: $c-navlink-color;
-  @include font(17, 400, 1);
+  @include font(16, 400, 1);
 
   &:hover {
     color: $c-navlink-color--hover;

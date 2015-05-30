@@ -8,7 +8,7 @@
   display: block;
   float: left;
   border-radius: 3px;
-  margin-right: 10px;
+  margin: 0 10px 0 0;
   overflow: hidden;
 }
 
@@ -33,12 +33,12 @@
 
 .player--large {
   .player-avatar {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
 
   .player-name {
-    padding: 19px 0;
+    padding: 14px 0;
     @include font(24, 400, 1, $base-font-alt);
   }
 }

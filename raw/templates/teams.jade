@@ -1,0 +1,27 @@
+extend _base
+
+block vars
+  - var model = 'teams'
+  - var active = 'Teams'
+
+block content
+  .l-columns.l-columns--centered
+    .l-col
+      .standings
+        - for (var i = 0; i < 15; ++i) {
+          .standing
+            .standing-count(class="standing-count--#{i+1}")
+              span #{i+1}
+            .standing-team
+              .team.team--inline
+                h1.team-name Butterfly Monsters
+                .team-players
+                  .team-player.player
+                    .player-avatar
+                      img.player-img(src="http://liftinteractive.com/media/images/adrian_Exqvi9i.focus-none.max-300x300.jpg")
+                    .player-name Adrian Gyuricska
+                  .team-player.player
+                    .player-avatar
+                      img.player-img(src="http://liftinteractive.com/media/images/katie_MIJAeJb.focus-none.max-300x300.jpg")
+                    .player-name Katie Owen
+        - }
