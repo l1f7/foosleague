@@ -1,3 +1,7 @@
+mixin item(title, url)
+  .nav-item(class=active == title ? 'is-active' : '')
+    a.nav-link(href=url)= title
+
 block vars
 
 include _includes/_head
@@ -10,29 +14,28 @@ body
 
       .account
         .account-avatar
-          img.account-img(src="https://unsplash.imgix.net/photo-1429095687696-3227bb0aa9a8?dpr=2&fit=crop&fm=jpg&h=50&q=75&w=50")
+          img.account-img(src="http://liftinteractive.com/media/images/adrian_Exqvi9i.focus-none.max-300x300.jpg")
         .account-name Adrian Gyuricska
 
     .l-header
       .l-container
         section.league
           .league-logo
-            img.league-img(src="https://unsplash.imgix.net/photo-1429105049372-8d928fd29ba1?dpr=2&fit=crop&fm=jpg&h=250&q=75&w=250")
+            img.league-img(src="https://pbs.twimg.com/profile_images/431497486138499072/oVCFk5Qt.png")
           h1.league-name Lift Interactive
-    .l-container
-      .l-nav
-        nav.nav
+
+      nav.nav
+        .l-container
           .nav-menu
-            .nav-item
-              a.btn.btn--small.btn--full(href="#") Create Game
-            .nav-item
-              a.nav-link(href="#") Dashboard
-            .nav-item
-              a.nav-link(href="#") Players
-            .nav-item
-              a.nav-link(href="#") Teams
-            .nav-item
-              a.nav-link(href="#") Profile
+            +item('Dashboard', '/')
+            +item('Players', '/players.html')
+            +item('Teams', '/teams.html')
+            +item('Betting', '/betting.html')
+            +item('Profile', '/profile.html')
+            .nav-item.is-right
+              a.nav-btn.btn.btn--small.btn--full(href="#") Start Game
+
+    .l-container
       .l-page
         block content
 

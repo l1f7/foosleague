@@ -36,24 +36,36 @@ $base-heading       : $black;
 $base-type          : lighten($black, 20%);
 $base-type-light    : lighten($black, 40%);
 
-$color-btn-border   : $green;
-$color-btn-bg       : transparent;
-$color-btn-color    : $green;
-$color-btn-border--hover   : $green;
-$color-btn-bg--hover       : $green;
-$color-btn-color--hover    : $white;
+$c-btn-border   : $green;
+$c-btn-bg       : $green;
+$c-btn-color    : $white;
+$c-btn-border--hover   : darken($green, 8%);
+$c-btn-bg--hover       : darken($green, 8%);
+$c-btn-color--hover    : $white;
 
-$color-site-bg       : darken($white, 2%);
-$color-page-bg       : $white;
+$c-site-bg       : #F3F4F5;
+$c-page-bg       : $white;
 
-$color-nav-bg        :  lighten($tan, 12%);
-$color-nav-border    :  lighten($tan, 8%);
+$c-nav-border    :  darken($white, 5%);
+$c-navlink-color            : $base-type;
+$c-navlink-color--hover     : $black;
+$c-navlink-color--active    : $black;
+$c-navitem-border--active   : $blue;
 
-$color-topbar-bg       :  $white;
-$color-topbar-border   :  darken($white, 10%);
 
-$color-header-bg       :  $white;
-$color-header-border   :  darken($white, 10%);
+$c-topbar-bg       :  $white;
+$c-topbar-border   :  darken($white, 15%);
 
-$color-game-bg       :  $white;
-$color-game-border   :  darken($white, 10%);
+$c-header-bg       :  $white;
+$c-header-border   :  darken($white, 15%);
+
+$c-game-bg       :  $white;
+$c-game-border   :  darken($white, 10%);
+
+$c-game-bg--win       :  lighten($green, 30%);
+$c-game-border--win   :  $green;
+$c-game-color--win    :  $green;
+
+$c-game-bg--lose       :  lighten($red, 30%);
+$c-game-border--lose   :  $red;
+$c-game-color--lose    :  $red;
