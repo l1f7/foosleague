@@ -11,7 +11,7 @@ class Player(TimeStampedModel):
     user = models.OneToOneField(User, blank=False)
     nickname = models.CharField(_("Nickname"), max_length=200, blank=True, default="")
     trueskill = models.FloatField(_("TrueSkill"), default=20)
-
+    photo = models.ImageField(_("Photo"), upload_to='players', max_length=400, default="")
     slack_username = models.CharField(_("Slack  Username"), blank=True, max_length=100, help_text="This will be used for any slack integrations", default="")
 
     fooscoin = models.FloatField(_("FoosCoin"), default=500.00)
