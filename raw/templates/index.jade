@@ -2,39 +2,47 @@ extend _base
 
 block vars
   - var model = 'dashboard'
+  - var active = 'Dashboard'
 
 block content
-  .title
-    h1.title-heading Dashboard
 
   .l-columns.l-columns--sideright
     .l-col
       .games
         - for (var i = 0; i < 30; ++i) {
           - var win = Math.floor(Math.random() * 2)+1;
-          .game
+          .game(class="game--#{win}")
             .game-team.game-team--home
-              .game-score 10
+              - if (win == 2)
+                .game-score.game-score--winner 10
+              - else
+                .game-score 8
               .team
+                h1.team-name Dolphin Snakes
                 .team-player.player
                   .player-avatar
-                    img.player-img(src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg")
-                  .player-name Adrian Gyuricska
+                    img.player-img(src="http://liftinteractive.com/media/images/Staff_0004_Laura.focus-none.max-300x300.jpg")
+                  .player-name Laura Salter
                 .team-player.player
                   .player-avatar
-                    img.player-img(src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg")
-                  .player-name Adrian Gyuricska
+                    img.player-img(src="http://liftinteractive.com/media/images/Staff_0005_Clint.focus-none.max-300x300.jpg")
+                  .player-name Clint Robinson
             .game-team.game-team--away
-              .game-score 8
+              - if (win == 1)
+                .game-score.game-score--winner 10
+              - else
+                .game-score 8
               .team
+                h1.team-name Butterfly Monsters
                 .team-player.player
                   .player-avatar
-                    img.player-img(src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg")
-                  .player-name Adrian Gyuricska
+                    img.player-img(src="http://liftinteractive.com/media/images/adrian_Exqvi9i.focus-none.max-300x300.jpg")
+                  .player-name
+                    strong Adrian Gyuricska
                 .team-player.player
                   .player-avatar
-                    img.player-img(src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg")
-                  .player-name Adrian Gyuricska
+                    img.player-img(src="http://liftinteractive.com/media/images/katie_MIJAeJb.focus-none.max-300x300.jpg")
+                  .player-name Katie Owen
         - }
 
     .l-col.l-col--side

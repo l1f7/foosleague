@@ -4,7 +4,7 @@
 
 $site-width: 1800px;
 $nav-width: 200px;
-$topbar-height: 60px;
+$topbar-height: 50px;
 
 body {
   background: $white;
@@ -15,7 +15,7 @@ body {
   max-width: $site-width;
   position: relative;
   z-index: 1;
-  background: $color-site-bg;
+  background: $c-site-bg;
 }
 
 .l-page {
@@ -30,16 +30,16 @@ body {
   text-align: center;
   height: $topbar-height;
   display: block;
-  background: $color-topbar-bg;
-  border-bottom: 1px solid $color-topbar-border;
+  background: $c-topbar-bg;
+  border-bottom: 1px solid $c-topbar-border;
   z-index: 10;
 }
 
 .l-header {
   margin: $topbar-height 0 30px;
   display: block;
-  background: $color-header-bg;
-  border-bottom: 1px solid $color-header-border;
+  background: $c-header-bg;
+  border-bottom: 1px solid $c-header-border;
 }
 
 .l-container {

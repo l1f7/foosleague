@@ -409,13 +409,13 @@ a {
     .ms-n0 {
       font-size: 0.9375em; } }
 
-.ms-n1, .account-name {
+.ms-n1, .account-name, .team-name {
   font-size: 0.94444em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-n1, .account-name {
+    .ms-n1, .account-name, .team-name {
       font-size: 0.88889em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-n1, .account-name {
+    .ms-n1, .account-name, .team-name {
       font-size: 0.83333em; } }
 
 .ms-n2 {
@@ -706,15 +706,15 @@ a {
     .ms-16 {
       font-size: 6.1718em; } }
 
-.ts-uppercase, .branding-link, .league-name, .title-heading, .account-name, .game-score, .player-name {
+.ts-uppercase, .branding-link, .league-name, .title-heading, .account-name, .game-score, .team-name, .player-name {
   font-weight: 600;
   text-transform: uppercase; }
 
-.ts-light {
+.ts-light, .team-name {
   font-weight: 400;
   text-transform: uppercase; }
 
-.ts-alt, .richtext blockquote p, .branding-link, .account-name, .game-score, .player-name {
+.ts-alt, .richtext blockquote p, .branding-link, .account-name, .game-score, .team-name, .player-name {
   font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.1;
   font-weight: 600; }
@@ -738,7 +738,7 @@ body {
   max-width: 1800px;
   position: relative;
   z-index: 1;
-  background: #fafafa; }
+  background: #F3F4F5; }
 
 .l-page {
   position: relative; }
@@ -749,17 +749,17 @@ body {
   top: 0;
   right: 0;
   text-align: center;
-  height: 60px;
+  height: 50px;
   display: block;
   background: #ffffff;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid #d9d9d9;
   z-index: 10; }
 
 .l-header {
-  margin: 60px 0 30px;
+  margin: 50px 0 30px;
   display: block;
   background: #ffffff;
-  border-bottom: 1px solid #e6e6e6; }
+  border-bottom: 1px solid #d9d9d9; }
 
 .l-container {
   display: block;
@@ -868,26 +868,25 @@ body {
   text-align: center;
   padding: 15px 25px;
   border: 1px solid #56B784;
-  color: #56B784;
-  background: transparent;
-  font-weight: 600;
+  color: #ffffff;
+  background: #56B784;
+  font-weight: 500;
   font-size: 1.25rem;
   font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1;
   text-decoration: none;
-  text-transform: uppercase;
-  border-radius: 5px;
+  border-radius: 40px;
   -webkit-transition: 0.35s;
   transition: 0.35s; }
   .btn:hover {
-    border: 1px solid #56B784;
+    border: 1px solid #44a070;
     color: #ffffff;
-    background: #56B784; }
+    background: #44a070; }
 
 .btn--small {
-  padding: 10px 20px;
+  padding: 8px 18px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1; }
 
@@ -900,7 +899,7 @@ body {
 
 .branding-link {
   margin: 0;
-  padding: 18px 30px;
+  padding: 13px 30px;
   display: block;
   color: #333333;
   font-weight: 600;
@@ -918,11 +917,11 @@ body {
 
 .league-logo {
   float: left;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   float: left;
   border-radius: 3px;
-  margin-right: 30px; }
+  margin-right: 20px; }
 
 .league-img {
   width: 100%;
@@ -930,16 +929,17 @@ body {
 
 .league-name {
   margin: 0;
-  padding: 30px 0;
+  padding: 20px 0;
   display: inline-block; }
 
 .nav {
-  margin: 10px 0; }
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #f2f2f2; }
 
 .nav-menu {
   margin: 0;
-  padding: 0;
-  border-left: 1px solid #e6e6e6; }
+  padding: 0; }
   .nav-menu::after {
     clear: both;
     content: "";
@@ -947,18 +947,31 @@ body {
 
 .nav-item {
   display: inline-block;
-  margin: 0;
+  margin: 0 10px -1px;
   padding: 0;
   float: left;
-  border-right: 1px solid #e6e6e6; }
+  border-bottom: 3px solid transparent; }
   .nav-item.is-right {
-    border-right: 0;
     float: right; }
+  .nav-item.is-active {
+    border-color: #5198FB; }
+    .nav-item.is-active .nav-link {
+      font-weight: 600;
+      color: #333333; }
 
 .nav-link {
-  padding: 5px 20px;
+  padding: 15px 8px;
   display: block;
-  color: #333333; }
+  color: #666666;
+  font-weight: 400;
+  font-size: 1.0625rem;
+  font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1; }
+  .nav-link:hover {
+    color: #333333; }
+
+.nav-btn {
+  margin: 8px 0 0; }
 
 .title {
   padding: 0 0 30px; }
@@ -970,7 +983,7 @@ body {
 
 .account {
   margin-right: 30px;
-  padding: 17px 0;
+  padding: 10px 0;
   float: right; }
   .account::after {
     clear: both;
@@ -995,12 +1008,8 @@ body {
   display: inline-block;
   color: #333333; }
 
-.games {
-  padding: 5px;
-  border: 1px solid #e6e6e6;
-  background: #ffffff; }
-
 .game {
+  border-radius: 3px;
   margin-bottom: 5px;
   border: 1px solid #e6e6e6;
   background: #ffffff;
@@ -1009,6 +1018,18 @@ body {
     clear: both;
     content: "";
     display: table; }
+
+.game--1 {
+  border-left: 3px solid #56B784; }
+  .game--1 .game-score--winner {
+    border-color: #56B784;
+    color: #56B784; }
+
+.game--2 {
+  border-left: 3px solid #F66262; }
+  .game--2 .game-score--winner {
+    border-color: #F66262;
+    color: #F66262; }
 
 .game-team {
   float: left;
@@ -1025,24 +1046,26 @@ body {
 .game-team--away .game-score {
   margin-right: 20px;
   float: left; }
-.game-team--away .team {
-  float: right; }
-.game-team--away .player-avatar {
-  float: right;
-  margin-left: 10px;
-  margin-right: 0; }
 
 .game-score {
   border-radius: 3px;
   display: inline-block;
-  margin: 15px 0;
+  margin: 12px 0 20px;
   padding: 10px 2px;
   width: 30px;
   text-align: center;
-  border: 1px solid #e6e6e6; }
+  border: 1px solid #e6e6e6;
+  background: #ffffff; }
 
 .team {
+  display: block;
   padding: 10px; }
+
+.team-name {
+  margin: 0 0 10px;
+  padding: 0 0 5px;
+  display: block;
+  border-bottom: 1px solid #e6e6e6; }
 
 .player {
   display: block; }
@@ -1063,11 +1086,13 @@ body {
   margin: 0;
   padding: 0;
   display: inline-block;
-  color: #333333;
   font-weight: 400;
   font-size: 1rem;
   font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1; }
+  .player-name strong {
+    font-weight: 400;
+    color: #333333; }
 
 .accessibility-dims {
   width: 48px;
