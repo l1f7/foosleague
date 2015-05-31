@@ -32,11 +32,10 @@
       <nav class="nav">
         <div class="l-container">
           <div class="nav-menu">
-            <div class="nav-item"><a href="{% url "matches" %}" class="nav-link">Dashboard</a></div>
-            <div class="nav-item"><a href="{% url "players" %}" class="nav-link">Players</a></div>
-            <div class="nav-item"><a href="{% url "teams" %}" class="nav-link">Teams</a></div>
-            <div class="nav-item"><a href="/betting.html" class="nav-link">Betting</a></div>
-            <div class="nav-item"><a href="/profile.html" class="nav-link">Profile</a></div>
+            <div class="nav-item {% block nav-dashboard %}{% endblock %}"><a href="{% url "matches" %}" class="nav-link">Matches</a></div>
+            <div class="nav-item {% block nav-players %}{% endblock %}"><a href="{% url "players" %}" class="nav-link">Players</a></div>
+            <div class="nav-item {% block nav-teams %}{% endblock %}"><a href="{% url "teams" %}" class="nav-link">Teams</a></div>
+            <div class="nav-item {% block nav-bookie %}{% endblock %}"><a href="{% url "bets" %}" class="nav-link">Bookie</a></div>
             <div class="nav-item is-right"><a href="{% url "match-create" %}" class="nav-btn btn btn--small btn--full">Start A Game</a></div>
           </div>
         </div>
