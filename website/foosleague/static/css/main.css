@@ -949,11 +949,15 @@ body {
   margin-bottom: 5px;
   border: 1px solid #d9d9d9;
   background: #ffffff;
+  color: #666666;
   display: block; }
   .game::after {
     clear: both;
     content: "";
     display: table; }
+  .game:hover {
+    color: #666666;
+    border-color: #5198FB; }
 
 .game--1 {
   border-left: 3px solid #56B784; }
@@ -991,7 +995,8 @@ body {
   width: 30px;
   text-align: center;
   border: 1px solid #d9d9d9;
-  background: #ffffff; }
+  background: #ffffff;
+  color: #666666; }
 
 .league {
   padding: 20px 0; }
