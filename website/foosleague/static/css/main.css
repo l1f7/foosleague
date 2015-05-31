@@ -562,13 +562,13 @@ a {
     .ms-0 {
       font-size: 0.9375em; } }
 
-.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .team--medium .team-name {
+.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name {
   font-size: 1.19531em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .team--medium .team-name {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name {
       font-size: 1.125em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .team--medium .team-name {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name {
       font-size: 1.05469em; } }
 
 .ms-2, .richtext > h3 {
@@ -710,9 +710,9 @@ a {
   font-weight: 600;
   text-transform: uppercase; }
 
-.ts-light, .stat-title, .team-name {
+.ts-light, .league-season, .stat-title, .team-name {
   font-weight: 400;
-  text-transform: uppercase; }
+  color: #999999; }
 
 .ts-alt, .richtext blockquote p, .account-name, .branding-link, .game-score, .player-name, .stat-number, .stat-title, .team-name {
   font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -1018,9 +1018,14 @@ body {
   border-radius: 3px; }
 
 .league-name {
+  margin: 7px 0 0;
+  padding: 0;
+  display: block; }
+
+.league-season {
   margin: 0;
-  padding: 20px 0;
-  display: inline-block; }
+  padding: 0;
+  display: block; }
 
 .nav {
   margin: 0;
