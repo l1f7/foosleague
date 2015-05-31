@@ -21,6 +21,12 @@
   background: $c-standing-bg;
   @include row();
   @include clearfix;
+  color: $base-type;
+
+  &:hover {
+    border-color: $c-standing-border--hover;
+    color: $base-type;
+  }
 }
 
 .standing-count {

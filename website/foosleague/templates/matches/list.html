@@ -1,8 +1,38 @@
-<!DOCTYPE html>
-<html>
-<body>
-{% for match in object_list %}
-    <a href='{{match.get_absolute_url}}'>{{match}}</a><br />
-{% endfor %}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="l-columns l-columns--centered">
+    <div class="l-col">
+
+      {% for match in object_list %}
+        <a href="{{match.get_absolute_url}}" class="game {% if match.team_1_score > match.team_2_score %}game--1{% else %}game--2{% endif %}">
+          <div class="game-team game-team--home">
+            <div class="game-score {% if match.team_1_score > match.team_2_score %}game-score--winner{% endif %}">{{ match.team_1_score }}</div>
+            <div class="team">
+              <h1 class="team-name">{{ match.team_1 }}</h1>
+              {% for player in match.team_1.players.all %}
+                <div class="team-player player">
+                  <div class="player-avatar"><img src="{{ player.photo.url }}" class="player-img"/></div>
+                  <div class="player-name">{{ player.nickname }}</div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="game-team game-team--away">
+            <div class="game-score {% if match.team_2_score > match.team_1_score %}game-score--winner{% endif %}">{{ match.team_2_score }}</div>
+            <div class="team">
+              <h1 class="team-name">{{ match.team_2 }}</h1>
+              {% for player in match.team_2.players.all %}
+                <div class="team-player player">
+                  <div class="player-avatar"><img src="{{ player.photo.url }}" class="player-img"/></div>
+                  <div class="player-name">{{ player.nickname }}</div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+
+    </div>
+  </div>
+{% endblock %}

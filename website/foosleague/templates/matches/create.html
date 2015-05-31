@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Match</title>
-</head>
-<body>
-<form action ='' method='post'>
-{{form.as_p}}
-{% csrf_token %}
-<input type='submit' value='submit'/>
-</form>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+  <form action ='' method='post'>
+  {{form.as_p}}
+  {% csrf_token %}
+  <input type='submit' value='submit'/>
+  </form>
+{% endblock %}

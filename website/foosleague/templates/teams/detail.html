@@ -1,11 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Team Detail</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-    {{team.id}}<br />
-    {{team}}
-</body>
-</html>
+{% block content %}
+  <section class="profile">
+    <div class="profile-team">
+      <div class="team team--large">
+        <h1 class="team-name">{{ team }}</h1>
+        {% for player in team.players.all %}
+          <div class="team-player player player--large">
+            <div class="player-avatar"><img src="{{ player.photo.url }}" class="player-img"/></div>
+            <div class="player-name">{{ player.nickname }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="profile-stats profile-stats--team">
+      <div class="stat">
+        <div class="stat-number">999</div>
+        <div class="stat-title">Wins</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">999</div>
+        <div class="stat-title">Losses</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="l-columns l-columns--sideright">
+    <div class="l-col">
+    </div>
+    <div class="l-col l-col--side">
+    </div>
+  </div>
+{% endblock %}

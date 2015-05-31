@@ -62,8 +62,9 @@ $c-topbar-border   :  darken($white, 15%);
 $c-header-bg       :  $white;
 $c-header-border   :  darken($white, 15%);
 
-$c-standing-bg       :  $white;
-$c-standing-border   :  darken($white, 15%);
+$c-standing-bg            :  $white;
+$c-standing-border        :  darken($white, 15%);
+$c-standing-border--hover :  $blue;
 
 $c-game-bg       :  $white;
 $c-game-border   :  darken($white, 15%);

@@ -1,7 +1,21 @@
-<html>
-    <body>
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="l-columns l-columns--centered">
+    <div class="l-col">
+      <div class="standings">
         {% for player in object_list %}
-            <a href='{{player.get_absolute_url}}'>{{player}}</a><br />
+          <a href="{{player.get_absolute_url}}" class="standing">
+            <div class="standing-count standing-count--{{ forloop.counter }}"><span>{{ forloop.counter }}</span></div>
+            <div class="standing-player player">
+              <div class="player player--large">
+                <div class="player-avatar"><img src="{{ player.photo.url }}" class="player-img"/></div>
+                <h1 class="player-name">{{ player.nickname }}</h1>
+              </div>
+            </div>
+          </a>
         {% endfor %}
-    </body>
-</html>
+      </div>
+    </div>
+  </div>
+{% endblock %}
