@@ -59,7 +59,11 @@ CACHES = {}
 ########## END SECRET CONFIGURATION
 SECRET_KEY = r"t4%w_uy@-hr!_e@pm9h4694&amp;t2*=r^mp4vw#dsvfh_+41$yfx+"
 
-
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
 ########## RAVEN
 # RAVEN_CONFIG = {
 #     'dsn': '',
