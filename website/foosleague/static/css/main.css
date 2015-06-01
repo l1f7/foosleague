@@ -409,13 +409,13 @@ a {
     .ms-n0 {
       font-size: 0.9375em; } }
 
-.ms-n1, .account-name, .stat-title, .team-name {
+.ms-n1, .account-name, .stat-title, .team-name, .team-streak {
   font-size: 0.94444em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-n1, .account-name, .stat-title, .team-name {
+    .ms-n1, .account-name, .stat-title, .team-name, .team-streak {
       font-size: 0.88889em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-n1, .account-name, .stat-title, .team-name {
+    .ms-n1, .account-name, .stat-title, .team-name, .team-streak {
       font-size: 0.83333em; } }
 
 .ms-n2 {
@@ -706,15 +706,15 @@ a {
     .ms-16 {
       font-size: 6.1718em; } }
 
-.ts-uppercase, .account-name, .branding-link, .game-score, .league-name, .player-name, .profile-name, .stat-number, .stat-title, .team-name {
+.ts-uppercase, .account-name, .branding-link, .game-score, .league-name, .player-name, .profile-name, .stat-number, .stat-title, .team-name, .team-streak {
   font-weight: 600;
   text-transform: uppercase; }
 
-.ts-light, .league-season, .stat-title, .team-name {
+.ts-light, .league-season, .stat-title, .team-name, .team-streak {
   font-weight: 400;
   color: #999999; }
 
-.ts-alt, .richtext blockquote p, .account-name, .branding-link, .game-score, .player-name, .stat-number, .stat-title, .team-name {
+.ts-alt, .richtext blockquote p, .account-name, .branding-link, .game-score, .player-name, .stat-number, .stat-title, .team-name, .team-streak {
   font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.1;
   font-weight: 600; }
@@ -1176,7 +1176,19 @@ body {
   margin: 0 0 10px;
   padding: 0 0 5px;
   display: block;
+  color: #333333;
   border-bottom: 1px solid #d9d9d9; }
+
+.team-streak {
+  float: right;
+  margin: 0;
+  padding: 0;
+  display: inline-block; }
+  .team-streak span {
+    font-weight: 400; }
+
+.team-name--winner {
+  color: #56B784; }
 
 .team-players {
   display: block; }
