@@ -20,9 +20,12 @@ SITE_NAME = basename(DJANGO_ROOT)
 path.append(DJANGO_ROOT)
 ########## END PATH CONFIGURATION
 
+
 ALLOWED_HOSTS = [
     '.foosleague.l1f7.com',
     '.leagueoffoos.com',
+    'foosleague.com',
+    'foosleague.tableofvictory.com',
 ]
 
 
