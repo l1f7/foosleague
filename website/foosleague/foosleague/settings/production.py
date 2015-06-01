@@ -43,13 +43,11 @@ POSTMARK_TEST_MODE = DEBUG
 
 
 ########## DATABASE CONFIGURATION
-DATABASES = {}
 ########## END DATABASE CONFIGURATION
 
 
 ########## CACHE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
-CACHES = {}
 ########## END CACHE CONFIGURATION
 
 
@@ -64,6 +62,14 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     }
 }
+
+
+ALLOWED_HOSTS = [
+    '.foosleague.l1f7.com',
+    '.leagueoffoos.com',
+    'foosleague.com',
+    'foosleague.tableofvictory.com',
+]
 ########## RAVEN
 # RAVEN_CONFIG = {
 #     'dsn': '',
