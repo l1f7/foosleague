@@ -11,6 +11,7 @@ from mixins.views import LoginRequiredMixin
 
 from teams.models import Team
 from seasons.models import Season
+from players.models import Player
 from .models import Match
 from .forms import MatchForm
 
@@ -58,6 +59,12 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
     def get_form(self, *args, **kwargs):
         form = self.form_class(self.request.POST or None)
         return form
+
+    def get_context_data(self, *args, **kwargs):
+        c = super(MatchCreateView, self).get_context_data(*args, **kwargs)
+        # will eventually be filtered by league..
+        c['players'] = Player.objects.all()
+        return c
 
     def form_valid(self, form, *args, **kwargs):
 
