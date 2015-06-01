@@ -16,10 +16,12 @@
   <div data-template="undefined" class="l-site">
     <div class="l-topbar">
       <h1 class="branding"><a href="/index.html" class="branding-link">Foosleague</a></h1>
+      {% comment %}
       <div class="account">
         <div class="account-avatar"><img src="http://liftinteractive.com/media/images/adrian_Exqvi9i.focus-none.max-300x300.jpg" class="account-img"/></div>
         <div class="account-name">Adrian Gyuricska</div>
       </div>
+      {% endcomment %}
     </div>
     <div class="l-header">
       <div class="l-container">
@@ -35,7 +37,9 @@
             <div class="nav-item {% block nav-dashboard %}{% endblock %}"><a href="{% url "matches" %}" class="nav-link">Matches</a></div>
             <div class="nav-item {% block nav-players %}{% endblock %}"><a href="{% url "players" %}" class="nav-link">Players</a></div>
             <div class="nav-item {% block nav-teams %}{% endblock %}"><a href="{% url "teams" %}" class="nav-link">Teams</a></div>
-            <div class="nav-item {% block nav-bookie %}{% endblock %}"><a href="{% url "bets" %}" class="nav-link">Bookie</a></div>
+            {% comment %}
+              <div class="nav-item {% block nav-bookie %}{% endblock %}"><a href="{% url "bets" %}" class="nav-link">Bookie</a></div>
+            {% endcomment %}
             <div class="nav-item is-right"><a href="{% url "match-create" %}" class="nav-btn btn btn--small btn--full">Start A Game</a></div>
           </div>
         </div>

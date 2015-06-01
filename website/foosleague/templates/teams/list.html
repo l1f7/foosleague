@@ -15,6 +15,12 @@
             {% endcomment %}
             <div class="standing-team">
               <div class="team team--inline">
+                {% if team.streak > 0%}
+                  <p class="team-streak">
+                    <span>Current Streak</span>
+                    {{ team.streak }}
+                  </p>
+                {% endif %}
                 <h1 class="team-name">{{ team }}</h1>
                 <div class="team-players">
                   {% for player in team.players.all %}
