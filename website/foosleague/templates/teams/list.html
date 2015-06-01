@@ -8,9 +8,11 @@
       <div class="standings">
         {% for team in object_list %}
           <a href="{{team.get_absolute_url}}" class="standing">
+            {% comment %}
             <div class="standing-count standing-count--{{ forloop.counter }}">
               <span>{{ forloop.counter }}</span>
             </div>
+            {% endcomment %}
             <div class="standing-team">
               <div class="team team--inline">
                 <h1 class="team-name">{{ team }}</h1>

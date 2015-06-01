@@ -562,13 +562,13 @@ a {
     .ms-0 {
       font-size: 0.9375em; } }
 
-.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .team--medium .team-name {
+.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name {
   font-size: 1.19531em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .team--medium .team-name {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name {
       font-size: 1.125em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .team--medium .team-name {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name {
       font-size: 1.05469em; } }
 
 .ms-2, .richtext > h3 {
@@ -710,9 +710,9 @@ a {
   font-weight: 600;
   text-transform: uppercase; }
 
-.ts-light, .stat-title, .team-name {
+.ts-light, .league-season, .stat-title, .team-name {
   font-weight: 400;
-  text-transform: uppercase; }
+  color: #999999; }
 
 .ts-alt, .richtext blockquote p, .account-name, .branding-link, .game-score, .player-name, .stat-number, .stat-title, .team-name {
   font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -731,7 +731,7 @@ a {
   display: block; }
 
 body {
-  background: #ffffff; }
+  background: #F3F4F5; }
 
 .l-site {
   margin: 0 auto;
@@ -949,11 +949,15 @@ body {
   margin-bottom: 5px;
   border: 1px solid #d9d9d9;
   background: #ffffff;
+  color: #666666;
   display: block; }
   .game::after {
     clear: both;
     content: "";
     display: table; }
+  .game:hover {
+    color: #666666;
+    border-color: #5198FB; }
 
 .game--1 {
   border-left: 3px solid #56B784; }
@@ -991,7 +995,8 @@ body {
   width: 30px;
   text-align: center;
   border: 1px solid #d9d9d9;
-  background: #ffffff; }
+  background: #ffffff;
+  color: #666666; }
 
 .league {
   padding: 20px 0; }
@@ -1013,9 +1018,14 @@ body {
   border-radius: 3px; }
 
 .league-name {
+  margin: 7px 0 0;
+  padding: 0;
+  display: block; }
+
+.league-season {
   margin: 0;
-  padding: 20px 0;
-  display: inline-block; }
+  padding: 0;
+  display: block; }
 
 .nav {
   margin: 0;
@@ -1201,7 +1211,8 @@ body {
   margin-bottom: 5px;
   border: 1px solid #d9d9d9;
   background: #ffffff;
-  display: block; }
+  display: block;
+  color: #666666; }
   .standing::after {
     clear: both;
     content: "";
@@ -1210,6 +1221,9 @@ body {
     clear: both;
     content: "";
     display: table; }
+  .standing:hover {
+    border-color: #5198FB;
+    color: #666666; }
 
 .standing-count {
   position: absolute;

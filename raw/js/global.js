@@ -7,7 +7,7 @@ module.exports = {
 
   // utility in case we need to listen for events that propagate
   // all the way up to the body/sitewrap tag
-  siteWrapper: $('.l-sitewrap'),
+  siteWrapper: $('.l-site'),
 
   /** getCSRF
    *  CROSS SITE REQUEST FORGERY
