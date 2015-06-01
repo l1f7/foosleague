@@ -1,5 +1,6 @@
 import urllib2
 import re
+import requests
 
 from datetime import datetime
 from django.http.response import HttpResponseRedirect
@@ -94,6 +95,7 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
 
         p1_teams = Team.objects.filter(players=p1,)
         p2_teams = Team.objects.filter(players=p2,)
+
         team_1 = None
         for p in p1_teams:
             if p in p2_teams:
@@ -141,6 +143,11 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
 
             match.save()
             match.complete()
+        else:
+            #post to slack!
+
+            requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=cPqfDDQsk7QJ71ofvpy4aqF4&channel=%23test',
+                          data="Game on! *%s* _(%s)_ vs *%s* _(%s)_" % (match.team_1, match.team_1.streak, match.team_2, match.team_2.streak))
 
         match.save()
 
