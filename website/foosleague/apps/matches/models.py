@@ -16,6 +16,7 @@ class Match(TimeStampedModel):
     team_2_score = models.IntegerField(_("Team 2 Score"), default=0)
 
     completed = models.BooleanField(_("Completed"), default=False)
+    winner = models.ForeignKey(Team, related_name='winner', blank=True, null=True)
 
     season = models.ForeignKey(Season, verbose_name=_("Season"), blank=True, null=True)
     # points_awarded_team_1 = models.FloatField(_("Team 1 points"), default=0)
@@ -32,14 +33,26 @@ class Match(TimeStampedModel):
     def get_absolute_url(self):
         return reverse_lazy('match-detail', kwargs={'pk': self.id})
 
-    def winner(self):
-        if self.completed:
-            if self.team_1_score > self.team_2_score:
-                return self.team_1
-            elif self.team_1_score < self.team_2_score:
-                return self.team_2
-            else:
-                return 'Tie!'   # even this will never really happen :/
+    # def winner(self):
+    #     if self.completed:
+    #         if self.team_1_score > self.team_2_score:
+    #             return self.team_1
+    #         elif self.team_1_score < self.team_2_score:
+    #             return self.team_2
+    #         else:
+    #             return 'Tie!'   # even this will never really happen :/
 
-        else:
-            return 'Not completed'
+    #     else:
+    #         return 'Not completed'
+
+    # def loser(self):
+    #     if self.completed:
+    #         if self.team_1_score > self.team_2_score:
+    #             return self.team_2
+    #         elif self.team_1_score < self.team_2_score:
+    #             return self.team_1
+    #         else:
+    #             return 'Tie!'   # even this will never really happen :/
+
+    #     else:
+    #         return 'Not completed'

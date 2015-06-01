@@ -1,3 +1,6 @@
+import urllib2
+import re
+
 from datetime import datetime
 from django.http.response import HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
@@ -34,21 +37,33 @@ class MatchCompleteView(LoginRequiredMixin, DetailView):
             match = self.get_object()
             match.complete = True
             match.save()
+
             if match.team_1_score > match.team_2_score:
                 match.team_1.streak += 1
                 match.team_1.save()
-                winner = match.team_1
+                match.winner = match.team_1
             else:
                 match.team_2.streak += 1
                 match.team_2.save()
-                winner = match.team_2
+                match.winer = match.team_2
 
-            success(self.request, "Match has ended! Congrats team %s" % (winner,))
+            match.save()
+
+            success(self.request, "Match has ended! Congrats team %s" % (match.winner,))
             return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
 
         else:
             error(self.request, "You must be apart of this match to close the game.")
             return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
+
+
+def generate_name():
+    response = urllib2.urlopen("http://www.teamnames.net/fantasy/random-team-name-generator", timeout=5)
+    html = response.read()
+    result = re.search('(?<=_track\[\'generator\'\] =).*', html)
+    name = result.group(0)
+
+    return name.split("'")[1]
 
 
 class MatchCreateView(LoginRequiredMixin, CreateView):
@@ -69,10 +84,44 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form, *args, **kwargs):
 
         date = datetime.today()
-        # team_1, _ = Team.objects.get_or_create(players__in=[self.cleaned_data['player_1'], self.cleaned_data['player_2']], id=1)
-        # team_2, _ = Team.objects.get_or_create(players__in=[self.cleaned_data['player_3'], self.cleaned_data['player_4']], id=2)
-        team_1 = Team.objects.get(id=1)
-        team_2 = Team.objects.get(id=1)
+        # team_1, _ = Team.objects.get_or_create(players__in=[form.cleaned_data['player_1'], form.cleaned_data['player_2']])
+        # team_2, _ = Team.objects.get_or_create(players__in=[form.cleaned_data['player_3'], form.cleaned_data['player_4']])
+
+        p1 = form.cleaned_data['player_1']
+        p2 = form.cleaned_data['player_2']
+        p3 = form.cleaned_data['player_3']
+        p4 = form.cleaned_data['player_4']
+
+        p1_teams = Team.objects.filter(players=p1,)
+        p2_teams = Team.objects.filter(players=p2,)
+        team_1 = None
+        for p in p1_teams:
+            if p in p2_teams:
+                team_1 = p
+
+        if not team_1:
+
+            team_1 = Team.objects.create(name='%s' % (generate_name(),))
+            team_1.players.add(p1)
+            team_1.players.add(p2)
+            team_1.save()
+
+        p3_teams = Team.objects.filter(players=p3)
+        p4_teams = Team.objects.filter(players=p4)
+
+        team_2 = None
+        for p in p3_teams:
+            if p in p4_teams:
+                team_2 = p
+
+        if not team_2:
+            # generate_name
+
+            team_2 = Team.objects.create(name='%s' % (generate_name(),))
+            team_2.players.add(p3)
+            team_2.players.add(p4)
+            team_2.save()
+
         seasons = Season.objects.filter(start__gte=date, end__lte=date)
         season = None
         if seasons.count():
@@ -82,7 +131,17 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
                       team_1_score=form.cleaned_data[
                           'team_1_score'], team_2_score=form.cleaned_data['team_2_score'],
                       completed=form.cleaned_data['completed'], season=season)
+
+        if form.cleaned_data['completed']:
+            if form.cleaned_data['team_1_score'] > form.cleaned_data['team_2_score']:
+                match.winner = team_1
+
+            elif form.cleaned_data['team_2_score'] > form.cleaned_data['team_1_score']:
+                match.winner = team_2
+            match.save()
+            match.complete()
+
         match.save()
+
         success(self.request, "Match has been created!")
         return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
-
