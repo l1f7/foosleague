@@ -138,6 +138,7 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
 
             elif form.cleaned_data['team_2_score'] > form.cleaned_data['team_1_score']:
                 match.winner = team_2
+
             match.save()
             match.complete()
 
