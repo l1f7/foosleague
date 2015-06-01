@@ -1216,6 +1216,9 @@ body {
   .team--large .team-name {
     padding-bottom: 15px; }
 
+.standings {
+  margin-bottom: 50px; }
+
 .standing {
   padding: 10px;
   position: relative;
