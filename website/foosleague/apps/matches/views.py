@@ -145,7 +145,7 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
                 loser = team_1
                 winning_score = match.team_2_score
                 losing_score = match.team_1_score
-            requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=cPqfDDQsk7QJ71ofvpy4aqF4&channel=%23test',
+            requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=cPqfDDQsk7QJ71ofvpy4aqF4&channel=%23foosleague',
 
                           data="Game Over! *%s* defeats _%s_ ( *%s* - _%s_ )" % (match.winner, loser, winning_score, losing_score))
 
@@ -154,10 +154,14 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
         else:
             #post to slack!
 
-            requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=cPqfDDQsk7QJ71ofvpy4aqF4&channel=%23test',
+            requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=cPqfDDQsk7QJ71ofvpy4aqF4&channel=%23foosleague',
                           data="Game on! *%s* _(%s)_ vs *%s* _(%s)_" % (match.team_1, match.team_1.streak, match.team_2, match.team_2.streak))
 
         match.save()
 
         success(self.request, "Match has been created!")
         return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
+
+
+# class MatchUpdateView(LoginRequiredMixin, UpdateView):
+#
