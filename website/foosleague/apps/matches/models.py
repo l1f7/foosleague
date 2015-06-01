@@ -32,5 +32,14 @@ class Match(TimeStampedModel):
     def get_absolute_url(self):
         return reverse_lazy('match-detail', kwargs={'pk': self.id})
 
+    def winner(self):
+        if self.completed:
+            if self.team_1_score > self.team_2_score:
+                return self.team_1
+            elif self.team_1_score < self.team_2_score:
+                return self.team_2
+            else:
+                return 'Tie!'   # even this will never really happen :/
 
-
+        else:
+            return 'Not completed'
