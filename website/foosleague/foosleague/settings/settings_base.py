@@ -139,6 +139,16 @@ TEMPLATE_DIRS = (
 )
 ########## END TEMPLATE CONFIGURATION
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'foosleague',    # Or path to database file if using sqlite3.
+        'USER': 'foosleague',             # Not used with sqlite3.
+        'PASSWORD': 'foosleague',     # Not used with sqlite3.
+        'HOST': '198.199.96.37',   # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '5432',                 # Set to empty string for default. Not used with sqlite3.
+    }
+}
 
 ########## MIDDLEWARE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#middleware-classes
