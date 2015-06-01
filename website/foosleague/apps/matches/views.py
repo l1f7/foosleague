@@ -137,9 +137,17 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
         if form.cleaned_data['completed']:
             if form.cleaned_data['team_1_score'] > form.cleaned_data['team_2_score']:
                 match.winner = team_1
-
+                loser = team_2
+                winning_score = match.team_1_score
+                losing_score = match.team_2_score
             elif form.cleaned_data['team_2_score'] > form.cleaned_data['team_1_score']:
                 match.winner = team_2
+                loser = team_1
+                winning_score = match.team_2_score
+                losing_score = match.team_1_score
+            requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=cPqfDDQsk7QJ71ofvpy4aqF4&channel=%23test',
+
+                          data="Game Over! *%s* defeats _%s_ ( *%s* - _%s_ )" % (match.winner, loser, winning_score, losing_score))
 
             match.save()
             match.complete()
