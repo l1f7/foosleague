@@ -8,7 +8,9 @@
       <div class="standings">
         {% for player in object_list %}
           <a href="{{player.get_absolute_url}}" class="standing">
+            {% comment %}
             <div class="standing-count standing-count--{{ forloop.counter }}"><span>{{ forloop.counter }}</span></div>
+            {% endcomment %}
             <div class="standing-player player">
               <div class="player player--large">
                 <div class="player-avatar"><img src="{{ player.photo.url }}" class="player-img"/></div>

@@ -145,7 +145,7 @@
 	      // the following looks for an element with a class "mainblock"
 	      // and then pulls the value of it's data-model attribute
 	      // ie.: <div class="mainblock" data-model="myModel">
-	      var initializer = document.getElementsByClassName('l-sitewrap');
+	      var initializer = document.getElementsByClassName('l-site');
 	      var model = initializer[0].getAttribute('data-model');
 
 	      UTIL.exec('common'); // calls LIFT.common.init()

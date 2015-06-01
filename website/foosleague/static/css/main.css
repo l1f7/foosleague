@@ -966,10 +966,10 @@ body {
     color: #56B784; }
 
 .game--2 {
-  border-left: 3px solid #F66262; }
+  border-right: 3px solid #56B784; }
   .game--2 .game-score--winner {
-    border-color: #F66262;
-    color: #F66262; }
+    border-color: #56B784;
+    color: #56B784; }
 
 .game-team {
   float: left;
