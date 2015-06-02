@@ -17,3 +17,14 @@
 @import "type";
 @import "defaults";
 @import "zindex";
+
+@include keyframes(pulse) {
+  0% { @include transform(scale(1)); }
+  30% { @include transform(scale(1)); }
+  40% { @include transform(scale(1.1)); }
+  50% { @include transform(scale(1)); }
+  60% { @include transform(scale(1)); }
+  70% { @include transform(scale(1.08)); }
+  80% { @include transform(scale(1)); }
+  100% { @include transform(scale(1)); }
+}

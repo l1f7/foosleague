@@ -1,4 +1,18 @@
 .footer-text {
+  margin: 0 0 30px;
+  padding: 0;
   color: darken($white, 20%);
   @extend .ms-n1;
+
+  &:hover {
+    .footer-heart {
+      color: $red;
+    }
+  }
+}
+
+.footer-heart {
+  @extend .ms-1;
+  @include transition(color 0.2s);
+  @include animation(pulse 1.5s linear infinite);
 }

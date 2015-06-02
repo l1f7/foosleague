@@ -562,13 +562,13 @@ a {
     .ms-0 {
       font-size: 0.9375em; } }
 
-.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak {
+.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak, .footer-heart {
   font-size: 1.19531em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak, .footer-heart {
       font-size: 1.125em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak, .footer-heart {
       font-size: 1.05469em; } }
 
 .ms-2, .richtext > h3, .newgame-heading {
@@ -729,6 +729,72 @@ a {
 
 .is-visible {
   display: block; }
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1); }
+
+  30% {
+    -webkit-transform: scale(1); }
+
+  40% {
+    -webkit-transform: scale(1.1); }
+
+  50% {
+    -webkit-transform: scale(1); }
+
+  60% {
+    -webkit-transform: scale(1); }
+
+  70% {
+    -webkit-transform: scale(1.08); }
+
+  80% {
+    -webkit-transform: scale(1); }
+
+  100% {
+    -webkit-transform: scale(1); } }
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); }
+
+  30% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); }
+
+  40% {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1); }
+
+  50% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); }
+
+  60% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); }
+
+  70% {
+    -webkit-transform: scale(1.08);
+    -ms-transform: scale(1.08);
+    transform: scale(1.08); }
+
+  80% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); }
+
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); } }
 
 body {
   background: #F3F4F5; }
@@ -1677,7 +1743,17 @@ body {
       margin-bottom: 1.618em !important; } }
 
 .footer-text {
+  margin: 0 0 30px;
+  padding: 0;
   color: #cccccc; }
+  .footer-text:hover .footer-heart {
+    color: #F66262; }
+
+.footer-heart {
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+  -webkit-animation: pulse 1.5s linear infinite;
+  animation: pulse 1.5s linear infinite; }
 
 .newgame {
   margin: 0 15%;
