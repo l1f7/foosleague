@@ -28,5 +28,7 @@ class PlayerDetailView(DetailView):
         teams = Team.objects.filter(players=player)
         c['teams'] = teams
         c['matches'] = Match.objects.filter(Q(team_1__in=teams) | Q(team_2__in=teams))
+        c['wins'] = c['matches'].filter(winner__in=c['teams'])
+        c['loses'] = c['matches'].count() - c['wins']
 
         return c
