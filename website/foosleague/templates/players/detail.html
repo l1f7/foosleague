@@ -1,20 +1,25 @@
 {% extends "base.html" %}
+{% load thumbnail %}
 
 {% block nav-players %}is-active{% endblock %}
 
 {% block content %}
   <section class="profile">
     <div class="profile-avatar">
-      <img src="{{ object.photo.url }}" class="profile-img"/>
+      {% if object.photo %}
+        {% thumbnail object.photo "80x80" crop="center" as im %}
+          <img src="{{ im.url }}" class="player-img"/>
+        {% endthumbnail %}
+      {% endif %}
     </div>
     <h1 class="profile-name">{{ object }}</h1>
     <div class="profile-stats">
       <div class="stat">
-        <div class="stat-number">999</div>
+        <div class="stat-number">{{ object.wins }}</div>
         <div class="stat-title">Wins</div>
       </div>
       <div class="stat">
-        <div class="stat-number">999</div>
+        <div class="stat-number">{{ object.losses }}</div>
         <div class="stat-title">Losses</div>
       </div>
     </div>
@@ -22,6 +27,9 @@
 
   <div class="l-columns l-columns--sideright">
     <div class="l-col">
+      {% for match in matches %}
+        {% include "partials/match.html" with match=match %}
+      {% endfor %}
     </div>
     <div class="l-col l-col--side">
     </div>
