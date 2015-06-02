@@ -12,7 +12,9 @@
 }
 
 .footer-heart {
-  @extend .ms-1;
+  position: relative;
+  top: 1px;
+  @extend .ms-2;
   @include transition(color 0.2s);
   @include animation(pulse 1.5s linear infinite);
 }

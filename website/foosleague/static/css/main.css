@@ -562,22 +562,22 @@ a {
     .ms-0 {
       font-size: 0.9375em; } }
 
-.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak, .footer-heart {
+.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak {
   font-size: 1.19531em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak, .footer-heart {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak {
       font-size: 1.125em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak, .footer-heart {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak {
       font-size: 1.05469em; } }
 
-.ms-2, .richtext > h3, .newgame-heading {
+.ms-2, .richtext > h3, .footer-heart, .newgame-heading {
   font-size: 1.34473em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-2, .richtext > h3, .newgame-heading {
+    .ms-2, .richtext > h3, .footer-heart, .newgame-heading {
       font-size: 1.26562em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-2, .richtext > h3, .newgame-heading {
+    .ms-2, .richtext > h3, .footer-heart, .newgame-heading {
       font-size: 1.18652em; } }
 
 .ms-3, .richtext > h2, .team--large .team-name, .section-heading {
@@ -1750,6 +1750,8 @@ body {
     color: #F66262; }
 
 .footer-heart {
+  position: relative;
+  top: 1px;
   -webkit-transition: color 0.2s;
   transition: color 0.2s;
   -webkit-animation: pulse 1.5s linear infinite;
