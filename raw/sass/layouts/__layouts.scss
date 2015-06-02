@@ -10,6 +10,25 @@ body {
   background: $c-site-bg;
 }
 
+.l-tease {
+  text-align: center;
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+}
+
+.l-teaseContent {
+  z-index: 5;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translateX(-50%) translateY(-50%));
+}
+
 .l-site {
   margin: 0 auto;
   max-width: $site-width;

@@ -1,13 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Registration</title>
-</head>
-<body>
-<form action='' method='post'>
-{{form.as_p}}
-{% csrf_token %}
-<input type='submit' value='submit'/>
-</form>
-</body>
-</html>
+{% extends "auth.html" %}
+
+{% block content %}
+  <div class="auth">
+    <div class="auth-login">
+      <form action="" method="post" class="section section-auth form--large">
+        <div class="section-titlebar">
+          <h1 class="section-heading">Register</h1>
+        </div>
+        <div class="section-content">
+          {% csrf_token %}
+          {% include "partials/forms/error_field.html" %}
+          <div class="field-set field-set--5050">
+            {% include "partials/forms/text_field.html" with field=form.first_name %}
+            {% include "partials/forms/text_field.html" with field=form.last_name %}
+          </div>
+          {% include "partials/forms/password_field.html" with field=form.password1 %}
+          {% include "partials/forms/password_field.html" with field=form.password2 %}
+        </div>
+        <div class="section-actions">
+          <input type="submit" class="btn btn-secondary btn--large" value="Sign Up"/>
+        </div>
+      </form>
+      <a href="{% url "login" %}" class="btn btn-ghost btn-primary btn--xlarge btn--full">Have an account? Login.</a>
+    </div>
+  </div>
+{% endblock %}

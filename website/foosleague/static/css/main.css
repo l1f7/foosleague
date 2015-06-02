@@ -580,13 +580,13 @@ a {
     .ms-2, .richtext > h3, .newgame-heading {
       font-size: 1.18652em; } }
 
-.ms-3, .richtext > h2, .team--large .team-name {
+.ms-3, .richtext > h2, .team--large .team-name, .section-heading {
   font-size: 1.51282em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-3, .richtext > h2, .team--large .team-name {
+    .ms-3, .richtext > h2, .team--large .team-name, .section-heading {
       font-size: 1.42383em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-3, .richtext > h2, .team--large .team-name {
+    .ms-3, .richtext > h2, .team--large .team-name, .section-heading {
       font-size: 1.33484em; } }
 
 .ms-4, .richtext > h1 {
@@ -706,7 +706,7 @@ a {
     .ms-16 {
       font-size: 6.1718em; } }
 
-.ts-uppercase, .account-name, .branding-link, .game-score, .league-name, .player-name, .profile-name, .stat-number, .stat-title, .team-name, .team-streak {
+.ts-uppercase, .account-name, .branding-link, .game-score, .league-name, .player-name, .profile-name, .stat-number, .stat-title, .team-name, .team-streak, .section-heading {
   font-weight: 600;
   text-transform: uppercase; }
 
@@ -732,6 +732,23 @@ a {
 
 body {
   background: #F3F4F5; }
+
+.l-tease {
+  text-align: center; }
+  .l-tease canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; }
+
+.l-teaseContent {
+  z-index: 5;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%); }
 
 .l-site {
   margin: 0 auto;
@@ -907,6 +924,9 @@ body {
     .l-columns--thirds .l-col:last-child {
       margin-right: 0; } }
 
+.l-auth {
+  background: #ffffff; }
+
 .l-authContainer {
   padding: 0 2.35765%;
   max-width: 58.75em;
@@ -1021,6 +1041,16 @@ body {
   display: inline-block;
   float: left; }
 
+.branding--auth, .branding--tease {
+  float: none; }
+
+.branding--tease .branding-link {
+  font-weight: 600;
+  font-size: 3.25rem;
+  font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1;
+  text-shadow: 0 1px #ffffff, 1px 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff, -1px -1px #ffffff, -1px 0 #ffffff; }
+
 .branding-link {
   margin: 0;
   padding: 13px 0;
@@ -1060,6 +1090,35 @@ body {
   font-size: 0.9375rem;
   font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1; }
+
+.btn-ghost {
+  background: transparent;
+  color: #56B784;
+  border-color: transparent; }
+  .btn-ghost:hover {
+    border: 1px solid #44a070;
+    color: #ffffff;
+    background: #44a070; }
+
+.btn--login {
+  position: absolute;
+  z-index: 5;
+  bottom: 20px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1;
+  background: transparent;
+  color: #56B784;
+  border-color: transparent;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%); }
+  .btn--login:hover {
+    border: 1px solid #44a070;
+    color: #ffffff;
+    background: #44a070; }
 
 .btn--full {
   display: block; }
@@ -1763,6 +1822,41 @@ body {
   height: 24px;
   left: -12px;
   background: #7A6248; }
+
+.section {
+  margin-bottom: 30px; }
+
+.section-titlebar {
+  position: relative; }
+  .section-titlebar::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.section-heading {
+  margin: 0;
+  padding: 0 0 25px;
+  display: inline-block;
+  border-bottom: 2px solid #5198FB; }
+
+.section-content {
+  padding: 1.618em 0; }
+
+.section-actions {
+  position: relative;
+  text-align: right;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px; }
+  .section-actions::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.section--small .section-heading {
+  font-weight: 600;
+  font-size: 1.25rem;
+  font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1; }
 
 .accessibility-dims {
   width: 48px;

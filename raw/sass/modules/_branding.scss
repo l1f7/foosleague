@@ -3,6 +3,18 @@
   float: left;
 }
 
+.branding--auth,
+.branding--tease {
+  float: none;
+}
+
+.branding--tease {
+  .branding-link {
+    @include font(52, 600, 1, $base-font-alt);
+    text-shadow: 0 1px $white, 1px 1px $white, 1px 0 $white, 0 -1px $white, -1px -1px $white, -1px 0 $white;
+  }
+}
+
 .branding-link {
   margin: 0;
   padding: 13px 0;

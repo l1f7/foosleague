@@ -17,3 +17,38 @@
 @import "modules/_newgame";
 @import "modules/_error";
 @import "modules/_standing";
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section-titlebar {
+  position: relative;
+  @include clearfix;
+}
+
+.section-heading {
+  margin: 0;
+  padding: 0 0 25px;
+  display: inline-block;
+  @extend .ms-3;
+  @extend .ts-uppercase;
+  border-bottom: 2px solid $blue;
+}
+
+.section-content {
+  padding: $gutter 0;
+}
+
+.section-actions {
+  position: relative;
+  text-align: right;
+  @include clearfix;
+  @include border-bottom-radius(5px);
+}
+
+.section--small {
+  .section-heading {
+    @include font(20, 600, 1);
+  }
+}
