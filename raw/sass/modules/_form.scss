@@ -1,0 +1,193 @@
+.form-titlebar {
+  padding: 10px 0 30px;
+}
+
+.form-heading {
+  margin: 0 0 10px;
+  padding: 0;
+  @include font(18);
+}
+
+.form-half {
+  @include span-columns(6);
+}
+
+.field-set {
+  @include outer-container();
+}
+
+.field-set--5050 {
+  .field {
+    @include span-columns(6);
+  }
+}
+
+.field-set--4-4-4 {
+  .field {
+    @include span-columns(4);
+  }
+}
+
+.field-set--4-8 {
+  .field:first-child {
+    @include span-columns(4);
+  }
+  .field:last-child {
+    @include span-columns(8);
+  }
+}
+
+.field {
+  margin-bottom: $gutter !important;
+}
+
+.field-checkbox {
+  margin-bottom: $gutter/2 !important;
+
+  .field-label {
+    display: inline-block;
+  }
+}
+
+.field-half {
+  width: 50%;
+}
+
+.field-last {
+  margin: 0;
+}
+
+.field--actions {
+  clear: both;
+  margin-top: -$gutter/1.5;
+  padding-top: $gutter/1.5;
+  @include clearfix;
+}
+
+.field-label {
+  display: block;
+  padding: 0 0;
+  @include font(15, 600);
+}
+
+.field-helptext {
+  display: block;
+  padding: 8px 0 0;
+  @include font(13, 400);
+}
+
+.field-typeSelect {
+  select {
+    display: none;
+  }
+}
+
+.field-multiselect {
+  select {
+    width: 100%;
+    outline: none;
+    padding: 5px;
+  }
+}
+
+.field-text {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid $black;
+  outline: none;
+  @include font(18);
+  background: #fff;
+  padding: 8px 0;
+  color: $base-heading;
+  @include font(18);
+  @include transition(box-shadow 0.25s);
+  box-shadow: none;
+
+  &:focus {
+    border-color: $blue;
+    box-shadow: 0 2px $blue;
+  }
+
+  &:-webkit-autofill {
+    box-shadow: inset 0 0 0 100px $white;
+    color: $base-heading;
+
+    &:focus {
+      border-color: $blue;
+      box-shadow: inset 0 0 0 100px $white, 0 2px $blue;
+    }
+  }
+}
+
+.field-text--long {
+  height: 100px;
+}
+
+.field--required {
+  .field-label:after {
+    content: "*";
+    color: $red;
+  }
+}
+
+.field--error {
+  .field-label {
+    color: $red;
+  }
+
+  .field-text {
+    border-color: $red;
+
+    &:focus {
+      border-color: $red;
+      box-shadow: 0 2px $red;
+    }
+  }
+}
+
+.field--valid {
+  .field-label {
+  }
+
+  .field-text {
+    border-color: $green;
+    box-shadow: 0 1px $green;
+
+    &:focus {
+      border-color: $blue;
+      box-shadow: 0 2px $blue;
+    }
+  }
+}
+
+.form--large {
+  .field-text {
+    @include font(24, 500);
+  }
+}
+
+@include media($mobile) {
+  .field-set--5050 {
+    .field {
+      @include span-columns(4);
+    }
+  }
+
+  .field-set--4-8 {
+    .field:first-child {
+      @include span-columns(4);
+    }
+    .field:last-child {
+      @include span-columns(4);
+    }
+  }
+
+  .field {
+    margin-bottom: $gutter !important;
+
+    &:last-child {
+      margin-bottom: $gutter !important;
+    }
+  }
+}
+

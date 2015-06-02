@@ -1,0 +1,49 @@
+.error {
+  margin: 0 0 20px;
+  padding: 10px 20px;
+  background: lighten($red,30%);
+  color: $red;
+  border-radius: 5px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 2px 0;
+    @include font(16);
+  }
+}
+
+.error--small {
+  padding: 7px 15px;
+  @include font(14);
+}
+
+.error--field {
+  margin: 0;
+  border-radius: 0;
+  padding: 7px 15px;
+  @include font(14);
+}
+
+.error--loading {
+  padding: 50px 0;
+}
+
+.error-heading {
+  color: $red;
+  margin: 0 0 8px;
+  padding: 0;
+  @include font(20, 600, 1);
+}
+
+.error-text {
+  color: $red;
+  margin: 0;
+  padding: 0;
+  @include font(16);
+}

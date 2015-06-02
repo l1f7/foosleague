@@ -11,67 +11,8 @@
 @import "modules/_profile";
 @import "modules/_stats";
 @import "modules/_team";
-
-.standings {
-  margin-bottom: 50px;
-}
-
-.standing {
-  padding: 10px;
-  position: relative;
-  border-radius: 3px;
-  margin-bottom: 5px;
-  border: 1px solid $c-standing-border;
-  background: $c-standing-bg;
-  @include row();
-  @include clearfix;
-  color: $base-type;
-
-  &:hover {
-    border-color: $c-standing-border--hover;
-    color: $base-type;
-  }
-}
-
-.standing-count {
-  position: absolute;
-  top: 50%;
-  left: -12px;
-  width: 24px;
-  height: 24px;
-  display: block;
-  background: $c-standing-border;
-  color: $black;
-  border-radius: 30px;
-  text-align: center;
-  @include font(13, 600, 1);
-  @include transform(translateY(-50%));
-
-  span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    @include transform(translateX(-50%) translateY(-50%));
-  }
-}
-
-.standing-count--1 {
-  width: 28px;
-  height: 28px;
-  left: -14px;
-  background: $gold;
-}
-
-.standing-count--2 {
-  width: 26px;
-  height: 26px;
-  left: -13px;
-  background: $silver;
-}
-
-.standing-count--3 {
-  width: 24px;
-  height: 24px;
-  left: -12px;
-  background: $bronze;
-}
+@import "modules/_form";
+@import "modules/_footer";
+@import "modules/_newgame";
+@import "modules/_error";
+@import "modules/_standing";

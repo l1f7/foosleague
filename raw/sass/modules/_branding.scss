@@ -12,4 +12,8 @@
   @extend .ts-alt;
   @extend .ts-uppercase;
   text-align: center;
+
+  &:hover {
+    color: $black;
+  }
 }

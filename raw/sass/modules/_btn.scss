@@ -1,11 +1,11 @@
 .btn {
   display: inline-block;
   text-align: center;
-  padding: 15px 25px;
+  padding: 10px 24px;
   border: 1px solid $c-btn-border;
   color: $c-btn-color;
   background: $c-btn-bg;
-  @include font(20, 500, 1);
+  @include font(17, 600, 1);
   text-decoration: none;
   border-radius: 40px;
   @include transition(0.35s);

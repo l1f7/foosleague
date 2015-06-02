@@ -1,9 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <form action ='' method='post'>
-  {{form.as_p}}
-  {% csrf_token %}
-  <input type='submit' value='submit'/>
+
+  <form action ='' method='post' class="newgame">
+    <div class="l-columns l-columns--split">
+      {% include "partials/forms/error_field.html" %}
+      {% csrf_token %}
+      <div class="l-col">
+        <div class="newgame-team newgame-team--red">
+          <h1 class="newgame-heading">Red Team</h1>
+          {% include "partials/forms/select_field.html" with field=form.player_1 %}
+          {% include "partials/forms/select_field.html" with field=form.player_2 %}
+          {% include "partials/forms/text_field.html" with field=form.team_1_score %}
+        </div>
+      </div>
+      <div class="l-col">
+        <div class="newgame-team newgame-team--black">
+          <h1 class="newgame-heading">Black Team</h1>
+          {% include "partials/forms/select_field.html" with field=form.player_3 %}
+          {% include "partials/forms/select_field.html" with field=form.player_4 %}
+          {% include "partials/forms/text_field.html" with field=form.team_2_score %}
+        </div>
+      </div>
+    </div>
+    {% include "partials/forms/checkbox_field.html" with field=form.completed %}
+    <div class="newgame-action">
+      <input type='submit' class="btn" value='Create Game'/>
+    </div>
   </form>
 {% endblock %}
