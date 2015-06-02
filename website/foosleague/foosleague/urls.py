@@ -12,7 +12,7 @@ actions.add_to_site(admin.site)
 urlpatterns = patterns('',
     url(r'^admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     url(r'^foosadmin/', include(admin.site.urls)),
-
+    url(r'^accounts/', include('accounts.urls')),
     url(r'^teams/', include('teams.urls')),
     url(r'^players/', include('players.urls')),
     url(r'^matches/', include('matches.urls')),

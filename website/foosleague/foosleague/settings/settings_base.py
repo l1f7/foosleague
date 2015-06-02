@@ -112,6 +112,7 @@ FIXTURE_DIRS = (
     normpath(join(SITE_ROOT, 'fixtures')),
 )
 ########## END FIXTURE CONFIGURATION
+# AUTH_USER_MODEL = "players.Player"
 
 
 ########## TEMPLATE CONFIGURATION
@@ -187,6 +188,7 @@ THIRD_PARTY_APPS = (
     'admin_honeypot',
     'adminactions',
     'django_extensions',
+    'sorl.thumbnail',
 )
 
 # Apps specific for this project go here.
