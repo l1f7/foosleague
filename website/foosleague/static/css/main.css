@@ -738,7 +738,7 @@ a {
     -webkit-transform: scale(1); }
 
   40% {
-    -webkit-transform: scale(1.1); }
+    -webkit-transform: scale(1.2); }
 
   50% {
     -webkit-transform: scale(1); }
@@ -747,7 +747,7 @@ a {
     -webkit-transform: scale(1); }
 
   70% {
-    -webkit-transform: scale(1.08); }
+    -webkit-transform: scale(1.15); }
 
   80% {
     -webkit-transform: scale(1); }
@@ -767,9 +767,9 @@ a {
     transform: scale(1); }
 
   40% {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1); }
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2); }
 
   50% {
     -webkit-transform: scale(1);
@@ -782,9 +782,9 @@ a {
     transform: scale(1); }
 
   70% {
-    -webkit-transform: scale(1.08);
-    -ms-transform: scale(1.08);
-    transform: scale(1.08); }
+    -webkit-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    transform: scale(1.15); }
 
   80% {
     -webkit-transform: scale(1);
@@ -1754,6 +1754,10 @@ body {
   transition: color 0.2s;
   -webkit-animation: pulse 1.5s linear infinite;
   animation: pulse 1.5s linear infinite; }
+
+@media screen and (max-width: 39.99em)  {
+  .footer-text {
+    margin: 0 0 1.5em; } }
 
 .newgame {
   margin: 0 15%;

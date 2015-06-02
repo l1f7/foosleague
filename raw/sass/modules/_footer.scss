@@ -16,3 +16,9 @@
   @include transition(color 0.2s);
   @include animation(pulse 1.5s linear infinite);
 }
+
+@include media($mobile) {
+  .footer-text {
+    margin: 0 0 1.5em;
+  }
+}
