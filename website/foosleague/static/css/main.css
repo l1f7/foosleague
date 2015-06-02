@@ -1064,6 +1064,11 @@ body {
   padding: 0;
   display: block; }
 
+@media screen and (max-width: 39.99em)  {
+  .league-logo {
+    width: 64px;
+    height: 64px; } }
+
 .nav {
   margin: 0;
   padding: 0;
