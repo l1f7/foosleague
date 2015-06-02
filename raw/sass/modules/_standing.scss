@@ -1,5 +1,10 @@
 .standings {
-  margin-bottom: 50px;
+  &.is-loading {
+    .standing {
+      opacity: 0;
+      @include transform(translateY(-15px));
+    }
+  }
 }
 
 .standing {
@@ -16,6 +21,12 @@
   &:hover {
     border-color: $c-standing-border--hover;
     color: $base-type;
+  }
+
+  @for $i from 0 through 100 {
+    &:nth-child(#{$i}) {
+      @include transition(all 0.35s ease-out ((0.15)+((0.12)*$i))+s);
+    }
   }
 }
 

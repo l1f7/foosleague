@@ -6,9 +6,11 @@
   <div class="l-columns l-columns--centered">
     <div class="l-col">
 
-      {% for match in object_list %}
-        {% include "partials/match.html" with match=match %}
-      {% endfor %}
+      <div class="games is-loading">
+        {% for match in object_list %}
+          {% include "partials/match.html" with match=match %}
+        {% endfor %}
+      </div>
 
     </div>
   </div>

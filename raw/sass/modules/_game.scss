@@ -1,5 +1,10 @@
 .games {
-
+  &.is-loading {
+    .game {
+      opacity: 0;
+      @include transform(translateY(-15px));
+    }
+  }
 }
 
 .game {
@@ -13,6 +18,12 @@
   &:hover {
     color: $base-type;
     border-color: $c-game-border--hover;
+  }
+
+  @for $i from 0 through 100 {
+    &:nth-child(#{$i}) {
+      @include transition(all 0.35s ease-out ((0.15)+((0.12)*$i))+s);
+    }
   }
 }
 

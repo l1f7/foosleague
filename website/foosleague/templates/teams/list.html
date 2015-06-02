@@ -6,7 +6,7 @@
 {% block content %}
   <div class="l-columns l-columns--centeredSmall">
     <div class="l-col">
-      <div class="standings">
+      <div class="standings is-loading">
         {% for team in object_list %}
           <a href="{{team.get_absolute_url}}" class="standing">
             {% comment %}

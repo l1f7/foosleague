@@ -47,9 +47,11 @@
 
   <div class="l-columns l-columns--sideright">
     <div class="l-col">
-      {% for match in matches %}
-        {% include "partials/match.html" with match=match %}
-      {% endfor %}
+      <div class="games is-loading">
+        {% for match in matches %}
+          {% include "partials/match.html" with match=match %}
+        {% endfor %}
+      </div>
     </div>
     <div class="l-col l-col--side">
     </div>
