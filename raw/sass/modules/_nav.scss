@@ -49,11 +49,11 @@
 
 .nav-ham {
   position: absolute;
-  top: 8px;
+  top: 6px;
   right: 1em;
   width: 24px;
   height: 24px;
-  display: block;
+  display: none;
   @include transition(0.35s);
 }
 
@@ -135,6 +135,10 @@
 }
 
 @include media($mobile) {
+  .nav-ham {
+    display: block;
+  }
+
   .nav {
     &.is-active {
       .nav-menu {

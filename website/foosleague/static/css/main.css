@@ -1107,11 +1107,11 @@ body {
 
 .nav-ham {
   position: absolute;
-  top: 8px;
+  top: 6px;
   right: 1em;
   width: 24px;
   height: 24px;
-  display: block;
+  display: none;
   -webkit-transition: 0.35s;
   transition: 0.35s; }
 
@@ -1173,6 +1173,8 @@ body {
     right: 0; }
 
 @media screen and (max-width: 39.99em)  {
+  .nav-ham {
+    display: block; }
   .nav.is-active .nav-menu {
     margin-top: 10px;
     margin-bottom: 10px; }

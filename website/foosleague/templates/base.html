@@ -17,12 +17,12 @@
     <div class="l-topbar">
       <div class="l-container l-container--full">
         <h1 class="branding"><a href="{% url "matches" %}" class="branding-link">Foosleague</a></h1>
-        {% comment %}
-        <div class="account">
-          <div class="account-avatar"><img src="http://liftinteractive.com/media/images/adrian_Exqvi9i.focus-none.max-300x300.jpg" class="account-img"/></div>
-          <div class="account-name">Adrian Gyuricska</div>
-        </div>
-        {% endcomment %}
+          {% if request.user.is_authenticated %}
+          <div class="account">
+            <div class="account-avatar"><img src="{{ request.user.player.photo.url }}" class="account-img"/></div>
+            <div class="account-name">{{ request.user.player.nickname }}</div>
+          </div>
+          {% endif %}
         <div class="nav-ham">
           <div class="ham js-openSide">
             <div class="ham-hamburger"></div>
