@@ -934,6 +934,10 @@ body {
   display: inline-block;
   color: #333333; }
 
+@media screen and (max-width: 39.99em)  {
+  .account {
+    display: none; } }
+
 .branding {
   display: inline-block;
   float: left; }
