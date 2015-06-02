@@ -21,7 +21,7 @@ class Player(TimeStampedModel):
         verbose_name_plural = 'Players'
 
     def __unicode__(self):
-        return '%s' % (self.nickname or self.first_name)
+        return '%s' % (self.nickname or self.user)
 
     def get_absolute_url(self):
         return reverse_lazy('player-detail', kwargs={'pk': self.id})

@@ -18,6 +18,7 @@ class Team(TimeStampedModel):
     class Meta:
         verbose_name = _('Team')
         verbose_name_plural = _('Teams')
+        ordering = ('-streak',)
 
     def __unicode__(self):
         return '%s' % self.name
