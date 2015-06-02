@@ -562,13 +562,13 @@ a {
     .ms-0 {
       font-size: 0.9375em; } }
 
-.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name {
+.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak {
   font-size: 1.19531em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak {
       font-size: 1.125em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak {
       font-size: 1.05469em; } }
 
 .ms-2, .richtext > h3, .newgame-heading {

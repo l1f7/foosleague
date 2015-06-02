@@ -7,6 +7,12 @@
   <section class="profile">
     <div class="profile-team">
       <div class="team team--large">
+        {% if team.streak > 0 %}
+          <p class="team-streak">
+            <span>Current Streak</span>
+            {{ team.streak }}
+          </p>
+        {% endif %}
         <h1 class="team-name">{{ team }}</h1>
         {% for player in team.players.all %}
           <div class="team-player player player--large">
