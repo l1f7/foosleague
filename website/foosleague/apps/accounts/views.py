@@ -138,7 +138,7 @@ class RegistrationView(CreateView):
         login(self.request, new_user)
 
         # create new default player
-        player = Player.objects.create(user=new_user)
+        player = Player.objects.create(user=new_user, nickname=new_user.username)
         # todo: send welcome email
 
         return HttpResponseRedirect(reverse_lazy("player-detail", kwargs={'pk': player.id}))

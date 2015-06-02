@@ -126,6 +126,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
+    'players.context_processors.player',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
@@ -207,7 +208,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 ########## END APP CONFIGURATION
 SUIT_CONFIG = {
     # header
-    # 'ADMIN_NAME': 'Django Suit',
+    'ADMIN_NAME': 'FoosLeague',
     # 'HEADER_DATE_FORMAT': 'l, j. F Y',
     # 'HEADER_TIME_FORMAT': 'H:i',
 
