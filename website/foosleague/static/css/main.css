@@ -771,6 +771,9 @@ body {
     content: "";
     display: table; }
 
+.l-container--full {
+  max-width: 100%; }
+
 .l-columns {
   width: 100%;
   display: block; }
@@ -937,7 +940,7 @@ body {
 
 .branding-link {
   margin: 0;
-  padding: 13px 30px;
+  padding: 13px 0;
   display: block;
   color: #333333;
   font-weight: 600;
@@ -1067,7 +1070,7 @@ body {
   border-top: 1px solid #f2f2f2; }
 
 .nav-menu {
-  margin: 0;
+  margin: 0 -10px;
   padding: 0; }
   .nav-menu::after {
     clear: both;
@@ -1101,6 +1104,90 @@ body {
 
 .nav-btn {
   margin: 8px 0 0; }
+
+.nav-ham {
+  position: absolute;
+  top: 8px;
+  right: 1em;
+  width: 24px;
+  height: 24px;
+  display: block;
+  -webkit-transition: 0.35s;
+  transition: 0.35s; }
+
+.ham {
+  position: relative;
+  margin: 7px 0 0;
+  float: right;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  z-index: 10; }
+  .ham:hover .ham-hamburger:before, .ham:hover .ham-hamburger:after {
+    width: 24px; }
+  .ham.is-active .ham-hamburger {
+    background: none; }
+  .ham.is-active .ham-hamburger:before, .ham.is-active .ham-hamburger:after {
+    background: #333333;
+    top: 0;
+    width: 24px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg); }
+  .ham.is-active .ham-hamburger:after {
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
+  .ham.is-active .ham-hamburger:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2); }
+
+.ham-hamburger {
+  position: relative;
+  width: 24px;
+  height: 4px;
+  margin: 10px 0;
+  background: #333333;
+  border-radius: 4px;
+  -webkit-transition: 0.25s;
+  transition: 0.25s; }
+  .ham-hamburger:before, .ham-hamburger:after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 4px;
+    background: #333333;
+    position: absolute;
+    border-radius: 4px;
+    -webkit-transition: 0.25s;
+    transition: 0.25s; }
+  .ham-hamburger:before {
+    top: -8px;
+    right: 0;
+    width: 22px; }
+  .ham-hamburger:after {
+    top: 8px;
+    width: 16px;
+    right: 0; }
+
+@media screen and (max-width: 39.99em)  {
+  .nav.is-active .nav-menu {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+  .nav.is-active .nav-item {
+    float: none;
+    display: block; }
+    .nav.is-active .nav-item.is-active {
+      border: none; }
+  .nav.is-active .nav-link {
+    font-weight: 400;
+    color: #666666; }
+  .nav-item {
+    display: none; }
+    .nav-item.is-right, .nav-item.is-active {
+      display: block; } }
 
 .player {
   display: block; }

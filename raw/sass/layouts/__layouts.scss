@@ -49,6 +49,10 @@ body {
   max-width: 1100px;
 }
 
+.l-container--full {
+  max-width: 100%;
+}
+
 .l-columns {
   @include fill-parent();
   @include row();

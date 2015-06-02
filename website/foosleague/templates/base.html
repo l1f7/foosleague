@@ -15,13 +15,20 @@
 <body>
   <div data-template="undefined" class="l-site">
     <div class="l-topbar">
-      <h1 class="branding"><a href="{% url "matches" %}" class="branding-link">Foosleague</a></h1>
-      {% comment %}
-      <div class="account">
-        <div class="account-avatar"><img src="http://liftinteractive.com/media/images/adrian_Exqvi9i.focus-none.max-300x300.jpg" class="account-img"/></div>
-        <div class="account-name">Adrian Gyuricska</div>
+      <div class="l-container l-container--full">
+        <h1 class="branding"><a href="{% url "matches" %}" class="branding-link">Foosleague</a></h1>
+        {% comment %}
+        <div class="account">
+          <div class="account-avatar"><img src="http://liftinteractive.com/media/images/adrian_Exqvi9i.focus-none.max-300x300.jpg" class="account-img"/></div>
+          <div class="account-name">Adrian Gyuricska</div>
+        </div>
+        {% endcomment %}
+        <div class="nav-ham">
+          <div class="ham js-openSide">
+            <div class="ham-hamburger"></div>
+          </div>
+        </div>
       </div>
-      {% endcomment %}
     </div>
     <div class="l-header">
       <div class="l-container">
@@ -54,6 +61,23 @@
       <p class="footer-text">Made with &hearts;</p>
     </div>
   </div>
-  <script src="{{ STATIC_URL }}js/app.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.js-openSide').on('click', function (e) {
+          e.preventDefault();
+
+        if ($(this).hasClass('is-active')) {
+          $(this).removeClass('is-active');
+          $('.nav').removeClass('is-active');
+          $('body').removeClass('is-disabled');
+        } else {
+          $(this).addClass('is-active');
+          $('.nav').addClass('is-active');
+          $('body').addClass('is-disabled');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
