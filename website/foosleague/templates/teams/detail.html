@@ -23,15 +23,20 @@
       </div>
     </div>
     <div class="profile-stats profile-stats--team">
+      {% if wins %}
       <div class="stat">
         <div class="stat-number">{{ wins }}</div>
         <div class="stat-title">Wins</div>
       </div>
+      {% endif %}
+      {% if losses %}
       <div class="stat">
         <div class="stat-number">{{ losses }}</div>
         <div class="stat-title">Losses</div>
       </div>
+      {% endif %}
     </div>
+
   </section>
 
   <div class="l-columns l-columns--sideright">

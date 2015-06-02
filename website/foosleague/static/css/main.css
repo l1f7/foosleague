@@ -907,6 +907,85 @@ body {
     .l-columns--thirds .l-col:last-child {
       margin-right: 0; } }
 
+.l-authContainer {
+  padding: 0 2.35765%;
+  max-width: 58.75em;
+  margin-left: auto;
+  margin-right: auto; }
+  .l-authContainer::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.l-authHeader {
+  margin: 40px 0;
+  text-align: center; }
+
+.auth {
+  max-width: 68.75em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px; }
+  .auth::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.auth-login {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  margin-left: 25.58941%; }
+  .auth-login:last-child {
+    margin-right: 0; }
+
+.auth-persona {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  margin-left: 25.58941%; }
+  .auth-persona:last-child {
+    margin-right: 0; }
+
+.auth-personas {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 82.94039%;
+  margin-left: 8.5298%; }
+  .auth-personas:last-child {
+    margin-right: 0; }
+
+.auth-signup {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  margin-left: 25.58941%; }
+  .auth-signup:last-child {
+    margin-right: 0; }
+  .auth-signup.has-context {
+    margin-left: 0%; }
+
+.auth-forgot {
+  margin: 0 20px;
+  font-weight: 400;
+  font-size: 0.875rem;
+  font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.6em; }
+
+@media screen and (max-width: 39.99em)  {
+  .auth-login, .auth-persona, .auth-personas, .auth-signup {
+    float: left;
+    display: block;
+    margin-right: 7.42297%;
+    width: 100%;
+    margin-left: 0%; }
+    .auth-login:last-child, .auth-persona:last-child, .auth-personas:last-child, .auth-signup:last-child {
+      margin-right: 0; } }
+
 .account {
   margin-right: 30px;
   padding: 10px 0;

@@ -1,0 +1,58 @@
+.l-authContainer {
+  @include pad(0 default);
+  @include outer-container(em(940));
+}
+
+.l-authHeader {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.l-authContent {
+
+}
+
+.auth {
+  @include outer-container;
+  margin-bottom: 50px;
+}
+
+.auth-login {
+  @include span-columns(6);
+  @include shift(3);
+}
+
+.auth-persona {
+  @include span-columns(6);
+  @include shift(3);
+}
+
+.auth-personas {
+  @include span-columns(10);
+  @include shift(1);
+}
+
+.auth-signup {
+  @include span-columns(6);
+  @include shift(3);
+
+  &.has-context {
+    @include shift(0);
+  }
+}
+
+.auth-forgot {
+  margin: 0 20px;
+  @include font(14);
+}
+
+
+@include media($mobile) {
+  .auth-login,
+  .auth-persona,
+  .auth-personas,
+  .auth-signup {
+    @include span-columns(4);
+    @include shift(0);
+  }
+}

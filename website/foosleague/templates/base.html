@@ -21,13 +21,13 @@
         {% if request.user.is_authenticated %}
         <div class="account">
           <div class="account-avatar">
-            {% if object.default_persona.photo %}
+            {% if request.user.player.photo %}
               {% thumbnail request.user.player.photo "40x40" crop="center" as im %}
                 <img src="{{ im.url }}"/>
               {% endthumbnail %}
             {% endif %}
           </div>
-          <div class="account-name">{{ request.user.player.nickname }}</div>
+          <div class="account-name">{{ request.user.player }}</div>
         </div>
         {% endif %}
         <div class="nav-ham">

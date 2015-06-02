@@ -4,12 +4,13 @@ from django.views.generic.edit import UpdateView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.messages import error, success
 from django.http.response import HttpResponseRedirect
+from django.db.models import Q
 
 from mixins.views import LoginRequiredMixin
+from matches.models import Match
 
 from .models import Team
 from .forms import TeamForm
-
 
 class TeamListView(ListView):
     model = Team
@@ -19,6 +20,15 @@ class TeamListView(ListView):
 class TeamDetailView(DetailView):
     model = Team
     template_name = "teams/detail.html"
+
+    def get_context_data(self, *args, **kwargs):
+        c = super(TeamDetailView, self).get_context_data(*args, **kwargs)
+        team = self.get_object()
+        c['matches'] = Match.objects.filter(Q(team_1=team) | Q(team_2=team))
+        c['wins'] = c['matches'].filter(winner=self.get_object()).count()
+        c['loses'] = c['matches'].count()-c['wins']
+
+        return c
 
 
 class TeamUpdateView(LoginRequiredMixin, UpdateView):
