@@ -1,0 +1,49 @@
+<div class="hstore">
+  <!-- JS TEMPLATE TO CLONE -->
+  <div class="hstore-item hstore-template">
+    <a href="#" class="btn btn-danger btn--round hstore-btn js-hstore-delete">&#10005;</a>
+    <div class="field-set field-set--4-8">
+      <div class="field">
+        <label for="{{ field.id_for_label }}" class="field-label">
+          <span>Label</span>
+        </label>
+        <input class="field-text" name="label" type="text">
+      </div>
+      <div class="field">
+        <label for="{{ field.id_for_label }}" class="field-label">
+          <span>Value</span>
+        </label>
+        <input class="field-text" name="value" type="text">
+      </div>
+    </div>
+  </div>
+  <!-- END TEMPLATE -->
+
+  <div class="hstore-list">
+    {% for k, v in values.items %}
+      <div class="hstore-item">
+        <a href="#" class="btn btn-danger btn--round hstore-btn js-hstore-delete">&#10005;</a>
+        <div class="field-set field-set--4-8">
+          <div class="field">
+            <label for="{{ field.id_for_label }}" class="field-label">
+              <span>Label</span>
+            </label>
+            <input class="field-text" name="label" type="text" value="{{ k }}">
+          </div>
+          <div class="field">
+            <label for="{{ field.id_for_label }}" class="field-label">
+              <span>Value</span>
+            </label>
+            <input class="field-text" name="value" type="text" value="{{ v }}">
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <p class="field-helptext">Add any contact information you'd like (such as phone number) by adding new fields.</p>
+
+  <div class="btn-rightalign">
+    <a href="#" class="btn btn--default js-hstore-add">Add Another Field</a>
+  </div>
+
+</div>

@@ -5,7 +5,7 @@
 }
 
 .nav-menu {
-  margin: 0;
+  margin: 0 -10px;
   padding: 0;
   @include clearfix;
 }
@@ -44,4 +44,128 @@
 
 .nav-btn {
   margin: 8px 0 0;
+}
+
+
+.nav-ham {
+  position: absolute;
+  top: 6px;
+  right: 1em;
+  width: 24px;
+  height: 24px;
+  display: none;
+  @include transition(0.35s);
+}
+
+.ham {
+  position: relative;
+  margin: 7px 0 0;
+  float: right;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  z-index: 10;
+  @include selection(false);
+
+  &:hover {
+    .ham-hamburger:before,
+    .ham-hamburger:after {
+      width: 24px;
+    }
+  }
+
+  &.is-active {
+    .ham-hamburger {
+      background: none;
+    }
+    .ham-hamburger:before,
+    .ham-hamburger:after {
+      background: $black;
+      top: 0;
+      width: 24px;
+      -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+              transform: rotate(45deg);
+    }
+    .ham-hamburger:after {
+      -webkit-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+              transform: rotate(-45deg);
+    }
+    .ham-hamburger:hover {
+      -webkit-transform: scale(1.2);
+          -ms-transform: scale(1.2);
+              transform: scale(1.2);
+    }
+  }
+}
+
+.ham-hamburger {
+  position: relative;
+  width: 24px;
+  height: 4px;
+  margin: 10px 0;
+  background: $black;
+  border-radius: 4px;
+  @include transition(0.25s);
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 4px;
+    background: $black;
+    position: absolute;
+    border-radius: 4px;
+    @include transition(0.25s);
+  }
+  &:before {
+    top: -8px;
+    right: 0;
+    width: 22px;
+  }
+
+  &:after {
+    top: 8px;
+    width: 16px;
+    right: 0;
+  }
+}
+
+@include media($mobile) {
+  .nav-ham {
+    display: block;
+  }
+
+  .nav {
+    &.is-active {
+      .nav-menu {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .nav-item {
+        float: none;
+        display: block;
+
+        &.is-active {
+          border: none;
+        }
+      }
+
+      .nav-link {
+        font-weight: 400;
+        color: $c-navlink-color;
+      }
+    }
+  }
+  .nav-item {
+    display: none;
+
+    &.is-right,
+    &.is-active {
+      display: block;
+    }
+  }
 }

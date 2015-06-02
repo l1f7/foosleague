@@ -32,3 +32,10 @@
   @extend .ms-1;
   @extend .ts-light;
 }
+
+@include media($mobile) {
+  .league-logo {
+    width: 64px;
+    height: 64px;
+  }
+}

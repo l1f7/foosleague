@@ -28,3 +28,10 @@
   @extend .ts-alt;
   @extend .ts-uppercase;
 }
+
+
+@include media($mobile) {
+  .account {
+    display: none;
+  }
+}

@@ -1,0 +1,14 @@
+<div class="field field-multiselect {% if field.field.required %}field--required{% endif %} {% if field.errors %}field--error{% endif %}">
+  <label for="{{ field.id_for_label }}" class="field-label">
+    <span>{{ field.label }}</span>
+  </label>
+
+  {{ field }}
+
+  {% if field.errors %}
+    <p class="error error--field">{{ field.errors.as_text }}</p>
+  {% endif %}
+  {% if field.help_text %}
+    <p class="field-helptext">{{ field.help_text }}</p>
+  {% endif %}
+</div>

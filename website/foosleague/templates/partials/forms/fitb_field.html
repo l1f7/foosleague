@@ -1,0 +1,14 @@
+<div id="fitb" class="field is-hidden">
+  <div class="fitb">
+    <span id="fitb-text" class="fitb-text"></span>
+    <input id="{{ field.id_for_label }}" class="fitb-input" name="{{ field.html_name }}" type="text" />
+    <span class="fitb-text">.</span>
+  </div>
+
+  {% if field.errors %}
+    <p class="error error--field">{{ field.errors.as_text }}</p>
+  {% endif %}
+  {% if field.help_text %}
+    <p class="field-helptext">{{ field.help_text }}</p>
+  {% endif %}
+</div>
