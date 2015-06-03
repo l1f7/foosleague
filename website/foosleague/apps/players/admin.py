@@ -8,7 +8,7 @@ class PlayerAdmin(admin.ModelAdmin):
     '''
         Admin View for Player
     '''
-    list_display = ('nickname', 'user',)
+    list_display = ('nickname', 'user', 'ts_mu', 'ts_sigma')
     readonly_fields = ('created', 'modified',)
     search_fields = ['nickname', 'user', ]
 

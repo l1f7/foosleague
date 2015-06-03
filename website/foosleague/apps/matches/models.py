@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse_lazy
 from teams.models import Team
 from seasons.models import Season
 # from players.models import Player
-
+from .utils import update_trueskill
 
 class Match(TimeStampedModel):
     team_1 = models.ForeignKey(Team, related_name='team_1')
@@ -44,3 +44,5 @@ class Match(TimeStampedModel):
             self.team_1.save()
             self.team_2.streak += 1
             self.team_2.save()
+
+        update_trueskill(self)
