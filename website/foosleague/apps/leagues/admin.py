@@ -26,5 +26,5 @@ admin.site.register(League, LeagueAdmin)
 
 class LeagueMemberAdmin(admin.ModelAdmin):
     list_display = ('player', 'league', )
-
+    save_as = True
 admin.site.register(LeagueMember, LeagueMemberAdmin)
