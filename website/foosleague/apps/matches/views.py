@@ -3,16 +3,19 @@ import re
 import requests
 
 from datetime import datetime
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect, Http404
+
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse_lazy
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import UpdateView
 from django.views.generic.edit import CreateView
 from django.contrib.messages import success, error
 
 from mixins.views import LoginRequiredMixin
+from django.http.response import JsonResponse
 
 from teams.models import Team
 from seasons.models import Season
@@ -158,15 +161,17 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
                 losing_score = match.team_1_score
             # requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=cPqfDDQsk7QJ71ofvpy4aqF4&channel=%23foosleague',
 
-            #               data="Game Over! *%s* defeats _%s_ ( *%s* - _%s_ )" % (match.winner, loser, winning_score, losing_score))
+            # data="Game Over! *%s* defeats _%s_ ( *%s* - _%s_ )" % (match.winner,
+            # loser, winning_score, losing_score))
 
             match.save()
             match.complete()
         else:
-            #post to slack!
+            # post to slack!
 
             # requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=cPqfDDQsk7QJ71ofvpy4aqF4&channel=%23foosleague',
-            #               data="Game on! *%s* _(%s)_ vs *%s* _(%s)_" % (match.team_1, match.team_1.streak, match.team_2, match.team_2.streak))
+            # data="Game on! *%s* _(%s)_ vs *%s* _(%s)_" % (match.team_1,
+            # match.team_1.streak, match.team_2, match.team_2.streak))
             pass
         match.save()
 
@@ -174,5 +179,33 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
         return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
 
 
-# class MatchUpdateView(LoginRequiredMixin, UpdateView):
-#
+class MatchUpdateView(LoginRequiredMixin, UpdateView):
+    model = Match
+
+    def get(self, *args, **kwargs):
+        raise Http404
+
+    def get_object(self, *args, **kwargs):
+        match = get_object_or_404(Match, id=self.kwargs['pk'], league=self.request.league)
+        return match
+
+    #don't forget - switch to post :P
+
+    def post(self, *args, **kwargs):
+        m = self.get_object()
+
+        m.team_1_score = self.request.POST.get('t1_score')
+        m.team_2_score = self.request.POST.get('t2_score')
+
+        if self.request.GET.get('complete'):
+            m.completed = True
+
+        m.save()
+
+        json = {
+            'team_1_score': m.team_1_score,
+            'team_2_score': m.team_2_score,
+            'complete': m.completed,
+        }
+
+        return JsonResponse(json)

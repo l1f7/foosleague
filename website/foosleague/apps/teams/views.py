@@ -11,6 +11,8 @@ from django.db.models import Q
 from mixins.views import LoginRequiredMixin
 from matches.models import Match
 
+from players.models import Player
+
 from .models import Team
 from .forms import TeamForm
 
@@ -28,7 +30,7 @@ class TeamDetailView(DetailView):
     template_name = "teams/detail.html"
 
     def get_object(self, *args, **kwargs):
-        return get_object_or_404(Team, league=self.request.league)
+        return get_object_or_404(Team, pk=self.kwargs['pk'], league=self.request.league)
 
     def get_context_data(self, *args, **kwargs):
         c = super(TeamDetailView, self).get_context_data(*args, **kwargs)
@@ -47,7 +49,9 @@ class TeamUpdateView(LoginRequiredMixin, UpdateView):
 
     def dispatch(self, *args, **kwargs):
         team = self.get_object()
-        if team.player_1.user != self.request.user and team.player_2.user != self.request.user:
+        player = Player.objects.get(user=self.request.user)
+
+        if player not in team.players.all():
             error(self.request, "You must be apart of this team to edit")
             return HttpResponseRedirect(reverse_lazy("team-detail", kwargs={'pk': team.id}))
 

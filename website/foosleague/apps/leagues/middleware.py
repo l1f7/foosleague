@@ -15,7 +15,5 @@ class SubdomainMiddleware(object):
         league = get_object_or_404(League.objects.filter(subdomain=subdomain))
         request.league = league
 
-        print request.league
-
         return
         # return request

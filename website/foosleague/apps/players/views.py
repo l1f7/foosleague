@@ -15,7 +15,7 @@ class PlayerListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         qs = super(PlayerListView, self).get_queryset(*args, **kwargs)
-        return qs.filter(id__in=LeagueMember.objects.filter(league=self.request.league).values_list('id', flat=True))
+        return qs.filter(id__in=LeagueMember.objects.filter(league=self.request.league).values_list('player__id', flat=True))
 
 
 
@@ -30,7 +30,7 @@ class PlayerDetailView(DetailView):
 
     def get_object(self, *args, **kwargs):
         obj = super(PlayerDetailView, self).get_object(*args, **kwargs)
-        if obj.id not in LeagueMember.objects.filter(league=self.request.league).values_list('id', flat=True):
+        if obj.id not in LeagueMember.objects.filter(league=self.request.league).values_list('player__id', flat=True):
             raise Http404
         return obj
 
