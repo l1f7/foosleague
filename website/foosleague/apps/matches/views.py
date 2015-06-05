@@ -161,12 +161,12 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
                 losing_score = match.team_1_score
 
             match.save()
-            if match.team_2_score==0 or match.team_1_score==0:
+            if match.team_2_score == 0 or match.team_1_score == 0:
                 message = ":skunk: :skunk: :skunk: *%s* _(%s)_ vs *%s* _(%s)_ :skunk: :skunk: :skunk: (http://%s.foosleague.com%s)" % (match.winner,
-                                                                                                loser, winning_score, losing_score, self.request.league.subdomain, match.get_absolute_url())
+                                                                                                                                       winning_score, loser, losing_score, self.request.league.subdomain, match.get_absolute_url())
             else:
                 message = "Game Over! *%s* _(%s)_ vs *%s* _(%s)_ (http://%s.foosleague.com%s)" % (match.winner,
-                                                                                                loser, winning_score, losing_score, self.request.league.subdomain, match.get_absolute_url())
+                                                                                                  winning_score, loser,  losing_score, self.request.league.subdomain, match.get_absolute_url())
 
             requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (self.request.league.slack_token, "%23" + self.request.league.slack_channel,),
                           data=message)
@@ -185,7 +185,7 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
         return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
 
 
-#todo: Skin this bad boy, make ajaxy
+# todo: Skin this bad boy, make ajaxy
 class MatchUpdateView(LoginRequiredMixin, UpdateView):
     model = Match
 
@@ -195,7 +195,6 @@ class MatchUpdateView(LoginRequiredMixin, UpdateView):
     def get_object(self, *args, **kwargs):
         match = get_object_or_404(Match, id=self.kwargs['pk'], league=self.request.league)
         return match
-
 
     def post(self, *args, **kwargs):
         m = self.get_object()
