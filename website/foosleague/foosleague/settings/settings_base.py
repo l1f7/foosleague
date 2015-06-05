@@ -99,8 +99,9 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 ########## END STATIC FILE CONFIGURATION
+if not DEBUG:
+    SESSION_COOKIE_DOMAIN = '.foosleague.com'
 
-SESSION_COOKIE_DOMAIN = '.foosleague.com'
 ########## SECRET CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 # Note: This key only used for development and testing.

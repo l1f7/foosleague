@@ -16,9 +16,9 @@ class LeagueAdmin(admin.ModelAdmin):
     '''
     list_display = ('name',)
     readonly_fields = ('created', 'modified',)
-    inlines = [
-        LeagueMemberInline
-    ]
+    # inlines = [
+    #     LeagueMemberInline
+    # ]
     search_fields = ['name']
 
 admin.site.register(League, LeagueAdmin)
