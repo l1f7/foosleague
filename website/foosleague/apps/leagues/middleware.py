@@ -9,15 +9,16 @@ class SubdomainMiddleware(object):
 
 
     def process_request(self, request):
-
-        # match = subdomain_pattern.match(request.get_host())
-        # subdomain = match.group('subdomain')
-        # if subdomain != 'foosleague' and subdomain != 'www':
-        #     league = get_object_or_404(League.objects.filter(subdomain=subdomain))
-        # else:
-        #     # for now
-        #     return HttpResponseRedirect('http://liftinteractive.foosleague.com/')
-        # request.league = league
-        request.league = None
+        if settings.DEBUG:
+            match = subdomain_pattern.match(request.get_host())
+            subdomain = match.group('subdomain')
+            if subdomain != 'foosleague' and subdomain != 'www':
+                league = get_object_or_404(League.objects.filter(subdomain=subdomain))
+            else:
+                # for now
+                return HttpResponseRedirect('http://liftinteractive.foosleague.com/')
+            request.league = league
+        else:
+            request.league = None
         return
         # return request
