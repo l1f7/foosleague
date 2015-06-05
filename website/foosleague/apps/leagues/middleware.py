@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from django.http.response import HttpResponseRedirect
 
 import re
 from leagues.models import League
@@ -11,8 +12,12 @@ class SubdomainMiddleware(object):
 
         match = subdomain_pattern.match(request.get_host())
         subdomain = match.group('subdomain')
+        if subdomain != 'foosleague' and subdomain != 'www':
+            league = get_object_or_404(League.objects.filter(subdomain=subdomain))
+        else:
+            # for now
+            return HttpResponseRedirect('http://liftinteractive.foosleague.com/')
 
-        league = get_object_or_404(League.objects.filter(subdomain=subdomain))
         request.league = league
 
         return
