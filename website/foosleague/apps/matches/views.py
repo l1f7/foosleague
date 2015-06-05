@@ -159,21 +159,27 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
                 loser = team_1
                 winning_score = match.team_2_score
                 losing_score = match.team_1_score
-            # requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=cPqfDDQsk7QJ71ofvpy4aqF4&channel=%23foosleague',
 
-            # data="Game Over! *%s* defeats _%s_ ( *%s* - _%s_ )" % (match.winner,
-            # loser, winning_score, losing_score))
+            match.save()
+            if match.team_2_score==0 or match.team_1_score==0:
+                message = ":skunk: :skunk: :skunk: *%s* _(%s)_ vs *%s* _(%s)_ :skunk: :skunk: :skunk: (http://%s.foosleague.com%s)" % (match.winner,
+                                                                                                loser, winning_score, losing_score, self.request.league.subdomain, match.get_absolute_url())
+            else:
+                message = "Game Over! *%s* _(%s)_ vs *%s* _(%s)_ (http://%s.foosleague.com%s)" % (match.winner,
+                                                                                                loser, winning_score, losing_score, self.request.league.subdomain, match.get_absolute_url())
+
+            requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (self.request.league.slack_token, "%23" + self.request.league.slack_channel,),
+                          data=message)
 
             match.save()
             match.complete()
         else:
             # post to slack!
+            match.save()
 
-            # requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=cPqfDDQsk7QJ71ofvpy4aqF4&channel=%23foosleague',
-            # data="Game on! *%s* _(%s)_ vs *%s* _(%s)_" % (match.team_1,
-            # match.team_1.streak, match.team_2, match.team_2.streak))
-            pass
-        match.save()
+            requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (self.request.league.slack_token, "%23" + self.request.league.slack_channel,),
+                          data="Game on! *%s* _(%s)_ vs *%s* _(%s)_ (http://%s.foosleague.com%s)" % (match.team_1,
+                                                                                                     match.team_1.streak, match.team_2, match.team_2.streak, self.request.league.subdomain,  match.get_absolute_url()))
 
         success(self.request, "Match has been created!")
         return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
@@ -189,7 +195,7 @@ class MatchUpdateView(LoginRequiredMixin, UpdateView):
         match = get_object_or_404(Match, id=self.kwargs['pk'], league=self.request.league)
         return match
 
-    #don't forget - switch to post :P
+    # don't forget - switch to post :P
 
     def post(self, *args, **kwargs):
         m = self.get_object()
