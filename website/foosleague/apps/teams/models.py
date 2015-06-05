@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 from django.core.urlresolvers import reverse_lazy
 
+from leagues.models import League
 
 class Team(TimeStampedModel):
     name = models.CharField(_("Name"), max_length=250, blank=True, default="")
@@ -10,10 +11,15 @@ class Team(TimeStampedModel):
 
     # player_1 = models.ForeignKey(Player, verbose_name=_("Player 1"), related_name='player_1')
     # player_2 = models.ForeignKey(Player, verbose_name=_("Player 2"), related_name='player_2')
+
     players = models.ManyToManyField("players.Player")
-    trueskill = models.FloatField(_("TrueSkill"), default=20)
+    trueskill_mu = models.FloatField(_("TrueSkill"), default=20)
+    trueskill_sigma = models.FloatField(_("TrueSkill Sigma"), default=8.33)
     streak = models.IntegerField(
         _("Current Streak"), default=0, help_text='De-normalized field to help with slack integration')
+
+    league = models.ForeignKey(League, verbose_name=_("League"), default=1)
+
 
     class Meta:
         verbose_name = _('Team')

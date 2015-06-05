@@ -4,6 +4,7 @@ import requests
 
 from datetime import datetime
 from django.http.response import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse_lazy
 
 from django.views.generic.list import ListView
@@ -24,10 +25,20 @@ class MatchListView(LoginRequiredMixin, ListView):
     model = Match
     template_name = "matches/list.html"
 
+    def get_queryset(self, *args, **kwargs):
+        qs = super(MatchListView, self).get_queryset(*args, **kwargs)
+        qs = qs.filter(league=self.request.league)
+
+        return qs
+
 
 class MatchDetailView(LoginRequiredMixin, DetailView):
     model = Match
     template_name = "matches/detail.html"
+
+    def get_object(self, *args, **kwargs):
+        obj = get_object_or_404(Match, id=self.kwargs['pk'], league=self.request.league)
+        return obj
 
 
 class MatchCompleteView(LoginRequiredMixin, DetailView):
@@ -132,7 +143,7 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
         match = Match(team_1=team_1, team_2=team_2,
                       team_1_score=form.cleaned_data[
                           'team_1_score'], team_2_score=form.cleaned_data['team_2_score'],
-                      completed=form.cleaned_data['completed'], season=season)
+                      completed=form.cleaned_data['completed'], season=season, league=self.request.league)
 
         if form.cleaned_data['completed']:
             if form.cleaned_data['team_1_score'] > form.cleaned_data['team_2_score']:

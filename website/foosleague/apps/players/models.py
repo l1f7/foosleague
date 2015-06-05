@@ -18,7 +18,6 @@ class Player(TimeStampedModel):
 
     fooscoin = models.FloatField(_("FoosCoin"), default=500.00)
 
-
     class Meta:
         verbose_name = 'Player'
         verbose_name_plural = 'Players'

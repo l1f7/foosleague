@@ -6,10 +6,9 @@ class MatchAdmin(admin.ModelAdmin):
     '''
         Admin View for Match
     '''
-    list_display = ('team_1', 'team_2',)
-    list_filter = ('team_1', 'team_2',)
-
+    list_display = ('team_1', 'team_2', 'league')
+    list_filter = ('team_1', 'team_2', 'league')
     readonly_fields = ('created', 'modified',)
-    search_fields = ['team_1', 'team_2',]
+    search_fields = ['team_1', 'team_2', ]
 
 admin.site.register(Match, MatchAdmin)

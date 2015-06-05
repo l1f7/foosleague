@@ -13,7 +13,9 @@
               <h1 class="team-name {% if object.team_1_score > object.team_2_score %}team-name--winner{% endif %}">{{ object.team_1 }}</h1>
               {% for player in object.team_1.players.all %}
                 <div class="team-player player">
+
                   <div class="player-avatar"><img src="{{ player.photo.url }}" class="player-img"/></div>
+
                   <div class="player-name">{{ player.nickname }}</div>
                 </div>
               {% endfor %}

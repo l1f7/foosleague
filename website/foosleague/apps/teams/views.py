@@ -1,3 +1,5 @@
+from django.shortcuts import get_object_or_404
+
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
@@ -12,19 +14,26 @@ from matches.models import Match
 from .models import Team
 from .forms import TeamForm
 
+
 class TeamListView(ListView):
     model = Team
     template_name = "teams/list.html"
+
+    def get_queryset(self, *args, **kwargs):
+        return super(TeamListView, self).get_queryset(*args, **kwargs).filter(league=self.request.league)
 
 
 class TeamDetailView(DetailView):
     model = Team
     template_name = "teams/detail.html"
 
+    def get_object(self, *args, **kwargs):
+        return get_object_or_404(Team, league=self.request.league)
+
     def get_context_data(self, *args, **kwargs):
         c = super(TeamDetailView, self).get_context_data(*args, **kwargs)
         team = self.get_object()
-        c['matches'] = Match.objects.filter(Q(team_1=team) | Q(team_2=team))
+        c['matches'] = Match.objects.filter(Q(team_1=team) | Q(team_2=team), league=self.request.league)
         c['wins'] = c['matches'].filter(winner=self.get_object()).count()
         c['loses'] = c['matches'].count()-c['wins']
 

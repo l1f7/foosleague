@@ -98,7 +98,7 @@ STATICFILES_FINDERS = (
 )
 ########## END STATIC FILE CONFIGURATION
 
-
+SESSION_COOKIE_DOMAIN = '.foosleague.com'
 ########## SECRET CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 # Note: This key only used for development and testing.
@@ -156,11 +156,13 @@ DATABASES = {
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#middleware-classes
 MIDDLEWARE_CLASSES = (
     # Default Django middleware.
+    # 'subdomains.middleware.SubdomainURLRoutingMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'leagues.middleware.SubdomainMiddleware',
 )
 ########## END MIDDLEWARE CONFIGURATION
 
@@ -191,6 +193,8 @@ THIRD_PARTY_APPS = (
     'adminactions',
     'django_extensions',
     'sorl.thumbnail',
+    # 'django_extensions',
+
 )
 
 # Apps specific for this project go here.

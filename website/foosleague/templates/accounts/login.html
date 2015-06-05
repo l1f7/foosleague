@@ -8,6 +8,7 @@
           <h1 class="section-heading">Login</h1>
         </div>
         <div class="section-content">
+
           {% csrf_token %}
           {% include "partials/forms/error_field.html" %}
           {% include "partials/forms/text_field.html" with field=form.username%}

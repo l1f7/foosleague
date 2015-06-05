@@ -5,8 +5,10 @@ from django.core.urlresolvers import reverse_lazy
 
 from teams.models import Team
 from seasons.models import Season
+from leagues.models import League
 # from players.models import Player
 from .utils import update_trueskill
+
 
 class Match(TimeStampedModel):
     team_1 = models.ForeignKey(Team, related_name='team_1')
@@ -19,6 +21,8 @@ class Match(TimeStampedModel):
     winner = models.ForeignKey(Team, related_name='winner', blank=True, null=True)
 
     season = models.ForeignKey(Season, verbose_name=_("Season"), blank=True, null=True)
+    league = models.ForeignKey(League, verbose_name=_("League"))
+
     # points_awarded_team_1 = models.FloatField(_("Team 1 points"), default=0)
     # points_awarded_team_2 = models.FloatField(_("Team 2 points"), default=0)
 
