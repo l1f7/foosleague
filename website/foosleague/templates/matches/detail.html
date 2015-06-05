@@ -1,3 +1,4 @@
+{% load thumbnail %}
 {% extends "base.html" %}
 
 {% block nav-dashboard %}is-active{% endblock %}
@@ -31,7 +32,13 @@
               <h1 class="team-name {% if object.team_2_score > object.team_1_score %}team-name--winner{% endif %}">{{ object.team_2 }}</h1>
               {% for player in object.team_2.players.all %}
                 <div class="team-player player">
-                  <div class="player-avatar"><img src="" class="player-img"/></div>
+                  <div class="player-avatar">
+  		            {% if player.photo %}
+  		              {% thumbnail player.photo "80x80" crop="center" as im %}
+  		                <img src="{{ im.url }}" class="player-img"/>
+  		              {% endthumbnail %}
+  		            {% endif %}
+				  </div>
                   <div class="player-name">{{ player.nickname }}</div>
                 </div>
               {% endfor %}
