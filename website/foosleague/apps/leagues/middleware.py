@@ -16,7 +16,7 @@ class SubdomainMiddleware(object):
                 league = get_object_or_404(League.objects.filter(subdomain=subdomain))
             else:
                 # for now
-                return HttpResponseRedirect('http://liftinteractive.foosleague.com/')
+                return HttpResponseRedirect('http://liftinteractive.foosleague.com/matches/')
             request.league = league
         else:
             request.league = None
