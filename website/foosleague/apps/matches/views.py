@@ -185,6 +185,7 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
         return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
 
 
+#todo: Skin this bad boy, make ajaxy
 class MatchUpdateView(LoginRequiredMixin, UpdateView):
     model = Match
 
@@ -195,7 +196,6 @@ class MatchUpdateView(LoginRequiredMixin, UpdateView):
         match = get_object_or_404(Match, id=self.kwargs['pk'], league=self.request.league)
         return match
 
-    # don't forget - switch to post :P
 
     def post(self, *args, **kwargs):
         m = self.get_object()

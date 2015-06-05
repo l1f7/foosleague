@@ -37,6 +37,14 @@ class Match(TimeStampedModel):
     def get_absolute_url(self):
         return reverse_lazy('match-detail', kwargs={'pk': self.id})
 
+    # def save(self):
+    #     # todo: update denorm-ed streak counter
+    #     pass
+
+    # def delete(self):
+    #     # todo: update denorm-ed streak counter
+    #     pass
+
     def complete(self):
         if self.winner == self.team_1:
             self.team_2.streak = 0

@@ -16,6 +16,7 @@ class Player(TimeStampedModel):
     slack_username = models.CharField(
         _("Slack Username"), blank=True, max_length=100, help_text="This will be used for any slack integrations", default="")
 
+    #todo: move this to LeagueMember
     fooscoin = models.FloatField(_("FoosCoin"), default=500.00)
 
     class Meta:

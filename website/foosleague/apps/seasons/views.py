@@ -12,3 +12,7 @@ class SeasonListView(ListView):
 class SeasonDetailView(DetailView):
     model = Season
     template_name = "seasons/detail.html"
+
+# todo
+   # Create Seasons
+   # Manage seasons
