@@ -178,8 +178,7 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
             match.save()
 
             requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (self.request.league.slack_token, "%23" + self.request.league.slack_channel,),
-                          data="Game on! *%s* _(%s)_ vs *%s* _(%s)_ (http://%s.foosleague.com%s)" % (match.team_1,
-                                                                                                     match.team_1.streak, match.team_2, match.team_2.streak, self.request.league.subdomain,  match.get_absolute_url()))
+                          data="Game on! *%s* vs *%s* (http://%s.foosleague.com%s)" % (match.team_1, match.team_2, self.request.league.subdomain,  match.get_absolute_url()))
 
         success(self.request, "Match has been created!")
         return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
@@ -213,4 +212,62 @@ class MatchUpdateView(LoginRequiredMixin, UpdateView):
             'complete': m.completed,
         }
 
+        return JsonResponse(json)
+
+class MatchScoreUpdateView(UpdateView):
+    model = Match
+
+    def get_object(self, *args, **kwargs):
+        # try:
+
+        return Match.objects.filter(completed=False, league=self.request.league).order_by('-created')[0]
+        # except:
+        #     print 'hero'
+            # raise Http404
+
+    def get(self, *args, **kwargs):
+        m = self.get_object()
+        if self.kwargs['team'] == 'red':
+            m.team_1_score += int(self.kwargs['score'])
+        else:
+            m.team_2_score += int(self.kwargs['score'])
+        m.save()
+
+        if (((m.team_1_score - m.team_2_score) >= 2) or ((m.team_2_score - m.team_1_score) >= 2)) and (m.team_1_score >= 10 or m.team_2_score >= 10):
+            m.completed = True
+            if m.team_1_score > m.team_2_score:
+                m.winner = m.team_1
+                winning_score = m.team_1_score
+                losing_score = m.team_2_score
+                loser = m.team_2
+            else:
+                m.winner = m.team_2
+                winning_score = m.team_2_score
+                losing_score = m.team_1_score
+                loser = m.team_1
+
+            m.save()
+
+            if m.team_2_score == 0 or m.team_1_score == 0:
+                message = ":skunk: :skunk: :skunk: *%s* _(%s)_ vs *%s* _(%s)_ :skunk: :skunk: :skunk: (http://%s.foosleague.com%s)" % (m.winner,
+                                                                                                                                       winning_score, loser, losing_score, self.request.league.subdomain, m.get_absolute_url())
+            else:
+                message = "Game Over! *%s* _(%s)_ vs *%s* _(%s)_ (http://%s.foosleague.com%s)" % (m.winner,
+                                                                                                  winning_score, loser,  losing_score, self.request.league.subdomain, m.get_absolute_url())
+
+            requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (self.request.league.slack_token, "%23" + self.request.league.slack_channel,),
+                          data=message)
+
+
+
+
+
+            m.complete()
+
+
+        json = {
+            'red': m.team_1_score,
+            'black': m.team_2_score,
+            'completed': m.completed,
+        }
         return JsonResponse(json)

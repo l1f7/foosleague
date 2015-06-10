@@ -32,3 +32,10 @@ class LeagueMember(TimeStampedModel):
 
     def __unicode__(self):
         return '%s (%s)' % (self.player, self.league,)
+
+
+
+# TODO:
+
+# HouseRules
+# Milestones
