@@ -22,7 +22,7 @@ class Player(TimeStampedModel):
     class Meta:
         verbose_name = 'Player'
         verbose_name_plural = 'Players'
-        ordering = ('nickname', 'user')
+        ordering = ('-ts_mu',)
 
     def __unicode__(self):
         return '%s' % (self.nickname or self.user)

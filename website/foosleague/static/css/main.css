@@ -418,13 +418,13 @@ a {
     .ms-n1, .account-name, .stat-title, .team-name, .team-streak, .footer-text {
       font-size: 0.83333em; } }
 
-.ms-n2 {
+.ms-n2, .stat--small .stat-title {
   font-size: 0.83951em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-n2 {
+    .ms-n2, .stat--small .stat-title {
       font-size: 0.79012em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-n2 {
+    .ms-n2, .stat--small .stat-title {
       font-size: 0.74074em; } }
 
 .ms-n3 {
@@ -562,31 +562,31 @@ a {
     .ms-0 {
       font-size: 0.9375em; } }
 
-.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak {
+.ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--inline .team-name, .team--medium .team-name, .team--large .team-streak {
   font-size: 1.19531em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--inline .team-name, .team--medium .team-name, .team--large .team-streak {
       font-size: 1.125em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--medium .team-name, .team--large .team-streak {
+    .ms-1, .richtext > h4, .richtext > h5, .richtext blockquote p, .game-score, .league-season, .team--inline .team-name, .team--medium .team-name, .team--large .team-streak {
       font-size: 1.05469em; } }
 
-.ms-2, .richtext > h3, .footer-heart, .newgame-heading {
+.ms-2, .richtext > h3, .stat--small .stat-number, .footer-heart, .newgame-heading {
   font-size: 1.34473em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-2, .richtext > h3, .footer-heart, .newgame-heading {
+    .ms-2, .richtext > h3, .stat--small .stat-number, .footer-heart, .newgame-heading {
       font-size: 1.26562em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-2, .richtext > h3, .footer-heart, .newgame-heading {
+    .ms-2, .richtext > h3, .stat--small .stat-number, .footer-heart, .newgame-heading {
       font-size: 1.18652em; } }
 
-.ms-3, .richtext > h2, .team--large .team-name, .section-heading {
+.ms-3, .richtext > h2, .game--details .game-score, .team--large .team-name, .section-heading {
   font-size: 1.51282em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-3, .richtext > h2, .team--large .team-name, .section-heading {
+    .ms-3, .richtext > h2, .game--details .game-score, .team--large .team-name, .section-heading {
       font-size: 1.42383em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-3, .richtext > h2, .team--large .team-name, .section-heading {
+    .ms-3, .richtext > h2, .game--details .game-score, .team--large .team-name, .section-heading {
       font-size: 1.33484em; } }
 
 .ms-4, .richtext > h1 {
@@ -598,13 +598,13 @@ a {
     .ms-4, .richtext > h1 {
       font-size: 1.50169em; } }
 
-.ms-5, .profile-name {
+.ms-5 {
   font-size: 1.91466em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-5, .profile-name {
+    .ms-5 {
       font-size: 1.80203em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-5, .profile-name {
+    .ms-5 {
       font-size: 1.68941em; } }
 
 .ms-6, .league-name {
@@ -616,13 +616,13 @@ a {
     .ms-6, .league-name {
       font-size: 1.90058em; } }
 
-.ms-7, .stat-number {
+.ms-7, .profile-name, .stat-number {
   font-size: 2.42324em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-7, .stat-number {
+    .ms-7, .profile-name, .stat-number {
       font-size: 2.2807em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-7, .stat-number {
+    .ms-7, .profile-name, .stat-number {
       font-size: 2.13815em; } }
 
 .ms-8 {
@@ -1552,6 +1552,12 @@ body {
   background: #ffffff;
   color: #666666; }
 
+.game--details {
+  padding: 20px; }
+  .game--details .game-score {
+    margin: 0 0 70px;
+    width: 36px; }
+
 .league {
   padding: 20px 0; }
   .league::after {
@@ -1741,6 +1747,16 @@ body {
     font-weight: 400;
     color: #333333; }
 
+.player--medium .player-avatar {
+  width: 32px;
+  height: 32px; }
+.player--medium .player-name {
+  padding: 8px 0;
+  font-weight: 400;
+  font-size: 1.25rem;
+  font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1; }
+
 .player--large .player-avatar {
   width: 40px;
   height: 40px; }
@@ -1748,6 +1764,16 @@ body {
   padding: 8px 0;
   font-weight: 400;
   font-size: 1.5rem;
+  font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1; }
+
+.player--larger .player-avatar {
+  width: 50px;
+  height: 50px; }
+.player--larger .player-name {
+  padding: 12px 0;
+  font-weight: 400;
+  font-size: 1.75rem;
   font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1; }
 
@@ -1783,7 +1809,7 @@ body {
 
 .profile-name {
   margin: 0;
-  padding: 20px 0;
+  padding: 16px 0;
   display: inline-block; }
 
 .profile-stats {
@@ -1812,6 +1838,9 @@ body {
 .stat-title {
   margin: 0;
   padding: 0; }
+
+.stat--small .stat-title {
+  font-weight: 400; }
 
 .team {
   display: block;
@@ -1842,14 +1871,16 @@ body {
     content: "";
     display: table; }
 
-.team--inline .team-player {
-  display: inline-block;
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 48.82117%; }
-  .team--inline .team-player:last-child {
-    margin-right: 0; }
+.team--inline {
+  padding: 5px; }
+  .team--inline .team-player {
+    display: inline-block;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    .team--inline .team-player:last-child {
+      margin-right: 0; }
 
 .team--medium {
   padding: 0; }
@@ -2475,6 +2506,12 @@ body {
   .standing:nth-child(100) {
     -webkit-transition: all 0.35s ease-out 12.15s;
     transition: all 0.35s ease-out 12.15s; }
+
+.standing-player {
+  float: left; }
+
+.standing-stats {
+  float: right; }
 
 .standing-count {
   position: absolute;

@@ -39,6 +39,12 @@
 }
 
 .team--inline {
+  padding: 5px;
+
+  .team-name {
+    @extend .ms-1;
+  }
+
   .team-player {
     display: inline-block;
     @include span-columns(6);

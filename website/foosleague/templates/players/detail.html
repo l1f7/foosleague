@@ -15,7 +15,10 @@
     <h1 class="profile-name">{{ object }}</h1>
     <div class="profile-stats">
       <div class="stat">
-
+        <div class="stat-number">{{ player.ts_mu|floatformat:2 }}</div>
+        <div class="stat-title">Foos-skill</div>
+      </div>
+      <div class="stat">
         <div class="stat-number">{{wins}}</div>
         <div class="stat-title">Wins</div>
       </div>
@@ -30,7 +33,7 @@
     <div class="l-col">
       <div class="games is-loading">
         {% for match in matches %}
-          {% include "partials/match.html" with match=match %}
+          {% include "partials/match.html" with match=match player=object %}
         {% endfor %}
       </div>
     </div>

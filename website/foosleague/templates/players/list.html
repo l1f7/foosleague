@@ -13,7 +13,7 @@
             <div class="standing-count standing-count--{{ forloop.counter }}"><span>{{ forloop.counter }}</span></div>
             {% endcomment %}
             <div class="standing-player player">
-              <div class="player player--large">
+              <div class="player player--larger">
                 <div class="player-avatar">
                   {% if player.photo %}
                     {% thumbnail player.photo "80x80" crop="center" as im %}
@@ -22,6 +22,12 @@
                   {% endif %}
                 </div>
                 <h1 class="player-name">{{ player.nickname }}</h1>
+              </div>
+            </div>
+            <div class="standing-stats">
+              <div class="stat stat--small">
+                <div class="stat-number">{{ player.ts_mu|floatformat:2 }}</div>
+                <div class="stat-title">Foos-skill</div>
               </div>
             </div>
           </a>

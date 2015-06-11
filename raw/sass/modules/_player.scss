@@ -31,6 +31,18 @@
   }
 }
 
+.player--medium {
+  .player-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .player-name {
+    padding: 8px 0;
+    @include font(20, 400, 1, $base-font-alt);
+  }
+}
+
 .player--large {
   .player-avatar {
     width: 40px;
@@ -40,5 +52,17 @@
   .player-name {
     padding: 8px 0;
     @include font(24, 400, 1, $base-font-alt);
+  }
+}
+
+.player--larger {
+  .player-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .player-name {
+    padding: 12px 0;
+    @include font(28, 400, 1, $base-font-alt);
   }
 }
