@@ -22,3 +22,14 @@
   @extend .ts-uppercase;
   @extend .ts-light;
 }
+
+.stat--small {
+  .stat-number {
+    @extend .ms-2;
+  }
+
+  .stat-title {
+    @extend .ms-n2;
+    font-weight: 400;
+  }
+}
