@@ -1134,7 +1134,7 @@ body {
   display: inline-block;
   text-align: center;
   padding: 10px 24px;
-  border: 1px solid #56B784;
+  border: 1px solid #41996b;
   color: #ffffff;
   background: #56B784;
   font-weight: 600;
@@ -1142,13 +1142,15 @@ body {
   font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1;
   text-decoration: none;
-  border-radius: 40px;
+  border-radius: 3px;
   -webkit-transition: 0.35s;
-  transition: 0.35s; }
+  transition: 0.35s;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.25), 0 1px rgba(51, 51, 51, 0.15);
+  text-shadow: 0 1px rgba(51, 51, 51, 0.15); }
   .btn:hover {
-    border: 1px solid #44a070;
+    border: 1px solid #3a875e;
     color: #ffffff;
-    background: #44a070; }
+    background: #49ab77; }
 
 .btn--small {
   padding: 8px 18px;
@@ -1162,9 +1164,9 @@ body {
   color: #56B784;
   border-color: transparent; }
   .btn-ghost:hover {
-    border: 1px solid #44a070;
+    border: 1px solid #3a875e;
     color: #ffffff;
-    background: #44a070; }
+    background: #49ab77; }
 
 .btn--login {
   position: absolute;
@@ -1182,9 +1184,9 @@ body {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%); }
   .btn--login:hover {
-    border: 1px solid #44a070;
+    border: 1px solid #3a875e;
     color: #ffffff;
-    background: #44a070; }
+    background: #49ab77; }
 
 .btn--full {
   display: block; }
@@ -2173,308 +2175,308 @@ body {
     border-color: #5198FB;
     color: #666666; }
   .standing:nth-child(0) {
-    -webkit-transition: all 0.35s ease-out 0.15s;
-    transition: all 0.35s ease-out 0.15s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 0.15s, -webkit-transform 0.35s ease-out 0.15s;
+    transition: border 0.35s, opacity 0.35s ease-out 0.15s, transform 0.35s ease-out 0.15s; }
   .standing:nth-child(1) {
-    -webkit-transition: all 0.35s ease-out 0.27s;
-    transition: all 0.35s ease-out 0.27s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 0.27s, -webkit-transform 0.35s ease-out 0.27s;
+    transition: border 0.35s, opacity 0.35s ease-out 0.27s, transform 0.35s ease-out 0.27s; }
   .standing:nth-child(2) {
-    -webkit-transition: all 0.35s ease-out 0.39s;
-    transition: all 0.35s ease-out 0.39s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 0.39s, -webkit-transform 0.35s ease-out 0.39s;
+    transition: border 0.35s, opacity 0.35s ease-out 0.39s, transform 0.35s ease-out 0.39s; }
   .standing:nth-child(3) {
-    -webkit-transition: all 0.35s ease-out 0.51s;
-    transition: all 0.35s ease-out 0.51s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 0.51s, -webkit-transform 0.35s ease-out 0.51s;
+    transition: border 0.35s, opacity 0.35s ease-out 0.51s, transform 0.35s ease-out 0.51s; }
   .standing:nth-child(4) {
-    -webkit-transition: all 0.35s ease-out 0.63s;
-    transition: all 0.35s ease-out 0.63s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 0.63s, -webkit-transform 0.35s ease-out 0.63s;
+    transition: border 0.35s, opacity 0.35s ease-out 0.63s, transform 0.35s ease-out 0.63s; }
   .standing:nth-child(5) {
-    -webkit-transition: all 0.35s ease-out 0.75s;
-    transition: all 0.35s ease-out 0.75s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 0.75s, -webkit-transform 0.35s ease-out 0.75s;
+    transition: border 0.35s, opacity 0.35s ease-out 0.75s, transform 0.35s ease-out 0.75s; }
   .standing:nth-child(6) {
-    -webkit-transition: all 0.35s ease-out 0.87s;
-    transition: all 0.35s ease-out 0.87s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 0.87s, -webkit-transform 0.35s ease-out 0.87s;
+    transition: border 0.35s, opacity 0.35s ease-out 0.87s, transform 0.35s ease-out 0.87s; }
   .standing:nth-child(7) {
-    -webkit-transition: all 0.35s ease-out 0.99s;
-    transition: all 0.35s ease-out 0.99s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 0.99s, -webkit-transform 0.35s ease-out 0.99s;
+    transition: border 0.35s, opacity 0.35s ease-out 0.99s, transform 0.35s ease-out 0.99s; }
   .standing:nth-child(8) {
-    -webkit-transition: all 0.35s ease-out 1.11s;
-    transition: all 0.35s ease-out 1.11s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 1.11s, -webkit-transform 0.35s ease-out 1.11s;
+    transition: border 0.35s, opacity 0.35s ease-out 1.11s, transform 0.35s ease-out 1.11s; }
   .standing:nth-child(9) {
-    -webkit-transition: all 0.35s ease-out 1.23s;
-    transition: all 0.35s ease-out 1.23s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 1.23s, -webkit-transform 0.35s ease-out 1.23s;
+    transition: border 0.35s, opacity 0.35s ease-out 1.23s, transform 0.35s ease-out 1.23s; }
   .standing:nth-child(10) {
-    -webkit-transition: all 0.35s ease-out 1.35s;
-    transition: all 0.35s ease-out 1.35s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 1.35s, -webkit-transform 0.35s ease-out 1.35s;
+    transition: border 0.35s, opacity 0.35s ease-out 1.35s, transform 0.35s ease-out 1.35s; }
   .standing:nth-child(11) {
-    -webkit-transition: all 0.35s ease-out 1.47s;
-    transition: all 0.35s ease-out 1.47s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 1.47s, -webkit-transform 0.35s ease-out 1.47s;
+    transition: border 0.35s, opacity 0.35s ease-out 1.47s, transform 0.35s ease-out 1.47s; }
   .standing:nth-child(12) {
-    -webkit-transition: all 0.35s ease-out 1.59s;
-    transition: all 0.35s ease-out 1.59s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 1.59s, -webkit-transform 0.35s ease-out 1.59s;
+    transition: border 0.35s, opacity 0.35s ease-out 1.59s, transform 0.35s ease-out 1.59s; }
   .standing:nth-child(13) {
-    -webkit-transition: all 0.35s ease-out 1.71s;
-    transition: all 0.35s ease-out 1.71s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 1.71s, -webkit-transform 0.35s ease-out 1.71s;
+    transition: border 0.35s, opacity 0.35s ease-out 1.71s, transform 0.35s ease-out 1.71s; }
   .standing:nth-child(14) {
-    -webkit-transition: all 0.35s ease-out 1.83s;
-    transition: all 0.35s ease-out 1.83s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 1.83s, -webkit-transform 0.35s ease-out 1.83s;
+    transition: border 0.35s, opacity 0.35s ease-out 1.83s, transform 0.35s ease-out 1.83s; }
   .standing:nth-child(15) {
-    -webkit-transition: all 0.35s ease-out 1.95s;
-    transition: all 0.35s ease-out 1.95s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 1.95s, -webkit-transform 0.35s ease-out 1.95s;
+    transition: border 0.35s, opacity 0.35s ease-out 1.95s, transform 0.35s ease-out 1.95s; }
   .standing:nth-child(16) {
-    -webkit-transition: all 0.35s ease-out 2.07s;
-    transition: all 0.35s ease-out 2.07s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 2.07s, -webkit-transform 0.35s ease-out 2.07s;
+    transition: border 0.35s, opacity 0.35s ease-out 2.07s, transform 0.35s ease-out 2.07s; }
   .standing:nth-child(17) {
-    -webkit-transition: all 0.35s ease-out 2.19s;
-    transition: all 0.35s ease-out 2.19s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 2.19s, -webkit-transform 0.35s ease-out 2.19s;
+    transition: border 0.35s, opacity 0.35s ease-out 2.19s, transform 0.35s ease-out 2.19s; }
   .standing:nth-child(18) {
-    -webkit-transition: all 0.35s ease-out 2.31s;
-    transition: all 0.35s ease-out 2.31s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 2.31s, -webkit-transform 0.35s ease-out 2.31s;
+    transition: border 0.35s, opacity 0.35s ease-out 2.31s, transform 0.35s ease-out 2.31s; }
   .standing:nth-child(19) {
-    -webkit-transition: all 0.35s ease-out 2.43s;
-    transition: all 0.35s ease-out 2.43s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 2.43s, -webkit-transform 0.35s ease-out 2.43s;
+    transition: border 0.35s, opacity 0.35s ease-out 2.43s, transform 0.35s ease-out 2.43s; }
   .standing:nth-child(20) {
-    -webkit-transition: all 0.35s ease-out 2.55s;
-    transition: all 0.35s ease-out 2.55s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 2.55s, -webkit-transform 0.35s ease-out 2.55s;
+    transition: border 0.35s, opacity 0.35s ease-out 2.55s, transform 0.35s ease-out 2.55s; }
   .standing:nth-child(21) {
-    -webkit-transition: all 0.35s ease-out 2.67s;
-    transition: all 0.35s ease-out 2.67s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 2.67s, -webkit-transform 0.35s ease-out 2.67s;
+    transition: border 0.35s, opacity 0.35s ease-out 2.67s, transform 0.35s ease-out 2.67s; }
   .standing:nth-child(22) {
-    -webkit-transition: all 0.35s ease-out 2.79s;
-    transition: all 0.35s ease-out 2.79s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 2.79s, -webkit-transform 0.35s ease-out 2.79s;
+    transition: border 0.35s, opacity 0.35s ease-out 2.79s, transform 0.35s ease-out 2.79s; }
   .standing:nth-child(23) {
-    -webkit-transition: all 0.35s ease-out 2.91s;
-    transition: all 0.35s ease-out 2.91s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 2.91s, -webkit-transform 0.35s ease-out 2.91s;
+    transition: border 0.35s, opacity 0.35s ease-out 2.91s, transform 0.35s ease-out 2.91s; }
   .standing:nth-child(24) {
-    -webkit-transition: all 0.35s ease-out 3.03s;
-    transition: all 0.35s ease-out 3.03s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 3.03s, -webkit-transform 0.35s ease-out 3.03s;
+    transition: border 0.35s, opacity 0.35s ease-out 3.03s, transform 0.35s ease-out 3.03s; }
   .standing:nth-child(25) {
-    -webkit-transition: all 0.35s ease-out 3.15s;
-    transition: all 0.35s ease-out 3.15s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 3.15s, -webkit-transform 0.35s ease-out 3.15s;
+    transition: border 0.35s, opacity 0.35s ease-out 3.15s, transform 0.35s ease-out 3.15s; }
   .standing:nth-child(26) {
-    -webkit-transition: all 0.35s ease-out 3.27s;
-    transition: all 0.35s ease-out 3.27s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 3.27s, -webkit-transform 0.35s ease-out 3.27s;
+    transition: border 0.35s, opacity 0.35s ease-out 3.27s, transform 0.35s ease-out 3.27s; }
   .standing:nth-child(27) {
-    -webkit-transition: all 0.35s ease-out 3.39s;
-    transition: all 0.35s ease-out 3.39s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 3.39s, -webkit-transform 0.35s ease-out 3.39s;
+    transition: border 0.35s, opacity 0.35s ease-out 3.39s, transform 0.35s ease-out 3.39s; }
   .standing:nth-child(28) {
-    -webkit-transition: all 0.35s ease-out 3.51s;
-    transition: all 0.35s ease-out 3.51s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 3.51s, -webkit-transform 0.35s ease-out 3.51s;
+    transition: border 0.35s, opacity 0.35s ease-out 3.51s, transform 0.35s ease-out 3.51s; }
   .standing:nth-child(29) {
-    -webkit-transition: all 0.35s ease-out 3.63s;
-    transition: all 0.35s ease-out 3.63s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 3.63s, -webkit-transform 0.35s ease-out 3.63s;
+    transition: border 0.35s, opacity 0.35s ease-out 3.63s, transform 0.35s ease-out 3.63s; }
   .standing:nth-child(30) {
-    -webkit-transition: all 0.35s ease-out 3.75s;
-    transition: all 0.35s ease-out 3.75s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 3.75s, -webkit-transform 0.35s ease-out 3.75s;
+    transition: border 0.35s, opacity 0.35s ease-out 3.75s, transform 0.35s ease-out 3.75s; }
   .standing:nth-child(31) {
-    -webkit-transition: all 0.35s ease-out 3.87s;
-    transition: all 0.35s ease-out 3.87s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 3.87s, -webkit-transform 0.35s ease-out 3.87s;
+    transition: border 0.35s, opacity 0.35s ease-out 3.87s, transform 0.35s ease-out 3.87s; }
   .standing:nth-child(32) {
-    -webkit-transition: all 0.35s ease-out 3.99s;
-    transition: all 0.35s ease-out 3.99s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 3.99s, -webkit-transform 0.35s ease-out 3.99s;
+    transition: border 0.35s, opacity 0.35s ease-out 3.99s, transform 0.35s ease-out 3.99s; }
   .standing:nth-child(33) {
-    -webkit-transition: all 0.35s ease-out 4.11s;
-    transition: all 0.35s ease-out 4.11s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 4.11s, -webkit-transform 0.35s ease-out 4.11s;
+    transition: border 0.35s, opacity 0.35s ease-out 4.11s, transform 0.35s ease-out 4.11s; }
   .standing:nth-child(34) {
-    -webkit-transition: all 0.35s ease-out 4.23s;
-    transition: all 0.35s ease-out 4.23s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 4.23s, -webkit-transform 0.35s ease-out 4.23s;
+    transition: border 0.35s, opacity 0.35s ease-out 4.23s, transform 0.35s ease-out 4.23s; }
   .standing:nth-child(35) {
-    -webkit-transition: all 0.35s ease-out 4.35s;
-    transition: all 0.35s ease-out 4.35s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 4.35s, -webkit-transform 0.35s ease-out 4.35s;
+    transition: border 0.35s, opacity 0.35s ease-out 4.35s, transform 0.35s ease-out 4.35s; }
   .standing:nth-child(36) {
-    -webkit-transition: all 0.35s ease-out 4.47s;
-    transition: all 0.35s ease-out 4.47s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 4.47s, -webkit-transform 0.35s ease-out 4.47s;
+    transition: border 0.35s, opacity 0.35s ease-out 4.47s, transform 0.35s ease-out 4.47s; }
   .standing:nth-child(37) {
-    -webkit-transition: all 0.35s ease-out 4.59s;
-    transition: all 0.35s ease-out 4.59s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 4.59s, -webkit-transform 0.35s ease-out 4.59s;
+    transition: border 0.35s, opacity 0.35s ease-out 4.59s, transform 0.35s ease-out 4.59s; }
   .standing:nth-child(38) {
-    -webkit-transition: all 0.35s ease-out 4.71s;
-    transition: all 0.35s ease-out 4.71s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 4.71s, -webkit-transform 0.35s ease-out 4.71s;
+    transition: border 0.35s, opacity 0.35s ease-out 4.71s, transform 0.35s ease-out 4.71s; }
   .standing:nth-child(39) {
-    -webkit-transition: all 0.35s ease-out 4.83s;
-    transition: all 0.35s ease-out 4.83s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 4.83s, -webkit-transform 0.35s ease-out 4.83s;
+    transition: border 0.35s, opacity 0.35s ease-out 4.83s, transform 0.35s ease-out 4.83s; }
   .standing:nth-child(40) {
-    -webkit-transition: all 0.35s ease-out 4.95s;
-    transition: all 0.35s ease-out 4.95s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 4.95s, -webkit-transform 0.35s ease-out 4.95s;
+    transition: border 0.35s, opacity 0.35s ease-out 4.95s, transform 0.35s ease-out 4.95s; }
   .standing:nth-child(41) {
-    -webkit-transition: all 0.35s ease-out 5.07s;
-    transition: all 0.35s ease-out 5.07s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 5.07s, -webkit-transform 0.35s ease-out 5.07s;
+    transition: border 0.35s, opacity 0.35s ease-out 5.07s, transform 0.35s ease-out 5.07s; }
   .standing:nth-child(42) {
-    -webkit-transition: all 0.35s ease-out 5.19s;
-    transition: all 0.35s ease-out 5.19s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 5.19s, -webkit-transform 0.35s ease-out 5.19s;
+    transition: border 0.35s, opacity 0.35s ease-out 5.19s, transform 0.35s ease-out 5.19s; }
   .standing:nth-child(43) {
-    -webkit-transition: all 0.35s ease-out 5.31s;
-    transition: all 0.35s ease-out 5.31s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 5.31s, -webkit-transform 0.35s ease-out 5.31s;
+    transition: border 0.35s, opacity 0.35s ease-out 5.31s, transform 0.35s ease-out 5.31s; }
   .standing:nth-child(44) {
-    -webkit-transition: all 0.35s ease-out 5.43s;
-    transition: all 0.35s ease-out 5.43s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 5.43s, -webkit-transform 0.35s ease-out 5.43s;
+    transition: border 0.35s, opacity 0.35s ease-out 5.43s, transform 0.35s ease-out 5.43s; }
   .standing:nth-child(45) {
-    -webkit-transition: all 0.35s ease-out 5.55s;
-    transition: all 0.35s ease-out 5.55s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 5.55s, -webkit-transform 0.35s ease-out 5.55s;
+    transition: border 0.35s, opacity 0.35s ease-out 5.55s, transform 0.35s ease-out 5.55s; }
   .standing:nth-child(46) {
-    -webkit-transition: all 0.35s ease-out 5.67s;
-    transition: all 0.35s ease-out 5.67s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 5.67s, -webkit-transform 0.35s ease-out 5.67s;
+    transition: border 0.35s, opacity 0.35s ease-out 5.67s, transform 0.35s ease-out 5.67s; }
   .standing:nth-child(47) {
-    -webkit-transition: all 0.35s ease-out 5.79s;
-    transition: all 0.35s ease-out 5.79s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 5.79s, -webkit-transform 0.35s ease-out 5.79s;
+    transition: border 0.35s, opacity 0.35s ease-out 5.79s, transform 0.35s ease-out 5.79s; }
   .standing:nth-child(48) {
-    -webkit-transition: all 0.35s ease-out 5.91s;
-    transition: all 0.35s ease-out 5.91s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 5.91s, -webkit-transform 0.35s ease-out 5.91s;
+    transition: border 0.35s, opacity 0.35s ease-out 5.91s, transform 0.35s ease-out 5.91s; }
   .standing:nth-child(49) {
-    -webkit-transition: all 0.35s ease-out 6.03s;
-    transition: all 0.35s ease-out 6.03s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 6.03s, -webkit-transform 0.35s ease-out 6.03s;
+    transition: border 0.35s, opacity 0.35s ease-out 6.03s, transform 0.35s ease-out 6.03s; }
   .standing:nth-child(50) {
-    -webkit-transition: all 0.35s ease-out 6.15s;
-    transition: all 0.35s ease-out 6.15s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 6.15s, -webkit-transform 0.35s ease-out 6.15s;
+    transition: border 0.35s, opacity 0.35s ease-out 6.15s, transform 0.35s ease-out 6.15s; }
   .standing:nth-child(51) {
-    -webkit-transition: all 0.35s ease-out 6.27s;
-    transition: all 0.35s ease-out 6.27s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 6.27s, -webkit-transform 0.35s ease-out 6.27s;
+    transition: border 0.35s, opacity 0.35s ease-out 6.27s, transform 0.35s ease-out 6.27s; }
   .standing:nth-child(52) {
-    -webkit-transition: all 0.35s ease-out 6.39s;
-    transition: all 0.35s ease-out 6.39s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 6.39s, -webkit-transform 0.35s ease-out 6.39s;
+    transition: border 0.35s, opacity 0.35s ease-out 6.39s, transform 0.35s ease-out 6.39s; }
   .standing:nth-child(53) {
-    -webkit-transition: all 0.35s ease-out 6.51s;
-    transition: all 0.35s ease-out 6.51s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 6.51s, -webkit-transform 0.35s ease-out 6.51s;
+    transition: border 0.35s, opacity 0.35s ease-out 6.51s, transform 0.35s ease-out 6.51s; }
   .standing:nth-child(54) {
-    -webkit-transition: all 0.35s ease-out 6.63s;
-    transition: all 0.35s ease-out 6.63s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 6.63s, -webkit-transform 0.35s ease-out 6.63s;
+    transition: border 0.35s, opacity 0.35s ease-out 6.63s, transform 0.35s ease-out 6.63s; }
   .standing:nth-child(55) {
-    -webkit-transition: all 0.35s ease-out 6.75s;
-    transition: all 0.35s ease-out 6.75s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 6.75s, -webkit-transform 0.35s ease-out 6.75s;
+    transition: border 0.35s, opacity 0.35s ease-out 6.75s, transform 0.35s ease-out 6.75s; }
   .standing:nth-child(56) {
-    -webkit-transition: all 0.35s ease-out 6.87s;
-    transition: all 0.35s ease-out 6.87s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 6.87s, -webkit-transform 0.35s ease-out 6.87s;
+    transition: border 0.35s, opacity 0.35s ease-out 6.87s, transform 0.35s ease-out 6.87s; }
   .standing:nth-child(57) {
-    -webkit-transition: all 0.35s ease-out 6.99s;
-    transition: all 0.35s ease-out 6.99s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 6.99s, -webkit-transform 0.35s ease-out 6.99s;
+    transition: border 0.35s, opacity 0.35s ease-out 6.99s, transform 0.35s ease-out 6.99s; }
   .standing:nth-child(58) {
-    -webkit-transition: all 0.35s ease-out 7.11s;
-    transition: all 0.35s ease-out 7.11s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 7.11s, -webkit-transform 0.35s ease-out 7.11s;
+    transition: border 0.35s, opacity 0.35s ease-out 7.11s, transform 0.35s ease-out 7.11s; }
   .standing:nth-child(59) {
-    -webkit-transition: all 0.35s ease-out 7.23s;
-    transition: all 0.35s ease-out 7.23s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 7.23s, -webkit-transform 0.35s ease-out 7.23s;
+    transition: border 0.35s, opacity 0.35s ease-out 7.23s, transform 0.35s ease-out 7.23s; }
   .standing:nth-child(60) {
-    -webkit-transition: all 0.35s ease-out 7.35s;
-    transition: all 0.35s ease-out 7.35s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 7.35s, -webkit-transform 0.35s ease-out 7.35s;
+    transition: border 0.35s, opacity 0.35s ease-out 7.35s, transform 0.35s ease-out 7.35s; }
   .standing:nth-child(61) {
-    -webkit-transition: all 0.35s ease-out 7.47s;
-    transition: all 0.35s ease-out 7.47s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 7.47s, -webkit-transform 0.35s ease-out 7.47s;
+    transition: border 0.35s, opacity 0.35s ease-out 7.47s, transform 0.35s ease-out 7.47s; }
   .standing:nth-child(62) {
-    -webkit-transition: all 0.35s ease-out 7.59s;
-    transition: all 0.35s ease-out 7.59s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 7.59s, -webkit-transform 0.35s ease-out 7.59s;
+    transition: border 0.35s, opacity 0.35s ease-out 7.59s, transform 0.35s ease-out 7.59s; }
   .standing:nth-child(63) {
-    -webkit-transition: all 0.35s ease-out 7.71s;
-    transition: all 0.35s ease-out 7.71s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 7.71s, -webkit-transform 0.35s ease-out 7.71s;
+    transition: border 0.35s, opacity 0.35s ease-out 7.71s, transform 0.35s ease-out 7.71s; }
   .standing:nth-child(64) {
-    -webkit-transition: all 0.35s ease-out 7.83s;
-    transition: all 0.35s ease-out 7.83s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 7.83s, -webkit-transform 0.35s ease-out 7.83s;
+    transition: border 0.35s, opacity 0.35s ease-out 7.83s, transform 0.35s ease-out 7.83s; }
   .standing:nth-child(65) {
-    -webkit-transition: all 0.35s ease-out 7.95s;
-    transition: all 0.35s ease-out 7.95s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 7.95s, -webkit-transform 0.35s ease-out 7.95s;
+    transition: border 0.35s, opacity 0.35s ease-out 7.95s, transform 0.35s ease-out 7.95s; }
   .standing:nth-child(66) {
-    -webkit-transition: all 0.35s ease-out 8.07s;
-    transition: all 0.35s ease-out 8.07s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 8.07s, -webkit-transform 0.35s ease-out 8.07s;
+    transition: border 0.35s, opacity 0.35s ease-out 8.07s, transform 0.35s ease-out 8.07s; }
   .standing:nth-child(67) {
-    -webkit-transition: all 0.35s ease-out 8.19s;
-    transition: all 0.35s ease-out 8.19s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 8.19s, -webkit-transform 0.35s ease-out 8.19s;
+    transition: border 0.35s, opacity 0.35s ease-out 8.19s, transform 0.35s ease-out 8.19s; }
   .standing:nth-child(68) {
-    -webkit-transition: all 0.35s ease-out 8.31s;
-    transition: all 0.35s ease-out 8.31s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 8.31s, -webkit-transform 0.35s ease-out 8.31s;
+    transition: border 0.35s, opacity 0.35s ease-out 8.31s, transform 0.35s ease-out 8.31s; }
   .standing:nth-child(69) {
-    -webkit-transition: all 0.35s ease-out 8.43s;
-    transition: all 0.35s ease-out 8.43s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 8.43s, -webkit-transform 0.35s ease-out 8.43s;
+    transition: border 0.35s, opacity 0.35s ease-out 8.43s, transform 0.35s ease-out 8.43s; }
   .standing:nth-child(70) {
-    -webkit-transition: all 0.35s ease-out 8.55s;
-    transition: all 0.35s ease-out 8.55s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 8.55s, -webkit-transform 0.35s ease-out 8.55s;
+    transition: border 0.35s, opacity 0.35s ease-out 8.55s, transform 0.35s ease-out 8.55s; }
   .standing:nth-child(71) {
-    -webkit-transition: all 0.35s ease-out 8.67s;
-    transition: all 0.35s ease-out 8.67s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 8.67s, -webkit-transform 0.35s ease-out 8.67s;
+    transition: border 0.35s, opacity 0.35s ease-out 8.67s, transform 0.35s ease-out 8.67s; }
   .standing:nth-child(72) {
-    -webkit-transition: all 0.35s ease-out 8.79s;
-    transition: all 0.35s ease-out 8.79s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 8.79s, -webkit-transform 0.35s ease-out 8.79s;
+    transition: border 0.35s, opacity 0.35s ease-out 8.79s, transform 0.35s ease-out 8.79s; }
   .standing:nth-child(73) {
-    -webkit-transition: all 0.35s ease-out 8.91s;
-    transition: all 0.35s ease-out 8.91s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 8.91s, -webkit-transform 0.35s ease-out 8.91s;
+    transition: border 0.35s, opacity 0.35s ease-out 8.91s, transform 0.35s ease-out 8.91s; }
   .standing:nth-child(74) {
-    -webkit-transition: all 0.35s ease-out 9.03s;
-    transition: all 0.35s ease-out 9.03s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 9.03s, -webkit-transform 0.35s ease-out 9.03s;
+    transition: border 0.35s, opacity 0.35s ease-out 9.03s, transform 0.35s ease-out 9.03s; }
   .standing:nth-child(75) {
-    -webkit-transition: all 0.35s ease-out 9.15s;
-    transition: all 0.35s ease-out 9.15s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 9.15s, -webkit-transform 0.35s ease-out 9.15s;
+    transition: border 0.35s, opacity 0.35s ease-out 9.15s, transform 0.35s ease-out 9.15s; }
   .standing:nth-child(76) {
-    -webkit-transition: all 0.35s ease-out 9.27s;
-    transition: all 0.35s ease-out 9.27s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 9.27s, -webkit-transform 0.35s ease-out 9.27s;
+    transition: border 0.35s, opacity 0.35s ease-out 9.27s, transform 0.35s ease-out 9.27s; }
   .standing:nth-child(77) {
-    -webkit-transition: all 0.35s ease-out 9.39s;
-    transition: all 0.35s ease-out 9.39s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 9.39s, -webkit-transform 0.35s ease-out 9.39s;
+    transition: border 0.35s, opacity 0.35s ease-out 9.39s, transform 0.35s ease-out 9.39s; }
   .standing:nth-child(78) {
-    -webkit-transition: all 0.35s ease-out 9.51s;
-    transition: all 0.35s ease-out 9.51s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 9.51s, -webkit-transform 0.35s ease-out 9.51s;
+    transition: border 0.35s, opacity 0.35s ease-out 9.51s, transform 0.35s ease-out 9.51s; }
   .standing:nth-child(79) {
-    -webkit-transition: all 0.35s ease-out 9.63s;
-    transition: all 0.35s ease-out 9.63s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 9.63s, -webkit-transform 0.35s ease-out 9.63s;
+    transition: border 0.35s, opacity 0.35s ease-out 9.63s, transform 0.35s ease-out 9.63s; }
   .standing:nth-child(80) {
-    -webkit-transition: all 0.35s ease-out 9.75s;
-    transition: all 0.35s ease-out 9.75s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 9.75s, -webkit-transform 0.35s ease-out 9.75s;
+    transition: border 0.35s, opacity 0.35s ease-out 9.75s, transform 0.35s ease-out 9.75s; }
   .standing:nth-child(81) {
-    -webkit-transition: all 0.35s ease-out 9.87s;
-    transition: all 0.35s ease-out 9.87s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 9.87s, -webkit-transform 0.35s ease-out 9.87s;
+    transition: border 0.35s, opacity 0.35s ease-out 9.87s, transform 0.35s ease-out 9.87s; }
   .standing:nth-child(82) {
-    -webkit-transition: all 0.35s ease-out 9.99s;
-    transition: all 0.35s ease-out 9.99s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 9.99s, -webkit-transform 0.35s ease-out 9.99s;
+    transition: border 0.35s, opacity 0.35s ease-out 9.99s, transform 0.35s ease-out 9.99s; }
   .standing:nth-child(83) {
-    -webkit-transition: all 0.35s ease-out 10.11s;
-    transition: all 0.35s ease-out 10.11s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 10.11s, -webkit-transform 0.35s ease-out 10.11s;
+    transition: border 0.35s, opacity 0.35s ease-out 10.11s, transform 0.35s ease-out 10.11s; }
   .standing:nth-child(84) {
-    -webkit-transition: all 0.35s ease-out 10.23s;
-    transition: all 0.35s ease-out 10.23s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 10.23s, -webkit-transform 0.35s ease-out 10.23s;
+    transition: border 0.35s, opacity 0.35s ease-out 10.23s, transform 0.35s ease-out 10.23s; }
   .standing:nth-child(85) {
-    -webkit-transition: all 0.35s ease-out 10.35s;
-    transition: all 0.35s ease-out 10.35s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 10.35s, -webkit-transform 0.35s ease-out 10.35s;
+    transition: border 0.35s, opacity 0.35s ease-out 10.35s, transform 0.35s ease-out 10.35s; }
   .standing:nth-child(86) {
-    -webkit-transition: all 0.35s ease-out 10.47s;
-    transition: all 0.35s ease-out 10.47s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 10.47s, -webkit-transform 0.35s ease-out 10.47s;
+    transition: border 0.35s, opacity 0.35s ease-out 10.47s, transform 0.35s ease-out 10.47s; }
   .standing:nth-child(87) {
-    -webkit-transition: all 0.35s ease-out 10.59s;
-    transition: all 0.35s ease-out 10.59s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 10.59s, -webkit-transform 0.35s ease-out 10.59s;
+    transition: border 0.35s, opacity 0.35s ease-out 10.59s, transform 0.35s ease-out 10.59s; }
   .standing:nth-child(88) {
-    -webkit-transition: all 0.35s ease-out 10.71s;
-    transition: all 0.35s ease-out 10.71s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 10.71s, -webkit-transform 0.35s ease-out 10.71s;
+    transition: border 0.35s, opacity 0.35s ease-out 10.71s, transform 0.35s ease-out 10.71s; }
   .standing:nth-child(89) {
-    -webkit-transition: all 0.35s ease-out 10.83s;
-    transition: all 0.35s ease-out 10.83s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 10.83s, -webkit-transform 0.35s ease-out 10.83s;
+    transition: border 0.35s, opacity 0.35s ease-out 10.83s, transform 0.35s ease-out 10.83s; }
   .standing:nth-child(90) {
-    -webkit-transition: all 0.35s ease-out 10.95s;
-    transition: all 0.35s ease-out 10.95s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 10.95s, -webkit-transform 0.35s ease-out 10.95s;
+    transition: border 0.35s, opacity 0.35s ease-out 10.95s, transform 0.35s ease-out 10.95s; }
   .standing:nth-child(91) {
-    -webkit-transition: all 0.35s ease-out 11.07s;
-    transition: all 0.35s ease-out 11.07s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 11.07s, -webkit-transform 0.35s ease-out 11.07s;
+    transition: border 0.35s, opacity 0.35s ease-out 11.07s, transform 0.35s ease-out 11.07s; }
   .standing:nth-child(92) {
-    -webkit-transition: all 0.35s ease-out 11.19s;
-    transition: all 0.35s ease-out 11.19s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 11.19s, -webkit-transform 0.35s ease-out 11.19s;
+    transition: border 0.35s, opacity 0.35s ease-out 11.19s, transform 0.35s ease-out 11.19s; }
   .standing:nth-child(93) {
-    -webkit-transition: all 0.35s ease-out 11.31s;
-    transition: all 0.35s ease-out 11.31s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 11.31s, -webkit-transform 0.35s ease-out 11.31s;
+    transition: border 0.35s, opacity 0.35s ease-out 11.31s, transform 0.35s ease-out 11.31s; }
   .standing:nth-child(94) {
-    -webkit-transition: all 0.35s ease-out 11.43s;
-    transition: all 0.35s ease-out 11.43s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 11.43s, -webkit-transform 0.35s ease-out 11.43s;
+    transition: border 0.35s, opacity 0.35s ease-out 11.43s, transform 0.35s ease-out 11.43s; }
   .standing:nth-child(95) {
-    -webkit-transition: all 0.35s ease-out 11.55s;
-    transition: all 0.35s ease-out 11.55s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 11.55s, -webkit-transform 0.35s ease-out 11.55s;
+    transition: border 0.35s, opacity 0.35s ease-out 11.55s, transform 0.35s ease-out 11.55s; }
   .standing:nth-child(96) {
-    -webkit-transition: all 0.35s ease-out 11.67s;
-    transition: all 0.35s ease-out 11.67s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 11.67s, -webkit-transform 0.35s ease-out 11.67s;
+    transition: border 0.35s, opacity 0.35s ease-out 11.67s, transform 0.35s ease-out 11.67s; }
   .standing:nth-child(97) {
-    -webkit-transition: all 0.35s ease-out 11.79s;
-    transition: all 0.35s ease-out 11.79s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 11.79s, -webkit-transform 0.35s ease-out 11.79s;
+    transition: border 0.35s, opacity 0.35s ease-out 11.79s, transform 0.35s ease-out 11.79s; }
   .standing:nth-child(98) {
-    -webkit-transition: all 0.35s ease-out 11.91s;
-    transition: all 0.35s ease-out 11.91s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 11.91s, -webkit-transform 0.35s ease-out 11.91s;
+    transition: border 0.35s, opacity 0.35s ease-out 11.91s, transform 0.35s ease-out 11.91s; }
   .standing:nth-child(99) {
-    -webkit-transition: all 0.35s ease-out 12.03s;
-    transition: all 0.35s ease-out 12.03s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 12.03s, -webkit-transform 0.35s ease-out 12.03s;
+    transition: border 0.35s, opacity 0.35s ease-out 12.03s, transform 0.35s ease-out 12.03s; }
   .standing:nth-child(100) {
-    -webkit-transition: all 0.35s ease-out 12.15s;
-    transition: all 0.35s ease-out 12.15s; }
+    -webkit-transition: border 0.35s, opacity 0.35s ease-out 12.15s, -webkit-transform 0.35s ease-out 12.15s;
+    transition: border 0.35s, opacity 0.35s ease-out 12.15s, transform 0.35s ease-out 12.15s; }
 
 .standing-count {
   position: absolute;

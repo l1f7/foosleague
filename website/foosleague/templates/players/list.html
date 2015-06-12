@@ -12,17 +12,8 @@
             {% comment %}
             <div class="standing-count standing-count--{{ forloop.counter }}"><span>{{ forloop.counter }}</span></div>
             {% endcomment %}
-            <div class="standing-player player">
-              <div class="player player--large">
-                <div class="player-avatar">
-                  {% if player.photo %}
-                    {% thumbnail player.photo "80x80" crop="center" as im %}
-                      <img src="{{ im.url }}" class="player-img"/>
-                    {% endthumbnail %}
-                  {% endif %}
-                </div>
-                <h1 class="player-name">{{ player.nickname }}</h1>
-              </div>
+            <div class="standing-player">
+              {% include "partials/player.html" with player=player player_class="player--larger" %}
             </div>
           </a>
         {% endfor %}

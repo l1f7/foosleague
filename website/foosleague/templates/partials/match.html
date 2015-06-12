@@ -6,16 +6,7 @@
     <div class="team">
       <h1 class="team-name {% if match.team_1_score > match.team_2_score %}team-name--winner{% endif %}">{{ match.team_1 }}</h1>
       {% for player in match.team_1.players.all %}
-        <div class="team-player player">
-          <div class="player-avatar">
-            {% if player.photo %}
-              {% thumbnail player.photo "80x80" crop="center" as im %}
-                <img src="{{ im.url }}" class="player-img"/>
-              {% endthumbnail %}
-            {% endif %}
-          </div>
-          <div class="player-name">{{ player.nickname }}</div>
-        </div>
+        {% include "partials/player.html" with player=player player_class="team-player" %}
       {% endfor %}
     </div>
   </div>
@@ -24,16 +15,7 @@
     <div class="team">
       <h1 class="team-name {% if match.team_2_score > match.team_1_score %}team-name--winner{% endif %}">{{ match.team_2 }}</h1>
       {% for player in match.team_2.players.all %}
-        <div class="team-player player">
-          <div class="player-avatar">
-            {% if player.photo %}
-              {% thumbnail player.photo "80x80" crop="center" as im %}
-                <img src="{{ im.url }}" class="player-img"/>
-              {% endthumbnail %}
-            {% endif %}
-          </div>
-          <div class="player-name">{{ player.nickname }}</div>
-        </div>
+        {% include "partials/player.html" with player=player player_class="team-player" %}
       {% endfor %}
     </div>
   </div>

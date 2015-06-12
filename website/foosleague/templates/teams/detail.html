@@ -15,16 +15,7 @@
         {% endif %}
         <h1 class="team-name">{{ team }}</h1>
         {% for player in team.players.all %}
-          <div class="team-player player player--large">
-            <div class="player-avatar">
-            {% if player.photo %}
-              {% thumbnail player.photo "80x80" crop="center" as im %}
-                <img src="{{ im.url }}" class="player-img"/>
-              {% endthumbnail %}
-            {% endif %}
-            </div>
-            <div class="player-name">{{ player.nickname }}</div>
-          </div>
+          {% include "partials/player.html" with player=player player_class="team-player player--large" %}
         {% endfor %}
       </div>
     </div>

@@ -1,0 +1,12 @@
+{% load thumbnail %}
+
+<div class="player {{ player_class }}">
+  <div class="player-avatar">
+    {% if player.photo %}
+      {% thumbnail player.photo "80x80" crop="center" as im %}
+        <img src="{{ im.url }}" class="player-img"/>
+      {% endthumbnail %}
+    {% endif %}
+  </div>
+  <div class="player-name">{{ player.nickname }}</div>
+</div>

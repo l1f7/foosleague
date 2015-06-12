@@ -39,11 +39,11 @@ $base-heading       : $black;
 $base-type          : lighten($black, 20%);
 $base-type-light    : lighten($black, 40%);
 
-$c-btn-border   : $green;
+$c-btn-border   : darken($green, 10%);
 $c-btn-bg       : $green;
 $c-btn-color    : $white;
-$c-btn-border--hover   : darken($green, 8%);
-$c-btn-bg--hover       : darken($green, 8%);
+$c-btn-border--hover   : darken($green, 15%);
+$c-btn-bg--hover       : darken($green, 5%);
 $c-btn-color--hover    : $white;
 
 $c-site-bg       : #F3F4F5;
