@@ -1,6 +1,5 @@
 from trueskill import rate, Rating, quality_1vs1
 from players.models import Player
-from matches.models import Match
 
 
 def update_trueskill(match):
@@ -77,6 +76,7 @@ def update_trueskill(match):
 
 
 def recalc_trueskill():
+    from matches.models import Match
 
     players = Player.objects.all()
     for p in players:
