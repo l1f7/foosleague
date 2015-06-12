@@ -33,7 +33,7 @@
     <div class="l-col">
       <div class="games is-loading">
         {% for match in matches %}
-          {% include "partials/match.html" with match=match player=object %}
+          {% include "partials/match.html" with match=match highlight_player=object %}
         {% endfor %}
       </div>
     </div>

@@ -1,12 +1,16 @@
 {% load thumbnail %}
 
-<a href="{{match.get_absolute_url}}" class="game {% if match.team_1_score > match.team_2_score %}game--1{% elif match.team_2_score > match.team_1_score %}game--2{% endif %}">
+<a href="{{match.get_absolute_url}}" class="game {{ match.winner }} {% if match.team_1_score > match.team_2_score %}game--1{% elif match.team_2_score > match.team_1_score %}game--2{% endif %}">
   <div class="game-team game-team--home">
     <div class="game-score {% if match.team_1_score > match.team_2_score %}game-score--winner{% endif %}">{{ match.team_1_score }}</div>
     <div class="team">
       <h1 class="team-name {% if match.team_1_score > match.team_2_score %}team-name--winner{% endif %}">{{ match.team_1 }}</h1>
       {% for player in match.team_1.players.all %}
-        {% include "partials/player.html" with player=player player_class="team-player" %}
+        {% if highlight_player and highlight_player == player %}
+          {% include "partials/player.html" with player=player player_class="team-player player--highlight" %}
+        {% else %}
+          {% include "partials/player.html" with player=player player_class="team-player" %}
+        {% endif %}
       {% endfor %}
     </div>
   </div>
@@ -15,7 +19,11 @@
     <div class="team">
       <h1 class="team-name {% if match.team_2_score > match.team_1_score %}team-name--winner{% endif %}">{{ match.team_2 }}</h1>
       {% for player in match.team_2.players.all %}
-        {% include "partials/player.html" with player=player player_class="team-player" %}
+        {% if highlight_player and highlight_player == player %}
+          {% include "partials/player.html" with player=player player_class="team-player player--highlight" %}
+        {% else %}
+          {% include "partials/player.html" with player=player player_class="team-player" %}
+        {% endif %}
       {% endfor %}
     </div>
   </div>

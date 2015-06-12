@@ -40,7 +40,7 @@
     <div class="l-col">
       <div class="games is-loading">
         {% for match in matches %}
-          {% include "partials/match.html" with match=match %}
+          {% include "partials/match.html" with match=match team=team %}
         {% endfor %}
       </div>
     </div>

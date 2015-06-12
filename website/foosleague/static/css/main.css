@@ -1779,6 +1779,9 @@ body {
   font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1; }
 
+.player--highlight .player-name {
+  color: #333333; }
+
 .profile {
   position: relative;
   border-radius: 3px;
