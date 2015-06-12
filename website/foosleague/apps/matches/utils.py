@@ -81,7 +81,7 @@ def recalc_trueskill():
     players = Player.objects.all()
     for p in players:
         p.ts_mu = 25
-        p.ts_mu = 8.33333
+        p.ts_sigma = 8.33333
         p.save()
 
     matches = Match.objects.all().order_by('created')
