@@ -108,7 +108,7 @@ body {
   }
 }
 
-.l-columns--centeredSmall {
+.l-columns--score {
   .l-col {
     @include span-columns(4);
     @include shift(4);
