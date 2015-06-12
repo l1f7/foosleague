@@ -17,6 +17,8 @@ class Team(TimeStampedModel):
     trueskill_sigma = models.FloatField(_("TrueSkill Sigma"), default=8.33)
     streak = models.IntegerField(
         _("Current Streak"), default=0, help_text='De-normalized field to help with slack integration')
+    best_streak = models.IntegerField(_("Best Streak"), default=0, help_text="The best streak every acheived by this team")
+    best_streak_date = models.DateTimeField(_("Best Streak Date"), blank=True, null=True, help_text="The date of the last win")
 
     league = models.ForeignKey(League, verbose_name=_("League"), default=1)
 

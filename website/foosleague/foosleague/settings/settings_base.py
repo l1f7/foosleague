@@ -130,6 +130,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
     'players.context_processors.player',
+    'leagues.context_processors.leagues',
     'seasons.context_processors.current_season'
 )
 

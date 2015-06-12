@@ -143,40 +143,15 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
         if seasons.count():
             season = seasons[0]
 
-        match = Match(team_1=team_1, team_2=team_2,
+        match = Match.objects.create(team_1=team_1, team_2=team_2,
                       team_1_score=form.cleaned_data[
                           'team_1_score'], team_2_score=form.cleaned_data['team_2_score'],
                       completed=form.cleaned_data['completed'], season=season, league=self.request.league)
 
         if form.cleaned_data['completed']:
-            if form.cleaned_data['team_1_score'] > form.cleaned_data['team_2_score']:
-                match.winner = team_1
-                loser = team_2
-                winning_score = match.team_1_score
-                losing_score = match.team_2_score
-            elif form.cleaned_data['team_2_score'] > form.cleaned_data['team_1_score']:
-                match.winner = team_2
-                loser = team_1
-                winning_score = match.team_2_score
-                losing_score = match.team_1_score
-
-            match.save()
-            if match.team_2_score == 0 or match.team_1_score == 0:
-                message = ":skunk: :skunk: :skunk: *%s* _(%s)_ vs *%s* _(%s)_ :skunk: :skunk: :skunk: (http://%s.foosleague.com%s)" % (match.winner,
-                                                                                                                                       winning_score, loser, losing_score, self.request.league.subdomain, match.get_absolute_url())
-            else:
-                message = "Game Over! *%s* _(%s)_ vs *%s* _(%s)_ (http://%s.foosleague.com%s)" % (match.winner,
-                                                                                                  winning_score, loser,  losing_score, self.request.league.subdomain, match.get_absolute_url())
-
-            requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (self.request.league.slack_token, "%23" + self.request.league.slack_channel,),
-                          data=message)
-
-            match.save()
-            match.complete()
+            match.complete(self.request)
         else:
             # post to slack!
-            match.save()
-
             requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (self.request.league.slack_token, "%23" + self.request.league.slack_channel,),
                           data="Game on! *%s* vs *%s* (http://%s.foosleague.com%s)" % (match.team_1, match.team_2, self.request.league.subdomain,  match.get_absolute_url()))
 
@@ -213,6 +188,7 @@ class MatchUpdateView(LoginRequiredMixin, UpdateView):
         }
 
         return JsonResponse(json)
+
 
 class MatchScoreUpdateView(UpdateView):
     model = Match

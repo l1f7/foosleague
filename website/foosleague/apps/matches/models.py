@@ -1,3 +1,5 @@
+import requests
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
@@ -8,6 +10,7 @@ from seasons.models import Season
 from leagues.models import League
 # from players.models import Player
 from .utils import update_trueskill
+from datetime import datetime
 
 
 class Match(TimeStampedModel):
@@ -45,16 +48,54 @@ class Match(TimeStampedModel):
     #     # todo: update denorm-ed streak counter
     #     pass
 
-    def complete(self):
+    def complete(self, request):
+
+        if self.team_1_score > self.team_2_score:
+            self.winner = self.team_1
+            loser = self.team_2
+            winning_score = self.team_1_score
+            losing_score = self.team_2_score
+        elif self.team_2_score > self.team_1_score:
+            self.winner = self.team_2
+            loser = self.team_1
+            winning_score = self.team_2_score
+            losing_score = self.team_1_score
+
+
+
+        # send message
+        if self.team_2_score == 0 or self.team_1_score == 0:
+            message = ":skunk: :skunk: :skunk: *%s* _(%s)_ vs *%s* _(%s)_ :skunk: :skunk: :skunk: (http://%s.foosleague.com%s)" % (self.winner,
+                                                                                                                                   winning_score, loser, losing_score, request.league.subdomain, self.get_absolute_url())
+        else:
+            message = "Game Over! *%s* _(%s)_ vs *%s* _(%s)_ (http://%s.foosleague.com%s)" % (self.winner,
+                                                                                              winning_score, loser,  losing_score, request.league.subdomain, self.get_absolute_url())
+
+        requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (request.league.slack_token, "%23" + request.league.slack_channel,),
+                      data=message)
+
+
+        # calculate streaks
+
         if self.winner == self.team_1:
             self.team_2.streak = 0
-            self.team_2.save()
             self.team_1.streak += 1
             self.team_1.save()
+            if self.team_1.streak > self.team_1.best_streak:
+                self.team_1.best_streak = self.team_1.streak
+                self.team_1.best_streak_date = datetime.now()
+
         else:
             self.team_1.streak = 0
-            self.team_1.save()
             self.team_2.streak += 1
-            self.team_2.save()
 
+            if self.team_2.streak > self.team_2.best_streak:
+                self.team_2.best_streak = self.team_2.streak
+                self.team_2.best_streak_date = datetime.now()
+
+        self.team_1.save()
+        self.team_2.save()
+        self.save()
+
+        # recalculate trueskill
         update_trueskill(self)
