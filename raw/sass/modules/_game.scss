@@ -77,3 +77,13 @@
   @extend .ts-uppercase;
   color: $base-type;
 }
+
+.game--details {
+  padding: 20px;
+
+  .game-score {
+    margin: 0 0 70px;
+    @extend .ms-3;
+    width: 36px;
+  }
+}
