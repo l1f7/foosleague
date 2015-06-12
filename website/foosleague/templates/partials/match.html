@@ -1,6 +1,6 @@
 {% load thumbnail %}
 
-<a href="{{match.get_absolute_url}}" class="game {{ match.winner }} {% if match.team_1_score > match.team_2_score %}game--1{% elif match.team_2_score > match.team_1_score %}game--2{% endif %}">
+<a href="{{match.get_absolute_url}}" class="game {% if match.team_1_score > match.team_2_score %}game--1{% elif match.team_2_score > match.team_1_score %}game--2{% endif %}">
   <div class="game-team game-team--home">
     <div class="game-score {% if match.team_1_score > match.team_2_score %}game-score--winner{% endif %}">{{ match.team_1_score }}</div>
     <div class="team">
