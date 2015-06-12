@@ -76,6 +76,12 @@
   @include font(13, 400);
 }
 
+.field--select {
+  select {
+    width: 100%;
+  }
+}
+
 .field-typeSelect {
   select {
     display: none;
@@ -163,6 +169,15 @@
 .form--large {
   .field-text {
     @include font(24, 500);
+  }
+}
+
+.field--score {
+  text-align: center;
+
+  .field-text {
+    @include font(32, 600, 1);
+    text-align: center;
   }
 }
 

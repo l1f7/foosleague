@@ -108,6 +108,13 @@ body {
   }
 }
 
+.l-columns--centeredSmall {
+  .l-col {
+    @include span-columns(4);
+    @include shift(4);
+  }
+}
+
 .l-columns--sideright {
   .l-col {
     @include span-columns(8);
@@ -200,6 +207,7 @@ body {
 
   .l-columns--split {
     .l-col {
+      @include span-columns(4);
     }
   }
 }

@@ -339,6 +339,9 @@ html {
 *, *:before, *:after {
   box-sizing: inherit; }
 
+.u-hidden {
+  display: none; }
+
 .u-textcenter {
   text-align: center; }
 
@@ -903,6 +906,15 @@ body {
   .l-columns--centeredSmall .l-col:last-child {
     margin-right: 0; }
 
+.l-columns--centeredSmall .l-col {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 31.76157%;
+  margin-left: 34.11922%; }
+  .l-columns--centeredSmall .l-col:last-child {
+    margin-right: 0; }
+
 .l-columns--sideright .l-col {
   float: left;
   display: block;
@@ -988,6 +1000,13 @@ body {
     margin-right: 7.42297%;
     width: 100%; }
     .l-columns--thirds .l-col:last-child {
+      margin-right: 0; }
+  .l-columns--split .l-col {
+    float: left;
+    display: block;
+    margin-right: 7.42297%;
+    width: 100%; }
+    .l-columns--split .l-col:last-child {
       margin-right: 0; } }
 
 .l-auth {
@@ -1995,6 +2014,9 @@ body {
   font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.6em; }
 
+.field--select select {
+  width: 100%; }
+
 .field-typeSelect select {
   display: none; }
 
@@ -2060,6 +2082,15 @@ body {
   font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.6em; }
 
+.field--score {
+  text-align: center; }
+  .field--score .field-text {
+    font-weight: 600;
+    font-size: 2rem;
+    font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1;
+    text-align: center; }
+
 @media screen and (max-width: 39.99em)  {
   .field-set--5050 .field {
     float: left;
@@ -2107,25 +2138,106 @@ body {
     margin: 0 0 1.5em; } }
 
 .newgame {
-  margin: 0 15%;
+  margin: 0; }
+
+.newgame-team {
   padding: 20px;
   border: 1px solid #d9d9d9;
   background: #ffffff; }
 
-.newgame-team--red {
-  padding-right: 10px; }
+.newgame-team--red .newgame-heading {
+  background: #F66262; }
 
-.newgame-team--black {
-  padding-left: 10px; }
+.newgame-team--black .newgame-heading {
+  background: #333333; }
+
+.newgame-heading {
+  color: white;
+  text-align: center;
+  margin: -21px -21px 20px;
+  padding: 15px 20px 15px; }
+
+.newgame-players {
+  max-width: 68.75em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px; }
+  .newgame-players::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.newgame-player {
+  border: 1px solid #d9d9d9;
+  background: #ffffff;
+  border-radius: 3px;
+  margin-bottom: 12px;
+  padding: 5px;
+  color: #666666;
+  -webkit-transition: 0.25s;
+  transition: 0.25s; }
+  .newgame-player:hover {
+    color: #333333;
+    border: 1px solid #bfbfbf; }
+  .newgame-player.is-active {
+    border: 1px solid #41996b;
+    color: #ffffff;
+    background: #56B784;
+    border-radius: 3px;
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.25), 0 1px rgba(51, 51, 51, 0.15);
+    text-shadow: 0 1px rgba(51, 51, 51, 0.15); }
+  .newgame-player.is-disabled {
+    opacity: 0.5; }
+
+.newgame-complete {
+  margin-right: 30px;
+  display: inline-block; }
 
 .newgame-action {
-  margin: 10px 0 -20px;
-  padding: 15px 0;
-  border-top: 1px solid #e6e6e6; }
+  text-align: right;
+  margin: 0;
+  padding: 20px 0; }
+
+@media screen and (min-width: 64em)  {
+  .newgame-player {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%; }
+    .newgame-player:last-child {
+      margin-right: 0; }
+    .newgame-player:nth-child(3n) {
+      margin-right: 0; }
+    .newgame-player:nth-child(3n+1) {
+      clear: left; } }
+
+@media screen and (min-width: 40em) and (max-width: 63.99em)  {
+  .newgame-player {
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 48.21067%; }
+    .newgame-player:last-child {
+      margin-right: 0; }
+    .newgame-player:nth-child(2n) {
+      margin-right: 0; }
+    .newgame-player:nth-child(2n+1) {
+      clear: left; } }
 
 @media screen and (max-width: 39.99em)  {
   .newgame {
-    margin: 0; } }
+    margin: 0; }
+  .newgame-player {
+    float: left;
+    display: block;
+    margin-right: 7.42297%;
+    width: 46.28851%; }
+    .newgame-player:last-child {
+      margin-right: 0; }
+    .newgame-player:nth-child(2n) {
+      margin-right: 0; }
+    .newgame-player:nth-child(2n+1) {
+      clear: left; } }
 
 .error {
   margin: 0 0 20px;

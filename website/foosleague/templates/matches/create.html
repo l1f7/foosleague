@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-
   <form action ='' method='post' class="newgame">
     <div class="l-columns l-columns--split">
       {% include "partials/forms/error_field.html" %}
@@ -9,23 +8,90 @@
       <div class="l-col">
         <div class="newgame-team newgame-team--red">
           <h1 class="newgame-heading">Red Team</h1>
-          {% include "partials/forms/select_field.html" with field=form.player_1 %}
-          {% include "partials/forms/select_field.html" with field=form.player_2 %}
-          {% include "partials/forms/text_field.html" with field=form.team_1_score %}
+          <div class="newgame-players">
+            {% for player in players %}
+              <a href="#" class="newgame-player" data-player="{{ player.id }}">
+                {% include "partials/player.html" with player=player player_class="team-player" %}
+              </a>
+            {% endfor %}
+          </div>
+          <div class="u-hidden">
+            <div class="l-columns l-columns--split">
+              <div class="l-col newgame-player--1">
+                {% include "partials/forms/select_field.html" with field=form.player_1 %}
+              </div>
+              <div class="l-col newgame-player--2">
+                {% include "partials/forms/select_field.html" with field=form.player_2 %}
+              </div>
+            </div>
+          </div>
+          <div class="l-columns l-columns--centeredSmall">
+            <div class="l-col">
+              {% include "partials/forms/text_field.html" with field=form.team_1_score field_class="field--score" %}
+            </div>
+          </div>
         </div>
       </div>
       <div class="l-col">
         <div class="newgame-team newgame-team--black">
           <h1 class="newgame-heading">Black Team</h1>
-          {% include "partials/forms/select_field.html" with field=form.player_3 %}
-          {% include "partials/forms/select_field.html" with field=form.player_4 %}
-          {% include "partials/forms/text_field.html" with field=form.team_2_score %}
+          <div class="newgame-players">
+            {% for player in players %}
+              <a href="#" class="newgame-player" data-player="{{ player.id }}">
+                {% include "partials/player.html" with player=player player_class="team-player" %}
+              </a>
+            {% endfor %}
+          </div>
+          <div class="u-hidden">
+            <div class="l-columns l-columns--split">
+              <div class="l-col newgame-player--1">
+                {% include "partials/forms/select_field.html" with field=form.player_3 %}
+              </div>
+              <div class="l-col newgame-player--2">
+                {% include "partials/forms/select_field.html" with field=form.player_4 %}
+              </div>
+            </div>
+          </div>
+          <div class="l-columns l-columns--centeredSmall">
+            <div class="l-col">
+              {% include "partials/forms/text_field.html" with field=form.team_2_score field_class="field--score" %}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    {% include "partials/forms/checkbox_field.html" with field=form.completed %}
+
     <div class="newgame-action">
+      <div class="newgame-complete">
+        {% include "partials/forms/checkbox_field.html" with field=form.completed %}
+      </div>
       <input type='submit' class="btn" value='Create Game'/>
     </div>
   </form>
+{% endblock %}
+
+{% block extra_script %}
+  <script>
+    $(document).ready(function() {
+      $(document).on('click', '.newgame-player:not(.is-disabled)', function(e){
+        $(this).parents('.newgame-team').find('select').val('');
+        $(this).toggleClass('is-active');
+        var checked = $(this).parents('.newgame-players').find('.newgame-player.is-active').length;
+        if( checked >= 2 ){
+          $(this).parents('.newgame-players').find('.newgame-player:not(.is-active)').addClass('is-disabled');
+        }else{
+          $(this).parents('.newgame-players').find('.newgame-player:not(.is-active)').removeClass('is-disabled');
+        }
+
+        $(this).parents('.newgame-team').find('.newgame-player.is-active').each(function(i){
+          var select = i+1;
+          var team = $(this).parents('.newgame-team');
+          var player = $(this).data('player');
+          $(team).find('.newgame-player--'+ select +' select').val(player);
+        });
+
+        e.preventDefault();
+      });
+    });
+  </script>
 {% endblock %}

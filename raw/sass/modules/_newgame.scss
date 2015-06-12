@@ -1,30 +1,99 @@
 .newgame {
-  margin: 0 15%;
+  margin: 0;
+}
+
+.newgame-team {
   padding: 20px;
   border: 1px solid $c-standing-border;
   background: $c-standing-bg;
 }
 
 .newgame-team--red {
-  padding-right: 10px;
+  .newgame-heading {
+    background: $red;
+  }
 }
 
 .newgame-team--black {
-  padding-left: 10px;
+  .newgame-heading {
+    background: $black;
+  }
 }
 
 .newgame-heading {
   @extend .ms-2;
+  color: white;
+  text-align: center;
+  margin: -21px -21px 20px;
+  padding: 15px 20px 15px;
+}
+
+.newgame-players {
+  @include outer-container;
+  margin-bottom: 12px;
+}
+
+.newgame-player {
+  border: 1px solid $c-standing-border;
+  background: $c-standing-bg;
+  border-radius: 3px;
+  margin-bottom: 12px;
+  padding: 5px;
+  color: $base-type;
+  @include transition(0.25s);
+
+  &:hover {
+    color: $black;
+    border: 1px solid darken($c-standing-border, 10%);
+  }
+
+  &.is-active {
+    border: 1px solid $c-btn-border;
+    color: $c-btn-color;
+    background: $c-btn-bg;
+    border-radius: 3px;
+    box-shadow: inset 0 1px rgba($white, 0.25), 0 1px rgba($black, 0.15);
+    text-shadow: 0 1px rgba($black, 0.15);
+  }
+
+  &.is-disabled {
+    opacity: 0.5;
+  }
+}
+
+.newgame-complete {
+  margin-right: 30px;
+  display: inline-block;
 }
 
 .newgame-action {
-  margin: 10px 0 -20px;
-  padding: 15px 0;
-  border-top: 1px solid lighten($c-standing-border, 5%);
+  text-align: right;
+  margin: 0;
+  padding: 20px 0;
+}
+
+
+@include media($desktop) {
+  .newgame-player {
+    @include span-columns(4);
+    @include omega(3n);
+  }
+}
+
+@include media($tablet) {
+  .newgame-player {
+    @include span-columns(4);
+    @include omega(2n);
+  }
 }
 
 @include media($mobile) {
   .newgame {
     margin: 0;
+  }
+
+  .newgame-player {
+    @include span-columns(2);
+    @include omega(2n);
   }
 }
