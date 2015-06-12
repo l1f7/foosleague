@@ -1,4 +1,4 @@
-<div class="field {% if field.field.required %}field--required{% endif %} {% if field.errors %}field--error{% endif %}">
+<div class="field {{ field_class }} {% if field.field.required %}field--required{% endif %} {% if field.errors %}field--error{% endif %}">
   <label for="{{ field.id_for_label }}" class="field-label">
     <span>{{ field.label }}</span>
   </label>
