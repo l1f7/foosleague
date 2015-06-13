@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block nav-bookie %}is-active{% endblock %}
+
+{% block content %}
+  {% for league in object_list %}
+      {{league}}<br />
+  {% endfor %}
+{% endblock %}

@@ -3,10 +3,11 @@ from django.http.response import HttpResponseRedirect
 from django.conf import settings
 import re
 from leagues.models import League
+from players.models import Player
 subdomain_pattern = re.compile('(?P<subdomain>.*?)\..*?')
 
-class SubdomainMiddleware(object):
 
+class SubdomainMiddleware(object):
 
     def process_request(self, request):
         if settings.DEBUG:
@@ -18,7 +19,16 @@ class SubdomainMiddleware(object):
                 # for now
                 return HttpResponseRedirect('http://liftinteractive.foosleague.com/matches/')
             request.league = league
+            if request.user:
+                player = Player.objects.filter(user=request.user)
+                if player:
+                    request.player = player[0]
+
         else:
             request.league = None
+            if request.user:
+                player = Player.objects.filter(user=request.user)
+                if player:
+                    request.player = player[0]
         return
         # return request

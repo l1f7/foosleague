@@ -206,3 +206,4 @@ def regen_expose(match):
 
     for l in leaderboard:
         print player_lookup[l]
+

@@ -3,13 +3,13 @@ from django.http.response import Http404
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
-
+from mixins.views import LoginRequiredMixin
 from .models import Player
 from teams.models import Team
 from matches.models import Match
 from leagues.models import LeagueMember
 
-class PlayerListView(ListView):
+class PlayerListView(LoginRequiredMixin, ListView):
     model = Player
     template_name = "players/list.html"
 
@@ -19,12 +19,12 @@ class PlayerListView(ListView):
 
 
 
-class PlayerUpdateView(UpdateView):
+class PlayerUpdateView(LoginRequiredMixin, UpdateView):
     model = Player
     template_name = "players/update.html"
 
 
-class PlayerDetailView(DetailView):
+class PlayerDetailView(LoginRequiredMixin, DetailView):
     model = Player
     template_name = "players/detail.html"
 

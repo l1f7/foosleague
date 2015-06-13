@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse_lazy
+
 from django_extensions.db.models import TimeStampedModel
 from django_extensions.db.fields import AutoSlugField
 from players.models import Player
@@ -23,10 +25,15 @@ class League(TimeStampedModel):
     def __unicode__(self):
         return self.name
 
+    # TODO: FIX LATER.
+    def get_absolute_url(self):
+        return 'http://%s.foosleague.com' % (self.subdomain,)
+
 
 class LeagueMember(TimeStampedModel):
     league = models.ForeignKey(League, verbose_name=_("League"),)
     player = models.ForeignKey(Player, verbose_name=_("Player"))
+    admin = models.BooleanField(default=False,)
 
     class Meta:
         verbose_name = 'League Member'
@@ -34,7 +41,6 @@ class LeagueMember(TimeStampedModel):
 
     def __unicode__(self):
         return '%s (%s)' % (self.player, self.league,)
-
 
 
 # TODO:
