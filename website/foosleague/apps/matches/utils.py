@@ -2,11 +2,12 @@ from trueskill import rate, Rating, quality_1vs1
 from players.models import Player
 from math import sqrt
 from trueskill.backends import cdf
+from players.models import StatHistory
 
 
 def update_trueskill(match):
     winner = match.winner
-    print winner
+
     if match.team_1 == winner:
         loser = match.team_2
     else:
@@ -27,15 +28,28 @@ def update_trueskill(match):
     winner_ratings, loser_ratings = rate([winner_ratings, loser_ratings])
 
     for counter, p in enumerate(winners):
-        p.ts_mu = winner_ratings[counter].mu
-        p.ts_sigma = winner_ratings[counter].sigma
-        p.save()
+        # p.ts_mu = winner_ratings[counter].mu
+        # p.ts_sigma = winner_ratings[counter].sigma
+
+        sh, _ = StatHistory.objects.get_or_create(player=p,
+                                                  match=match,
+                                                  )
+        sh.season = match.season
+        sh.ts_mu = winner_ratings[counter].mu
+        sh.ts_sigma = winner_ratings[counter].sigma
+        sh.save()
+        # p.save()
 
     for counter, p in enumerate(losers):
-        p.ts_mu = loser_ratings[counter].mu
-        p.ts_sigma = loser_ratings[counter].sigma
-        p.save()
-
+        # p.ts_mu = loser_ratings[counter].mu
+        # p.ts_sigma = loser_ratings[counter].sigma
+        sh, _ = StatHistory.objects.get_or_create(player=p,
+                                                  match=match,
+                                                  )
+        sh.season = match.season
+        sh.ts_mu = loser_ratings[counter].mu
+        sh.ts_sigma = loser_ratings[counter].sigma
+        sh.save()
 
 def Pwin(rAlist=[Rating()],  rBlist=[Rating()]):
     deltaMu = sum([x.mu for x in rAlist]) - sum([x.mu for x in rBlist])
@@ -101,3 +115,61 @@ def recalc_trueskill():
 
     for m in matches:
         update_trueskill(m)
+
+
+def award_season_points(match):
+    team1_odds = winning_percentage(match, 1)
+    team2_odds = winning_percentage(match, 2)
+    base_points = match.league.base_match_points
+
+    base_points = match.league.base_match_points
+
+    if team1_odds > team2_odds:
+        normal_points = int(round(base_points * ((100 - team1_odds) / 100)))
+        upset_points = int(round(base_points * ((100-team2_odds) / 100)))
+    else:
+        normal_points = int(round(base_points * ((100 - team2_odds) / 100)))
+        upset_points = int(round(base_points * ((100-team1_odds) / 100)))
+
+    if match.winner == match.team_1:
+        # winner points
+        if team1_odds > team2_odds:
+            for p in match.team_1.players.all():
+                sh, _ = StatHistory.objects.get_or_create(player=p,
+                                           match=match)
+                sh.season_points = normal_points
+                sh.save()
+        else:
+            #upset!
+            for p in match.team_1.players.all():
+                sh, _ = StatHistory.objects.get_or_create(player=p,
+                                           match=match)
+                sh.season_points = upset_points
+                sh.save()
+
+        #loser points
+        for p in match.team_2.players.all():
+            sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
+            sh.season_points = -normal_points
+            sh.save()
+    else:
+        # winner points
+        if team2_odds > team1_odds:
+            for p in match.team_2.players.all():
+                sh, _ = StatHistory.objects.get_or_create(player=p,
+                                           match=match)
+                sh.season_points = normal_points
+                sh.save()
+        else:
+            #upset!
+            for p in match.team_2.players.all():
+                sh, _ = StatHistory.objects.get_or_create(player=p,
+                                           match=match)
+                sh.season_points = upset_points
+                sh.save()
+
+        #loser points
+        for p in match.team_1.players.all():
+            sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
+            sh.season_points = -normal_points
+            sh.save()

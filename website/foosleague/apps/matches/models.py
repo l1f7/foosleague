@@ -9,7 +9,7 @@ from teams.models import Team
 from seasons.models import Season
 from leagues.models import League
 # from players.models import Player
-from .utils import update_trueskill
+from .utils import update_trueskill, award_season_points
 from datetime import datetime
 
 
@@ -40,13 +40,7 @@ class Match(TimeStampedModel):
     def get_absolute_url(self):
         return reverse_lazy('match-detail', kwargs={'pk': self.id})
 
-    # def save(self):
-    #     # todo: update denorm-ed streak counter
-    #     pass
 
-    # def delete(self):
-    #     # todo: update denorm-ed streak counter
-    #     pass
     def get_winning_percentage(self, team=1):
         from .utils import winning_percentage
         if team == 1:
@@ -105,3 +99,4 @@ class Match(TimeStampedModel):
 
         # recalculate trueskill
         update_trueskill(self)
+        award_season_points(self)

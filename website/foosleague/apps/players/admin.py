@@ -1,6 +1,12 @@
 from django.contrib import admin
-from .models import Player
+from .models import Player, StatHistory
 
+class StatHistoryInline(admin.TabularInline):
+        '''
+            Tabular Inline View for StatHistory
+        '''
+        model = StatHistory
+        raw_id_fields = ('match',)
 
 # Register your models here.
 class PlayerAdmin(admin.ModelAdmin):
@@ -11,5 +17,6 @@ class PlayerAdmin(admin.ModelAdmin):
     list_display = ('nickname', 'user', 'ts_mu', 'ts_sigma')
     readonly_fields = ('created', 'modified',)
     search_fields = ['nickname', 'user', ]
+    inlines = [StatHistoryInline,]
 
 admin.site.register(Player, PlayerAdmin)
