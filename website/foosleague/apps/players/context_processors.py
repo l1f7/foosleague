@@ -26,7 +26,7 @@ def player(request):
             '7': matches.filter(created__gte=today - timedelta(days=7), created__lte=today).exclude(winner__in=teams).count(),
 
             '30': matches.filter(created__gte=today - timedelta(days=30), created__lte=today).exclude(winner__in=teams).count(),
-            'season': matches.filter(winner__in=teams, season=current_season).exclude(winner__in=teams).count()
+            'season': matches.filter(season=current_season).exclude(winner__in=teams).count()
         }
 
         # 7 day goal differential
