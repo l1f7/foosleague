@@ -70,4 +70,12 @@
   .team-streak {
     @extend .ms-1;
   }
+
+  .team-player {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }

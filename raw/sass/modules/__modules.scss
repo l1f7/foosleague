@@ -52,3 +52,17 @@
     @include font(20, 600, 1);
   }
 }
+
+.user {
+  padding: 20px;
+}
+
+.user-player {
+  border-bottom: 1px solid $c-nav-border;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.user-stats {
+  text-align: center;
+}

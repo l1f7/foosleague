@@ -1137,8 +1137,7 @@ body {
     display: none; } }
 
 .branding {
-  display: inline-block;
-  float: left; }
+  display: inline-block; }
 
 .branding--auth, .branding--tease {
   float: none; }
@@ -1929,6 +1928,10 @@ body {
   padding: 0; }
   .team--large .team-name {
     padding-bottom: 15px; }
+  .team--large .team-player {
+    margin-bottom: 10px; }
+    .team--large .team-player:last-child {
+      margin-bottom: 0; }
 
 .form-titlebar {
   padding: 10px 0 30px; }
@@ -2722,6 +2725,17 @@ body {
   font-size: 1.25rem;
   font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1; }
+
+.user {
+  padding: 20px; }
+
+.user-player {
+  border-bottom: 1px solid #f2f2f2;
+  margin-bottom: 20px;
+  padding-bottom: 20px; }
+
+.user-stats {
+  text-align: center; }
 
 .accessibility-dims {
   width: 48px;

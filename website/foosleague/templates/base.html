@@ -36,18 +36,6 @@
       <div class="l-topbar">
         <div class="l-container l-container--full">
           <h1 class="branding"><a href="{% url "matches" %}" class="branding-link">Foosleague</a></h1>
-          {% if request.user.is_authenticated %}
-          <div class="account">
-            <div class="account-avatar">
-              {% if player.photo %}
-                {% thumbnail player.photo "40x40" crop="center" as im %}
-                  <img src="{{ im.url }}"/>
-                {% endthumbnail %}
-              {% endif %}
-            </div>
-            <div class="account-name">{{ player }}</div>
-          </div>
-          {% endif %}
           <div class="nav-ham">
             <div class="ham js-openSide">
               <div class="ham-hamburger"></div>
@@ -88,6 +76,23 @@
       </div>
     </div>
     <div class="l-player">
+
+      <div class="user">
+        <div class="user-player">
+          {% include "partials/player.html" with player=player player_class="player--large" %}
+        </div>
+
+        <div class="user-stats">
+          <div class="stat">
+            <div class="stat-number">{{ player.wins }}</div>
+            <div class="stat-title">Wins</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">{{ player.loses }}</div>
+            <div class="stat-title">Losses</div>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
