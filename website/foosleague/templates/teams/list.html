@@ -8,7 +8,16 @@
     <div class="l-col">
       <div class="standings is-loading">
         {% for team in object_list %}
-          {% include "partials/team.html" with team=team %}
+          <a href="{{team.get_absolute_url}}" class="standing">
+            {% comment %}
+            <div class="standing-count standing-count--{{ forloop.counter }}">
+              <span>{{ forloop.counter }}</span>
+            </div>
+            {% endcomment %}
+            <div class="standing-team">
+              {% include "partials/team.html" with team=team %}
+            </div>
+          </a>
         {% endfor %}
       </div>
     </div>

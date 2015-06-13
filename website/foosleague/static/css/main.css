@@ -833,7 +833,8 @@ body {
   position: fixed;
   left: 0;
   top: 0;
-  right: 240px;
+  right: 0;
+  padding-right: 240px;
   text-align: center;
   height: 50px;
   display: block;
@@ -872,7 +873,8 @@ body {
   display: block;
   background: #ffffff;
   border-left: 1px solid #d9d9d9;
-  width: 240px; }
+  width: 240px;
+  z-index: 10; }
 
 .l-columns {
   width: 100%;
@@ -966,8 +968,16 @@ body {
   text-align: center; }
 
 @media screen and (min-width: 40em) and (max-width: 63.99em)  {
+  .l-topbar {
+    padding-right: 0; }
   .l-container {
     padding: 0 2em; }
+  .l-content {
+    margin-right: 0; }
+  .l-player {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%); }
   .l-columns--centered .l-col {
     float: left;
     display: block;
@@ -987,11 +997,18 @@ body {
 
 @media screen and (max-width: 39.99em)  {
   .l-topbar {
-    left: 0; }
+    left: 0;
+    padding-right: 0; }
   .l-header {
     margin-bottom: 1em; }
   .l-footer {
     margin-top: 1em; }
+  .l-content {
+    margin-right: 0; }
+  .l-player {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%); }
   .l-nav {
     z-index: 5; }
   .l-container {
@@ -1021,6 +1038,36 @@ body {
     margin-right: 7.42297%;
     width: 100%; }
     .l-columns--split .l-col:last-child {
+      margin-right: 0; }
+  .l-columns--sideright .l-col {
+    float: left;
+    display: block;
+    margin-right: 7.42297%;
+    width: 100%; }
+    .l-columns--sideright .l-col:last-child {
+      margin-right: 0; }
+  .l-columns--sideright .l-col--side {
+    float: left;
+    display: block;
+    margin-right: 7.42297%;
+    width: 100%; }
+    .l-columns--sideright .l-col--side:last-child {
+      margin-right: 0; }
+  .l-columns--sideleft .l-col {
+    float: left;
+    display: block;
+    margin-right: 7.42297%;
+    width: 100%;
+    margin-left: 0%; }
+    .l-columns--sideleft .l-col:last-child {
+      margin-right: 0; }
+  .l-columns--sideleft .l-col--side {
+    float: left;
+    display: block;
+    margin-right: 7.42297%;
+    width: 100%;
+    margin-left: 0%; }
+    .l-columns--sideleft .l-col--side:last-child {
       margin-right: 0; } }
 
 .l-auth {

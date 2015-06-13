@@ -15,8 +15,8 @@
     <h1 class="profile-name">{{ object }}</h1>
     <div class="profile-stats">
       <div class="stat">
-        <div class="stat-number">{{ ts_mu|floatformat:2 }}</div>
-        <div class="stat-title">Foos-skill</div>
+        <div class="stat-number">{{ ts_expose|floatformat:2 }}</div>
+        <div class="stat-title">Foos-rank</div>
       </div>
       <div class="stat">
         <div class="stat-number">{{wins}}</div>
@@ -39,7 +39,16 @@
     </div>
     <div class="l-col l-col--side">
       {% for team in teams %}
-        {% include "partials/team.html" with team=team %}
+        <a href="{{team.get_absolute_url}}" class="standing">
+          {% comment %}
+          <div class="standing-count standing-count--{{ forloop.counter }}">
+            <span>{{ forloop.counter }}</span>
+          </div>
+          {% endcomment %}
+          <div class="standing-team">
+            {% include "partials/team.html" with team=team team_class="team--small" %}
+          </div>
+        </a>
       {% endfor %}
     </div>
   </div>
