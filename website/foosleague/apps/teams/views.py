@@ -17,7 +17,7 @@ from .models import Team
 from .forms import TeamForm
 
 
-class TeamListView(ListView):
+class TeamListView(LoginRequiredMixin, ListView):
     model = Team
     template_name = "teams/list.html"
 
