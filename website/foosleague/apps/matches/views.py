@@ -27,6 +27,7 @@ from .forms import MatchForm
 class MatchListView(LoginRequiredMixin, ListView):
     model = Match
     template_name = "matches/list.html"
+    paginate_by = 5
 
     def get_queryset(self, *args, **kwargs):
         qs = super(MatchListView, self).get_queryset(*args, **kwargs)
