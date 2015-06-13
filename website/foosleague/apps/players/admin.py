@@ -6,6 +6,7 @@ class StatHistoryInline(admin.TabularInline):
             Tabular Inline View for StatHistory
         '''
         model = StatHistory
+        extra = 0
         raw_id_fields = ('match',)
 
 # Register your models here.
