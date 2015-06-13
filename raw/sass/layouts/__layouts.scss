@@ -46,7 +46,8 @@ body {
   position: fixed;
   left: 0;
   top: 0;
-  right: $player-width;
+  right: 0;
+  padding-right: $player-width;
   text-align: center;
   height: $topbar-height;
   display: block;
@@ -87,6 +88,7 @@ body {
   background: $c-topbar-bg;
   border-left: 1px solid $c-topbar-border;
   width: $player-width;
+  z-index: 10;
 }
 
 .l-columns {
@@ -160,8 +162,20 @@ body {
 }
 
 @include media($tablet) {
+  .l-topbar {
+    padding-right: 0;
+  }
+
   .l-container {
     padding: 0 2em;
+  }
+
+  .l-content {
+    margin-right: 0;
+  }
+
+  .l-player {
+    @include transform(translateX(100%));
   }
 
   .l-columns--centered {
@@ -177,11 +191,19 @@ body {
       @include shift(1.5);
     }
   }
+
+  .l-columns--score {
+    .l-col {
+      @include span-columns(4);
+      @include shift(2);
+    }
+  }
 }
 
 @include media($mobile) {
   .l-topbar {
     left: 0;
+    padding-right: 0;
   }
 
   .l-header {
@@ -190,6 +212,14 @@ body {
 
   .l-footer {
     margin-top: 1em;
+  }
+
+  .l-content {
+    margin-right: 0;
+  }
+
+  .l-player {
+    @include transform(translateX(100%));
   }
 
   .l-nav {
@@ -225,6 +255,35 @@ body {
   .l-columns--split {
     .l-col {
       @include span-columns(4);
+    }
+  }
+
+  .l-columns--sideright {
+    .l-col {
+      @include span-columns(4);
+    }
+
+    .l-col--side {
+      @include span-columns(4);
+    }
+  }
+
+  .l-columns--sideleft {
+    .l-col {
+      @include span-columns(4);
+      @include shift(0);
+    }
+
+    .l-col--side {
+      @include span-columns(4);
+      @include shift(0);
+    }
+  }
+
+  .l-columns--score {
+    .l-col {
+      @include span-columns(2);
+      @include shift(1);
     }
   }
 }
