@@ -191,6 +191,13 @@ body {
       @include shift(1.5);
     }
   }
+
+  .l-columns--score {
+    .l-col {
+      @include span-columns(4);
+      @include shift(2);
+    }
+  }
 }
 
 @include media($mobile) {
@@ -270,6 +277,13 @@ body {
     .l-col--side {
       @include span-columns(4);
       @include shift(0);
+    }
+  }
+
+  .l-columns--score {
+    .l-col {
+      @include span-columns(2);
+      @include shift(1);
     }
   }
 }

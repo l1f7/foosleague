@@ -993,6 +993,14 @@ body {
     width: 61.158%;
     margin-left: 19.421%; }
     .l-columns--centeredSmall .l-col:last-child {
+      margin-right: 0; }
+  .l-columns--score .l-col {
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 48.21067%;
+    margin-left: 25.89467%; }
+    .l-columns--score .l-col:last-child {
       margin-right: 0; } }
 
 @media screen and (max-width: 39.99em)  {
@@ -1068,6 +1076,14 @@ body {
     width: 100%;
     margin-left: 0%; }
     .l-columns--sideleft .l-col--side:last-child {
+      margin-right: 0; }
+  .l-columns--score .l-col {
+    float: left;
+    display: block;
+    margin-right: 7.42297%;
+    width: 46.28851%;
+    margin-left: 26.85574%; }
+    .l-columns--score .l-col:last-child {
       margin-right: 0; } }
 
 .l-auth {
