@@ -4,7 +4,6 @@ from math import sqrt
 from trueskill.backends import cdf
 
 
-
 def update_trueskill(match):
     winner = match.winner
     print winner
@@ -18,7 +17,6 @@ def update_trueskill(match):
 
     winner_ratings = []
     loser_ratings = []
-
 
     for w in winners:
         winner_ratings.append(Rating(w.ts_mu, w.ts_sigma))
@@ -38,15 +36,29 @@ def update_trueskill(match):
         p.ts_sigma = loser_ratings[counter].sigma
         p.save()
 
+
 def Pwin(rAlist=[Rating()],  rBlist=[Rating()]):
-    deltaMu = sum( [x.mu for x in rAlist])  - sum( [x.mu for x in  rBlist])
-    rsss = sqrt(sum( [x.sigma**2 for x in  rAlist]) + sum( [x.sigma**2 for x in rBlist]) )
-    return cdf(deltaMu/rsss)
+    deltaMu = sum([x.mu for x in rAlist]) - sum([x.mu for x in rBlist])
+    rsss = sqrt(sum([x.sigma**2 for x in rAlist]) + sum([x.sigma**2 for x in rBlist]))
+    return cdf(deltaMu / rsss)
+
+
+def winning_percentage(match, team):
+
+    team1 = []
+    team2 = []
+    for p in match.team_1.players.all():
+        team1.append(Rating(p.ts_mu, p.ts_sigma))
+    for p in match.team_2.players.all():
+        team2.append(Rating(p.ts_mu, p.ts_sigma))
+
+    if team == 1:
+        return round((Pwin(team1, team2) * 100), 2)
+    else:
+        return round((Pwin(team2, team1) * 100), 2)
+
 
 def calculate_odds():
-
-
-
 
     matches = Match.objects.all()
     right = 0
@@ -58,8 +70,8 @@ def calculate_odds():
             team1.append(Rating(p.ts_mu, p.ts_sigma))
         for p in m.team_2.players.all():
             team2.append(Rating(p.ts_mu, p.ts_sigma))
-        team1_wp = round((Pwin(team1, team2)*100), 2)
-        team2_wp = round((Pwin(team2, team1)*100), 2)
+        team1_wp = round((Pwin(team1, team2) * 100), 2)
+        team2_wp = round((Pwin(team2, team1) * 100), 2)
         print '%s (%s percent) - %s (%s precent) winner: %s' % (m.team_1, team1_wp, m.team_2, team2_wp, m.winner)
         if m.team_1 == m.winner:
             if team1_wp > team2_wp:
@@ -75,11 +87,10 @@ def calculate_odds():
     print 'Right: %s Wrong: %s' % (right, wrong,)
 
 
-
 def recalc_trueskill():
     from matches.models import Match
 
-    #reset players
+    # reset players
     players = Player.objects.all()
     for p in players:
         p.ts_mu = 25

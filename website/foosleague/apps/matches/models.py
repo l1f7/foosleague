@@ -47,6 +47,12 @@ class Match(TimeStampedModel):
     # def delete(self):
     #     # todo: update denorm-ed streak counter
     #     pass
+    def get_winning_percentage(self, team=1):
+        from .utils import winning_percentage
+        if team == 1:
+            return winning_percentage(self, self.team_1)
+        else:
+            return winning_percentage(self, self.team_2)
 
     def complete(self, request):
 
