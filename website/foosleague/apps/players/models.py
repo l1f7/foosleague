@@ -34,10 +34,7 @@ class Player(TimeStampedModel):
     def get_season_points(self, season=None):
         matches = StatHistory.objects.filter(player=self, season=season)
         points = matches.aggregate(points=Sum('season_points'))
-        try:
-            return points['points'] - matches.count()
-        except:
-            return points['points']
+        return points['points']
 
 
 class StatHistory(TimeStampedModel):
