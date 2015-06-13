@@ -3,7 +3,8 @@ from players.models import Player
 from math import sqrt
 from trueskill.backends import cdf
 from players.models import StatHistory
-
+from trueskill import TrueSkill
+from leagues.models import LeagueMember
 
 def update_trueskill(match):
     winner = match.winner
@@ -50,6 +51,7 @@ def update_trueskill(match):
         sh.ts_mu = loser_ratings[counter].mu
         sh.ts_sigma = loser_ratings[counter].sigma
         sh.save()
+
 
 def Pwin(rAlist=[Rating()],  rBlist=[Rating()]):
     deltaMu = sum([x.mu for x in rAlist]) - sum([x.mu for x in rBlist])
@@ -122,37 +124,32 @@ def award_season_points(match):
     team2_odds = winning_percentage(match, 2)
     base_points = match.league.base_match_points
 
-    base_points = match.league.base_match_points
-
     if team1_odds > team2_odds:
         normal_points = int(round(base_points * ((100 - team1_odds) / 100)))
-        upset_points = int(round(base_points * ((100-team2_odds) / 100)))
+        upset_points = int(round(base_points * ((100 - team2_odds) / 100)))
     else:
         normal_points = int(round(base_points * ((100 - team2_odds) / 100)))
-        upset_points = int(round(base_points * ((100-team1_odds) / 100)))
+        upset_points = int(round(base_points * ((100 - team1_odds) / 100)))
 
     if match.winner == match.team_1:
         # winner points
         if team1_odds > team2_odds:
             for p in match.team_1.players.all():
                 sh, _ = StatHistory.objects.get_or_create(player=p,
-                                           match=match)
+                                                          match=match)
                 sh.season_points = normal_points
                 sh.season = match.season
                 sh.save()
 
-
-
         else:
-            #upset!
+            # upset!
             for p in match.team_1.players.all():
                 sh, _ = StatHistory.objects.get_or_create(player=p,
-                                           match=match)
+                                                          match=match)
                 sh.season_points = upset_points
                 sh.season = match.season
 
                 sh.save()
-
 
         for p in match.team_2.players.all():
             sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
@@ -161,32 +158,51 @@ def award_season_points(match):
 
             sh.save()
 
-        #loser points
+        # loser points
 
     else:
         # winner points
         if team2_odds > team1_odds:
             for p in match.team_2.players.all():
                 sh, _ = StatHistory.objects.get_or_create(player=p,
-                                           match=match)
+                                                          match=match)
                 sh.season_points = normal_points
                 sh.season = match.season
 
                 sh.save()
         else:
-            #upset!
+            # upset!
             for p in match.team_2.players.all():
                 sh, _ = StatHistory.objects.get_or_create(player=p,
-                                           match=match)
+                                                          match=match)
                 sh.season_points = upset_points
                 sh.season = match.season
 
                 sh.save()
 
-        #loser points
+        # loser points
         for p in match.team_1.players.all():
             sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
             sh.season_points = -normal_points
             sh.season = match.season
 
             sh.save()
+
+
+def regen_expose(match):
+    env = TrueSkill(draw_probability=0)
+    ratings = []
+    players = Player.objects.filter(
+        id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
+    player_lookup = {}
+    for p in players:
+        rating = env.create_rating(p.ts_mu, p.ts_sigma)
+        p.ts_expose = env.expose(rating)
+        p.save()
+        ratings.append(rating)
+        player_lookup.update({rating: p})
+
+    leaderboard = sorted(ratings, key=env.expose, reverse=True)
+
+    for l in leaderboard:
+        print player_lookup[l]

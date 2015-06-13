@@ -12,7 +12,7 @@ class Player(TimeStampedModel):
 
     ts_mu = models.FloatField(_("TrueSkill"), default=25, help_text = 'higher the better')
     ts_sigma = models.FloatField(_("TrueSkill Sigma"), default=8.333, help_text='basically an indicator of accuracy')
-
+    ts_expose = models.FloatField(_("TrueSkill Expose"), default=0, help_text="Gets regenerated after ever match")
     photo = models.ImageField(_("Photo"), upload_to='players', blank=True, max_length=400, default="")
     slack_username = models.CharField(
         _("Slack Username"), blank=True, max_length=100, help_text="This will be used for any slack integrations", default="")
