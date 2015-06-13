@@ -32,8 +32,9 @@ class Player(TimeStampedModel):
         return reverse_lazy('player-detail', kwargs={'pk': self.id})
 
     def get_season_points(self, season=None):
-        points = StatHistory.objects.filter(player=self, season=season).aggregate(points=Sum('season_points'))
-        return points['points']
+        matches = StatHistory.objects.filter(player=self, season=season)
+        points = matches.aggregate(points=Sum('season_points'))
+        return points['points'] - matches.count()
 
 
 class StatHistory(TimeStampedModel):
