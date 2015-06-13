@@ -833,12 +833,13 @@ body {
   position: fixed;
   left: 0;
   top: 0;
-  right: 0;
+  right: 240px;
   text-align: center;
   height: 50px;
   display: block;
   background: #ffffff;
   border-bottom: 1px solid #d9d9d9;
+  border-right: 1px solid #ffffff;
   z-index: 10; }
 
 .l-header {
@@ -859,6 +860,19 @@ body {
 
 .l-container--full {
   max-width: 100%; }
+
+.l-content {
+  margin-right: 240px; }
+
+.l-player {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  background: #ffffff;
+  border-left: 1px solid #d9d9d9;
+  width: 240px; }
 
 .l-columns {
   width: 100%;

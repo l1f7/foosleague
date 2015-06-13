@@ -32,57 +32,63 @@
 </head>
 <body>
   <div data-template="undefined" class="l-site">
-    <div class="l-topbar">
-      <div class="l-container l-container--full">
-        <h1 class="branding"><a href="{% url "matches" %}" class="branding-link">Foosleague</a></h1>
-        {% if request.user.is_authenticated %}
-        <div class="account">
-          <div class="account-avatar">
-            {% if request.user.player.photo %}
-              {% thumbnail request.user.player.photo "40x40" crop="center" as im %}
-                <img src="{{ im.url }}"/>
-              {% endthumbnail %}
-            {% endif %}
+    <div class="l-content">
+      <div class="l-topbar">
+        <div class="l-container l-container--full">
+          <h1 class="branding"><a href="{% url "matches" %}" class="branding-link">Foosleague</a></h1>
+          {% if request.user.is_authenticated %}
+          <div class="account">
+            <div class="account-avatar">
+              {% if player.photo %}
+                {% thumbnail player.photo "40x40" crop="center" as im %}
+                  <img src="{{ im.url }}"/>
+                {% endthumbnail %}
+              {% endif %}
+            </div>
+            <div class="account-name">{{ player }}</div>
           </div>
-          <div class="account-name">{{ request.user.player }}</div>
-        </div>
-        {% endif %}
-        <div class="nav-ham">
-          <div class="ham js-openSide">
-            <div class="ham-hamburger"></div>
+          {% endif %}
+          <div class="nav-ham">
+            <div class="ham js-openSide">
+              <div class="ham-hamburger"></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="l-header">
-      <div class="l-container">
-        <section class="league">
-          <div class="league-logo"><img src="https://pbs.twimg.com/profile_images/431497486138499072/oVCFk5Qt.png" class="league-img"/></div>
-          <h1 class="league-name">{{request.league}}</h1>
-          <p class="league-season">{% if season %}{{season}}{% else %}Off Season{% endif %}</p>
-        </section>
-      </div>
-      <nav class="nav">
+
+      <div class="l-header">
         <div class="l-container">
-          <div class="nav-menu">
-            <div class="nav-item {% block nav-dashboard %}{% endblock %}"><a href="{% url "matches" %}" class="nav-link">Matches</a></div>
-            <div class="nav-item {% block nav-players %}{% endblock %}"><a href="{% url "players" %}" class="nav-link">Players</a></div>
-            <div class="nav-item {% block nav-teams %}{% endblock %}"><a href="{% url "teams" %}" class="nav-link">Teams</a></div>
-            {% comment %}
-              <div class="nav-item {% block nav-bookie %}{% endblock %}"><a href="{% url "bets" %}" class="nav-link">Bookie</a></div>
-            {% endcomment %}
-            <div class="nav-item is-right"><a href="{% url "match-create" %}" class="nav-btn btn btn--small btn--full">Start A Game</a></div>
-          </div>
+          <section class="league">
+            <div class="league-logo"><img src="https://pbs.twimg.com/profile_images/431497486138499072/oVCFk5Qt.png" class="league-img"/></div>
+            <h1 class="league-name">{{ request.league }}</h1>
+            <p class="league-season">{% if season %}{{season}}{% else %}Off Season{% endif %}</p>
+          </section>
         </div>
-      </nav>
-    </div>
-    <div class="l-container">
-      <div class="l-page">
-        {% block content %}{% endblock %}
+        <nav class="nav">
+          <div class="l-container">
+            <div class="nav-menu">
+              <div class="nav-item {% block nav-dashboard %}{% endblock %}"><a href="{% url "matches" %}" class="nav-link">Matches</a></div>
+              <div class="nav-item {% block nav-players %}{% endblock %}"><a href="{% url "players" %}" class="nav-link">Players</a></div>
+              <div class="nav-item {% block nav-teams %}{% endblock %}"><a href="{% url "teams" %}" class="nav-link">Teams</a></div>
+              {% comment %}
+                <div class="nav-item {% block nav-bookie %}{% endblock %}"><a href="{% url "bets" %}" class="nav-link">Bookie</a></div>
+              {% endcomment %}
+              <div class="nav-item is-right"><a href="{% url "match-create" %}" class="nav-btn btn btn--small btn--full">Start A Game</a></div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="l-container">
+        <div class="l-page">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+      <div class="l-footer">
+        <p class="footer-text">Made with <span class="footer-heart">&#10084</span></p>
       </div>
     </div>
-    <div class="l-footer">
-      <p class="footer-text">Made with <span class="footer-heart">&#10084</span></p>
+    <div class="l-player">
+
     </div>
   </div>
   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
