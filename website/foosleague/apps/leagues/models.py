@@ -14,6 +14,8 @@ class League(TimeStampedModel):
     slack_channel = models.CharField(
         _("Slack Channel"), max_length=50, default="", blank=True, help_text='Slack channel you would like foosleague to broadcast to.')
 
+    base_match_points = models.IntegerField(default=25, help_text='Base match points to be used to calculate leaderboards')
+
     class Meta:
         verbose_name = 'League'
         verbose_name_plural = 'Leagues'
