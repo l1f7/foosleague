@@ -4,7 +4,7 @@
   <div class="player-avatar">
     {% if player.photo %}
       {% thumbnail player.photo "80x80" crop="center" as im %}
-        <img src="http://orig07.deviantart.net/eff7/f/2013/135/d/c/cat_with_space_glasses_by_frzhdzn-d65dw14.jpg" class="player-img"/>
+        <img src="{{ im.url }}" class="player-img"/>
       {% endthumbnail %}
     {% endif %}
   </div>
