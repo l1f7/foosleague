@@ -15,7 +15,7 @@
     <h1 class="profile-name">{{ object }}</h1>
     <div class="profile-stats">
       <div class="stat">
-        <div class="stat-number">{{ player.ts_mu|floatformat:2 }}</div>
+        <div class="stat-number">{{ ts_mu|floatformat:2 }}</div>
         <div class="stat-title">Foos-skill</div>
       </div>
       <div class="stat">
@@ -38,6 +38,9 @@
       </div>
     </div>
     <div class="l-col l-col--side">
+      {% for team in teams %}
+        {% include "partials/team.html" with team=team %}
+      {% endfor %}
     </div>
   </div>
 {% endblock %}

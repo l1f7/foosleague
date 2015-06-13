@@ -5,6 +5,7 @@
 $site-width: 1800px;
 $nav-width: 200px;
 $topbar-height: 50px;
+$player-width: 240px;
 
 body {
   background: $c-site-bg;
@@ -45,12 +46,13 @@ body {
   position: fixed;
   left: 0;
   top: 0;
-  right: 0;
+  right: $player-width;
   text-align: center;
   height: $topbar-height;
   display: block;
   background: $c-topbar-bg;
   border-bottom: 1px solid $c-topbar-border;
+  border-right: 1px solid $white;
   z-index: 10;
 }
 
@@ -70,6 +72,21 @@ body {
 
 .l-container--full {
   max-width: 100%;
+}
+
+.l-content {
+  margin-right: $player-width;
+}
+
+.l-player {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  background: $c-topbar-bg;
+  border-left: 1px solid $c-topbar-border;
+  width: $player-width;
 }
 
 .l-columns {
