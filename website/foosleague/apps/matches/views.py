@@ -139,7 +139,7 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
             team_2.players.add(p4)
             team_2.save()
 
-        seasons = Season.objects.filter(start__gte=date, end__lte=date)
+        seasons = Season.objects.filter(start__gte=date, end__gte=date)
         season = None
         if seasons.count():
             season = seasons[0]

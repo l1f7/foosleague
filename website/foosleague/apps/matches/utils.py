@@ -141,12 +141,8 @@ def award_season_points(match):
                 sh.season = match.season
                 sh.save()
 
-            for p in match.team_2.players.all():
-                sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
-                sh.season_points = -normal_points
-                sh.season = match.season
 
-                sh.save()
+
         else:
             #upset!
             for p in match.team_1.players.all():
@@ -156,6 +152,14 @@ def award_season_points(match):
                 sh.season = match.season
 
                 sh.save()
+
+
+        for p in match.team_2.players.all():
+            sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
+            sh.season_points = -normal_points
+            sh.season = match.season
+
+            sh.save()
 
         #loser points
 
