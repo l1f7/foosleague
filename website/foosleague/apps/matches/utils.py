@@ -3,7 +3,7 @@ from trueskill import rate, Rating, quality_1vs1
 from players.models import Player
 from math import sqrt
 from trueskill.backends import cdf
-from players.models import StatHistory
+from players.models import StatHistory, ExposeHistory
 from trueskill import TrueSkill
 from leagues.models import LeagueMember
 
@@ -240,17 +240,17 @@ def catch_up(match):
 
     env = TrueSkill(draw_probability=0)
     ratings = []
+
     players = Player.objects.filter(
         id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
     player_lookup = {}
     for p in players:
 
-        rating = env.create_rating(p.current_mu, p.current_sigma)
-
-        sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
-
+        rating = env.create_rating(p.ts_mu, p.ts_sigma)
+        sh, _ = ExposeHistory.objects.get_or_create(player=p, match=match)
         sh.ts_expose = env.expose(rating)
         sh.save()
+
         p.ts_expose = env.expose(rating)
         p.save()
         ratings.append(rating)
@@ -262,16 +262,17 @@ def catch_up(match):
 def regen_expose(match):
     env = TrueSkill(draw_probability=0)
     ratings = []
+
     players = Player.objects.filter(
         id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
     player_lookup = {}
     for p in players:
 
         rating = env.create_rating(p.ts_mu, p.ts_sigma)
-        # sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
+        sh, _ = ExposeHistory.objects.get_or_create(player=p, match=match)
+        sh.ts_expose = env.expose(rating)
+        sh.save()
 
-        # sh.ts_expose = env.expose(rating)
-        # sh.save()
         p.ts_expose = env.expose(rating)
         p.save()
         ratings.append(rating)

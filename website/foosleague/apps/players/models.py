@@ -164,3 +164,12 @@ class StatHistory(TimeStampedModel):
 
     def __unicode__(self):
         return '%s' % (self.created)
+
+
+class ExposeHistory(TimeStampedModel):
+    match = models.ForeignKey('matches.Match')
+    expose = models.FloatField(_("TrueSkill Expose"), default=0, help_text="leaderboard")
+    player = models.ForeignKey('players.Player')
+
+    def __unicode__(self):
+        return '%s' % (self.match)
