@@ -9,7 +9,7 @@ from teams.models import Team
 from seasons.models import Season
 from leagues.models import League
 # from players.models import Player
-from .utils import update_trueskill, award_season_points, regen_expose
+from .utils import update_trueskill, award_season_points, regen_expose, award_fooscoin
 from datetime import datetime
 
 
@@ -99,5 +99,6 @@ class Match(TimeStampedModel):
 
         # recalculate trueskill
         update_trueskill(self)
+        award_fooscoin(self)
         #award_season_points(self)
         regen_expose(self)

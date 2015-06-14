@@ -16,8 +16,9 @@ class League(TimeStampedModel):
     slack_channel = models.CharField(
         _("Slack Channel"), max_length=50, default="", blank=True, help_text='Slack channel you would like foosleague to broadcast to.')
 
-    fooscoin_match_win = models.FloatField(_("Fooscoin earned per win"), default=10)
-    fooscoin_earn_loss = models.FloatField(_("Fooscoin earned per loss"), default=0)
+    fooscoin_start = models.FloatField(_("Fooscoin Starting Value"), default=200, help_text='The amount of fooscoin players start with')
+    fooscoin_for_win = models.FloatField(_("Fooscoin earned per win"), default=10)
+    fooscoin_for_loss = models.FloatField(_("Fooscoin earned per loss"), default=0)
 
     base_match_points = models.IntegerField(default=25, help_text='Base match points to be used to calculate leaderboards')
 

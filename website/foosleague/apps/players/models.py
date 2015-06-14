@@ -42,8 +42,12 @@ class StatHistory(TimeStampedModel):
     match = models.ForeignKey('matches.Match', blank=True, null=True)
     ts_mu = models.FloatField(_("TrueSkill"), default=25, help_text = 'higher the better')
     ts_sigma= models.FloatField(_("TrueSKill"), default=8.3333, help_text="Basically an indicator of accuracy")
+
     season = models.ForeignKey('seasons.Season', blank=True, null=True)
     season_points = models.IntegerField(_("Season Points"), blank=True, null=True)
+
+    fooscoin = models.FloatField(_("Fooscoin"), blank=True, null=True)
+
     notes = models.TextField(_("Notes"), default="")
 
     class Meta:

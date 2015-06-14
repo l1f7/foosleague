@@ -207,3 +207,21 @@ def regen_expose(match):
     for l in leaderboard:
         print player_lookup[l]
 
+
+def award_fooscoin(self):
+
+    winners = self.winner.players.all()
+    if self.winner == self.team_1:
+        losers = self.team_2.players.all()
+    else:
+        losers = self.team_1.players.all()
+
+    for player in winners:
+        sh, _ = StatHistory.objects.get_or_create(player=player, match=self)
+        sh.fooscoin = self.league.fooscoin_for_win
+        sh.save()
+
+    for player in losers:
+        sh, _ = StatHistory.objects.get_or_create(player=player, match=self)
+        sh.fooscoin = self.league.fooscoin_for_loss
+        sh.save()
