@@ -7,6 +7,8 @@ from players.models import StatHistory
 from trueskill import TrueSkill
 from leagues.models import LeagueMember
 
+from datetime import datetime
+
 def update_trueskill(match):
     winner = match.winner
 
