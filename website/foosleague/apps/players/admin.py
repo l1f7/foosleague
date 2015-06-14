@@ -11,12 +11,12 @@ class StatHistoryInline(admin.TabularInline):
         raw_id_fields = ('match',)
 
 class ExposeHistoryInline(admin.TabularInline):
-        '''
-            Tabular Inline View for ExposeHistory
-        '''
-      model = ExposeHistory
-      extra = 0
-      raw_id_fields = ('match',)
+    '''
+        Tabular Inline View for ExposeHistory
+    '''
+    model = ExposeHistory
+    extra = 0
+    raw_id_fields = ('match',)
 
 # Register your models here.
 class PlayerAdmin(admin.ModelAdmin):
