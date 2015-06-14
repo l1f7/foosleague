@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.db.models import Sum, Q
 from django.db.models.loading import get_model
 
+from .utils import calc_wins, calc_loses, calc_goal_differential, calc_color_preference, calc_stats
+
 
 class Player(TimeStampedModel):
     user = models.ForeignKey(User)
@@ -139,6 +141,59 @@ class Player(TimeStampedModel):
     @property
     def worst_losing_streak_date(self):
         return self.streaks['worst_losing_streak_date']
+
+    @property
+    def wins_7(self):
+        return calc_wins(self, 7)
+
+    @property
+    def wins_30(self):
+        return calc_wins(self, 30)
+
+    @property
+    def wins_season(self):
+        return calc_wins(self, season=True)
+    @property
+    def loses_7(self):
+        return calc_loses(self, 7)
+
+    @property
+    def loses_30(self):
+        return calc_loses(self, 30)
+
+    @property
+    def loses_season(self):
+        return calc_loses(self, season=True)
+
+    @property
+    def goals_for_7(self):
+        return calc_goal_differential(self, 7, 'for')
+    @property
+    def goals_for_30(self):
+        return calc_goal_differential(self, 30, 'for')
+    @property
+    def rgoals_for_season(self):
+        return calc_goal_differential(self, direction='for', season=True)
+
+    @property
+    def goals_against_7(self):
+        return calc_goal_differential(self, 7, 'against')
+    @property
+    def goals_against_30(self):
+        return calc_goal_differential(self, 30, 'against')
+    @property
+    def goals_against_season(self):
+        return calc_goal_differential(self, direction='against', season=True)
+
+    _stats = ""
+    @property
+    def stats(self):
+        if not self._stats:
+            self._stats = calc_stats(self)
+
+        return self._stats
+
+
 
 
 class StatHistory(TimeStampedModel):
