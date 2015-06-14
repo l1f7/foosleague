@@ -92,12 +92,12 @@ def player(request):
 
         color_stats = {
             'red': {
-                'favoured': round((red_wins/red_plays)*100, 2),
-                'winning_percentage': round((red_plays/(red_plays+black_plays))*100, 2)
+                'favoured': round((red_wins/red_plays)*100, 0),
+                'winning_percentage': round((red_plays/(red_plays+black_plays))*100, 0)
             },
             'black': {
-                'favoured': round((black_wins/black_plays)*100, 2),
-                'winning_percentage': round((black_plays/(red_plays+black_plays))*100, 2)
+                'favoured': round((black_wins/black_plays)*100, 0),
+                'winning_percentage': round((black_plays/(red_plays+black_plays))*100, 0)
             }
         }
 
