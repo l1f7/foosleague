@@ -211,10 +211,6 @@ def regen_expose(match):
 
     leaderboard = sorted(ratings, key=env.expose, reverse=True)
 
-    for l in leaderboard:
-        print player_lookup[l]
-
-
 def award_fooscoin(self):
 
     winners = self.winner.players.all()
