@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Player, StatHistory, ExposeHistory
-ExposeHistory
+
 
 class StatHistoryInline(admin.TabularInline):
         '''
