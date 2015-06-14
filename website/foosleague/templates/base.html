@@ -79,7 +79,6 @@
           <div class="user-player">
             {% include "partials/player.html" with player=player player_class="player--larger" %}
           </div>
-
           <div class="user-stats">
             <h1 class="stat-heading">Rank</h1>
 
@@ -183,7 +182,36 @@
               </div>
             </div>
           </div>
+          <div class="user-stats">
+            <h1 class="stat-heading">Color Stats</h1>
+            <div class="stat-tabs">
+              <a href="#" class="stat-tab js-tab" data-tab="#stats-colorstats-red">red</a>
+              <a href="#" class="stat-tab js-tab" data-tab="#stats-colorstats-black">black</a>
+            </div>
 
+            <div id="stats-colorstats-red" class="stat-group js-tabContent stat--light">
+              <div class="stat">
+                <div class="stat-number">{{ stats.color_stats.red.favoured }}</div>
+                <div class="stat-title">Of Games</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">{{ stats.color_stats.red.winning_percentage }}</div>
+                <div class="stat-title">Games Won</div>
+              </div>
+            </div>
+
+            <div id="stats-colorstats-black" class="stat-group js-tabContent stat--light">
+              <div class="stat">
+                <div class="stat-number">{{ stats.color_stats.black.favoured }}</div>
+                <div class="stat-title">Of Games</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">{{ stats.color_stats.black.winning_percentage }}</div>
+                <div class="stat-title">Games Won</div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
