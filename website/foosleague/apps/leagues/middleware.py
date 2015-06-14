@@ -26,7 +26,7 @@ class SubdomainMiddleware(object):
             # for now
             return HttpResponseRedirect('http://liftinteractive.foosleague.com/matches/')
 
-        if request.user:
+        if request.user.is_authenticated():
             #make sure user is apart of league
             player = Player.objects.get(user=request.user)
             if player:
