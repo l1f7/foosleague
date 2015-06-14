@@ -104,6 +104,56 @@
         </div>
 
         <div class="profile-stats">
+          <h1 class="stat-heading">Streaks</h1>
+
+          <div class="stat-group is-active">
+            <div class="stat">
+              {% if object.win_streak > 0 %}
+                <div class="stat-number">{{ object.win_streak }} Game</div>
+                <div class="stat-title">Wining Streak</div>
+              {% else %}
+                <div class="stat-number">{{ object.losing_streak }} Game</div>
+                <div class="stat-title">Losing Streak</div>
+              {% endif %}
+            </div>
+            <div class="u-clear"></div>
+            <div class="stat stat--small">
+              {% if object.win_streak > 0 %}
+                <div class="stat-title">Not Lost Since</div>
+                <div class="stat-number">{{ object.not_lost_since|date:"D d M Y" }}</div>
+              {% else %}
+                <div class="stat-title">Not Won Since</div>
+                <div class="stat-number">{{ object.not_won_since|date:"D d M Y" }}</div>
+              {% endif %}
+            </div>
+          </div>
+          <hr class="hr--dark"/>
+          <div class="stat-group is-active">
+            <div class="stat">
+                <div class="stat-title">Best Win Streak</div>
+                <div class="stat-number">{{ object.best_win_streak }} Games</div>
+            </div>
+            <div class="u-clear"></div>
+            <div class="stat stat--small">
+                <div class="stat-title">Best Win Streak Date</div>
+                <div class="stat-number">{{ object.best_win_streak_date|date:"D d M Y" }}</div>
+            </div>
+          </div>
+          <hr class="hr--dark"/>
+          <div class="stat-group is-active">
+            <div class="stat">
+                <div class="stat-title">Worst Losing Streak</div>
+                <div class="stat-number">{{ object.worst_losing_streak }} Games</div>
+            </div>
+            <div class="u-clear"></div>
+            <div class="stat stat--small">
+                <div class="stat-title">Worst Losing Streak Date</div>
+                <div class="stat-number">{{ object.worst_losing_streak_date|date:"D d M Y" }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-stats">
           <h1 class="stat-heading">Goal Diff</h1>
           <div class="stat-tabs">
             <a href="#" class="stat-tab js-tab" data-tab="#stats-detail-goaldifferential-7">7</a>

@@ -79,6 +79,17 @@ h1 {
   margin-top: 0;
 }
 
+hr {
+  border: none;
+  margin: 20px 30%;
+  padding: 0;
+  border-top: 1px solid rgba($white,0.2);
+
+  &.hr--dark {
+    border-top: 1px solid rgba($black,0.2);
+  }
+}
+
 p {
   margin-bottom: $base-spacing*2.5;
 }
