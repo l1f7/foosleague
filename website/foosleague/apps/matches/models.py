@@ -69,14 +69,10 @@ class Match(TimeStampedModel):
 
 
         # calculate streaks
-        print 1
         broadcast_message(self, winning_score, losing_score, loser, request)
-        print 2
         recalculate_streaks(self)
-        print 3
         # recalculate trueskill
         update_trueskill(self)
-        print 4
         award_fooscoin(self)
         #award_season_points(self)
         regen_expose(self)

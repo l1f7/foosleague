@@ -3,7 +3,9 @@ from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.models import User
-from django.db.models import Sum
+from django.db.models import Sum, Q
+from django.db.models.loading import get_model
+
 
 
 class Player(TimeStampedModel):
@@ -36,12 +38,54 @@ class Player(TimeStampedModel):
         points = matches.aggregate(points=Sum('season_points'))
         return points['points']
 
+    @property
+    def current_mu(self):
+        return self.stathistory_set.all()[0].ts_mu
+
+    @property
+    def current_sigma(self):
+        return self.stathistory_set.all()[0].ts_sigma
+
+    @property
+    def current_expose(self):
+        return self.stathistory_set.all()[0].ts_expose
+
+    @property
+    def current_fooscoin(self):
+        return self.stathistory_set.all().aggregate(fooscoin=Sum('fooscoin'))['fooscoin']
+
+    _teams = ""
+    @property
+    def teams(self):
+        if not self._teams:
+            self._teams = get_model('teams.Team').objects.filter(players=self)
+
+        return self._teams
+
+    _matches = ""
+    @property
+    def matches(self):
+        if not self._matches:
+            self._matches = get_model('matches.Match').objects.filter(Q(team_1=self.teams) | Q(team_2=self.teams))
+
+        return self._matches
+
+    _streaks = ""
+    @property
+    def streaks(self):
+        if not self._streaks:
+            from .utils import get_streaks
+            self._streaks = get_streaks(self)
+        return self._streaks
+
 
 class StatHistory(TimeStampedModel):
     player = models.ForeignKey(Player)
     match = models.ForeignKey('matches.Match', blank=True, null=True)
+
     ts_mu = models.FloatField(_("TrueSkill"), default=25, help_text = 'higher the better')
-    ts_sigma= models.FloatField(_("TrueSKill"), default=8.3333, help_text="Basically an indicator of accuracy")
+    ts_sigma= models.FloatField(_("TrueSkill Sigma"), default=8.3333, help_text="Basically an indicator of accuracy")
+    ts_expose = models.FloatField(_("TrueSkill Expose"), default=0, help_text="Leaderboard")
 
     season = models.ForeignKey('seasons.Season', blank=True, null=True)
     season_points = models.IntegerField(_("Season Points"), blank=True, null=True)
