@@ -55,7 +55,10 @@ class Player(TimeStampedModel):
 
     @property
     def current_expose(self):
-        return self.stathistory_set.exclude(ts_expose=0)[0].ts_expose
+        try:
+            return self.stathistory_set.exclude(ts_expose=0)[0].ts_expose
+        except:
+            return 0
 
     @property
     def current_fooscoin(self):

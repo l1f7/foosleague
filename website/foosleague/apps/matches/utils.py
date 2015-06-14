@@ -237,7 +237,6 @@ def catch_up(match):
         sh.save()
 
 
-    env = TrueSkill(draw_probability=0)
     ratings = []
     players = Player.objects.filter(
         id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
