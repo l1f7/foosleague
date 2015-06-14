@@ -16,10 +16,10 @@ class SubdomainMiddleware(object):
 
         if subdomain != 'foosleague' and subdomain != 'www':
             league = get_object_or_404(League.objects.filter(subdomain=subdomain))
-            try:
-                lm = LeagueMember.objects.get(league=league)
-            except:
-                return HttpResponseRedirect('http://foosleague.com/tease/')
+            # try:
+            #     lm = LeagueMember.objects.get(league=league)
+            # except:
+            #     return HttpResponseRedirect('http://foosleague.com/tease/')
 
 
         else:
