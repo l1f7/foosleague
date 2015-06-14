@@ -41,11 +41,17 @@ class Player(TimeStampedModel):
 
     @property
     def current_mu(self):
-        return self.stathistory_set.all()[0].ts_mu
+        try:
+            return self.stathistory_set.all().order_by('created')[0].ts_mu
+        except:
+            return 25
 
     @property
     def current_sigma(self):
-        return self.stathistory_set.all()[0].ts_sigma
+        try:
+            return self.stathistory_set.all().order_by('created')[0].ts_sigma
+        except:
+            return 8.3333333333
 
     @property
     def current_expose(self):
