@@ -4,6 +4,7 @@
   <form action ='' method='post' class="newgame">
     <div class="l-columns l-columns--split">
       {% include "partials/forms/error_field.html" %}
+      {{form.errors}}
       {% csrf_token %}
       <div class="l-col">
         <div class="newgame-team newgame-team--red">

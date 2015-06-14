@@ -150,6 +150,7 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
                       completed=form.cleaned_data['completed'], season=season, league=self.request.league)
 
         if form.cleaned_data['completed']:
+            print 'here'
             match.complete(self.request)
         else:
             # post to slack!

@@ -1,3 +1,4 @@
+import requests
 from trueskill import rate, Rating, quality_1vs1
 from players.models import Player
 from math import sqrt
@@ -225,3 +226,36 @@ def award_fooscoin(self):
         sh, _ = StatHistory.objects.get_or_create(player=player, match=self)
         sh.fooscoin = self.league.fooscoin_for_loss
         sh.save()
+
+
+def recalculate_streaks(self):
+    if self.winner == self.team_1:
+        self.team_2.streak = 0
+        self.team_1.streak += 1
+        self.team_1.save()
+        if self.team_1.streak > self.team_1.best_streak:
+            self.team_1.best_streak = self.team_1.streak
+            self.team_1.best_streak_date = datetime.now()
+
+    else:
+        self.team_1.streak = 0
+        self.team_2.streak += 1
+
+        if self.team_2.streak > self.team_2.best_streak:
+            self.team_2.best_streak = self.team_2.streak
+            self.team_2.best_streak_date = datetime.now()
+
+    self.team_1.save()
+    self.team_2.save()
+    self.save()
+
+def broadcast_message(self, winning_score, losing_score, loser, request):
+    if self.team_2_score == 0 or self.team_1_score == 0:
+        message = ":skunk: :skunk: :skunk: *%s* _(%s)_ vs *%s* _(%s)_ :skunk: :skunk: :skunk: (http://%s.foosleague.com%s)" % (self.winner,
+                                                                                                                               winning_score, loser, losing_score, request.league.subdomain, self.get_absolute_url())
+    else:
+        message = "Game Over! *%s* _(%s)_ vs *%s* _(%s)_ (http://%s.foosleague.com%s)" % (self.winner,
+                                                                                          winning_score, loser,  losing_score, request.league.subdomain, self.get_absolute_url())
+
+    requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (request.league.slack_token, "%23" + request.league.slack_channel,),
+                  data=message)
