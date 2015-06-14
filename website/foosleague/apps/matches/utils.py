@@ -9,6 +9,7 @@ from leagues.models import LeagueMember
 
 from datetime import datetime
 
+
 def update_trueskill(match):
     winner = match.winner
 
@@ -199,7 +200,7 @@ def regen_expose(match):
         id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
     player_lookup = {}
     for p in players:
-        rating = env.create_rating(p.ts_mu, p.ts_sigma)
+        rating = env.create_rating(p.current_mu, p.current_sigma)
         sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
         sh.ts_expose = env.expose(rating)
         sh.save()
