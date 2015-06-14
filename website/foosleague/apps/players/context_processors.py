@@ -85,19 +85,19 @@ def player(request):
         }
 
         #which team you've won the most with
-        red_plays = matches.filter(team_1__in=teams)
-        red_wins = red_plays.filter(winner__in=teams)
-        black_plays = matches.filter(team_2__in=teams)
-        black_wins = black_plays.filter(winner__in=teams) # black
+        red_plays = float(matches.filter(team_1=teams).count())
+        red_wins = float(matches.filter(winner=teams, team_1=teams).count())
+        black_plays = float(matches.filter(team_2=teams).count())
+        black_wins = float(matches.filter(winner=teams, team_2=teams).count())
 
         color_stats = {
             'red': {
-                'favoured': round((red_wins.count()/red_plays.count())*100, 2),
-                'winning_percentage': round((red_plays.count()/(red_plays.count()+black_plays.count()))*100, 2)
+                'favoured': round((red_wins/red_plays)*100, 2),
+                'winning_percentage': round((red_plays/(red_plays+black_plays))*100, 2)
             },
             'black': {
-                'favoured': round((black_wins.count()/black_plays.count())*100, 2),
-                'winning_percentage': round((black_plays.count()/(red_plays.count()+black_plays.count()))*100, 2)
+                'favoured': round((black_wins/black_plays)*100, 2),
+                'winning_percentage': round((black_plays/(red_plays+black_plays))*100, 2)
             }
         }
 
