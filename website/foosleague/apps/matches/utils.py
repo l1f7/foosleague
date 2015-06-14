@@ -3,7 +3,7 @@ from trueskill import rate, Rating, quality_1vs1
 from players.models import Player
 from math import sqrt
 from trueskill.backends import cdf
-from players.models import StatHistory
+from players.models import StatHistory, ExposeHistory
 from trueskill import TrueSkill
 from leagues.models import LeagueMember
 
@@ -31,16 +31,13 @@ def update_trueskill(match):
         loser_ratings.append(Rating(l.current_mu, l.current_sigma))
 
     winner_ratings, loser_ratings = rate([winner_ratings, loser_ratings])
-    print winner_ratings
-    print loser_ratings
     for counter, p in enumerate(winners):
-        # p.ts_mu = winner_ratings[counter].mu
-        # p.ts_sigma = winner_ratings[counter].sigma
-
+        p.ts_mu = winner_ratings[counter].mu
+        p.ts_sigma = winner_ratings[counter].sigma
+        p.save()
         sh, _ = StatHistory.objects.get_or_create(player=p,
                                                   match=match,
                                                   )
-        print match.season
         sh.season = match.season
         sh.ts_mu = winner_ratings[counter].mu
         sh.ts_sigma = winner_ratings[counter].sigma
@@ -48,8 +45,9 @@ def update_trueskill(match):
         # p.save()
 
     for counter, p in enumerate(losers):
-        # p.ts_mu = loser_ratings[counter].mu
-        # p.ts_sigma = loser_ratings[counter].sigma
+        p.ts_mu = loser_ratings[counter].mu
+        p.ts_sigma = loser_ratings[counter].sigma
+        p.save()
         sh, _ = StatHistory.objects.get_or_create(player=p,
                                                   match=match,
                                                   )
@@ -194,18 +192,87 @@ def award_season_points(match):
 
             sh.save()
 
+def catch_up(match):
+    winner = match.winner
 
-def regen_expose(match):
+    if match.team_1 == winner:
+        loser = match.team_2
+    else:
+        loser = match.team_1
+
+    winners = winner.players.all()
+    losers = loser.players.all()
+
+    winner_ratings = []
+    loser_ratings = []
+
+    for w in winners:
+        winner_ratings.append(Rating(w.current_mu, w.current_sigma))
+
+    for l in losers:
+        loser_ratings.append(Rating(l.current_mu, l.current_sigma))
+
+    winner_ratings, loser_ratings = rate([winner_ratings, loser_ratings])
+    for counter, p in enumerate(winners):
+        # p.ts_mu = winner_ratings[counter].mu
+        # p.ts_sigma = winner_ratings[counter].sigma
+
+        sh, _ = StatHistory.objects.get_or_create(player=p,
+                                                  match=match,
+                                                  )
+        sh.season = match.season
+        sh.ts_mu = winner_ratings[counter].mu
+        sh.ts_sigma = winner_ratings[counter].sigma
+        sh.save()
+        # p.save()
+
+    for counter, p in enumerate(losers):
+        # p.ts_mu = loser_ratings[counter].mu
+        # p.ts_sigma = loser_ratings[counter].sigma
+        sh, _ = StatHistory.objects.get_or_create(player=p,
+                                                  match=match,
+                                                  )
+        sh.season = match.season
+        sh.ts_mu = loser_ratings[counter].mu
+        sh.ts_sigma = loser_ratings[counter].sigma
+        sh.save()
+
+
     env = TrueSkill(draw_probability=0)
     ratings = []
+
     players = Player.objects.filter(
         id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
     player_lookup = {}
     for p in players:
-        rating = env.create_rating(p.current_mu, p.current_sigma)
-        sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
+
+        rating = env.create_rating(p.ts_mu, p.ts_sigma)
+        sh, _ = ExposeHistory.objects.get_or_create(player=p, match=match)
         sh.ts_expose = env.expose(rating)
         sh.save()
+
+        p.ts_expose = env.expose(rating)
+        p.save()
+        ratings.append(rating)
+        player_lookup.update({rating: p})
+
+    leaderboard = sorted(ratings, key=env.expose, reverse=True)
+
+
+def regen_expose(match):
+    env = TrueSkill(draw_probability=0)
+    ratings = []
+
+    players = Player.objects.filter(
+        id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
+    player_lookup = {}
+    for p in players:
+
+        rating = env.create_rating(p.ts_mu, p.ts_sigma)
+        sh, _ = ExposeHistory.objects.get_or_create(player=p, match=match)
+        sh.ts_expose = env.expose(rating)
+        sh.save()
+
         p.ts_expose = env.expose(rating)
         p.save()
         ratings.append(rating)
