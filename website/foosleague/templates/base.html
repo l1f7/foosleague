@@ -34,17 +34,6 @@
   <div data-template="undefined" class="l-site">
     <div class="l-content">
       <div class="l-topbar">
-        <div class="l-container l-container--full">
-          <h1 class="branding"><a href="{% url "matches" %}" class="branding-link">Foosleague</a></h1>
-          <div class="nav-ham">
-            <div class="ham js-openSide">
-              <div class="ham-hamburger"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="l-header">
         <div class="l-container">
           <section class="league">
             <div class="league-logo"><img src="https://pbs.twimg.com/profile_images/431497486138499072/oVCFk5Qt.png" class="league-img"/></div>
@@ -66,6 +55,7 @@
           </div>
         </nav>
       </div>
+
       <div class="l-container">
         <div class="l-page">
           {% block content %}{% endblock %}
@@ -76,32 +66,140 @@
       </div>
     </div>
     <div class="l-player">
+      <div class="l-playerContainer">
+        <h1 class="branding branding--player"><a href="{% url "matches" %}" class="branding-link">Foosleague</a></h1>
 
-      <div class="user">
-        <div class="user-player">
-          {% include "partials/player.html" with player=player player_class="player--large" %}
+        <div class="nav-ham">
+          <div class="ham js-openSide">
+            <div class="ham-hamburger"></div>
+          </div>
         </div>
 
-        <div class="user-stats">
-          <div class="stat">
-            <div class="stat-number">{{ stats.wins.season }}</div>
-            <div class="stat-title">Wins</div>
+        <div class="user">
+          <div class="user-player">
+            {% include "partials/player.html" with player=player player_class="player--larger" %}
           </div>
-          <div class="stat">
-            <div class="stat-number">{{ stats.losses.season }}</div>
-            <div class="stat-title">Losses</div>
+
+          <div class="user-stats">
+            <h1 class="stat-heading">Rank</h1>
+
+            <div class="stat-group is-active stat--light">
+              <div class="stat">
+                <div class="stat-number">{{ player.ts_expose|floatformat:2 }}</div>
+                <div class="stat-title">Expose</div>
+              </div>
+              <div class="u-clear"></div>
+              <div class="stat stat--small">
+                <div class="stat-number">{{ player.ts_mu|floatformat:2 }}</div>
+                <div class="stat-title">Skill</div>
+              </div>
+              <div class="stat stat--small">
+                <div class="stat-number">{{ player.ts_sigma|floatformat:2 }}</div>
+                <div class="stat-title">Sigma</div>
+              </div>
+            </div>
           </div>
+
+          <div class="user-stats">
+            <h1 class="stat-heading">Win/Loss</h1>
+            <div class="stat-tabs">
+              <a href="#" class="stat-tab js-tab" data-tab="#stats-winlos-7">7</a>
+              <a href="#" class="stat-tab js-tab" data-tab="#stats-winlos-30">30</a>
+              <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-winlos-season">Season</a>
+            </div>
+
+            <div id="stats-winlos-7" class="stat-group js-tabContent stat--light">
+              <div class="stat">
+                <div class="stat-number">{{ stats.wins.7 }}</div>
+                <div class="stat-title">Wins</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">{{ stats.losses.7 }}</div>
+                <div class="stat-title">Losses</div>
+              </div>
+            </div>
+
+            <div id="stats-winlos-30" class="stat-group js-tabContent stat--light">
+              <div class="stat">
+                <div class="stat-number">{{ stats.wins.30 }}</div>
+                <div class="stat-title">Wins</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">{{ stats.losses.30 }}</div>
+                <div class="stat-title">Losses</div>
+              </div>
+            </div>
+
+            <div id="stats-winlos-season" class="stat-group js-tabContent stat--light is-active">
+              <div class="stat">
+                <div class="stat-number">{{ stats.wins.season }}</div>
+                <div class="stat-title">Wins</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">{{ stats.losses.season }}</div>
+                <div class="stat-title">Losses</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="user-stats">
+            <h1 class="stat-heading">Goal Diff</h1>
+            <div class="stat-tabs">
+              <a href="#" class="stat-tab js-tab" data-tab="#stats-goaldifferential-7">7</a>
+              <a href="#" class="stat-tab js-tab" data-tab="#stats-goaldifferential-30">30</a>
+              <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-goaldifferential-season">Season</a>
+            </div>
+
+            <div id="stats-goaldifferential-7" class="stat-group js-tabContent stat--light">
+              <div class="stat">
+                <div class="stat-number">{{ stats.goal_differential.7.for }}</div>
+                <div class="stat-title">For</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">{{ stats.goal_differential.7.against }}</div>
+                <div class="stat-title">Against</div>
+              </div>
+            </div>
+
+            <div id="stats-goaldifferential-30" class="stat-group js-tabContent stat--light">
+              <div class="stat">
+                <div class="stat-number">{{ stats.goal_differential.30.for }}</div>
+                <div class="stat-title">For</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">{{ stats.goal_differential.30.against }}</div>
+                <div class="stat-title">Against</div>
+              </div>
+            </div>
+
+            <div id="stats-goaldifferential-season" class="stat-group js-tabContent stat--light is-active">
+              <div class="stat">
+                <div class="stat-number">{{ stats.goal_differential.season.for }}</div>
+                <div class="stat-title">For</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">{{ stats.goal_differential.season.against }}</div>
+                <div class="stat-title">Against</div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-
     </div>
   </div>
   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
   <script>
     $(document).ready(function() {
       $('.is-loading').removeClass('is-loading');
+      $('.js-tab').on('click', function (e) {
+        e.preventDefault();
+        var tab = $(this).data('tab');
+        $(this).addClass('is-active').siblings().removeClass('is-active');
+        $(tab).addClass('is-active').siblings('.js-tabContent').removeClass('is-active');
+      });
       $('.js-openSide').on('click', function (e) {
-          e.preventDefault();
+        e.preventDefault();
 
         if ($(this).hasClass('is-active')) {
           $(this).removeClass('is-active');

@@ -54,15 +54,17 @@
 }
 
 .user {
-  padding: 20px;
+  text-align: left;
 }
 
 .user-player {
-  border-bottom: 1px solid $c-nav-border;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+  margin-bottom: 30px;
+
+  .player-name {
+    color: $white;
+  }
 }
 
 .user-stats {
-  text-align: center;
+  margin-bottom: 30px;
 }

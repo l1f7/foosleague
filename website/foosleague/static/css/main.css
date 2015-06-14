@@ -339,6 +339,9 @@ html {
 *, *:before, *:after {
   box-sizing: inherit; }
 
+.u-clear {
+  clear: both; }
+
 .u-hidden {
   display: none; }
 
@@ -800,7 +803,7 @@ a {
     transform: scale(1); } }
 
 body {
-  background: #F3F4F5; }
+  background: #F7F8FA; }
 
 .l-tease {
   text-align: center; }
@@ -824,27 +827,27 @@ body {
   max-width: 1800px;
   position: relative;
   z-index: 1;
-  background: #F3F4F5; }
+  background: #F7F8FA; }
 
 .l-page {
+  margin-top: 160px;
+  padding: 50px 0 0;
   position: relative; }
 
 .l-topbar {
   position: fixed;
-  left: 0;
+  left: 240px;
   top: 0;
   right: 0;
-  padding-right: 240px;
-  text-align: center;
-  height: 50px;
   display: block;
+  height: 160px;
   background: #ffffff;
   border-bottom: 1px solid #d9d9d9;
   border-right: 1px solid #ffffff;
   z-index: 10; }
 
 .l-header {
-  margin: 50px 0 30px;
+  margin: 160px 0 30px;
   display: block;
   background: #ffffff;
   border-bottom: 1px solid #d9d9d9; }
@@ -863,18 +866,34 @@ body {
   max-width: 100%; }
 
 .l-content {
-  margin-right: 240px; }
+  margin-left: 240px; }
 
 .l-player {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
   display: block;
-  background: #ffffff;
-  border-left: 1px solid #d9d9d9;
+  background: url('../images/bg-side.jpg') center center #333333;
+  background-size: cover;
   width: 240px;
-  z-index: 10; }
+  z-index: 10;
+  overflow: auto; }
+  .l-player:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: rgba(58, 70, 55, 0.8); }
+
+.l-playerContainer {
+  padding: 0 20px;
+  text-align: center;
+  position: relative;
+  z-index: 2; }
 
 .l-columns {
   width: 100%;
@@ -969,15 +988,15 @@ body {
 
 @media screen and (min-width: 40em) and (max-width: 63.99em)  {
   .l-topbar {
-    padding-right: 0; }
+    left: 0; }
   .l-container {
     padding: 0 2em; }
   .l-content {
-    margin-right: 0; }
+    margin-left: 0; }
   .l-player {
-    -webkit-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-    transform: translateX(100%); }
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%); }
   .l-columns--centered .l-col {
     float: left;
     display: block;
@@ -1005,18 +1024,17 @@ body {
 
 @media screen and (max-width: 39.99em)  {
   .l-topbar {
-    left: 0;
-    padding-right: 0; }
+    left: 0; }
   .l-header {
     margin-bottom: 1em; }
   .l-footer {
     margin-top: 1em; }
   .l-content {
-    margin-right: 0; }
+    margin-left: 0; }
   .l-player {
-    -webkit-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-    transform: translateX(100%); }
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%); }
   .l-nav {
     z-index: 5; }
   .l-container {
@@ -1202,6 +1220,12 @@ body {
 .branding {
   display: inline-block; }
 
+.branding--player {
+  margin: 0 0 30px;
+  display: block;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+
 .branding--auth, .branding--tease {
   float: none; }
 
@@ -1214,24 +1238,24 @@ body {
 
 .branding-link {
   margin: 0;
-  padding: 13px 0;
+  padding: 30px 15px;
   display: block;
-  color: #333333;
+  color: #ffffff;
   font-weight: 600;
   font-size: 1.5rem;
   font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1;
   text-align: center; }
   .branding-link:hover {
-    color: #333333; }
+    color: #ffffff; }
 
 .btn {
   display: inline-block;
   text-align: center;
   padding: 10px 24px;
-  border: 1px solid #41996b;
+  border: 1px solid #539141;
   color: #ffffff;
-  background: #56B784;
+  background: #68B253;
   font-weight: 600;
   font-size: 1.0625rem;
   font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -1243,9 +1267,9 @@ body {
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.25), 0 1px rgba(51, 51, 51, 0.15);
   text-shadow: 0 1px rgba(51, 51, 51, 0.15); }
   .btn:hover {
-    border: 1px solid #3a875e;
+    border: 1px solid #497f39;
     color: #ffffff;
-    background: #49ab77; }
+    background: #5da349; }
 
 .btn--small {
   padding: 8px 18px;
@@ -1256,12 +1280,12 @@ body {
 
 .btn-ghost {
   background: transparent;
-  color: #56B784;
+  color: #68B253;
   border-color: transparent; }
   .btn-ghost:hover {
-    border: 1px solid #3a875e;
+    border: 1px solid #497f39;
     color: #ffffff;
-    background: #49ab77; }
+    background: #5da349; }
 
 .btn--login {
   position: absolute;
@@ -1273,15 +1297,15 @@ body {
   font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1;
   background: transparent;
-  color: #56B784;
+  color: #68B253;
   border-color: transparent;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%); }
   .btn--login:hover {
-    border: 1px solid #3a875e;
+    border: 1px solid #497f39;
     color: #ffffff;
-    background: #49ab77; }
+    background: #5da349; }
 
 .btn--full {
   display: block; }
@@ -1611,16 +1635,16 @@ body {
     transition: all 0.35s ease-out 12.15s; }
 
 .game--1 {
-  border-left: 3px solid #56B784; }
+  border-left: 3px solid #68B253; }
   .game--1 .game-score--winner {
-    border-color: #56B784;
-    color: #56B784; }
+    border-color: #68B253;
+    color: #68B253; }
 
 .game--2 {
-  border-right: 3px solid #56B784; }
+  border-right: 3px solid #68B253; }
   .game--2 .game-score--winner {
-    border-color: #56B784;
-    color: #56B784; }
+    border-color: #68B253;
+    color: #68B253; }
 
 .game-team {
   float: left;
@@ -1656,7 +1680,7 @@ body {
     width: 36px; }
 
 .league {
-  padding: 20px 0; }
+  padding: 15px 0; }
   .league::after {
     clear: both;
     content: "";
@@ -1930,6 +1954,40 @@ body {
   margin: 5px 0 0;
   padding: 0 10px; }
 
+.stat-group {
+  display: none; }
+  .stat-group.is-active {
+    display: block; }
+
+.stat-tabs {
+  float: right;
+  margin-top: -8px; }
+
+.stat-tab {
+  font-weight: 400;
+  font-size: 0.6875rem;
+  font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1;
+  display: inline-block;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 2px 6px; }
+  .stat-tab:hover {
+    color: #68B253;
+    background: rgba(255, 255, 255, 0.2); }
+  .stat-tab.is-active {
+    color: #ffffff;
+    background: #68B253; }
+
+.stat-heading {
+  float: left;
+  color: #ffffff;
+  text-transform: uppercase; }
+
+.stat-group {
+  text-align: center;
+  clear: both; }
+
 .stat-number {
   margin: 0;
   padding: 0;
@@ -1941,6 +1999,12 @@ body {
 
 .stat--small .stat-title {
   font-weight: 400; }
+
+.stat--light .stat-number {
+  color: #ffffff; }
+.stat--light .stat-title {
+  color: #ffffff;
+  opacity: 0.6; }
 
 .team {
   display: block;
@@ -1962,7 +2026,7 @@ body {
     font-weight: 400; }
 
 .team-name--winner {
-  color: #56B784; }
+  color: #68B253; }
 
 .team-players {
   display: block; }
@@ -2150,8 +2214,8 @@ body {
     box-shadow: 0 2px #F66262; }
 
 .field--valid .field-text {
-  border-color: #56B784;
-  box-shadow: 0 1px #56B784; }
+  border-color: #68B253;
+  box-shadow: 0 1px #68B253; }
   .field--valid .field-text:focus {
     border-color: #5198FB;
     box-shadow: 0 2px #5198FB; }
@@ -2260,9 +2324,9 @@ body {
     color: #333333;
     border: 1px solid #bfbfbf; }
   .newgame-player.is-active {
-    border: 1px solid #41996b;
+    border: 1px solid #539141;
     color: #ffffff;
-    background: #56B784;
+    background: #68B253;
     border-radius: 3px;
     box-shadow: inset 0 1px rgba(255, 255, 255, 0.25), 0 1px rgba(51, 51, 51, 0.15);
     text-shadow: 0 1px rgba(51, 51, 51, 0.15); }
@@ -2790,15 +2854,15 @@ body {
   line-height: 1; }
 
 .user {
-  padding: 20px; }
+  text-align: left; }
 
 .user-player {
-  border-bottom: 1px solid #f2f2f2;
-  margin-bottom: 20px;
-  padding-bottom: 20px; }
+  margin-bottom: 30px; }
+  .user-player .player-name {
+    color: #ffffff; }
 
 .user-stats {
-  text-align: center; }
+  margin-bottom: 30px; }
 
 .accessibility-dims {
   width: 48px;

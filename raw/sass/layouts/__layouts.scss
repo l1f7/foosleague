@@ -4,7 +4,7 @@
 
 $site-width: 1800px;
 $nav-width: 200px;
-$topbar-height: 50px;
+$topbar-height: 160px;
 $player-width: 240px;
 
 body {
@@ -39,18 +39,18 @@ body {
 }
 
 .l-page {
+  margin-top: $topbar-height;
+  padding: 50px 0 0;
   position: relative;
 }
 
 .l-topbar {
   position: fixed;
-  left: 0;
+  left: $player-width;
   top: 0;
   right: 0;
-  padding-right: $player-width;
-  text-align: center;
-  height: $topbar-height;
   display: block;
+  height: $topbar-height;
   background: $c-topbar-bg;
   border-bottom: 1px solid $c-topbar-border;
   border-right: 1px solid $white;
@@ -76,19 +76,38 @@ body {
 }
 
 .l-content {
-  margin-right: $player-width;
+  margin-left: $player-width;
 }
 
 .l-player {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
   display: block;
-  background: $c-topbar-bg;
-  border-left: 1px solid $c-topbar-border;
+  background: url('../images/bg-side.jpg') center center $c-player-bg;
+  background-size: cover;
   width: $player-width;
   z-index: 10;
+  overflow: auto;
+
+  &:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: rgba(mix($green, $black, 15%), 0.8);
+  }
+}
+
+.l-playerContainer {
+  padding: 0 20px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .l-columns {
@@ -163,7 +182,7 @@ body {
 
 @include media($tablet) {
   .l-topbar {
-    padding-right: 0;
+    left: 0;
   }
 
   .l-container {
@@ -171,11 +190,11 @@ body {
   }
 
   .l-content {
-    margin-right: 0;
+    margin-left: 0;
   }
 
   .l-player {
-    @include transform(translateX(100%));
+    @include transform(translateX(-100%));
   }
 
   .l-columns--centered {
@@ -203,7 +222,6 @@ body {
 @include media($mobile) {
   .l-topbar {
     left: 0;
-    padding-right: 0;
   }
 
   .l-header {
@@ -215,11 +233,11 @@ body {
   }
 
   .l-content {
-    margin-right: 0;
+    margin-left: 0;
   }
 
   .l-player {
-    @include transform(translateX(100%));
+    @include transform(translateX(-100%));
   }
 
   .l-nav {

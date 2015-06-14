@@ -16,7 +16,7 @@ $blue              : #5198FB;
   $blue-t-40       : mix($blue, $white, 40%);
   $blue-t-50       : mix($blue, $white, 50%);
 
-$green             : #56B784;
+$green             : #68B253;
   $green-t-20      : mix($green, $white, 20%);
 
 $red                : #F66262;
@@ -46,7 +46,7 @@ $c-btn-border--hover   : darken($green, 15%);
 $c-btn-bg--hover       : darken($green, 5%);
 $c-btn-color--hover    : $white;
 
-$c-site-bg       : #F3F4F5;
+$c-site-bg       : #F7F8FA;
 $c-page-bg       : $white;
 
 $c-nav-border    :  darken($white, 5%);
@@ -55,9 +55,11 @@ $c-navlink-color--hover     : $black;
 $c-navlink-color--active    : $black;
 $c-navitem-border--active   : $blue;
 
-
 $c-topbar-bg       :  $white;
 $c-topbar-border   :  darken($white, 15%);
+
+$c-player-bg       :  $black;
+$c-player-border   :  darken($black, 15%);
 
 $c-header-bg       :  $white;
 $c-header-border   :  darken($white, 15%);

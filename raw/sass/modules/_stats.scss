@@ -5,6 +5,48 @@
   padding: 0 10px;
 }
 
+.stat-group {
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
+}
+
+.stat-tabs {
+  float: right;
+  margin-top: -8px;
+}
+
+.stat-tab {
+  @include font(11, 400, 1);
+  display: inline-block;
+  color: $white;
+  border-radius: 10px;
+  padding: 2px 6px;
+
+  &:hover {
+    color: $green;
+    background: rgba($white, 0.2);
+  }
+
+  &.is-active {
+    color: $white;
+    background: $green;
+  }
+}
+
+.stat-heading {
+  float: left;
+  color: $white;
+  text-transform: uppercase;
+}
+
+.stat-group {
+  text-align: center;
+  clear: both;
+}
+
 .stat-number {
   margin: 0;
   padding: 0;
@@ -31,5 +73,16 @@
   .stat-title {
     @extend .ms-n2;
     font-weight: 400;
+  }
+}
+
+.stat--light {
+  .stat-number {
+    color: $white;
+  }
+
+  .stat-title {
+    color: $white;
+    opacity: 0.6;
   }
 }
