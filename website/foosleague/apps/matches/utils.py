@@ -25,10 +25,10 @@ def update_trueskill(match):
     loser_ratings = []
 
     for w in winners:
-        winner_ratings.append(Rating(w.ts_mu, w.ts_sigma))
+        winner_ratings.append(Rating(w.current_mu, w.current_sigma))
 
     for l in losers:
-        loser_ratings.append(Rating(l.ts_mu, l.ts_sigma))
+        loser_ratings.append(Rating(l.current_mu, l.current_sigma))
 
     winner_ratings, loser_ratings = rate([winner_ratings, loser_ratings])
 
