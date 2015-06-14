@@ -95,10 +95,10 @@ body {
     content: "";
     position: fixed;
     top: 0;
-    right: 0;
     bottom: 0;
     left: 0;
     z-index: 1;
+    width: $player-width;
     background: rgba(mix($green, $black, 15%), 0.8);
   }
 }
