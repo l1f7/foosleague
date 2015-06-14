@@ -75,13 +75,13 @@
           </div>
         </div>
 
-        <div class="user">
-          <div class="user-player">
-            {% include "partials/player.html" with player=player player_class="player--larger" %}
+        <div class="profile profile--light">
+          <div class="profile-player">
+            {% include "partials/player.html" with player=player player_class="player--largest player--stacked" %}
           </div>
-          <div class="user-stats">
-            <h1 class="stat-heading">Rank</h1>
 
+          <div class="profile-stats">
+            <h1 class="stat-heading">Rank</h1>
             <div class="stat-group is-active stat--light">
               <div class="stat">
                 <div class="stat-number">{{ player.ts_expose|floatformat:2 }}</div>
@@ -99,7 +99,7 @@
             </div>
           </div>
 
-          <div class="user-stats">
+          <div class="profile-stats">
             <h1 class="stat-heading">Win/Loss</h1>
             <div class="stat-tabs">
               <a href="#" class="stat-tab js-tab" data-tab="#stats-winlos-7">7</a>
@@ -141,7 +141,7 @@
             </div>
           </div>
 
-          <div class="user-stats">
+          <div class="profile-stats">
             <h1 class="stat-heading">Goal Diff</h1>
             <div class="stat-tabs">
               <a href="#" class="stat-tab js-tab" data-tab="#stats-goaldifferential-7">7</a>
@@ -182,11 +182,11 @@
               </div>
             </div>
           </div>
-          <div class="user-stats">
+          <div class="profile-stats">
             <h1 class="stat-heading">Color Stats</h1>
             <div class="stat-tabs">
-              <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-colorstats-red">red</a>
-              <a href="#" class="stat-tab js-tab" data-tab="#stats-colorstats-black " >black</a>
+              <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-colorstats-red">Red</a>
+              <a href="#" class="stat-tab js-tab" data-tab="#stats-colorstats-black " >Black</a>
             </div>
 
             <div id="stats-colorstats-red" class="stat-group js-tabContent stat--light is-active">

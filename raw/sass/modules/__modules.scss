@@ -53,18 +53,33 @@
   }
 }
 
-.user {
-  text-align: left;
-}
+.tab-content {
+  display: none;
 
-.user-player {
-  margin-bottom: 30px;
-
-  .player-name {
-    color: $white;
+  &.is-active {
+    display: block;
   }
 }
 
-.user-stats {
-  margin-bottom: 30px;
+.tabs {
+  margin: 0 0 20px;
+}
+
+.tab {
+  margin-right: 5px;
+  padding: 7px 15px;
+  display: inline-block;
+  color: $c-navlink-color;
+  @include font(16, 400, 1);
+  border-radius: 100px;
+
+  &:hover {
+    color: $c-navlink-color--hover;
+  }
+
+  &.is-active {
+    background: $c-navitem-border--active;
+    font-weight: 600;
+    color: $white;
+  }
 }

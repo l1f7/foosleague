@@ -4,52 +4,177 @@
 {% block nav-players %}is-active{% endblock %}
 
 {% block content %}
-  <section class="profile">
-    <div class="profile-avatar">
-      {% if object.photo %}
-        {% thumbnail object.photo "80x80" crop="center" as im %}
-          <img src="{{ im.url }}" class="player-img"/>
-        {% endthumbnail %}
-      {% endif %}
-    </div>
-    <h1 class="profile-name">{{ object }}</h1>
-    <div class="profile-stats">
-      <div class="stat">
-        <div class="stat-number">{{ object.ts_expose|floatformat:2 }}</div>
-        <div class="stat-title">Foos-rank</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">{{wins}}</div>
-        <div class="stat-title">Wins</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">{{loses}}</div>
-        <div class="stat-title">Losses</div>
-      </div>
-    </div>
-  </section>
 
-  <div class="l-columns l-columns--sideright">
+  <div class="l-columns l-columns--sideleft">
     <div class="l-col">
-      <div class="games is-loading">
-        {% for match in matches %}
-          {% include "partials/match.html" with match=match highlight_player=object %}
+
+      <div class="tabs">
+        <a href="#" class="tab js-tab is-active" data-tab="#tab-games">Games</a>
+        <a href="#" class="tab js-tab" data-tab="#tab-teams">Teams</a>
+      </div>
+
+      <div id="tab-games" class="tab-content js-tabContent is-active">
+        <div class="games is-loading">
+          {% for match in matches %}
+            {% include "partials/match.html" with match=match highlight_player=object %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div id="tab-teams" class="tab-content js-tabContent">
+        {% for team in teams %}
+          <a href="{{team.get_absolute_url}}" class="standing">
+            {% comment %}
+            <div class="standing-count standing-count--{{ forloop.counter }}">
+              <span>{{ forloop.counter }}</span>
+            </div>
+            {% endcomment %}
+            <div class="standing-team">
+              {% include "partials/team.html" with team=team team_class="team--small" %}
+            </div>
+          </a>
         {% endfor %}
       </div>
     </div>
     <div class="l-col l-col--side">
-      {% for team in teams %}
-        <a href="{{team.get_absolute_url}}" class="standing">
-          {% comment %}
-          <div class="standing-count standing-count--{{ forloop.counter }}">
-            <span>{{ forloop.counter }}</span>
+      <section class="profile profile--details">
+        <div class="profile-player">
+          {% include "partials/player.html" with player=object player_class="player--largest player--stacked" %}
+        </div>
+
+        <div class="profile-stats">
+          <h1 class="stat-heading">Rank</h1>
+          <div class="stat-group is-active">
+            <div class="stat">
+              <div class="stat-number">{{ object.ts_expose|floatformat:2 }}</div>
+              <div class="stat-title">Expose</div>
+            </div>
+            <div class="u-clear"></div>
+            <div class="stat stat--small">
+              <div class="stat-number">{{ object.ts_mu|floatformat:2 }}</div>
+              <div class="stat-title">Skill</div>
+            </div>
+            <div class="stat stat--small">
+              <div class="stat-number">{{ object.ts_sigma|floatformat:2 }}</div>
+              <div class="stat-title">Sigma</div>
+            </div>
           </div>
-          {% endcomment %}
-          <div class="standing-team">
-            {% include "partials/team.html" with team=team team_class="team--small" %}
+        </div>
+
+        <div class="profile-stats">
+          <h1 class="stat-heading">Win/Loss</h1>
+          <div class="stat-tabs">
+            <a href="#" class="stat-tab js-tab" data-tab="#stats-winlos-7">7</a>
+            <a href="#" class="stat-tab js-tab" data-tab="#stats-winlos-30">30</a>
+            <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-winlos-season">Season</a>
           </div>
-        </a>
-      {% endfor %}
+
+          <div id="stats-winlos-7" class="stat-group js-tabContent">
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.wins.7 }}</div>
+              <div class="stat-title">Wins</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.losses.7 }}</div>
+              <div class="stat-title">Losses</div>
+            </div>
+          </div>
+
+          <div id="stats-winlos-30" class="stat-group js-tabContent">
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.wins.30 }}</div>
+              <div class="stat-title">Wins</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.losses.30 }}</div>
+              <div class="stat-title">Losses</div>
+            </div>
+          </div>
+
+          <div id="stats-winlos-season" class="stat-group js-tabContent is-active">
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.wins.season }}</div>
+              <div class="stat-title">Wins</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.losses.season }}</div>
+              <div class="stat-title">Losses</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-stats">
+          <h1 class="stat-heading">Goal Diff</h1>
+          <div class="stat-tabs">
+            <a href="#" class="stat-tab js-tab" data-tab="#stats-goaldifferential-7">7</a>
+            <a href="#" class="stat-tab js-tab" data-tab="#stats-goaldifferential-30">30</a>
+            <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-goaldifferential-season">Season</a>
+          </div>
+
+          <div id="stats-goaldifferential-7" class="stat-group js-tabContent">
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.goal_differential.7.for }}</div>
+              <div class="stat-title">For</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.goal_differential.7.against }}</div>
+              <div class="stat-title">Against</div>
+            </div>
+          </div>
+
+          <div id="stats-goaldifferential-30" class="stat-group js-tabContent">
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.goal_differential.30.for }}</div>
+              <div class="stat-title">For</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.goal_differential.30.against }}</div>
+              <div class="stat-title">Against</div>
+            </div>
+          </div>
+
+          <div id="stats-goaldifferential-season" class="stat-group js-tabContent is-active">
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.goal_differential.season.for }}</div>
+              <div class="stat-title">For</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.goal_differential.season.against }}</div>
+              <div class="stat-title">Against</div>
+            </div>
+          </div>
+        </div>
+        <div class="profile-stats">
+          <h1 class="stat-heading">Color Stats</h1>
+          <div class="stat-tabs">
+            <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-colorstats-red">Red</a>
+            <a href="#" class="stat-tab js-tab" data-tab="#stats-colorstats-black " >Black</a>
+          </div>
+
+          <div id="stats-colorstats-red" class="stat-group js-tabContent is-active">
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.color_stats.red.favoured }}%</div>
+              <div class="stat-title">Of Games</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.color_stats.red.winning_percentage }}%</div>
+              <div class="stat-title">Games Won</div>
+            </div>
+          </div>
+
+          <div id="stats-colorstats-black" class="stat-group js-tabContent">
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.color_stats.black.favoured }}%</div>
+              <div class="stat-title">Of Games</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">{{ object.stats.color_stats.black.winning_percentage }}%</div>
+              <div class="stat-title">Games Won</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
     </div>
   </div>
 {% endblock %}

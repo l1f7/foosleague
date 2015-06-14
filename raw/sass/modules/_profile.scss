@@ -1,45 +1,33 @@
 .profile {
-  position: relative;
-  border-radius: 3px;
+  text-align: left;
+}
+
+.profile-player {
   margin-bottom: 30px;
-  padding: 20px;
-  border: 1px solid $c-game-border;
-  background: $c-game-bg;
-  @include row();
-  @include clearfix;
-}
 
-.profile-avatar {
-  float: left;
-  width: 80px;
-  height: 80px;
-  float: left;
-  border-radius: 3px;
-  margin-right: 20px;
-  overflow: hidden;
-}
-
-.profile-img {
-  width: 100%;
-  border-radius: 3px;
-}
-
-.profile-name {
-  margin: 0;
-  padding: 16px 0;
-  display: inline-block;
-  @extend .ms-7;
-  @extend .ts-uppercase;
+  .player-name {
+    color: $black;
+  }
 }
 
 .profile-stats {
-  float: right;
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  @include transform(translateY(-50%));
+  margin-bottom: 30px;
 }
 
-.profile-stats--team {
-  margin-top: 30px;
+.profile--light {
+  .player-name {
+    color: $white;
+  }
+
+  .stat-heading {
+    color: $white;
+  }
+
+  .stat-tab {
+    color: $white;
+  }
+}
+
+.profile--details {
+  padding-right: 30px;
 }

@@ -7,7 +7,7 @@
   height: 24px;
   display: block;
   float: left;
-  border-radius: 3px;
+  border-radius: 100px;
   margin: 0 10px 0 0;
   overflow: hidden;
 }
@@ -67,8 +67,35 @@
   }
 }
 
+.player--largest {
+  .player-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .player-name {
+    padding: 12px 0;
+    @include font(36, 600, 1, $base-font-alt);
+  }
+}
+
 .player--highlight {
   .player-name {
     color: $black;
+  }
+}
+
+.player--stacked {
+  text-align: center;
+
+  .player-avatar {
+    float: none;
+    display: inline-block;
+    margin: 0;
+  }
+
+  .player-name {
+    padding: 0;
+    display: block;
   }
 }

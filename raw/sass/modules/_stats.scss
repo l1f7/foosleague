@@ -21,7 +21,7 @@
 .stat-tab {
   @include font(11, 400, 1);
   display: inline-block;
-  color: $white;
+  color: $black;
   border-radius: 10px;
   padding: 2px 6px;
 
@@ -38,8 +38,8 @@
 
 .stat-heading {
   float: left;
-  color: $white;
   text-transform: uppercase;
+  opacity: 0.6;
 }
 
 .stat-group {
@@ -63,6 +63,7 @@
   @extend .ts-alt;
   @extend .ts-uppercase;
   @extend .ts-light;
+  font-weight: 400;
 }
 
 .stat--small {
