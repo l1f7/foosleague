@@ -2,8 +2,10 @@ from django.shortcuts import get_object_or_404
 from django.http.response import HttpResponseRedirect
 from django.conf import settings
 import re
+from players.models import Player
 from leagues.models import League
 subdomain_pattern = re.compile('(?P<subdomain>.*?)\..*?')
+
 
 class SubdomainMiddleware(object):
 
