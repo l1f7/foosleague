@@ -18,10 +18,10 @@ def player(request):
         matches = Match.objects.filter(Q(team_1__in=teams) | Q(team_2__in=teams), league=request.league)
         wins = {
             '7': matches.filter(winner__in=teams, created__gte=today - timedelta(days=7), created__lte=today).count(),
-
             '30': matches.filter(winner__in=teams, created__gte=today - timedelta(days=30), created__lte=today).count(),
             'season': matches.filter(winner__in=teams, season=current_season).count()
         }
+
         losses = {
             '7': matches.filter(created__gte=today - timedelta(days=7), created__lte=today).exclude(winner__in=teams).count(),
 
@@ -32,12 +32,11 @@ def player(request):
         # 7 day goal differential
         goals_for = {}
         goals_against = {}
-
         # team 1 goals
         team1_goals = matches.filter(created__gte=today - timedelta(days=7), created__lte=today,
                                      team_1__in=teams).aggregate(goals_as_team1=Sum('team_1_score'), goals_against=Sum('team_2_score'))
-        goals_for[7] = team1_goals['goals_as_team1']
-        goals_against[7] = team1_goals['goals_against']
+        goals_for[7] = team1_goals['goals_as_team1'] or 0
+        goals_against[7] = team1_goals['goals_against'] or 0
 
         # team 2 goals
         team2_goals = matches.filter(created__gte=today - timedelta(days=7), created__lte=today,
@@ -90,16 +89,17 @@ def player(request):
         black_plays = float(matches.filter(team_2=teams).count())
         black_wins = float(matches.filter(winner=teams, team_2=teams).count())
 
-        color_stats = {
-            'red': {
+        color_stats = {}
+        if red_plays:
+            color_stats['red'] = {
                 'favoured': int(round((red_wins/red_plays)*100)),
                 'winning_percentage': int(round((red_plays/(red_plays+black_plays))*100))
-            },
-            'black': {
+            }
+        if black_plays:
+            color_stats['black'] = {
                 'favoured': int(round((black_wins/black_plays)*100)),
                 'winning_percentage': int(round((black_plays/(red_plays+black_plays))*100))
             }
-        }
 
         stats = {
             'wins': wins,

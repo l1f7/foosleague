@@ -4,7 +4,7 @@
   <div class="player-avatar">
     {% if player.photo %}
       {% thumbnail player.photo "80x80" crop="center" as im %}
-        <img src="{{ im }}" class="player-img"/>
+        <img src="{{MEDIA_URL}}{{ im }}" class="player-img"/>
       {% endthumbnail %}
     {% endif %}
   </div>
