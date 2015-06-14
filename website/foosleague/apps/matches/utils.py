@@ -265,9 +265,10 @@ def regen_expose(match):
         id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
     player_lookup = {}
     for p in players:
+
+        rating = env.create_rating(p.ts_mu, p.ts_sigma)
         sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
 
-        rating = env.create_rating(sh.ts_mu, sh.ts_sigma)
         sh.ts_expose = env.expose(rating)
         sh.save()
         p.ts_expose = env.expose(rating)
