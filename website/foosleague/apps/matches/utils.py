@@ -31,8 +31,6 @@ def update_trueskill(match):
         loser_ratings.append(Rating(l.current_mu, l.current_sigma))
 
     winner_ratings, loser_ratings = rate([winner_ratings, loser_ratings])
-    print winner_ratings
-    print loser_ratings
     for counter, p in enumerate(winners):
         # p.ts_mu = winner_ratings[counter].mu
         # p.ts_sigma = winner_ratings[counter].sigma
@@ -40,7 +38,6 @@ def update_trueskill(match):
         sh, _ = StatHistory.objects.get_or_create(player=p,
                                                   match=match,
                                                   )
-        print match.season
         sh.season = match.season
         sh.ts_mu = winner_ratings[counter].mu
         sh.ts_sigma = winner_ratings[counter].sigma
@@ -202,8 +199,9 @@ def regen_expose(match):
         id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
     player_lookup = {}
     for p in players:
-        rating = env.create_rating(p.current_mu, p.current_sigma)
         sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
+
+        rating = env.create_rating(sh.ts_mu, sh.ts_sigma)
         sh.ts_expose = env.expose(rating)
         sh.save()
         p.ts_expose = env.expose(rating)
