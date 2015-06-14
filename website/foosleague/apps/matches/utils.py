@@ -192,7 +192,7 @@ def award_season_points(match):
             sh.save()
 
 def catch_up(match):
-     winner = match.winner
+    winner = match.winner
 
     if match.team_1 == winner:
         loser = match.team_2
@@ -236,23 +236,23 @@ def catch_up(match):
         sh.ts_sigma = loser_ratings[counter].sigma
         sh.save()
 
-        env = TrueSkill(draw_probability=0)
-        ratings = []
-        players = Player.objects.filter(
-            id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
-        player_lookup = {}
-        for p in players:
-            sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
+    env = TrueSkill(draw_probability=0)
+    ratings = []
+    players = Player.objects.filter(
+        id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
+    player_lookup = {}
+    for p in players:
+        sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
 
-            rating = env.create_rating(sh.ts_mu, sh.ts_sigma)
-            sh.ts_expose = env.expose(rating)
-            sh.save()
-            p.ts_expose = env.expose(rating)
-            p.save()
-            ratings.append(rating)
-            player_lookup.update({rating: p})
+        rating = env.create_rating(sh.ts_mu, sh.ts_sigma)
+        sh.ts_expose = env.expose(rating)
+        sh.save()
+        p.ts_expose = env.expose(rating)
+        p.save()
+        ratings.append(rating)
+        player_lookup.update({rating: p})
 
-        leaderboard = sorted(ratings, key=env.expose, reverse=True)
+    leaderboard = sorted(ratings, key=env.expose, reverse=True)
 
 def regen_expose(match):
     env = TrueSkill(draw_probability=0)
