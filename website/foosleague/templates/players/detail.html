@@ -64,12 +64,12 @@
         <div class="profile-stats">
           <h1 class="stat-heading">Win/Loss</h1>
           <div class="stat-tabs">
-            <a href="#" class="stat-tab js-tab" data-tab="#stats-winlos-7">7</a>
-            <a href="#" class="stat-tab js-tab" data-tab="#stats-winlos-30">30</a>
-            <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-winlos-season">Season</a>
+            <a href="#" class="stat-tab js-tab" data-tab="#stats-detail-winlos-7">7</a>
+            <a href="#" class="stat-tab js-tab" data-tab="#stats-detail-winlos-30">30</a>
+            <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-detail-winlos-season">Season</a>
           </div>
 
-          <div id="stats-winlos-7" class="stat-group js-tabContent">
+          <div id="stats-detail-winlos-7" class="stat-group js-tabContent">
             <div class="stat">
               <div class="stat-number">{{ object.stats.wins.7 }}</div>
               <div class="stat-title">Wins</div>
@@ -80,7 +80,7 @@
             </div>
           </div>
 
-          <div id="stats-winlos-30" class="stat-group js-tabContent">
+          <div id="stats-detail-winlos-30" class="stat-group js-tabContent">
             <div class="stat">
               <div class="stat-number">{{ object.stats.wins.30 }}</div>
               <div class="stat-title">Wins</div>
@@ -91,7 +91,7 @@
             </div>
           </div>
 
-          <div id="stats-winlos-season" class="stat-group js-tabContent is-active">
+          <div id="stats-detail-winlos-season" class="stat-group js-tabContent is-active">
             <div class="stat">
               <div class="stat-number">{{ object.stats.wins.season }}</div>
               <div class="stat-title">Wins</div>
@@ -106,12 +106,12 @@
         <div class="profile-stats">
           <h1 class="stat-heading">Goal Diff</h1>
           <div class="stat-tabs">
-            <a href="#" class="stat-tab js-tab" data-tab="#stats-goaldifferential-7">7</a>
-            <a href="#" class="stat-tab js-tab" data-tab="#stats-goaldifferential-30">30</a>
-            <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-goaldifferential-season">Season</a>
+            <a href="#" class="stat-tab js-tab" data-tab="#stats-detail-goaldifferential-7">7</a>
+            <a href="#" class="stat-tab js-tab" data-tab="#stats-detail-goaldifferential-30">30</a>
+            <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-detail-goaldifferential-season">Season</a>
           </div>
 
-          <div id="stats-goaldifferential-7" class="stat-group js-tabContent">
+          <div id="stats-detail-goaldifferential-7" class="stat-group js-tabContent">
             <div class="stat">
               <div class="stat-number">{{ object.stats.goal_differential.7.for }}</div>
               <div class="stat-title">For</div>
@@ -122,7 +122,7 @@
             </div>
           </div>
 
-          <div id="stats-goaldifferential-30" class="stat-group js-tabContent">
+          <div id="stats-detail-goaldifferential-30" class="stat-group js-tabContent">
             <div class="stat">
               <div class="stat-number">{{ object.stats.goal_differential.30.for }}</div>
               <div class="stat-title">For</div>
@@ -133,7 +133,7 @@
             </div>
           </div>
 
-          <div id="stats-goaldifferential-season" class="stat-group js-tabContent is-active">
+          <div id="stats-detail-goaldifferential-season" class="stat-group js-tabContent is-active">
             <div class="stat">
               <div class="stat-number">{{ object.stats.goal_differential.season.for }}</div>
               <div class="stat-title">For</div>
@@ -147,11 +147,11 @@
         <div class="profile-stats">
           <h1 class="stat-heading">Color Stats</h1>
           <div class="stat-tabs">
-            <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-colorstats-red">Red</a>
-            <a href="#" class="stat-tab js-tab" data-tab="#stats-colorstats-black " >Black</a>
+            <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-detail-colorstats-red">Red</a>
+            <a href="#" class="stat-tab js-tab" data-tab="#stats-detail-colorstats-black " >Black</a>
           </div>
 
-          <div id="stats-colorstats-red" class="stat-group js-tabContent is-active">
+          <div id="stats-detail-colorstats-red" class="stat-group js-tabContent is-active">
             <div class="stat">
               <div class="stat-number">{{ object.stats.color_stats.red.favoured }}%</div>
               <div class="stat-title">Of Games</div>
@@ -162,7 +162,7 @@
             </div>
           </div>
 
-          <div id="stats-colorstats-black" class="stat-group js-tabContent">
+          <div id="stats-detail-colorstats-black" class="stat-group js-tabContent">
             <div class="stat">
               <div class="stat-number">{{ object.stats.color_stats.black.favoured }}%</div>
               <div class="stat-title">Of Games</div>
