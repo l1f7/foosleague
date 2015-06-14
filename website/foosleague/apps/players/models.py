@@ -74,7 +74,7 @@ class Player(TimeStampedModel):
 
     @property
     def full_expose(self):
-        return self.stathistory_set.all().values_list('created', 'ts_expose')
+        return self.exposehistory_set.all().values_list('created', 'ts_expose')
 
     @property
     def full_fooscoin(self):
@@ -165,10 +165,9 @@ class StatHistory(TimeStampedModel):
     def __unicode__(self):
         return '%s' % (self.created)
 
-
 class ExposeHistory(TimeStampedModel):
     match = models.ForeignKey('matches.Match')
-    expose = models.FloatField(_("TrueSkill Expose"), default=0, help_text="leaderboard")
+    ts_expose = models.FloatField(_("TrueSkill Expose"), default=0, help_text="leaderboard")
     player = models.ForeignKey('players.Player')
 
     def __unicode__(self):
