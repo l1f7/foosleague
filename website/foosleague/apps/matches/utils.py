@@ -236,15 +236,19 @@ def catch_up(match):
         sh.ts_sigma = loser_ratings[counter].sigma
         sh.save()
 
+
     env = TrueSkill(draw_probability=0)
     ratings = []
     players = Player.objects.filter(
         id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
     player_lookup = {}
     for p in players:
+
+
+        rating = env.create_rating(p.current_mu, p.current_sigma)
+
         sh, _ = StatHistory.objects.get_or_create(player=p, match=match)
 
-        rating = env.create_rating(sh.ts_mu, sh.ts_sigma)
         sh.ts_expose = env.expose(rating)
         sh.save()
         p.ts_expose = env.expose(rating)
@@ -253,6 +257,7 @@ def catch_up(match):
         player_lookup.update({rating: p})
 
     leaderboard = sorted(ratings, key=env.expose, reverse=True)
+
 
 def regen_expose(match):
     env = TrueSkill(draw_probability=0)
