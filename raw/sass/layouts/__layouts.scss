@@ -55,6 +55,7 @@ body {
   border-bottom: 1px solid $c-topbar-border;
   border-right: 1px solid $white;
   z-index: 10;
+  @include transition(0.35s);
 }
 
 .l-header {
@@ -76,7 +77,11 @@ body {
 }
 
 .l-content {
+  position: relative;
+  z-index: 10;
   margin-left: $player-width;
+  @include transition(0.35s);
+  background: $c-site-bg;
 }
 
 .l-player {
@@ -88,8 +93,9 @@ body {
   background: $c-player-bg;
   background-size: cover;
   width: $player-width;
-  z-index: 10;
+  z-index: 5;
   overflow: auto;
+  @include transition(0.35s);
 }
 
 .l-playerContainer {
@@ -171,7 +177,28 @@ body {
 
 @include media($tablet) {
   .l-topbar {
+    position: fixed;
     left: 0;
+    top: 60px;
+  }
+
+  .l-site {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+
+    &.is-active {
+      .l-content {
+        @include transform(translateY(95%));
+      }
+
+      .l-player {
+        overflow: auto;
+      }
+    }
   }
 
   .l-container {
@@ -180,10 +207,25 @@ body {
 
   .l-content {
     margin-left: 0;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    z-index: 10;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .l-page {
+
   }
 
   .l-player {
-    @include transform(translateX(-100%));
+    overflow: hidden;
+    width: auto;
+    right: 0;
+    bottom: 5%;
   }
 
   .l-columns--centered {
@@ -210,27 +252,56 @@ body {
 
 @include media($mobile) {
   .l-topbar {
+    position: relative;
     left: 0;
+    top: 0;
+    height: auto;
   }
 
-  .l-header {
-    margin-bottom: 1em;
-  }
+  .l-site {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
 
-  .l-footer {
-    margin-top: 1em;
+    &.is-active {
+      .l-content {
+        @include transform(translateY(95%));
+      }
+
+      .l-player {
+        overflow: auto;
+      }
+
+      .player-mobilemenu {
+        display: none;
+      }
+    }
   }
 
   .l-content {
     margin-left: 0;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    z-index: 10;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .l-page {
+    margin-top: 0;
   }
 
   .l-player {
-    @include transform(translateX(-100%));
-  }
-
-  .l-nav {
-    z-index: 5;
+    overflow: hidden;
+    width: auto;
+    right: 0;
+    bottom: 5%;
   }
 
   .l-container {

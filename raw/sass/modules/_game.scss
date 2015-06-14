@@ -22,7 +22,7 @@
 
   @for $i from 0 through 100 {
     &:nth-child(#{$i}) {
-      @include transition(all 0.35s ease-out ((0.15)+((0.12)*$i))+s);
+      @include transition(border 0.35s, opacity 0.35s ease-out ((0.15)+((0.12)*$i))+s, transform 0.35s ease-out ((0.15)+((0.12)*$i))+s);
     }
   }
 }

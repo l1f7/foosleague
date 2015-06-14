@@ -2,6 +2,24 @@
   display: block;
 }
 
+.player-mobilemenu {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  padding: 8px 10px;
+  cursor: pointer;
+  display: none;
+}
+
+.player-mobilenav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px 10px;
+  cursor: pointer;
+  display: none;
+}
+
 .player-avatar {
   width: 24px;
   height: 24px;
@@ -96,6 +114,19 @@
 
   .player-name {
     padding: 0;
+    display: block;
+  }
+}
+
+@include media($tablet) {
+  .player-mobilenav {
+    display: block;
+  }
+}
+
+@include media($mobile) {
+  .player-mobilemenu,
+  .player-mobilenav {
     display: block;
   }
 }

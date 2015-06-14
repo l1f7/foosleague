@@ -66,14 +66,18 @@
       </div>
     </div>
     <div class="l-player">
+      <div class="player-mobilemenu nav-ham">
+        <div class="ham js-openSide">
+          <div class="ham-hamburger"></div>
+        </div>
+      </div>
+      <div class="player-mobilenav nav-ham nav-ham--dots nav-ham--light js-profile">
+        <div class="ham js-openSide">
+          <div class="ham-hamburger"></div>
+        </div>
+      </div>
       <div class="l-playerContainer">
         <h1 class="branding branding--player"><a href="{% url "matches" %}" class="branding-link">Foosleague</a></h1>
-
-        <div class="nav-ham">
-          <div class="ham js-openSide">
-            <div class="ham-hamburger"></div>
-          </div>
-        </div>
 
         <div class="profile profile--light">
           <div class="profile-player">
@@ -228,7 +232,6 @@
       });
       $('.js-openSide').on('click', function (e) {
         e.preventDefault();
-
         if ($(this).hasClass('is-active')) {
           $(this).removeClass('is-active');
           $('.nav').removeClass('is-active');
@@ -236,6 +239,19 @@
         } else {
           $(this).addClass('is-active');
           $('.nav').addClass('is-active');
+          $('body').addClass('is-disabled');
+        }
+      });
+
+      $('.js-profile').on('click', function (e) {
+        e.preventDefault();
+        if ($(this).hasClass('is-active')) {
+          $(this).removeClass('is-active');
+          $('.l-site').removeClass('is-active');
+          $('body').removeClass('is-disabled');
+        } else {
+          $(this).addClass('is-active');
+          $('.l-site').addClass('is-active');
           $('body').addClass('is-disabled');
         }
       });

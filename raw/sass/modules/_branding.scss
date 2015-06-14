@@ -4,7 +4,7 @@
 
 .branding--player {
   margin: 0 0 10px;
-  display: block;
+  display: inline-block;
   text-align: center;
 }
 
@@ -32,5 +32,17 @@
 
   &:hover {
     color: darken($green, 10%);
+  }
+}
+
+@include media($tablet) {
+  .branding-link {
+    padding: 15px 15px;
+  }
+}
+
+@include media($mobile) {
+  .branding-link {
+    padding: 15px 15px;
   }
 }
