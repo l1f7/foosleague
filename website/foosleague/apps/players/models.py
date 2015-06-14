@@ -55,7 +55,7 @@ class Player(TimeStampedModel):
 
     @property
     def current_expose(self):
-        return self.stathistory_set.exclude(ts_expose=0)[0].order_by('created').ts_expose
+        return self.stathistory_set.exclude(ts_expose=0).order_by('created')[0].ts_expose
 
     @property
     def current_fooscoin(self):
