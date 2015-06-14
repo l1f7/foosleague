@@ -4,7 +4,7 @@ from django.conf import settings
 import re
 from leagues.models import League, LeagueMember
 from players.models import Player
-subdomain_pattern = re.compile('(?P<subdomain>.*?)\..*')
+subdomain_pattern = re.compile('(?P<subdomain>.*?)\..*?')
 
 
 class SubdomainMiddleware(object):
