@@ -42,20 +42,20 @@ class Player(TimeStampedModel):
     @property
     def current_mu(self):
         try:
-            return self.stathistory_set.exclude(ts_mu=0).order_by('created')[0].ts_mu
+            return self.stathistory_set.exclude(ts_mu=0)[0].ts_mu
         except:
             return 25
 
     @property
     def current_sigma(self):
         try:
-            return self.stathistory_set.exclude(ts_sigma=0).order_by('created')[0].ts_sigma
+            return self.stathistory_set.exclude(ts_sigma=0)[0].ts_sigma
         except:
             return 8.3333333333
 
     @property
     def current_expose(self):
-        return self.stathistory_set.exclude(ts_expose=0).order_by('created')[0].ts_expose
+        return self.stathistory_set.exclude(ts_expose=0)[0].ts_expose
 
     @property
     def current_fooscoin(self):
