@@ -122,7 +122,7 @@
                 <div class="stat-title">Not Lost Since</div>
                 <div class="stat-number">{{ object.not_lost_since|date:"D d M Y" }}</div>
               {% else %}
-                <div class="stat-title">Not Won Since</div>
+                <div class="stat-title">Hasn't Won Since</div>
                 <div class="stat-number">{{ object.not_won_since|date:"D d M Y" }}</div>
               {% endif %}
             </div>
@@ -135,8 +135,8 @@
             </div>
             <div class="u-clear"></div>
             <div class="stat stat--small">
-                <div class="stat-title">Best Win Streak Date</div>
-                <div class="stat-number">{{ object.best_win_streak_date|date:"D d M Y" }}</div>
+                <div class="stat-title">Spanning</div>
+                <div class="stat-number">{{ object.win_spanning_days}} days</div>
             </div>
           </div>
           <hr class="hr--dark"/>
@@ -147,8 +147,8 @@
             </div>
             <div class="u-clear"></div>
             <div class="stat stat--small">
-                <div class="stat-title">Worst Losing Streak Date</div>
-                <div class="stat-number">{{ object.worst_losing_streak_date|date:"D d M Y" }}</div>
+                <div class="stat-title">Spanning</div>
+                <div class="stat-number">{{ object.loss_spanning_days}} days</div>
             </div>
           </div>
         </div>
