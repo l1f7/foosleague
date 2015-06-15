@@ -25,6 +25,11 @@ class PlayerUpdateView(LoginRequiredMixin, UpdateView):
     model = Player
     template_name = "players/update.html"
 
+    def get_object(self, *args, **kwargs):
+        obj = super(PlayerUpdateView, self).get_object(*args, **kwargs)
+        if obj.user != self.request.user:
+            raise Http404
+        return obj
 
 class PlayerDetailView(LoginRequiredMixin, DetailView):
     model = Player
