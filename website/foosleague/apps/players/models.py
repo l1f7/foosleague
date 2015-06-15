@@ -135,8 +135,16 @@ class Player(TimeStampedModel):
         return self.streaks['win_streak']
 
     @property
+    def win_spanning_days(self):
+        return self.streaks['win_spanning_days']
+
+    @property
     def worst_losing_streak(self):
         return self.streaks['worst_losing_streak']
+
+    @property
+    def loss_spanning_days(self):
+        return self.streaks['loss_spanning_days']
 
     @property
     def worst_losing_streak_date(self):
