@@ -18,16 +18,18 @@ def get_streaks(player):
     for m in matches:
         if m.winner in player.teams:
             # He/She Won
-            win_streak += 1
-            losing_streak = 0
 
             if losing_streak == worst_losing_streak:
                 last_loss = m
+                print last_loss, first_loss
                 try:
                     loss_spanning_days = (last_loss.created-first_loss.created).days+1
 
                 except:
                     loss_spanning_days = None
+
+            win_streak += 1
+            losing_streak = 0
 
             if win_streak == 1:
                 #first win, mark it!
@@ -55,7 +57,9 @@ def get_streaks(player):
                 worst_losing_streak = losing_streak
                 if losing_streak == 1:
                     # first loss, mark the date
+                    first_loss = m
                     worst_losing_streak_date = m.created
+
         last_game = m
 
     not_lost_since = None
