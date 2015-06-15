@@ -10,6 +10,7 @@ from matches.models import Match
 from leagues.models import LeagueMember
 from django.shortcuts import get_object_or_404
 
+
 class PlayerListView(LoginRequiredMixin, ListView):
     model = Player
     template_name = "players/list.html"
