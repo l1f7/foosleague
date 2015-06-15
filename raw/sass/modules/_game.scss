@@ -78,6 +78,15 @@
   color: $base-type;
 }
 
+.game-date {
+  margin: 0;
+  padding: 5px 0 10px;
+  clear: both;
+  text-align: center;
+  @include font(12, 400, 1);
+  opacity: 0.5;
+}
+
 .game--details {
   padding: 20px;
 

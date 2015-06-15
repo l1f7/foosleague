@@ -1729,6 +1729,17 @@ body {
   background: #ffffff;
   color: #666666; }
 
+.game-date {
+  margin: 0;
+  padding: 5px 0 10px;
+  clear: both;
+  text-align: center;
+  font-weight: 400;
+  font-size: 0.75rem;
+  font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1;
+  opacity: 0.5; }
+
 .game--details {
   padding: 20px; }
   .game--details .game-score {
@@ -2150,7 +2161,7 @@ body {
   width: 120px;
   height: 120px;
   display: inline-block;
-  border-radius: 100px;
+  border-radius: 3px;
   margin: 0 0 20px;
   overflow: hidden; }
 
