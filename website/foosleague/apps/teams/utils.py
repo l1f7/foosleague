@@ -78,7 +78,7 @@ def get_streaks(team):
         try:
             not_won_since = matches.filter(winner=team)[0].created
         except:
-            not_won_since = "Well, never"
+            not_won_since = "Never"
         if losing_streak == worst_losing_streak:
             loss_spanning_days = (last_game.created - first_loss.created).days +1
 
