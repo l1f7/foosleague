@@ -2,6 +2,9 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 from django.core.urlresolvers import reverse_lazy
+from django.db.models import Q
+from django.db.models.loading import get_model
+
 
 from leagues.models import League
 
@@ -33,3 +36,59 @@ class Team(TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse_lazy('team-detail', kwargs={'pk': self.id})
+
+    _matches = ""
+    @property
+    def matches(self):
+        if not self._matches:
+            self._matches = get_model('matches.Match').objects.filter(Q(team_1=self) | Q(team_2=self))
+        return self._matches
+
+    _streaks = ""
+    @property
+    def streaks(self):
+        if not self._streaks:
+            from .utils import get_streaks
+            self._streaks = get_streaks(self)
+        return self._streaks
+
+    @property
+    def best_win_streak(self):
+        return self.streaks['best_win_streak']
+
+    @property
+    def best_win_streak_date(self):
+        return self.streaks['best_win_streak_date']
+
+    @property
+    def losing_streak(self):
+        return self.streaks['losing_streak']
+
+    @property
+    def not_lost_since(self):
+        return self.streaks['not_lost_since']
+
+    @property
+    def not_won_since(self):
+        return self.streaks['not_won_since']
+
+    @property
+    def win_streak(self):
+        return self.streaks['win_streak']
+
+    @property
+    def win_spanning_days(self):
+        return self.streaks['win_spanning_days']
+
+    @property
+    def worst_losing_streak(self):
+        return self.streaks['worst_losing_streak']
+
+    @property
+    def loss_spanning_days(self):
+        return self.streaks['loss_spanning_days']
+
+    @property
+    def worst_losing_streak_date(self):
+        return self.streaks['worst_losing_streak_date']
+

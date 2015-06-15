@@ -19,7 +19,7 @@ def get_streaks(player):
         if m.winner in player.teams:
             # He/She Won
 
-            if losing_streak == worst_losing_streak:
+            if losing_streak == worst_losing_streak and losing_streak > 1:
                 last_loss = m
                 print last_loss, first_loss
                 try:
@@ -42,7 +42,7 @@ def get_streaks(player):
 
         else:
             # He/She Lost
-            if win_streak == best_win_streak:
+            if win_streak == best_win_streak and win_streak > 1:
                 last_win = m
                 win_spanning_days = (last_win.created - first_win.created).days +1
 
