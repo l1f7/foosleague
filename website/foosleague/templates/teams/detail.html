@@ -12,7 +12,7 @@
           <div class="team team--profile">
             {% if team.logo %}
               <div class="team-logo">
-                {% thumbnail team.logo "120x120" crop="center" as im %}
+                {% thumbnail team.logo "180x180" crop="center" as im %}
                   <img src="{{ MEDIA_URL }}{{ im }}" class="team-img"/>
                 {% endthumbnail %}
               </div>
