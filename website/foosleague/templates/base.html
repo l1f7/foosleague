@@ -50,6 +50,7 @@
               {% comment %}
                 <div class="nav-item {% block nav-bookie %}{% endblock %}"><a href="{% url "bets" %}" class="nav-link">Bookie</a></div>
               {% endcomment %}
+              <div class="nav-item"><a href="{% url "players-update" player.id %}" class="nav-link">Settings</a></div>
               <div class="nav-item is-right"><a href="{% url "match-create" %}" class="nav-btn btn btn--small btn--full">Start A Game</a></div>
             </div>
           </div>

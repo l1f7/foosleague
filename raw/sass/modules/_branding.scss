@@ -25,7 +25,7 @@
   padding: 30px 15px;
   display: block;
   color: $green;
-  @include font(28, 400, 1, $base-font-alt);
+  @include font(28, 800, 1, $base-font-alt);
   @extend .ts-alt;
   @extend .ts-uppercase;
   text-align: center;

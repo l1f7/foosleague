@@ -81,3 +81,6 @@ $c-game-color--win    :  $green;
 $c-game-bg--lose       :  lighten($red, 30%);
 $c-game-border--lose   :  $red;
 $c-game-color--lose    :  $red;
+
+$c-form-bg            :  $white;
+$c-form-border        :  darken($white, 15%);

@@ -8,7 +8,7 @@
     <div class="l-col">
       <div class="standings is-loading">
         {% for player in object_list %}
-          <a href="{{player.get_absolute_url}}" class="standing">
+          <a href="{{ player.get_absolute_url }}" class="standing">
             {% comment %}
             <div class="standing-count standing-count--{{ forloop.counter }}"><span>{{ forloop.counter }}</span></div>
             {% endcomment %}

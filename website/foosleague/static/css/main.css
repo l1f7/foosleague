@@ -1291,7 +1291,7 @@ body {
   padding: 30px 15px;
   display: block;
   color: #36cd8b;
-  font-weight: 400;
+  font-weight: 800;
   font-size: 1.75rem;
   font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1;
@@ -2224,6 +2224,13 @@ body {
     .team--profile .team-player:last-child {
       margin-bottom: 0; }
 
+.form {
+  padding: 30px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  border: 1px solid #d9d9d9;
+  background: #ffffff; }
+
 .form-titlebar {
   padding: 10px 0 30px; }
 
@@ -2299,8 +2306,8 @@ body {
 
 .field--actions {
   clear: both;
-  margin-top: -1.07867em;
-  padding-top: 1.07867em; }
+  margin: 15px 0 -30px;
+  padding: 15px 0; }
   .field--actions::after {
     clear: both;
     content: "";

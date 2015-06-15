@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="l-columns l-columns--centered">
+    <div class="l-col">
+      <form action ='' method='post' class="form">
+        {% include "partials/forms/error_field.html" %}
+        {{form.errors}}
+        {% csrf_token %}
+        {% include "partials/forms/text_field.html" with field=form.nickname %}
+        {% include "partials/forms/image_field.html" with field=form.photo %}
+        {% include "partials/forms/text_field.html" with field=form.slack_username %}
+        <div class="form-action">
+          <input type='submit' class="btn" value='Save'/>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
