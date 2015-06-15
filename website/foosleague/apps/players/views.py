@@ -8,6 +8,7 @@ from .models import Player
 from teams.models import Team
 from matches.models import Match
 from leagues.models import LeagueMember
+from django.shortcuts import get_object_or_404
 
 class PlayerListView(LoginRequiredMixin, ListView):
     model = Player
@@ -29,7 +30,8 @@ class PlayerDetailView(LoginRequiredMixin, DetailView):
     template_name = "players/detail.html"
 
     def get_object(self, *args, **kwargs):
-        obj = super(PlayerDetailView, self).get_object(*args, **kwargs)
+        obj = get_object_or_404(Player.objects.select_related(), pk=self.kwargs['pk'])
+
         if obj.id not in LeagueMember.objects.filter(league=self.request.league).values_list('player__id', flat=True):
             raise Http404
         return obj

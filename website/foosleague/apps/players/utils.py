@@ -1,7 +1,6 @@
 from django.db.models import Q, Sum
 from datetime import datetime, timedelta
 
-
 def get_streaks(player):
     matches = player.matches.order_by('created')
 
@@ -162,10 +161,10 @@ def calc_goal_differential(player, days=None, direction='for', season=None):
 def calc_color_preference(player, color='red', stat='favoured'):
 
         #which team you've won the most with
-        red_plays = float(matches.filter(team_1=teams).count())
-        red_wins = float(matches.filter(winner=teams, team_1=teams).count())
-        black_plays = float(matches.filter(team_2=teams).count())
-        black_wins = float(matches.filter(winner=teams, team_2=teams).count())
+        red_plays = float(player.matches.filter(team_1=teams).count())
+        red_wins = float(player.matches.filter(winner=teams, team_1=teams).count())
+        black_plays = float(player.matches.filter(team_2=teams).count())
+        black_wins = float(player.matches.filter(winner=teams, team_2=teams).count())
 
         color_stats = {}
         if color == 'red':
@@ -263,13 +262,13 @@ def calc_stats(player):
     color_stats = {}
     if red_plays:
         color_stats['red'] = {
-            'favoured': int(round((red_wins/red_plays)*100)),
-            'winning_percentage': int(round((red_plays/(red_plays+black_plays))*100))
+            'winning_percentage': int(round((red_wins/red_plays)*100)),
+            'favoured': int(round((red_plays/(red_plays+black_plays))*100))
         }
     if black_plays:
         color_stats['black'] = {
-            'favoured': int(round((black_wins/black_plays)*100)),
-            'winning_percentage': int(round((black_plays/(red_plays+black_plays))*100))
+            'winning_percentage': int(round((black_wins/black_plays)*100)),
+            'favoured': int(round((black_plays/(red_plays+black_plays))*100))
         }
 
     stats = {
