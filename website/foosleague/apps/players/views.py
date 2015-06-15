@@ -10,6 +10,8 @@ from matches.models import Match
 from leagues.models import LeagueMember
 from django.shortcuts import get_object_or_404
 
+from .forms import PlayerForm
+
 
 class PlayerListView(LoginRequiredMixin, ListView):
     model = Player
@@ -24,7 +26,7 @@ class PlayerListView(LoginRequiredMixin, ListView):
 class PlayerUpdateView(LoginRequiredMixin, UpdateView):
     model = Player
     template_name = "players/update.html"
-
+    form_class = PlayerForm
     def get_object(self, *args, **kwargs):
         obj = super(PlayerUpdateView, self).get_object(*args, **kwargs)
         if obj.user != self.request.user:
