@@ -15,6 +15,20 @@
   border-bottom: 1px solid $c-game-border;
 }
 
+.team-logo {
+  width: 120px;
+  height: 120px;
+  display: inline-block;
+  border-radius: 100px;
+  margin: 0 0 20px;
+  overflow: hidden;
+}
+
+.team-img {
+  width: 100%;
+  border-radius: 3px;
+}
+
 .team-streak {
   float: right;
   margin: 0;
@@ -67,11 +81,32 @@
     padding-bottom: 15px;
     @extend .ms-3;
   }
+
   .team-streak {
     @extend .ms-1;
   }
 
   .team-player {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.team--profile {
+  padding: 0;
+  text-align: center;
+
+  .team-name {
+    text-align: center;
+    padding-bottom: 15px;
+    @extend .ms-4;
+  }
+
+  .team-player {
+    text-align: left;
     margin-bottom: 10px;
 
     &:last-child {

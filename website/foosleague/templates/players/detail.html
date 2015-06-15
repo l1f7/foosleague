@@ -6,36 +6,6 @@
 {% block content %}
 
   <div class="l-columns l-columns--sideleft">
-    <div class="l-col">
-
-      <div class="tabs">
-        <a href="#" class="tab js-tab is-active" data-tab="#tab-games">Games</a>
-        <a href="#" class="tab js-tab" data-tab="#tab-teams">Teams</a>
-      </div>
-
-      <div id="tab-games" class="tab-content js-tabContent is-active">
-        <div class="games is-loading">
-          {% for match in matches %}
-            {% include "partials/match.html" with match=match highlight_player=object %}
-          {% endfor %}
-        </div>
-      </div>
-
-      <div id="tab-teams" class="tab-content js-tabContent">
-        {% for team in teams %}
-          <a href="{{team.get_absolute_url}}" class="standing">
-            {% comment %}
-            <div class="standing-count standing-count--{{ forloop.counter }}">
-              <span>{{ forloop.counter }}</span>
-            </div>
-            {% endcomment %}
-            <div class="standing-team">
-              {% include "partials/team.html" with team=team team_class="team--small" %}
-            </div>
-          </a>
-        {% endfor %}
-      </div>
-    </div>
     <div class="l-col l-col--side">
       <section class="profile profile--details">
         <div class="profile-player">
@@ -225,6 +195,37 @@
 
         </div>
       </section>
+    </div>
+
+    <div class="l-col">
+
+      <div class="tabs">
+        <a href="#" class="tab js-tab is-active" data-tab="#tab-games">Games</a>
+        <a href="#" class="tab js-tab" data-tab="#tab-teams">Teams</a>
+      </div>
+
+      <div id="tab-games" class="tab-content js-tabContent is-active">
+        <div class="games is-loading">
+          {% for match in matches %}
+            {% include "partials/match.html" with match=match highlight_player=object %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div id="tab-teams" class="tab-content js-tabContent">
+        {% for team in teams %}
+          <a href="{{team.get_absolute_url}}" class="standing">
+            {% comment %}
+            <div class="standing-count standing-count--{{ forloop.counter }}">
+              <span>{{ forloop.counter }}</span>
+            </div>
+            {% endcomment %}
+            <div class="standing-team">
+              {% include "partials/team.html" with team=team team_class="team--small" %}
+            </div>
+          </a>
+        {% endfor %}
+      </div>
     </div>
   </div>
 {% endblock %}

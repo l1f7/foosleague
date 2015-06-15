@@ -7,9 +7,14 @@
 
 .stat-group {
   display: none;
+  opacity: 0;
+  @include transition(0.25s);
+  @include transform(translateY(20px));
 
   &.is-active {
     display: block;
+    opacity: 1;
+    @include transform(translateY(0));
   }
 }
 

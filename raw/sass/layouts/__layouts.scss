@@ -161,12 +161,10 @@ body {
 .l-columns--sideleft {
   .l-col {
     @include span-columns(8);
-    @include shift(4);
   }
 
   .l-col--side {
     @include span-columns(4);
-    @include shift(-12);
   }
 }
 
@@ -349,12 +347,10 @@ body {
   .l-columns--sideleft {
     .l-col {
       @include span-columns(4);
-      @include shift(0);
     }
 
     .l-col--side {
       @include span-columns(4);
-      @include shift(0);
     }
   }
 
