@@ -10,6 +10,9 @@
         {% include "partials/forms/text_field.html" with field=form.nickname %}
         {% include "partials/forms/image_field.html" with field=form.photo %}
         {% include "partials/forms/text_field.html" with field=form.slack_username %}
+        {% include "partials/forms/password_field.html" with field=form.current_password %}
+        {% include "partials/forms/password_field.html" with field=form.password1 %}
+        {% include "partials/forms/password_field.html" with field=form.password2 %}
         <div class="form-action">
           <input type='submit' class="btn" value='Save'/>
         </div>
