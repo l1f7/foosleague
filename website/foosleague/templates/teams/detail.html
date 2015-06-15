@@ -10,13 +10,13 @@
       <section class="profile profile--details">
         <div class="profile-team">
           <div class="team team--profile">
-            <div class="team-logo">
-              {% if team.logo %}
+            {% if team.logo %}
+              <div class="team-logo">
                 {% thumbnail team.logo "120x120" crop="center" as im %}
                   <img src="{{ MEDIA_URL }}{{ im }}" class="team-img"/>
                 {% endthumbnail %}
-              {% endif %}
-            </div>
+              </div>
+            {% endif %}
             <h1 class="team-name">{{ team }}</h1>
             {% for player in team.players.all %}
               {% include "partials/player.html" with player=player player_class="team-player player--large" %}
