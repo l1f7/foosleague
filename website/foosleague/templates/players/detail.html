@@ -97,30 +97,34 @@
               {% endif %}
             </div>
           </div>
-          <hr class="hr--dark"/>
-          <div class="stat-group is-active">
-            <div class="stat">
-                <div class="stat-title">Best Win Streak</div>
-                <div class="stat-number">{{ object.best_win_streak }} Games</div>
+          {% if object.best_win_streak > 0 %}
+            <hr class="hr--dark"/>
+            <div class="stat-group is-active">
+              <div class="stat">
+                  <div class="stat-title">Best Win Streak</div>
+                  <div class="stat-number">{{ object.best_win_streak }} Games</div>
+              </div>
+              <div class="u-clear"></div>
+              <div class="stat stat--small">
+                  <div class="stat-title">Spanning</div>
+                  <div class="stat-number">{{ object.win_spanning_days}} days</div>
+              </div>
             </div>
-            <div class="u-clear"></div>
-            <div class="stat stat--small">
-                <div class="stat-title">Spanning</div>
-                <div class="stat-number">{{ object.win_spanning_days}} days</div>
+          {% endif %}
+          {% if object.worst_losing_streak > 0 %}
+            <hr class="hr--dark"/>
+            <div class="stat-group is-active">
+              <div class="stat">
+                  <div class="stat-title">Worst Losing Streak</div>
+                  <div class="stat-number">{{ object.worst_losing_streak }} Games</div>
+              </div>
+              <div class="u-clear"></div>
+              <div class="stat stat--small">
+                  <div class="stat-title">Spanning</div>
+                  <div class="stat-number">{{ object.loss_spanning_days}} days</div>
+              </div>
             </div>
-          </div>
-          <hr class="hr--dark"/>
-          <div class="stat-group is-active">
-            <div class="stat">
-                <div class="stat-title">Worst Losing Streak</div>
-                <div class="stat-number">{{ object.worst_losing_streak }} Games</div>
-            </div>
-            <div class="u-clear"></div>
-            <div class="stat stat--small">
-                <div class="stat-title">Spanning</div>
-                <div class="stat-number">{{ object.loss_spanning_days}} days</div>
-            </div>
-          </div>
+          {% endif %}
         </div>
 
         <div class="profile-stats">
