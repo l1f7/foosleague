@@ -1,4 +1,5 @@
-import simplejson
+import json
+from django.core import serializers
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -78,7 +79,9 @@ class Player(TimeStampedModel):
 
     @property
     def full_expose(self):
-        return self.exposehistory_set.all().values_list('created', 'ts_expose')
+        obj =  self.exposehistory_set.all().order_by('created')
+        out = serializers.serialize('json', obj)
+        return out
 
 
     @property
