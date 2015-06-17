@@ -14,6 +14,7 @@
 
         <div class="profile-stats">
           <h1 class="stat-heading">Rank</h1>
+          <div id="player_chart" style="width: 200px; height: 100px"></div>
           <div class="stat-group is-active">
             <div class="stat">
               <div class="stat-number">{{ object.ts_expose|floatformat:2 }}</div>
@@ -233,3 +234,53 @@
     </div>
   </div>
 {% endblock %}
+
+{% block extra_script %}
+<script type="text/javascript">
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'Expose');
+      data.addRows({{ object.full_expose|safe }});
+
+      var options = {
+        curveType: 'function',
+        chartArea: {
+          left: 0,
+          top: 20,
+          right: 0,
+          bottom: 0,
+          width: '100%',
+          height: '100%'
+        },
+        colors: ['#36cd8b', '#5198FB'],
+        backgroundColor: 'transparent',
+        legend: { position: 'none' },
+        hAxis: {
+          textPosition: 'none',
+          gridlines: {
+            color: 'transparent'
+          },
+          baseline: {
+            color: 'transparent'
+          }
+        },
+        vAxis: {
+          textPosition: 'none',
+          gridlines: {
+            color: 'transparent'
+          },
+          baseline: {
+            color: 'transparent'
+          }
+        }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('player_chart'));
+
+      chart.draw(data, options);
+    }
+  </script>
+  {% endblock %}
