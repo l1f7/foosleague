@@ -83,3 +83,101 @@
     color: $white;
   }
 }
+
+
+.gamedetails-section {
+  @include outer-container;
+}
+
+.gamedetails-team {
+  @include span-columns(4);
+
+  .team-name {
+    color: $white;
+    border: none;
+    padding: 10px 0;
+  }
+}
+
+.gamedetails-team--red {
+  .team-name {
+    background: $red;
+  }
+}
+
+.gamedetails-team--black {
+  .team-name {
+    background: $black;
+  }
+}
+
+.gamedetails-details {
+  @include span-columns(6);
+}
+
+
+.gamedetails-scorecol {
+  @include span-columns(2);
+  text-align: center;
+}
+
+.gamedetails-score {
+  border-radius: 5px;
+  display: block;
+  margin: 0 10px 20px;
+  padding: 35px 0 30px;
+  text-align: center;
+  border: 1px solid $c-game-border;
+  color: $black;
+  background: $white;
+  @include font(80, 600, 1, $base-font-heading);
+  @extend .ts-alt;
+  @extend .ts-uppercase;
+  color: $base-type;
+}
+
+.gamedetails-triggers {
+  margin: 10px 0 0;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.gamedetails-btn {
+  margin: 0;
+  padding: 0;
+  width: 36px;
+  height: 28px;
+  text-align: center;
+  display: block;
+  float: left;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28px;
+  border: 1px solid $black;
+  border-radius: 3px;
+}
+
+.gamedetails-btn--red {
+  width: 28px;
+  margin-right: 8px;
+  border-color: $red;
+  color: $red;
+  line-height: 24px;
+
+  &:hover {
+    background: $red;
+    color: $white;
+  }
+}
+
+.gamedetails-btn--green {
+  border-color: $green;
+  color: $green;
+  width: 44px;
+
+  &:hover {
+    background: $green;
+    color: $white;
+  }
+}
