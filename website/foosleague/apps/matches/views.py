@@ -139,7 +139,7 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
             team_2.players.add(p4)
             team_2.save()
 
-        seasons = Season.objects.filter(start__gte=date, end__gte=date)
+        seasons = Season.objects.filter(start__lte=date, end__gte=date)
         season = None
         if seasons.count():
             season = seasons[0]
@@ -150,7 +150,6 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
                       completed=form.cleaned_data['completed'], season=season, league=self.request.league)
 
         if form.cleaned_data['completed']:
-            print 'here'
             match.complete(self.request)
         else:
             # post to slack!
