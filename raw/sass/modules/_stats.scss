@@ -56,7 +56,7 @@
   margin: 0;
   padding: 0;
   color: $black;
-  @extend .ms-7;
+  @include font(54, 600, 1, $base-font-heading);
   @extend .ts-uppercase;
   @extend .ts-alt;
 }
@@ -64,7 +64,7 @@
 .stat-title {
   margin: 0;
   padding: 0;
-  @extend .ms-n1;
+  @include font(16, 600, 1, $base-font-heading);
   @extend .ts-alt;
   @extend .ts-uppercase;
   @extend .ts-light;
@@ -73,11 +73,11 @@
 
 .stat--small {
   .stat-number {
-    @extend .ms-2;
+    @include font(24, 600, 1, $base-font-heading);
   }
 
   .stat-title {
-    @extend .ms-n2;
+    @include font(16, 600, 1, $base-font-heading);
     font-weight: 400;
   }
 }

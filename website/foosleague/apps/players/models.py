@@ -83,7 +83,7 @@ class Player(TimeStampedModel):
         obj = set(list(obj))
         r = []
         for e in obj:
-            r.append([e])
+            r.append([0, e])
 
         # list(obj)
         # list(o)
