@@ -1,26 +1,22 @@
 import urllib2
 import re
 import requests
-
 from datetime import datetime
-from django.http.response import HttpResponseRedirect, Http404
 
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse_lazy
-
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import UpdateView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import UpdateView, CreateView
 from django.contrib.messages import success, error
-
+from django.http.response import JsonResponse, HttpResponseRedirect, Http404
+from django.db.models import Sum
 from mixins.views import LoginRequiredMixin
-from django.http.response import JsonResponse
 
 from teams.models import Team
 from seasons.models import Season
 from players.models import Player
-from .models import Match
+from .models import Match, Goal
 from .forms import MatchForm
 
 
@@ -204,42 +200,49 @@ class MatchScoreUpdateView(UpdateView):
 
     def get(self, *args, **kwargs):
         m = self.get_object()
+
         if self.kwargs['team'] == 'red':
-            m.team_1_score += int(self.kwargs['score'])
+            # m.team_1_score += int(self.kwargs['score'])
+            Goal.objects.create(match=m, value=self.kwargs['score'], team=m.team_1)
+            m.team_1_score = m.goal_set.filter(team=m.team_1).aggregate(score=Sum('value'))['score']
+
         else:
             m.team_2_score += int(self.kwargs['score'])
+            Goal.objects.create(match=m, value=self.kwargs['score'], team=m.team_2)
+            m.team_2_score = m.goal_set.filter(team=m.team_2).aggregate(score=Sum('value'))['score']
+
         m.save()
 
-        if (((m.team_1_score - m.team_2_score) >= 2) or ((m.team_2_score - m.team_1_score) >= 2)) and (m.team_1_score >= 10 or m.team_2_score >= 10):
-            m.completed = True
-            if m.team_1_score > m.team_2_score:
-                m.winner = m.team_1
-                winning_score = m.team_1_score
-                losing_score = m.team_2_score
-                loser = m.team_2
-            else:
-                m.winner = m.team_2
-                winning_score = m.team_2_score
-                losing_score = m.team_1_score
-                loser = m.team_1
+        # if (((m.team_1_score - m.team_2_score) >= 2) or ((m.team_2_score - m.team_1_score) >= 2)) and (m.team_1_score >= 10 or m.team_2_score >= 10):
+        #     m.completed = True
+        #     if m.team_1_score > m.team_2_score:
+        #         m.winner = m.team_1
+        #         winning_score = m.team_1_score
+        #         losing_score = m.team_2_score
+        #         loser = m.team_2
+        #     else:
+        #         m.winner = m.team_2
+        #         winning_score = m.team_2_score
+        #         losing_score = m.team_1_score
+        #         loser = m.team_1
 
-            m.save()
+        #     m.save()
 
-            if m.team_2_score == 0 or m.team_1_score == 0:
-                message = ":skunk: :skunk: :skunk: *%s* _(%s)_ vs *%s* _(%s)_ :skunk: :skunk: :skunk: (http://%s.foosleague.com%s)" % (m.winner,
-                                                                                                                                       winning_score, loser, losing_score, self.request.league.subdomain, m.get_absolute_url())
-            else:
-                message = "Game Over! *%s* _(%s)_ vs *%s* _(%s)_ (http://%s.foosleague.com%s)" % (m.winner,
-                                                                                                  winning_score, loser,  losing_score, self.request.league.subdomain, m.get_absolute_url())
+        #     if m.team_2_score == 0 or m.team_1_score == 0:
+        #         message = ":skunk: :skunk: :skunk: *%s* _(%s)_ vs *%s* _(%s)_ :skunk: :skunk: :skunk: (http://%s.foosleague.com%s)" % (m.winner,
+        #                                                                                                                                winning_score, loser, losing_score, self.request.league.subdomain, m.get_absolute_url())
+        #     else:
+        #         message = "Game Over! *%s* _(%s)_ vs *%s* _(%s)_ (http://%s.foosleague.com%s)" % (m.winner,
+        #                                                                                           winning_score, loser,  losing_score, self.request.league.subdomain, m.get_absolute_url())
 
-            requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (self.request.league.slack_token, "%23" + self.request.league.slack_channel,),
-                          data=message)
-
-
+        #     requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (self.request.league.slack_token, "%23" + self.request.league.slack_channel,),
+        #                   data=message)
 
 
 
-            m.complete()
+
+
+        #     m.complete()
 
 
         json = {

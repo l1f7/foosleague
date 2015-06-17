@@ -1,3 +1,5 @@
+import simplejson
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
@@ -58,7 +60,7 @@ class Player(TimeStampedModel):
     @property
     def current_expose(self):
         try:
-            return self.stathistory_set.exclude(ts_expose=0)[0].ts_expose
+            return self.exposehistory[0].ts_expose
         except:
             return 0
 
@@ -77,6 +79,7 @@ class Player(TimeStampedModel):
     @property
     def full_expose(self):
         return self.exposehistory_set.all().values_list('created', 'ts_expose')
+
 
     @property
     def full_fooscoin(self):

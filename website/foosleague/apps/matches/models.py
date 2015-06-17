@@ -1,6 +1,7 @@
 import requests
 
 from django.db import models
+from django.db.models import Sum
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 from django.core.urlresolvers import reverse_lazy
@@ -48,7 +49,6 @@ class Match(TimeStampedModel):
         from .utils import winning_percentage
         return winning_percentage(self, 2)
 
-
     def complete(self, request):
 
         if self.team_1_score > self.team_2_score:
@@ -64,11 +64,6 @@ class Match(TimeStampedModel):
 
         self.save()
 
-
-        # send message
-
-
-
         # calculate streaks
         broadcast_message(self, winning_score, losing_score, loser, request)
         recalculate_streaks(self)
@@ -77,3 +72,26 @@ class Match(TimeStampedModel):
         award_fooscoin(self)
         #award_season_points(self)
         regen_expose(self)
+
+    _odds = ""
+    @property
+    def odds(self):
+        from .utils import get_odds
+        if not self._odds:
+            self._odds = get_odds(self)
+        return self._odds
+
+
+class Goal(TimeStampedModel):
+    match = models.ForeignKey(Match)
+    value = models.IntegerField(_("Value"), default=1, help_text='corrections will be stored as -1')
+    raspberry_pi = models.BooleanField(default=False)
+    team = models.ForeignKey(Team, )
+
+    class Meta:
+        verbose_name = _("Goal")
+        verbose_name_plural = _("Goals")
+        ordering = ("-created",)
+
+    def __unicode(self):
+        return '%s (%s)' % (self.match, self.value)

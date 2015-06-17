@@ -27,6 +27,6 @@ class PlayerAdmin(admin.ModelAdmin):
     list_display = ('nickname', 'user', 'ts_mu', 'ts_sigma')
     readonly_fields = ('created', 'modified',)
     search_fields = ['nickname', 'user', ]
-    # inlines = [StatHistoryInline, ExposeHistoryInline]
+    inlines = [StatHistoryInline, ExposeHistoryInline]
 
 admin.site.register(Player, PlayerAdmin)
