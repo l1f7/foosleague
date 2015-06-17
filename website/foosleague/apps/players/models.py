@@ -79,13 +79,25 @@ class Player(TimeStampedModel):
 
     @property
     def full_expose(self):
-        obj =  self.exposehistory_set.all().order_by('created').values_list('ts_expose',flat=True)[:20]
+        obj = self.exposehistory_set.all().order_by('created').values_list('ts_expose', flat=True)
+        obj = set(list(obj))
+        r = []
+        for e in obj:
+            r.append([e])
+
         # list(obj)
         # list(o)
         # out = serializers.serialize('json', obj, fields=('created', 'ts_expose'))
-        return list(obj)
+        return r
 
+    # def expose_chart(self):
+    #     expose = self.exposehistory_set.all().order_by('created').values_list('ts_expose', flat=True)
+    #     ts = self.stathistory_set.all().order_by('created').values_list('ts_mu', flat=True)
 
+    #     stat = []
+    #     for count, e in enumerate(expose):
+    #         stat.append([e, ts[count]])
+    #     return json.dumps(stat)
     @property
     def full_fooscoin(self):
         return self.stathistory_set.all().values_list('created', 'fooscoin')
