@@ -40,10 +40,14 @@ class Match(TimeStampedModel):
     def get_absolute_url(self):
         return reverse_lazy('match-detail', kwargs={'pk': self.id})
 
-
-    def get_winning_percentage(self, team_number=1):
+    def team_1_wp(self):
         from .utils import winning_percentage
-        return winning_percentage(self, team_number)
+        return winning_percentage(self, 1)
+
+    def team_2_wp(self):
+        from .utils import winning_percentage
+        return winning_percentage(self, 2)
+
 
     def complete(self, request):
 
