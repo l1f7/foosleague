@@ -82,8 +82,8 @@ class Player(TimeStampedModel):
         obj = self.exposehistory_set.all().order_by('created').values_list('ts_expose', flat=True)
         obj = set(list(obj))
         r = []
-        for e in obj:
-            r.append([0, e])
+        for count, e in enumerate(obj):
+            r.append([count, e])
 
         # list(obj)
         # list(o)
