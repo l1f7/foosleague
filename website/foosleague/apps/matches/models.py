@@ -41,12 +41,9 @@ class Match(TimeStampedModel):
         return reverse_lazy('match-detail', kwargs={'pk': self.id})
 
 
-    def get_winning_percentage(self, team=1):
+    def get_winning_percentage(self, team_number=1):
         from .utils import winning_percentage
-        if team == 1:
-            return winning_percentage(self, self.team_1)
-        else:
-            return winning_percentage(self, self.team_2)
+        return winning_percentage(self, team_number)
 
     def complete(self, request):
 

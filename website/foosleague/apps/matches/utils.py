@@ -63,23 +63,32 @@ def Pwin(rAlist=[Rating()],  rBlist=[Rating()]):
     return cdf(deltaMu / rsss)
 
 
-def winning_percentage(match, team):
-
+def winning_percentage(match, team_number):
     team1 = []
     team2 = []
     for p in match.team_1.players.all():
         team1.append(Rating(p.ts_mu, p.ts_sigma))
-    for p in match.team_2.players.all():
-        team2.append(Rating(p.ts_mu, p.ts_sigma))
+    for p2 in match.team_2.players.all():
+        team2.append(Rating(p2.ts_mu, p2.ts_sigma))
 
-    if team == 1:
+    if team_number == 1:
         return round((Pwin(team1, team2) * 100), 2)
     else:
         return round((Pwin(team2, team1) * 100), 2)
 
+# def odds(match):
+#     team1_wp = winning_percentage(match, 1)
+#     team2_wp = winning_percentage(match, 2)
+#     if team1_wp < team2_wp:
+#         # team 1 underdog
+
+#     else:
+#         # team 2 underdog
+
+
 
 def calculate_odds():
-
+    from matches.models import Match
     matches = Match.objects.all()
     right = 0
     wrong = 0
