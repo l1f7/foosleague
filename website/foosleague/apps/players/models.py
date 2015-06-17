@@ -1,5 +1,6 @@
 import json
 from django.core import serializers
+from datetime import datetime, timedelta
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -79,7 +80,7 @@ class Player(TimeStampedModel):
 
     @property
     def full_expose(self):
-        obj = self.exposehistory_set.all().order_by('created').values_list('ts_expose', flat=True)
+        obj = self.exposehistory_set.filter(created__lte=datetime.today()-timedelta(days=30)).order_by('created').values_list('ts_expose', flat=True)
 
         r = []
         for count, e in enumerate(obj):
