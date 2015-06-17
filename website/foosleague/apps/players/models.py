@@ -80,7 +80,7 @@ class Player(TimeStampedModel):
     @property
     def full_expose(self):
         obj =  self.exposehistory_set.all().order_by('created')
-        out = serializers.serialize('json', obj)
+        out = serializers.serialize('json', obj, fields=('created', 'ts_expose'))
         return out
 
 
