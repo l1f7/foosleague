@@ -14,7 +14,7 @@
 
         <div class="profile-stats">
           <h1 class="stat-heading">Rank</h1>
-          <div id="player_chart" style="width: 200px; height: 100px"></div>
+          <div id="player_chart" style="width: 100%; height: 100px"></div>
           <div class="stat-group is-active">
             <div class="stat">
               <div class="stat-number">{{ object.ts_expose|floatformat:2 }}</div>
@@ -248,12 +248,15 @@
       var options = {
         curveType: 'function',
         chartArea: {
-          left: 0,
+          left: -10,
           top: 20,
-          right: 0,
+          right: -10,
           bottom: 0,
           width: '100%',
           height: '100%'
+        },
+        tooltip: {
+          trigger: 'none'
         },
         colors: ['#36cd8b', '#5198FB'],
         backgroundColor: 'transparent',
@@ -263,18 +266,14 @@
           gridlines: {
             color: 'transparent'
           },
-          baseline: {
-            color: 'transparent'
-          }
+          baselineColor: 'transparent'
         },
         vAxis: {
           textPosition: 'none',
           gridlines: {
             color: 'transparent'
           },
-          baseline: {
-            color: 'transparent'
-          }
+          baselineColor: 'transparent'
         }
       };
 
