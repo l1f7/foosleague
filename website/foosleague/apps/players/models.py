@@ -61,7 +61,7 @@ class Player(TimeStampedModel):
     @property
     def current_expose(self):
         try:
-            return self.exposehistory[0].ts_expose
+            return self.exposehistory_set.all()[0].ts_expose
         except:
             return 0
 
