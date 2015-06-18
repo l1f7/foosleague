@@ -324,6 +324,8 @@
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'X');
       data.addColumn('number', 'Expose');
+      data.addColumn('number', 'Top Expose');
+
       data.addRows({{ player.full_expose|safe }});
 
       var options = {
@@ -339,7 +341,7 @@
         tooltip: {
           trigger: 'none'
         },
-        colors: ['#36cd8b', '#5198FB'],
+        colors: ['#36cd8b', '#5198FB', '#5198FB'],
         backgroundColor: 'transparent',
         legend: { position: 'none' },
         hAxis: {

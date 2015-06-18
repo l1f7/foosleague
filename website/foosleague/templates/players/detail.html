@@ -245,7 +245,7 @@
       data.addColumn('number', 'Expose');
       data.addColumn('number', 'Leader Expose');
       data.addRows({{ object.full_expose|safe }});
-      data.addRows({{ object.leader_expose|safe }});
+      // data.addRows({{ object.leader_expose|safe }});
 
       var options = {
         curveType: 'function',
@@ -264,7 +264,7 @@
         tooltip: {
           trigger: 'none'
         },
-        colors: ['#36cd8b', '#5198FB'],
+        colors: ['#36cd8b', '#5198FB', '#5198FB'],
         backgroundColor: 'transparent',
         legend: { position: 'none' },
         hAxis: {
