@@ -80,13 +80,14 @@ class Player(TimeStampedModel):
 
     @property
     def full_expose(self):
-        obj = self.exposehistory_set.filter(created__gte=datetime.today()-timedelta(days=30)).order_by('created').values_list('ts_expose', flat=True)
 
+        obj = self.exposehistory_set.filter(created__gte=datetime.today()-timedelta(days=30)).order_by('created').values_list('ts_expose', flat=True)
+        leader = ExposeHistory.objects.filter(created__gte=datetime.today()-timedelta(days=30), player=Player.objects.all()[0]).order_by('created').values_list('ts_expose', flat=True)
         r = []
         last = None
         for count, e in enumerate(obj):
             if e != last:
-                r.append([count, e])
+                r.append([count, e, leader[count]])
                 last = e
 
         # list(obj)
@@ -235,7 +236,6 @@ class StatHistory(TimeStampedModel):
     ts_mu = models.FloatField(_("TrueSkill"), default=25, help_text='higher the better')
     ts_sigma = models.FloatField(
         _("TrueSkill Sigma"), default=8.3333, help_text="Basically an indicator of accuracy")
-    ts_expose = models.FloatField(_("TrueSkill Expose"), default=0, help_text="Leaderboard")
 
     season = models.ForeignKey('seasons.Season', blank=True, null=True)
     season_points = models.IntegerField(_("Season Points"), blank=True, null=True)

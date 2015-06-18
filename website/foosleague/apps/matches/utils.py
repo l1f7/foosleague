@@ -80,6 +80,18 @@ def winning_percentage(match, team_number):
 
 
 def get_odds(match):
+    """
+    Converting Implied Probabilities
+    To convert an implied probability to American odds format, it depends whether the probability is over
+    50% or not. In cases where it is, we use the formula 100*p/(1-p) and then add a negative sign. In this
+    formula: p is the probability as a decimal: example, 56.5% is 0.565. If we are solving for 56.5%, we use
+    (100*0.565)/1-0.565=129.89 which after rounding and adding a negative is American odds -130. In cases
+    where the probability is 50% or less, we use the formula 100*(1-p)/p and add a positive plus sign. So for
+    47.43%, it would be 100*(1-0.4743)/0.47.43=110.83, which after rounding and adding the plus sign is
+    American odds +111.
+
+    """
+
     team1_wp = winning_percentage(match, 1)
     team2_wp = winning_percentage(match, 2)
 
@@ -260,7 +272,6 @@ def catch_up(match):
         sh.ts_sigma = loser_ratings[counter].sigma
         sh.save()
 
-
     env = TrueSkill(draw_probability=0)
     ratings = []
 
@@ -303,6 +314,7 @@ def regen_expose(match):
 
     leaderboard = sorted(ratings, key=env.expose, reverse=True)
 
+
 def award_fooscoin(self):
 
     winners = self.winner.players.all()
@@ -342,6 +354,7 @@ def recalculate_streaks(self):
     self.team_1.save()
     self.team_2.save()
     self.save()
+
 
 def broadcast_message(self, winning_score, losing_score, loser, request):
     if self.team_2_score == 0 or self.team_1_score == 0:

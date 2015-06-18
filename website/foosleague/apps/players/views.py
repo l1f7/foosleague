@@ -13,7 +13,7 @@ from django.shortcuts import get_object_or_404
 from .forms import PlayerForm
 
 
-class PlayerListView(LoginRequiredMixin, ListView):
+class PlayerListView(ListView):
     model = Player
     template_name = "players/list.html"
 
@@ -33,7 +33,7 @@ class PlayerUpdateView(LoginRequiredMixin, UpdateView):
             raise Http404
         return obj
 
-class PlayerDetailView(LoginRequiredMixin, DetailView):
+class PlayerDetailView(DetailView):
     model = Player
     template_name = "players/detail.html"
 
@@ -55,3 +55,4 @@ class PlayerDetailView(LoginRequiredMixin, DetailView):
         c['loses'] = c['matches'].count() - c['wins']
 
         return c
+

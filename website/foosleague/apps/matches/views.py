@@ -20,7 +20,7 @@ from .models import Match, Goal
 from .forms import MatchForm
 
 
-class MatchListView(LoginRequiredMixin, ListView):
+class MatchListView(ListView):
     model = Match
     template_name = "matches/list.html"
     paginate_by = 5
@@ -32,7 +32,7 @@ class MatchListView(LoginRequiredMixin, ListView):
         return qs
 
 
-class MatchDetailView(LoginRequiredMixin, DetailView):
+class MatchDetailView(DetailView):
     model = Match
     template_name = "matches/detail.html"
 
@@ -41,7 +41,7 @@ class MatchDetailView(LoginRequiredMixin, DetailView):
         return obj
 
 
-class MatchCompleteView(LoginRequiredMixin, DetailView):
+class MatchCompleteView(DetailView):
     model = Match
 
     def get(self, *args, **kwargs):
@@ -78,7 +78,7 @@ def generate_name():
     return name.split("'")[1]
 
 
-class MatchCreateView(LoginRequiredMixin, CreateView):
+class MatchCreateView(CreateView):
     model = Match
     form_class = MatchForm
     template_name = 'matches/create.html'
@@ -157,7 +157,7 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
 
 
 # todo: Skin this bad boy, make ajaxy
-class MatchUpdateView(LoginRequiredMixin, UpdateView):
+class MatchUpdateView(UpdateView):
     model = Match
 
     def get(self, *args, **kwargs):
@@ -188,6 +188,7 @@ class MatchUpdateView(LoginRequiredMixin, UpdateView):
 
 
 class MatchScoreUpdateView(UpdateView):
+    #todo: Add some sort of authentication code that will need to be present for league.
     model = Match
 
     def get_object(self, *args, **kwargs):
