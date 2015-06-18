@@ -3161,6 +3161,25 @@ body {
     background: #36cd8b;
     color: #ffffff; }
 
+.pagination {
+  margin: 20px 0 0;
+  padding: 20px 0 0;
+  text-align: center;
+  border-top: 1px solid #d9d9d9; }
+
+.pagination-btn {
+  margin: 0;
+  width: 100px; }
+
+.pagination-current {
+  marin: 0 15px;
+  width: 100px;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 0.875rem;
+  font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.6em; }
+
 .accessibility-dims {
   width: 48px;
   height: 48px; }
