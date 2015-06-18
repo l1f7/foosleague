@@ -10,13 +10,6 @@
           <div class="gamedetails-team gamedetails-team--red">
             <div class="profile-team">
               <div class="team team--profile">
-                {% if object.team_1.logo %}
-                  <div class="team-logo">
-                    {% thumbnail object.team_1.logo "180x180" crop="center" as im %}
-                      <img src="{{ MEDIA_URL }}{{ im }}" class="team-img"/>
-                    {% endthumbnail %}
-                  </div>
-                {% endif %}
                 <h1 class="team-name">{{ object.team_1.name }}</h1>
                 {% for player in object.team_1.players.all %}
                   {% include "partials/player.html" with player=player player_class="team-player player--large" %}
@@ -57,13 +50,6 @@
           <div class="gamedetails-team gamedetails-team--black">
             <div class="profile-team">
               <div class="team team--profile">
-                {% if object.team_2.logo %}
-                  <div class="team-logo">
-                    {% thumbnail object.team_2.logo "180x180" crop="center" as im %}
-                      <img src="{{ MEDIA_URL }}{{ im }}" class="team-img"/>
-                    {% endthumbnail %}
-                  </div>
-                {% endif %}
                 <h1 class="team-name">{{ object.team_2.name }}</h1>
                 {% for player in object.team_2.players.all %}
                   {% include "partials/player.html" with player=player player_class="team-player player--large" %}

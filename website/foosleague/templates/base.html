@@ -329,12 +329,15 @@
       var options = {
         curveType: 'function',
         chartArea: {
-          left: 0,
+          left: -10,
           top: 20,
-          right: 0,
+          right: -10,
           bottom: 0,
           width: '100%',
           height: '100%'
+        },
+        tooltip: {
+          trigger: 'none'
         },
         colors: ['#36cd8b', '#5198FB'],
         backgroundColor: 'transparent',
@@ -344,18 +347,14 @@
           gridlines: {
             color: 'transparent'
           },
-          baseline: {
-            color: 'transparent'
-          }
+          baselineColor: 'transparent'
         },
         vAxis: {
           textPosition: 'none',
           gridlines: {
             color: 'transparent'
           },
-          baseline: {
-            color: 'transparent'
-          }
+          baselineColor: 'transparent'
         }
       };
 
