@@ -103,7 +103,7 @@ class Player(TimeStampedModel):
         last = None
         for count, e in enumerate(obj):
             if e != last:
-                r.append([count, leader[e]])
+                r.append([count, leader[count]])
                 last = e
 
         # list(obj)
