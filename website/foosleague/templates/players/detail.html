@@ -243,7 +243,9 @@
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'X');
       data.addColumn('number', 'Expose');
+      data.addColumn('number', 'Leader Expose');
       data.addRows({{ object.full_expose|safe }});
+      data.addRows({{ object.leader_expose|safe }});
 
       var options = {
         curveType: 'function',

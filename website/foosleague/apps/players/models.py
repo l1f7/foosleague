@@ -82,12 +82,27 @@ class Player(TimeStampedModel):
     def full_expose(self):
 
         obj = self.exposehistory_set.filter(created__gte=datetime.today()-timedelta(days=30)).order_by('created').values_list('ts_expose', flat=True)
-        leader = ExposeHistory.objects.filter(created__gte=datetime.today()-timedelta(days=30), player=Player.objects.all()[0]).order_by('created').values_list('ts_expose', flat=True)
         r = []
         last = None
         for count, e in enumerate(obj):
             if e != last:
-                r.append([count, e, leader[count]])
+                r.append([count, e])
+                last = e
+
+        # list(obj)
+        # list(o)
+        # out = serializers.serialize('json', obj, fields=('created', 'ts_expose'))
+        return r
+
+    #todo: make this a template tag or something. has no bearing on current player
+    @property
+    def leader_expose(self):
+        obj = ExposeHistory.objects.filter(created__gte=datetime.today()-timedelta(days=30), player=Player.objects.all()[0]).order_by('created').values_list('ts_expose', flat=True)
+        r = []
+        last = None
+        for count, e in enumerate(obj):
+            if e != last:
+                r.append([count, e])
                 last = e
 
         # list(obj)
