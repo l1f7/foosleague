@@ -22,6 +22,7 @@ class Match(TimeStampedModel):
     team_2_score = models.IntegerField(_("Team 2 Score"), default=0)
 
     completed = models.BooleanField(_("Completed"), default=False)
+    completed_date = models.DateTimeField(_("Completed Date"), blank=True,null=True)
     winner = models.ForeignKey(Team, related_name='winner', blank=True, null=True)
 
     season = models.ForeignKey(Season, verbose_name=_("Season"), blank=True, null=True)
@@ -61,7 +62,7 @@ class Match(TimeStampedModel):
             loser = self.team_1
             winning_score = self.team_2_score
             losing_score = self.team_1_score
-
+        self.completed_date = datetime.now()
         self.save()
 
         # calculate streaks

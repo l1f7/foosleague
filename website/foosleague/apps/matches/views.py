@@ -45,28 +45,9 @@ class MatchCompleteView(DetailView):
     model = Match
 
     def get(self, *args, **kwargs):
-        if self.request.user == self.player_1.user or self.request.user == self.player_2.user:
-            match = self.get_object()
-            match.complete = True
-            match.save()
-
-            if match.team_1_score > match.team_2_score:
-                match.team_1.streak += 1
-                match.team_1.save()
-                match.winner = match.team_1
-            else:
-                match.team_2.streak += 1
-                match.team_2.save()
-                match.winer = match.team_2
-
-            match.save()
-
-            success(self.request, "Match has ended! Congrats team %s" % (match.winner,))
-            return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
-
-        else:
-            error(self.request, "You must be apart of this match to close the game.")
-            return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
+        match = get_object_or_404(Match, id=self.kwargs['pk'], league=self.request.league)
+        match.complete(self.request)
+        return HttpResponseRedirect(reverse_lazy('match-detail', kwargs={'pk': match.id}))
 
 
 def generate_name():
