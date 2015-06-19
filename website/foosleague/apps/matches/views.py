@@ -186,21 +186,30 @@ class MatchScoreUpdateView(UpdateView):
 
         if self.kwargs['team'] == 'red':
             # m.team_1_score += int(self.kwargs['score'])
-            if self.kwargs['score'] == -1:
+            if self.kwargs['score'] == '-1':
                 #remove last goal
-                Goal.objects.filter(match=m, team=m.team_1)[0].delete()
+                try:
+                    g = Goal.objects.filter(match=m, team=m.team_1)[0]
+                    g.delete()
+                except:
+                    pass
+
             else:
                 Goal.objects.create(match=m, value=self.kwargs['score'], team=m.team_1)
 
-            m.team_1_score = m.goal_set.filter(team=m.team_1).aggregate(score=Sum('value'))['score']
+            m.team_1_score = m.goal_set.filter(team=m.team_1).aggregate(score=Sum('value'))['score'] or 0
 
         else:
-            if self.kwargs['score'] == -1:
-                Goal.objects.filter(match=m, team=m.team_2)[0].delete()
+            if self.kwargs['score'] == '-1':
+                try:
+                    g = Goal.objects.filter(match=m, team=m.team_2)[0].delete()
+                    g.delete()
+                except:
+                    pass
             else:
                 Goal.objects.create(match=m, value=self.kwargs['score'], team=m.team_2)
 
-            m.team_2_score = m.goal_set.filter(team=m.team_2).aggregate(score=Sum('value'))['score']
+            m.team_2_score = m.goal_set.filter(team=m.team_2).aggregate(score=Sum('value'))['score'] or 0
 
         m.save()
 
