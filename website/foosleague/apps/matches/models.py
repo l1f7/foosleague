@@ -107,10 +107,17 @@ class Match(TimeStampedModel):
 
             if momentum_count > 0:
                 momentum.append([count+1, momentum_count, 0])
+                count += 1
+                momentum.append([count+1, momentum_count, 0])
 
             elif momentum_count == 0:
                 momentum.append([count+1, 0, 0])
+                count += 1
+                momentum.append([count+1, 0, 0])
+
             else:
+                momentum.append([count+1, 0, momentum_count])
+                count += 1
                 momentum.append([count+1, 0, momentum_count])
         return momentum
 
