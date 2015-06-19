@@ -70,9 +70,16 @@ class Match(TimeStampedModel):
         # recalculate trueskill
         update_trueskill(self)
         award_fooscoin(self)
-        shame_check(self)
+        shame_check(self, request)
         #award_season_points(self)
         regen_expose(self)
+
+    def momentum(self):
+        goals = self.goals_set.all()
+        print goals
+
+
+
 
     _odds = ""
     @property
