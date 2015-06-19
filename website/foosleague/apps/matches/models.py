@@ -74,6 +74,7 @@ class Match(TimeStampedModel):
         #award_season_points(self)
         regen_expose(self)
 
+    @property
     def momentum(self):
         goals = self.goal_set.all()
         momentum = []
