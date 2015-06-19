@@ -377,11 +377,12 @@ def shame_check(match):
         matches_played = matches.count()
         if matches_played > 1:
             # check to see if any of them happened during the lunch hour
-
             for m in matches:
                 if m.created.hour==18 or (m.created.hour==19 and m.created.minute>=0 and m.created.minute<=15):
                     matches_played -= 1
 
             if matches_played > 1:
                 message = '%s: %s' % (p.slack_username, ''.join([':bell: shame ' for r in range(0,matches_played)]))
-                print message
+
+        requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % ("cPqfDDQsk7QJ71ofvpy4aqF4", "%23test",),
+                      data=message)
