@@ -380,10 +380,8 @@ def shame_check(match):
 
             for m in matches:
                 if m.created.hour==18 or (m.created.hour==19 and m.created.minute>=0 and m.created.minute<=15):
-                    print 'lunch hour game!'
                     matches_played -= 1
 
-            if matches_played>1:
-
+            if matches_played > 1:
                 message = '%s: %s' % (p.slack_username, ''.join([':bell: shame ' for r in range(0,matches_played)]))
                 print message
