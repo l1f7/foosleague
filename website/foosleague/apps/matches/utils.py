@@ -383,9 +383,7 @@ def shame_check(match, request):
                     matches_played -= 1
 
             if matches_played > 1:
-                message = '%s: %s' % (p, ''.join([':bell: shame ' for r in range(0,matches_played)]))
+                message = '%s: %s' % (p.slack_username, ''.join([':bell: shame ' for r in range(0,matches_played)]))
 
-                # requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (request.league.slack_token, "%23" + request.league.slack_channel,),
-                #           data=message)
-                requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (request.league.slack_token, "%23test",),
-                    data=message)
+                requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (request.league.slack_token, "%23" + request.league.slack_channel,),
+                          data=message)
