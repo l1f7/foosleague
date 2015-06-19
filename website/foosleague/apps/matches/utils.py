@@ -368,9 +368,22 @@ def broadcast_message(self, winning_score, losing_score, loser, request):
     requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (request.league.slack_token, "%23" + request.league.slack_channel,),
                   data=message)
 
-def shame_check(match):
-    today = datetime.today().date()-timedelta(days=6)
+def shame_check(match, days):
+    today = datetime.today()-timedelta(days=days)
     players = Player.objects.filter(Q(id__in=match.team_1.players.all()) | Q(id__in=match.team_2.players.all()))
     for p in players:
         matches = p.matches.filter(created__year=today.year, created__month=today.month, created__day=today.day)
-        print p, matches.count()
+
+        matches_played = matches.count()
+        if matches_played > 1:
+            # check to see if any of them happened during the lunch hour
+
+            for m in matches:
+                if m.created.hour==14 or (m.created.hour==15 and m.created.minutes>=0 and m.created.minutes<=15):
+                    print 'lunch hour game!'
+                    matches_played -= 1
+
+            if matches_played>1:
+
+                message = '%s: %s' % (p.slack_username, ''.join([':bell: shame ' for r in range(0,matches_played)]))
+                print message
