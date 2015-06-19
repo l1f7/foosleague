@@ -125,7 +125,8 @@ class MatchCreateView(CreateView):
                       team_1_score=form.cleaned_data[
                           'team_1_score'], team_2_score=form.cleaned_data['team_2_score'],
                       completed=form.cleaned_data['completed'], season=season, league=self.request.league)
-
+        Goal.objects.create(match=match, value=form.cleaned_data['team_1_score'], team=team_1)
+        Goal.objects.create(match=match, value=form.cleaned_data['team_2_score'], team=team_2)
         if form.cleaned_data['completed']:
             match.complete(self.request)
         else:
