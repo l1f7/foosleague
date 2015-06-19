@@ -86,100 +86,165 @@
 
 
 .gamedetails-section {
-  @include outer-container;
+  padding: 20px;
+  position: relative;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  border: 1px solid $c-standing-border;
+  background: $c-standing-bg;
+  @include row();
+  @include clearfix;
+  color: $base-type;
+}
+
+.gamedetails-section--nopad {
+  padding: 0;
 }
 
 .gamedetails-team {
-  @include span-columns(4);
+  @include span-columns(5);
+
+  .profile-team {
+    margin: 0 0 20px;
+  }
+
+  .team-logo {
+    width: 120px;
+    height: 120px;
+  }
 
   .team-name {
     color: $white;
     border: none;
-    padding: 10px 0;
+    padding: 10px 15px;
+    @include font(24, 600, 1, $base-font-heading);
+    border-radius: 2px;
   }
 }
 
 .gamedetails-team--red {
+  text-align: right;
+
+  .team-logo {
+    float: left;
+    margin-right: 20px;
+  }
+
+  .player-avatar {
+    float: right;
+    margin: 0 0 0 10px;
+  }
+
+  .gamedetails-triggers {
+    float: left;
+  }
+
   .team-name {
+    margin-left: 20px;
     background: $red;
   }
 }
 
 .gamedetails-team--black {
+  text-align: left;
+
+  .team-logo {
+    float: right;
+  }
+
+  .gamedetails-triggers {
+    float: right;
+    text-align: right;
+  }
+
   .team-name {
+    margin-right: 20px;
     background: $black;
   }
 }
 
 .gamedetails-details {
-  @include span-columns(6);
+  @include row();
+  @include clearfix;
 }
-
 
 .gamedetails-scorecol {
   @include span-columns(2);
   text-align: center;
+  padding: 5px 0;
+}
+
+.gamedetails-dash {
+  position: relative;
+  top: -5px;
+  padding: 0 10px;
+  display: inline-block;
+  @include font(60, 600, 1, $base-font-heading);
 }
 
 .gamedetails-score {
-  border-radius: 5px;
-  display: block;
-  margin: 0 10px 20px;
-  padding: 35px 0 30px;
-  text-align: center;
-  border: 1px solid $c-game-border;
-  color: $black;
-  background: $white;
-  @include font(80, 600, 1, $base-font-heading);
+  display: inline-block;
+  @include font(60, 600, 1, $base-font-heading);
   @extend .ts-alt;
   @extend .ts-uppercase;
   color: $base-type;
 }
 
 .gamedetails-triggers {
-  margin: 10px 0 0;
+  margin: -45px 25px 0;
   padding: 0;
   display: block;
-  overflow: hidden;
 }
 
 .gamedetails-btn {
   margin: 0;
   padding: 0;
-  width: 36px;
-  height: 28px;
   text-align: center;
   display: block;
   float: left;
   font-size: 22px;
   font-weight: 600;
   line-height: 28px;
-  border: 1px solid $black;
-  border-radius: 3px;
+  border: 3px solid $black;
+  border-radius: 100px;
+  color: $white;
 }
 
 .gamedetails-btn--red {
-  width: 28px;
-  margin-right: 8px;
-  border-color: $red;
-  color: $red;
-  line-height: 24px;
+  margin-top: -20px;
+  width: 40px;
+  height: 40px;
+  border-color: $white;
+  background: $red;
+  @include font(40, 400, 35px, $base-font-heading);
 
   &:hover {
-    background: $red;
     color: $white;
   }
 }
 
 .gamedetails-btn--green {
-  border-color: $green;
-  color: $green;
-  width: 44px;
+  border-color: $white;
+  width: 80px;
+  height: 80px;
+  margin: 0 -5px;
+  background: $green;
+  @include font(60, 400, 70px, $base-font-heading);
 
   &:hover {
-    background: $green;
     color: $white;
   }
+}
+
+.gamedetails-momentum {
+  @include row();
+  @include clearfix;
+}
+
+.gamedetails-complete {
+  text-align: center;
+  margin: 0;
+  padding: 20px 0;
 }
 
 .pagination {

@@ -324,8 +324,7 @@
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'X');
       data.addColumn('number', 'Expose');
-      data.addColumn('number', 'Top Expose');
-
+      data.addColumn('number', 'Expose');
       data.addRows({{ player.full_expose|safe }});
 
       var options = {
@@ -338,10 +337,14 @@
           width: '100%',
           height: '100%'
         },
+        animation: {
+          duration: 1000,
+          easing: 'out'
+        },
         tooltip: {
           trigger: 'none'
         },
-        colors: ['#36cd8b', '#5198FB', '#5198FB'],
+        colors: ['#36cd8b', '#5198FB'],
         backgroundColor: 'transparent',
         legend: { position: 'none' },
         hAxis: {

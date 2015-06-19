@@ -2178,7 +2178,7 @@ body {
   width: 180px;
   height: 180px;
   display: inline-block;
-  border-radius: 3px;
+  border-radius: 100px;
   margin: 0 0 20px;
   overflow: hidden; }
 
@@ -3065,101 +3065,171 @@ body {
     color: #ffffff; }
 
 .gamedetails-section {
-  max-width: 68.75em;
-  margin-left: auto;
-  margin-right: auto; }
+  padding: 20px;
+  position: relative;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  border: 1px solid #d9d9d9;
+  background: #ffffff;
+  display: block;
+  color: #666666; }
+  .gamedetails-section::after {
+    clear: both;
+    content: "";
+    display: table; }
   .gamedetails-section::after {
     clear: both;
     content: "";
     display: table; }
 
+.gamedetails-section--nopad {
+  padding: 0; }
+
 .gamedetails-team {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 31.76157%; }
+  width: 40.29137%; }
   .gamedetails-team:last-child {
     margin-right: 0; }
+  .gamedetails-team .profile-team {
+    margin: 0 0 20px; }
+  .gamedetails-team .team-logo {
+    width: 120px;
+    height: 120px; }
   .gamedetails-team .team-name {
     color: #ffffff;
     border: none;
-    padding: 10px 0; }
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: 1.5rem;
+    font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1;
+    border-radius: 2px; }
 
-.gamedetails-team--red .team-name {
-  background: #F66262; }
+.gamedetails-team--red {
+  text-align: right; }
+  .gamedetails-team--red .team-logo {
+    float: left;
+    margin-right: 20px; }
+  .gamedetails-team--red .player-avatar {
+    float: right;
+    margin: 0 0 0 10px; }
+  .gamedetails-team--red .gamedetails-triggers {
+    float: left; }
+  .gamedetails-team--red .team-name {
+    margin-left: 20px;
+    background: #F66262; }
 
-.gamedetails-team--black .team-name {
-  background: #333333; }
+.gamedetails-team--black {
+  text-align: left; }
+  .gamedetails-team--black .team-logo {
+    float: right; }
+  .gamedetails-team--black .gamedetails-triggers {
+    float: right;
+    text-align: right; }
+  .gamedetails-team--black .team-name {
+    margin-right: 20px;
+    background: #333333; }
 
 .gamedetails-details {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 48.82117%; }
-  .gamedetails-details:last-child {
-    margin-right: 0; }
+  display: block; }
+  .gamedetails-details::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .gamedetails-details::after {
+    clear: both;
+    content: "";
+    display: table; }
 
 .gamedetails-scorecol {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 14.70196%;
-  text-align: center; }
+  text-align: center;
+  padding: 5px 0; }
   .gamedetails-scorecol:last-child {
     margin-right: 0; }
 
-.gamedetails-score {
-  border-radius: 5px;
-  display: block;
-  margin: 0 10px 20px;
-  padding: 35px 0 30px;
-  text-align: center;
-  border: 1px solid #d9d9d9;
-  color: #333333;
-  background: #ffffff;
+.gamedetails-dash {
+  position: relative;
+  top: -5px;
+  padding: 0 10px;
+  display: inline-block;
   font-weight: 600;
-  font-size: 5rem;
+  font-size: 3.75rem;
+  font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1; }
+
+.gamedetails-score {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 3.75rem;
   font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1;
   color: #666666; }
 
 .gamedetails-triggers {
-  margin: 10px 0 0;
+  margin: -45px 25px 0;
   padding: 0;
-  display: block;
-  overflow: hidden; }
+  display: block; }
 
 .gamedetails-btn {
   margin: 0;
   padding: 0;
-  width: 36px;
-  height: 28px;
   text-align: center;
   display: block;
   float: left;
   font-size: 22px;
   font-weight: 600;
   line-height: 28px;
-  border: 1px solid #333333;
-  border-radius: 3px; }
+  border: 3px solid #333333;
+  border-radius: 100px;
+  color: #ffffff; }
 
 .gamedetails-btn--red {
-  width: 28px;
-  margin-right: 8px;
-  border-color: #F66262;
-  color: #F66262;
-  line-height: 24px; }
+  margin-top: -20px;
+  width: 40px;
+  height: 40px;
+  border-color: #ffffff;
+  background: #F66262;
+  font-weight: 400;
+  font-size: 2.5rem;
+  font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 35px; }
   .gamedetails-btn--red:hover {
-    background: #F66262;
     color: #ffffff; }
 
 .gamedetails-btn--green {
-  border-color: #36cd8b;
-  color: #36cd8b;
-  width: 44px; }
+  border-color: #ffffff;
+  width: 80px;
+  height: 80px;
+  margin: 0 -5px;
+  background: #36cd8b;
+  font-weight: 400;
+  font-size: 3.75rem;
+  font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 70px; }
   .gamedetails-btn--green:hover {
-    background: #36cd8b;
     color: #ffffff; }
+
+.gamedetails-momentum {
+  display: block; }
+  .gamedetails-momentum::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .gamedetails-momentum::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.gamedetails-complete {
+  text-align: center;
+  margin: 0;
+  padding: 20px 0; }
 
 .pagination {
   margin: 20px 0 0;
