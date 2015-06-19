@@ -5,11 +5,12 @@ from math import sqrt
 from fractions import Fraction
 from decimal import Decimal
 from trueskill.backends import cdf
+from django.db.models import Q
 from players.models import StatHistory, ExposeHistory
 from trueskill import TrueSkill
 from leagues.models import LeagueMember
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 def update_trueskill(match):
@@ -366,3 +367,10 @@ def broadcast_message(self, winning_score, losing_score, loser, request):
 
     requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (request.league.slack_token, "%23" + request.league.slack_channel,),
                   data=message)
+
+def shame_check(match):
+    today = datetime.today().date()-timedelta(days=6)
+    players = Player.objects.filter(Q(id__in=match.team_1.players.all()) | Q(id__in=match.team_2.players.all()))
+    for p in players:
+        matches = p.matches.filter(created__year=today.year, created__month=today.month, created__day=today.day)
+        print p, matches.count()

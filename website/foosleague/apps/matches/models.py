@@ -70,6 +70,7 @@ class Match(TimeStampedModel):
         # recalculate trueskill
         update_trueskill(self)
         award_fooscoin(self)
+        shame_check(self)
         #award_season_points(self)
         regen_expose(self)
 
