@@ -10,7 +10,7 @@ from teams.models import Team
 from seasons.models import Season
 from leagues.models import League
 # from players.models import Player
-from .utils import update_trueskill, award_season_points, regen_expose, award_fooscoin, recalculate_streaks, broadcast_message
+from .utils import update_trueskill, award_season_points, regen_expose, award_fooscoin, recalculate_streaks, broadcast_message, shame_check
 from datetime import datetime
 
 
