@@ -71,7 +71,7 @@ class MatchCreateView(CreateView):
     def get_context_data(self, *args, **kwargs):
         c = super(MatchCreateView, self).get_context_data(*args, **kwargs)
         # will eventually be filtered by league..
-        c['players'] = Player.objects.all()
+        c['players'] = Player.objects.all().order_by('nickname', 'user__username')
         return c
 
     def form_valid(self, form, *args, **kwargs):

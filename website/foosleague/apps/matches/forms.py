@@ -24,10 +24,10 @@ class MatchForm(forms.ModelForm):
         request = kwargs.pop('request', None)
         super(MatchForm, self).__init__(*args, **kwargs)
         league_players = LeagueMember.objects.filter(league=request.league).values_list('player__id', flat=True)
-        self.fields['player_1'].queryset = Player.objects.filter(id__in=league_players)
-        self.fields['player_2'].queryset = Player.objects.filter(id__in=league_players)
-        self.fields['player_3'].queryset = Player.objects.filter(id__in=league_players)
-        self.fields['player_4'].queryset = Player.objects.filter(id__in=league_players)
+        self.fields['player_1'].queryset = Player.objects.filter(id__in=league_players).order_by('nickname')
+        self.fields['player_2'].queryset = Player.objects.filter(id__in=league_players).order_by('nickname')
+        self.fields['player_3'].queryset = Player.objects.filter(id__in=league_players).order_by('nickname')
+        self.fields['player_4'].queryset = Player.objects.filter(id__in=league_players).order_by('nickname')
 
     # def clean(self):
     # data = super(MatchForm, self).clean()

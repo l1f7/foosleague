@@ -62,6 +62,7 @@ class Match(TimeStampedModel):
             loser = self.team_1
             winning_score = self.team_2_score
             losing_score = self.team_1_score
+        self.completed = True
         self.completed_date = datetime.now()
         self.save()
 
@@ -78,7 +79,7 @@ class Match(TimeStampedModel):
     @property
     def momentum(self):
         goals = self.goal_set.filter(value=1)
-        momentum = []
+        momentum = [[0,0,0]]
         momentum_count=0
         team1_streak = 0
         team2_streak = 0
@@ -105,12 +106,19 @@ class Match(TimeStampedModel):
                     momentum_count -= 1
 
             if momentum_count > 0:
-                momentum.append([count, momentum_count, 0])
+                momentum.append([count+1, momentum_count, 0])
+                count += 1
+                momentum.append([count+1, momentum_count, 0])
 
             elif momentum_count == 0:
-                momentum.append([count, 0, 0])
+                momentum.append([count+1, 0, 0])
+                count += 1
+                momentum.append([count+1, 0, 0])
+
             else:
-                momentum.append([count, 0, momentum_count])
+                momentum.append([count+1, 0, momentum_count])
+                count += 1
+                momentum.append([count+1, 0, momentum_count])
         return momentum
 
     @property
