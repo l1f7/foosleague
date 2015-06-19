@@ -62,6 +62,7 @@ class Match(TimeStampedModel):
             loser = self.team_1
             winning_score = self.team_2_score
             losing_score = self.team_1_score
+        self.complete = True
         self.completed_date = datetime.now()
         self.save()
 
