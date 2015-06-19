@@ -368,6 +368,7 @@ def broadcast_message(self, winning_score, losing_score, loser, request):
     requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % (request.league.slack_token, "%23" + request.league.slack_channel,),
                   data=message)
 
+
 def shame_check(match):
     today = datetime.today()
     players = Player.objects.filter(Q(id__in=match.team_1.players.all()) | Q(id__in=match.team_2.players.all()))
@@ -382,7 +383,7 @@ def shame_check(match):
                     matches_played -= 1
 
             if matches_played > 1:
-                message = '%s: %s' % (p.slack_username, ''.join([':bell: shame ' for r in range(0,matches_played)]))
+                message = '%s: %s' % (p, ''.join([':bell: shame ' for r in range(0,matches_played)]))
 
-        requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % ("cPqfDDQsk7QJ71ofvpy4aqF4", "%23test",),
+                requests.post('https://liftinteractive.slack.com/services/hooks/slackbot?token=%s&channel=%s' % ("cPqfDDQsk7QJ71ofvpy4aqF4", "%23test",),
                       data=message)
