@@ -379,7 +379,7 @@ def shame_check(match):
             # check to see if any of them happened during the lunch hour
 
             for m in matches:
-                if m.created.hour==18 or (m.created.hour==19 and m.created.minutes>=0 and m.created.minutes<=15):
+                if m.created.hour==18 or (m.created.hour==19 and m.created.minute>=0 and m.created.minute<=15):
                     print 'lunch hour game!'
                     matches_played -= 1
 
