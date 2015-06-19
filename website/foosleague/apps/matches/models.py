@@ -75,10 +75,41 @@ class Match(TimeStampedModel):
         regen_expose(self)
 
     def momentum(self):
-        goals = self.goals_set.all()
-        print goals
+        goals = self.goal_set.all()
+        momentum = []
+        momentum_count=0
+        team1_streak = 0
+        team2_streak = 0
+        for count, g in enumerate(goals):
+            if g.team == self.team_1:
+                team1_streak += 1
+                team2_streak = 0
+                if momentum_count < 0:
+                    if team1_streak > 1:
+                        momentum_count = 0
+                    else:
+                        momentum_count = round(float(momentum_count) / float(2))    # cut m in half
+                else:
+                    momentum_count += 1
+            else:
+                team2_streak += 1
+                team1_streak = 0
+                if momentum_count > 0:
+                    if team2_streak > 1:
+                        momentum_count = 0
+                    else:
+                        momentum_count = round(float(momentum_count)/float(2))
+                else:
+                    momentum_count -= 1
 
+            if momentum_count > 0:
+                momentum.append([count, momentum_count, 0])
 
+            elif momentum_count == 0:
+                momentum.append([count, 0, 0])
+            else:
+                momentum.append([count, 0, momentum_count])
+        return momentum
 
 
     _odds = ""
