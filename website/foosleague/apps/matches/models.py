@@ -113,6 +113,13 @@ class Match(TimeStampedModel):
                 momentum.append([count, 0, momentum_count])
         return momentum
 
+    @property
+    def red_score(self):
+        return self.goal_set.filter(team=self.team_1).aggregate(score=Sum('value'))['score'] or self.team_1_score or 0
+
+    @property
+    def black_score(self):
+        return self.goal_set.filter(team=self.team_2).aggregate(score=Sum('value'))['score'] or self.team_2_score or 0
 
     _odds = ""
     @property
