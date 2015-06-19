@@ -231,7 +231,7 @@ class MatchScoreUpdateView(UpdateView):
         json = {
             'red': m.team_1_score,
             'black': m.team_2_score,
-            'momentum': m.momentum(),
+            'momentum': m.momentum,
             'completed': m.completed,
         }
         return JsonResponse(json)
