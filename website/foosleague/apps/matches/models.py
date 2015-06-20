@@ -88,9 +88,10 @@ class Match(TimeStampedModel):
                 team1_streak += 1
                 if momentum_count < 0:
                     if team2_streak > 1:
-                        momentum_count = 0
-                    else:
                         momentum_count = round(float(momentum_count) / float(2))    # cut m in half
+                    else:
+                        momentum_count = 0
+
                 else:
                     momentum_count += 1
                 team2_streak = 0
@@ -99,9 +100,10 @@ class Match(TimeStampedModel):
                 team2_streak += 1
                 if momentum_count > 0:
                     if team1_streak > 1:
-                        momentum_count = 0
-                    else:
                         momentum_count = round(float(momentum_count)/float(2))
+                    else:
+                        momentum_count = 0
+
                 else:
                     momentum_count -= 1
                 team1_streak = 0
