@@ -87,7 +87,7 @@ class Match(TimeStampedModel):
             if g.team == self.team_1:
                 team1_streak += 1
                 if momentum_count < 0:
-                    if team2_streak > 1:
+                    if team2_streak < -1:
                         momentum_count = 0
                     else:
                         momentum_count = round(float(momentum_count) / float(2))    # cut m in half
