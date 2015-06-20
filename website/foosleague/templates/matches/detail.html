@@ -112,8 +112,9 @@
     function drawChart() {
       var chartData = new google.visualization.DataTable();
       chartData.addColumn('number', 'X');
-      chartData.addColumn('number', 'Black');
       chartData.addColumn('number', 'Red');
+      chartData.addColumn('number', 'Black');
+
       chartData.addRows({{ object.momentum |safe }});
 
       var options = {

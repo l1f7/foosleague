@@ -79,7 +79,7 @@ class Match(TimeStampedModel):
     @property
     def momentum(self):
         goals = self.goal_set.filter(value=1)
-        momentum = [[0,0,0]]
+        momentum = [[0, 0, 0]]
         momentum_count=0
         team1_streak = 0
         team2_streak = 0
