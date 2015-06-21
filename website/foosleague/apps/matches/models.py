@@ -92,7 +92,6 @@ class Match(TimeStampedModel):
         last_goal_date = None
         count = 0
 
-
         for g in goals:
             duration_time = g.created - self.created
             d = divmod(duration_time.days * 86400 + duration_time.seconds, 60)
@@ -109,20 +108,38 @@ class Match(TimeStampedModel):
                 diff = (g.created - last_goal_date).seconds/15
                 if diff:
                     for mins in range(0, diff+1):
-                        if team1_streak > 0:
-                            if momentum_count >= ppm:
-                                momentum_count -= ppm
-                            else:
-                                momentum_count = 0
-                            momentum.append([count, momentum_count, None, None, 0, None, None])
-                        elif team2_streak > 0:
-                            if momentum_count <= -ppm:
-                                momentum_count += ppm
-                            else:
-                                momentum_count = 0
-                            momentum.append([count, 0, None, None, momentum_count, None, None])
+                        if momentum_count >= ppm:
+                            momentum_count -= ppm
+                        elif momentum_count <= -ppm:
+                            momentum_count += ppm
+                        elif (momentum_count > -ppm and momentum_count < 0) or (momentum_count < ppm and momentum_count > 0):
+                            momentum_count = 0
                         else:
-                            momentum.append([count, 0, 0, None, None, momentum_count, None, None])
+                            momentum_count = 0
+
+                        if momentum_count < 0:
+                            momentum.append([count, 0, None, None, momentum_count, None, None])
+
+                        elif momentum_count > 0:
+                            momentum.append([count, momentum_count, None, None, 0, None, None])
+                        else:
+                            momentum.append([count, 0,  None, None, 0, None, None])
+
+
+                        # if team1_streak > 0:
+                        #     if momentum_count >= ppm:
+                        #         momentum_count -= ppm
+                        #     else:
+                        #         momentum_count = 0
+                        #     momentum.append([count, momentum_count, None, None, 0, None, None])
+                        # elif team2_streak > 0:
+                        #     if momentum_count <= -ppm:
+                        #         momentum_count += ppm
+                        #     else:
+                        #         momentum_count = 0
+                        #     momentum.append([count, 0, None, None, momentum_count, None, None])
+                        # else:
+                        #     momentum.append([count, 0, 0, None, None, momentum_count, None, None])
 
                         count += 1
 
@@ -131,7 +148,7 @@ class Match(TimeStampedModel):
                 team1_streak += 1
                 if momentum_count < 0:  #
                     if team2_streak > 1:
-                        momentum_count = round(float(momentum_count) / float(2))    # cut m in half
+                        momentum_count = round(float(momentum_count) / float(3))    # cut m in half
                     else:
                         momentum_count = 0
 
@@ -144,7 +161,7 @@ class Match(TimeStampedModel):
                 team2_streak += 1
                 if momentum_count > 0:
                     if team1_streak > 1:
-                        momentum_count = round(float(momentum_count)/float(2))
+                        momentum_count = round(float(momentum_count)/float(3))
                     else:
                         momentum_count = 0
 
