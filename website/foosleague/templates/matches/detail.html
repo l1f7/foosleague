@@ -78,7 +78,7 @@
       </div>
 
       <div class="gamedetails-momentum">
-        <div id="momentum" style="width: 100%; height: 100px;"></div>
+        <div id="momentum" style="width: 100%; height: 200px;"></div>
       </div>
     </div>
   </div>
@@ -113,7 +113,11 @@
       var chartData = new google.visualization.DataTable();
       chartData.addColumn('number', 'X');
       chartData.addColumn('number', 'Red');
+      chartData.addColumn({type:'string', role:'annotation'})
+      chartData.addColumn({type:'string', role: 'annotationText'})
       chartData.addColumn('number', 'Black');
+      chartData.addColumn({type:'string', role:'annotation'})
+      chartData.addColumn({type:'string', role: 'annotationText'})
 
       chartData.addRows({{ object.momentum |safe }});
 
@@ -131,7 +135,7 @@
           duration: 1000,
           easing: 'out'
         },
-        colors: ['#36cd8b', '#5198FB'],
+        colors: ['#F66262', '#333333'],
         backgroundColor: 'transparent',
         legend: { position: 'none' },
         hAxis: {
@@ -150,7 +154,7 @@
         }
       };
 
-      var chart = new google.visualization.AreaChart(document.getElementById('momentum'));
+      var chart = new google.visualization.LineChart(document.getElementById('momentum'));
       chart.draw(chartData, options);
 
       $(window).resize(function(){

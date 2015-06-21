@@ -9,6 +9,8 @@ class GoalInline(admin.TabularInline):
     '''
     model = Goal
     raw_id_fields = ('match',)
+    readonly_fields = ('created',)
+
     extra = 0
 
 

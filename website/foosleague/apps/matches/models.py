@@ -1,5 +1,5 @@
 import requests
-
+import json
 from django.db import models
 from django.db.models import Sum
 from django.utils.translation import ugettext_lazy as _
@@ -78,25 +78,69 @@ class Match(TimeStampedModel):
 
     @property
     def momentum(self):
-        goals = self.goal_set.filter(value=1)
-        momentum = [[0, 0, 0]]
+        goals = self.goal_set.filter(value=1).order_by('created')
+
+        ppm = 0.75
+        ppg = 10
+
+        momentum = []
         momentum_count=0
         team1_streak = 0
         team2_streak = 0
-        for count, g in enumerate(goals):
+        team_1_score = 0
+        team_2_score = 0
+        last_goal_date = None
+        count = 0
+
+
+        for g in goals:
+            duration_time = g.created - self.created
+            d = divmod(duration_time.days * 86400 + duration_time.seconds, 60)
+            duration = '%s:%s' % (d[0], str(d[1]).ljust(2,'0'))
+
+
+            if last_goal_date is None:
+                diff = (g.created - self.created).seconds/15
+                for mins in range(0, int(round(diff))):
+                    momentum.append([count, 0, None, None, 0, None, None])
+                    count += 1
+            else:
+                #calculate minutes past
+                diff = (g.created - last_goal_date).seconds/15
+                if diff:
+                    for mins in range(0, diff+1):
+                        if team1_streak > 0:
+                            if momentum_count >= ppm:
+                                momentum_count -= ppm
+                            else:
+                                momentum_count = 0
+                            momentum.append([count, momentum_count, None, None, 0, None, None])
+                        elif team2_streak > 0:
+                            if momentum_count <= -ppm:
+                                momentum_count += ppm
+                            else:
+                                momentum_count = 0
+                            momentum.append([count, 0, None, None, momentum_count, None, None])
+                        else:
+                            momentum.append([count, 0, 0, None, None, momentum_count, None, None])
+
+                        count += 1
+
             if g.team == self.team_1:
+                team_1_score += 1
                 team1_streak += 1
-                if momentum_count < 0:
+                if momentum_count < 0:  #
                     if team2_streak > 1:
                         momentum_count = round(float(momentum_count) / float(2))    # cut m in half
                     else:
                         momentum_count = 0
 
                 else:
-                    momentum_count += 1
+                    momentum_count += ppg
                 team2_streak = 0
 
             else:
+                team_2_score += 1
                 team2_streak += 1
                 if momentum_count > 0:
                     if team1_streak > 1:
@@ -105,25 +149,38 @@ class Match(TimeStampedModel):
                         momentum_count = 0
 
                 else:
-                    momentum_count -= 1
+                    momentum_count -= ppg
                 team1_streak = 0
 
 
             if momentum_count > 0:
-                momentum.append([count+1, momentum_count, 0])
-                count += 1
-                momentum.append([count+1, momentum_count, 0])
+                # momentum.append([count+1, momentum_count, 0])
+                # count += 1
+                if g.team == self.team_1:
+                    momentum.append([count, momentum_count, 'G', "@ %s (%s-%s)" % (duration, team_1_score, team_2_score) , 0, None,None])
+                else:
+                    momentum.append([count, momentum_count, None, None, 0, 'G', "@ %s (%s-%s)" % (duration, team_1_score, team_2_score)])
 
             elif momentum_count == 0:
-                momentum.append([count+1, 0, 0])
-                count += 1
-                momentum.append([count+1, 0, 0])
+                # momentum.append([count+1, 0, 0])
+                # count += 1
+                if g.team == self.team_1:
+                    momentum.append([count, 0, 'G', "@ %s (%s-%s)" % (duration, team_1_score, team_2_score), 0, None, None])
+                else:
+                    momentum.append([count, 0, None, None, 0, 'G', "@ %s (%s-%s)" % (duration, team_1_score, team_2_score)])
 
             else:
-                momentum.append([count+1, 0, momentum_count])
-                count += 1
-                momentum.append([count+1, 0, momentum_count])
-        return momentum
+                # momentum.append([count+1, 0, momentum_count])
+                # count += 1
+                if g.team == self.team_1:
+                    momentum.append([count, 0, 'G', "@ %s (%s-%s)" % (duration, team_1_score, team_2_score), momentum_count, None, None])
+                else:
+                    momentum.append([count, 0, None, None, momentum_count, 'G', "@ %s (%s-%s)" % (duration, team_1_score, team_2_score)])
+
+            last_goal_date = g.created
+            count += 1
+
+        return json.dumps(momentum)
 
     @property
     def red_score(self):
@@ -151,7 +208,7 @@ class Goal(TimeStampedModel):
     class Meta:
         verbose_name = _("Goal")
         verbose_name_plural = _("Goals")
-        ordering = ("-created",)
+        ordering = ("created",)
 
     def __unicode(self):
         return '%s (%s)' % (self.match, self.value)
