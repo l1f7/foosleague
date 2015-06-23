@@ -9,5 +9,6 @@ urlpatterns = patterns('',
                        url(r'^(?P<pk>[0-9]+)/complete/$', MatchCompleteView.as_view(), name='match-complete'),
 
                        url(r'^goal/(?P<team>[a-zA-Z]+)/(?P<score>[1\-]+)/$', MatchScoreUpdateView.as_view(), name='score-update'),
+                       url(r'^scoreupdate/(?P<team>[a-zA-Z]+)/$', MatchScoreUpdateView.as_view(), name='score-update'),
                        # url(r'^(?P<pk>[0-9])/complete/$', MatchCompleteView.as_view(), name='match-complete')
                        )

@@ -199,7 +199,7 @@ class MatchScoreUpdateView(UpdateView):
 
             m.team_1_score = m.goal_set.filter(team=m.team_1).aggregate(score=Sum('value'))['score'] or 0
 
-        else:
+        elif self.kwargs['team'] == 'black':
             if self.kwargs['score'] == '-1':
                 try:
                     g = Goal.objects.filter(match=m, team=m.team_2).order_by('-created')[0].delete()
@@ -210,6 +210,7 @@ class MatchScoreUpdateView(UpdateView):
                 Goal.objects.create(match=m, value=self.kwargs['score'], team=m.team_2)
 
             m.team_2_score = m.goal_set.filter(team=m.team_2).aggregate(score=Sum('value'))['score'] or 0
+
 
         m.save()
 
