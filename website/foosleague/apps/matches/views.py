@@ -189,7 +189,7 @@ class MatchScoreUpdateView(UpdateView):
             if self.kwargs['score'] == '-1':
                 #remove last goal
                 try:
-                    g = Goal.objects.filter(match=m, team=m.team_1)[0]
+                    g = Goal.objects.filter(match=m, team=m.team_1).order_by('-created')[0]
                     g.delete()
                 except:
                     pass
@@ -202,7 +202,7 @@ class MatchScoreUpdateView(UpdateView):
         else:
             if self.kwargs['score'] == '-1':
                 try:
-                    g = Goal.objects.filter(match=m, team=m.team_2)[0].delete()
+                    g = Goal.objects.filter(match=m, team=m.team_2).order_by('-created')[0].delete()
                     g.delete()
                 except:
                     pass
