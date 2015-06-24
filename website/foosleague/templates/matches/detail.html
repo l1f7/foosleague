@@ -95,6 +95,62 @@
 {% block extra_script %}
   <script>
     $(function(){
+      var chartData, chart;
+
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        chartData = new google.visualization.DataTable();
+        chartData.addColumn('number', 'X');
+        chartData.addColumn('number', 'Red');
+        chartData.addColumn({type:'string', role:'annotation'})
+        chartData.addColumn({type:'string', role: 'annotationText'})
+        chartData.addColumn('number', 'Black');
+        chartData.addColumn({type:'string', role:'annotation'})
+        chartData.addColumn({type:'string', role: 'annotationText'})
+
+        chartData.addRows({{ object.momentum|safe }});
+
+        var options = {
+          curveType: 'function',
+          chartArea: {
+            left: 0,
+            top: 20,
+            right: 0,
+            bottom: 20,
+            width: '100%',
+            height: '100%'
+          },
+          animation: {
+            duration: 1000,
+            easing: 'out'
+          },
+          colors: ['#F66262', '#333333'],
+          backgroundColor: 'transparent',
+          legend: { position: 'none' },
+          hAxis: {
+            textPosition: 'none',
+            gridlines: {
+              color: 'transparent'
+            },
+            baselineColor: 'transparent'
+          },
+          vAxis: {
+            textPosition: 'none',
+            gridlines: {
+              color: 'transparent'
+            },
+            baselineColor: 'transparent'
+          }
+        };
+
+        chart = new google.visualization.LineChart(document.getElementById('momentum'));
+        chart.draw(chartData, options);
+
+        $(window).resize(function(){
+          chart.draw(chartData, options);
+        });
+      }
+
       $('.gamedetails-btn').on('click', function(e){
         var url = $(this).attr('href');
         $.ajax({
@@ -106,60 +162,22 @@
         });
         e.preventDefault();
       });
-    });
 
-    google.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var chartData = new google.visualization.DataTable();
-      chartData.addColumn('number', 'X');
-      chartData.addColumn('number', 'Red');
-      chartData.addColumn({type:'string', role:'annotation'})
-      chartData.addColumn({type:'string', role: 'annotationText'})
-      chartData.addColumn('number', 'Black');
-      chartData.addColumn({type:'string', role:'annotation'})
-      chartData.addColumn({type:'string', role: 'annotationText'})
+      if ($('.gamedetails-complete').length) {
+        setInterval(function(){
+          $.ajax({
+            url: '/matches/scoreupdate/update/'
+          }).done(function(data) {
+            console.log(data);
+            $('#js-redscore').html(data.red);
+            $('#js-blackscore').html(data.black);
 
-      chartData.addRows({{ object.momentum |safe }});
-
-      var options = {
-        curveType: 'function',
-        chartArea: {
-          left: 0,
-          top: 20,
-          right: 0,
-          bottom: 20,
-          width: '100%',
-          height: '100%'
-        },
-        animation: {
-          duration: 1000,
-          easing: 'out'
-        },
-        colors: ['#F66262', '#333333'],
-        backgroundColor: 'transparent',
-        legend: { position: 'none' },
-        hAxis: {
-          textPosition: 'none',
-          gridlines: {
-            color: 'transparent'
-          },
-          baselineColor: 'transparent'
-        },
-        vAxis: {
-          textPosition: 'none',
-          gridlines: {
-            color: 'transparent'
-          },
-          baselineColor: 'transparent'
-        }
+            if (data.completed == true) {
+              $('.gamedetails-complete').remove();
+            };
+          });
+        }, 2000);
       };
-
-      var chart = new google.visualization.LineChart(document.getElementById('momentum'));
-      chart.draw(chartData, options);
-
-      $(window).resize(function(){
-        chart.draw(chartData, options);
-      });
-    }
+    });
   </script>
 {% endblock %}
