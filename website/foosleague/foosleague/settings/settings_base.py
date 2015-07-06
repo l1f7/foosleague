@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
 
 ########## DEBUG CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = True
+DEBUG = False
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
 TEMPLATE_DEBUG = DEBUG
@@ -219,6 +219,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 INSTALLED_APPS += (
     'opbeat.contrib.django',
 )
+
 OPBEAT = {
     'ORGANIZATION_ID': '6a1a25ac556b40cf99d018192eebe712',
     'APP_ID': 'f1dfe28782',

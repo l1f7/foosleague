@@ -9,8 +9,8 @@ from settings_base import *
 # into your settings, but ImproperlyConfigured is an exception.
 from django.core.exceptions import ImproperlyConfigured
 
-# DEBUG = False
-# TEMPLATE_DEBUG=DEBUG
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
 def get_env_setting(setting):
 	""" Get the environment setting or return exception """
@@ -38,9 +38,9 @@ DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
 
 ########## POSTMARK CONFIGURATION
-POSTMARK_API_KEY = 'a876b1f2-2144-4e0a-9dbb-6fc2f801a3ff'
-POSTMARK_SENDER = 'dev@liftinteractive.com'
-POSTMARK_TEST_MODE = DEBUG
+# POSTMARK_API_KEY = 'a876b1f2-2144-4e0a-9dbb-6fc2f801a3ff'
+# POSTMARK_SENDER = 'dev@liftinteractive.com'
+POSTMARK_TEST_MODE = True
 ########## END POSTMARK CONFIGURATION
 
 
