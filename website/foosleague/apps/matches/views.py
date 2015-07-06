@@ -59,7 +59,7 @@ def generate_name():
     return name.split("'")[1]
 
 
-class MatchCreateView(CreateView):
+class MatchCreateView(LoginRequiredMixin, CreateView):
     model = Match
     form_class = MatchForm
     template_name = 'matches/create.html'
@@ -174,12 +174,11 @@ class MatchScoreUpdateView(UpdateView):
     model = Match
 
     def get_object(self, *args, **kwargs):
-        # try:
+        try:
+            return Match.objects.filter(completed=False, league=self.request.league).order_by('-created')[0]
+        except:
 
-        return Match.objects.filter(completed=False, league=self.request.league).order_by('-created')[0]
-        # except:
-        #     print 'hero'
-            # raise Http404
+            raise Http404
 
     def get(self, *args, **kwargs):
         m = self.get_object()
