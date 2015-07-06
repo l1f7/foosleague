@@ -18,3 +18,4 @@ psycopg2
 python-postmark==0.4
 raven==5
 sorl-thumbnail==12.2
+opbeat==3.0.1
