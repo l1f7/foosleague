@@ -26,6 +26,8 @@ ALLOWED_HOSTS = [
     '.leagueoffoos.com',
     'foosleague.com',
     '.foosleague.com',
+    '*.foosleague.com',
+    'liftinteractive.foosleague.com',
     'liftinteractive.foosleague.com',
     'foosleague.tableofvictory.com',
 ]
