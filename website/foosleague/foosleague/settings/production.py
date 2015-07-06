@@ -69,6 +69,8 @@ CACHES = {
 ALLOWED_HOSTS = [
     '.foosleague.l1f7.com',
     '.leagueoffoos.com',
+    '*.foosleague.com',
+    # 'liftinteractive.foosleague.com',
     'foosleague.com',
     'foosleague.tableofvictory.com',
 ]
