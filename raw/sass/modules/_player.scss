@@ -8,7 +8,7 @@
   left: 25px;
   padding: 8px 10px;
   cursor: pointer;
-  display: none;
+  display: block;
 }
 
 .player-mobilenav {
@@ -114,19 +114,6 @@
 
   .player-name {
     padding: 0;
-    display: block;
-  }
-}
-
-@include media($tablet) {
-  .player-mobilenav {
-    display: block;
-  }
-}
-
-@include media($mobile) {
-  .player-mobilemenu,
-  .player-mobilenav {
     display: block;
   }
 }

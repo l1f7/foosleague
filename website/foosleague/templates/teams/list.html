@@ -2,9 +2,10 @@
 {% load thumbnail %}
 
 {% block nav-teams %}is-active{% endblock %}
+{% block pagetitle %}Teams{% endblock %}
 
 {% block content %}
-  <div class="l-columns l-columns--centeredSmall">
+  <div class="l-columns l-columns--centered">
     <div class="l-col">
       <div class="standings is-loading">
         {% for team in object_list %}

@@ -1,7 +1,6 @@
 .nav {
   margin: 0;
-  padding: 0;
-  border-top: 1px solid $c-nav-border;
+  padding: 20px 0;
 }
 
 .nav-menu {
@@ -11,19 +10,11 @@
 }
 
 .nav-item {
-  display: inline-block;
-  margin: 0 10px -1px;
+  display: block;
+  margin: 0 10px;
   padding: 0;
-  float: left;
-  border-bottom: 3px solid transparent;
-
-  &.is-right {
-    float: right;
-  }
 
   &.is-active {
-    border-color: $c-navitem-border--active;
-
     .nav-link {
       font-weight: 600;
       color: $c-navlink-color--active;
@@ -36,10 +27,11 @@
 }
 
 .nav-link {
-  padding: 15px 8px;
+  padding: 15px 0;
   display: block;
   color: $c-navlink-color;
   @include font(16, 400, 1);
+  text-transform: uppercase;
 
   &:hover {
     color: $c-navlink-color--hover;
@@ -47,7 +39,10 @@
 }
 
 .nav-btn {
-  margin: 8px 0 5px;
+  @include font(18, 600, 1);
+  margin: 10px 0;
+  padding: 15px 0;
+  text-transform: uppercase;
 }
 
 
@@ -56,20 +51,20 @@
   top: 5px;
   width: 24px;
   height: 24px;
-  display: none;
+  display: block;
   @include transition(0.35s);
 }
 
 .nav-ham--dots {
   .ham-hamburger {
-    background: $white;
+    background: $black;
     width: 4px;
 
     &:before,
     &:after {
       width: 4px;
       height: 4px;
-      background: $white;
+      background: $black;
     }
 
     &:before {
@@ -90,7 +85,7 @@
       }
       .ham-hamburger:before,
       .ham-hamburger:after {
-        background: $white;
+        background: $black;
         top: 0;
         width: 24px;
         -webkit-transform: rotate(45deg);
@@ -121,7 +116,7 @@
     &.is-active {
       .ham-hamburger:before,
       .ham-hamburger:after {
-        background: $white;
+        background: $black;
       }
     }
   }
@@ -151,7 +146,7 @@
     }
     .ham-hamburger:before,
     .ham-hamburger:after {
-      background: $white;
+      background: $black;
       top: 0;
       width: 24px;
       -webkit-transform: rotate(45deg);
@@ -176,7 +171,7 @@
   width: 24px;
   height: 4px;
   margin: 10px 0;
-  background: $white;
+  background: $black;
   border-radius: 4px;
   @include transition(0.25s);
 
@@ -186,7 +181,7 @@
     display: block;
     width: 24px;
     height: 4px;
-    background: $white;
+    background: $black;
     position: absolute;
     border-radius: 4px;
     @include transition(0.25s);
@@ -201,43 +196,5 @@
     top: 8px;
     width: 16px;
     left: 0;
-  }
-}
-
-@include media($mobile) {
-  .nav {
-    &.is-active {
-      .nav-menu {
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
-      .nav-item {
-        float: none;
-        display: block;
-
-        &.is-active {
-          border: none;
-        }
-      }
-
-      .nav-link {
-        font-weight: 400;
-        color: $c-navlink-color;
-      }
-    }
-  }
-
-  .nav-menu {
-    margin: 0 -2px;
-  }
-
-  .nav-item {
-    display: none;
-    margin: 0 2px -1px;
-
-    &.is-right,
-    &.is-active {
-      display: block;
-    }
   }
 }

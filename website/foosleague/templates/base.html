@@ -32,34 +32,40 @@
 </head>
 <body>
   <div data-template="undefined" class="l-site">
-    <div class="l-content">
-      <div class="l-topbar">
-        <div class="l-container">
-          <section class="league">
-            <div class="league-logo"><img src="https://pbs.twimg.com/profile_images/431497486138499072/oVCFk5Qt.png" class="league-img"/></div>
-            <h1 class="league-name">{{ request.league }}</h1>
-            <p class="league-season">{% if season %}{{season}}{% else %}Off Season{% endif %}</p>
-          </section>
-        </div>
-        <nav class="nav">
-          <div class="l-container">
-            <div class="nav-menu">
-              <div class="nav-item {% block nav-dashboard %}{% endblock %}"><a href="{% url "matches" %}" class="nav-link">Matches</a></div>
-              <div class="nav-item {% block nav-players %}{% endblock %}"><a href="{% url "players" %}" class="nav-link">Players</a></div>
-              <div class="nav-item {% block nav-teams %}{% endblock %}"><a href="{% url "teams" %}" class="nav-link">Teams</a></div>
-              {% comment %}
-                <div class="nav-item {% block nav-bookie %}{% endblock %}"><a href="{% url "bets" %}" class="nav-link">Bookie</a></div>
-              {% endcomment %}
-              {% if request.user.is_authenticated %}
-                <div class="nav-item {% block nav-settings %}{% endblock %}"><a href="{% url "players-update" player.id %}" class="nav-link">Settings</a></div>
-              {% endif %}
-              <div class="nav-item is-right"><a href="{% url "match-create" %}" class="nav-btn btn btn--small btn--full">Start A Game</a></div>
-            </div>
-          </div>
-        </nav>
-      </div>
-
+    <div class="l-topbar">
       <div class="l-container">
+        <h1 class="branding branding--player"><a href="{% url "matches" %}" class="branding-link">Foosleague</a></h1>
+        <section class="league">
+          <div class="league-logo"><img src="https://pbs.twimg.com/profile_images/431497486138499072/oVCFk5Qt.png" class="league-img"/></div>
+          <p class="league-name">{{ request.league }}</p>
+          <p class="league-season">{% if season %}{{season}}{% else %}Off Season{% endif %}</p>
+        </section>
+      </div>
+      <nav class="nav">
+        <div class="l-container">
+          <div class="nav-menu">
+            <div class="nav-item"><a href="{% url "match-create" %}" class="nav-btn btn btn--small btn--full">Start Game</a></div>
+            <div class="nav-item {% block nav-dashboard %}{% endblock %}"><a href="{% url "matches" %}" class="nav-link">Matches</a></div>
+            <div class="nav-item {% block nav-players %}{% endblock %}"><a href="{% url "players" %}" class="nav-link">Players</a></div>
+            <div class="nav-item {% block nav-teams %}{% endblock %}"><a href="{% url "teams" %}" class="nav-link">Teams</a></div>
+            {% comment %}
+              <div class="nav-item {% block nav-bookie %}{% endblock %}"><a href="{% url "bets" %}" class="nav-link">Bookie</a></div>
+            {% endcomment %}
+            {% if request.user.is_authenticated %}
+              <div class="nav-item {% block nav-settings %}{% endblock %}"><a href="{% url "players-update" player.id %}" class="nav-link">Settings</a></div>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="l-content">
+      <div class="l-container">
+        <div class="l-heading">
+          <h1 class="heading-text">{% block pagetitle %}&nbsp;{% endblock %}</h1>
+          <a href="#" class="heading-btn heading-nav js-nav"></a>
+          <a href="#" class="heading-btn heading-player js-player"></a>
+        </div>
         <div class="l-page">
           {% block content %}{% endblock %}
         </div>
@@ -68,21 +74,11 @@
         <p class="footer-text">Made with <span class="footer-heart">&#10084</span></p>
       </div>
     </div>
-    <div class="l-player">
-      <div class="player-mobilemenu nav-ham">
-        <div class="ham js-openSide">
-          <div class="ham-hamburger"></div>
-        </div>
-      </div>
-      <div class="player-mobilenav nav-ham nav-ham--dots nav-ham--light js-profile">
-        <div class="ham js-openSide">
-          <div class="ham-hamburger"></div>
-        </div>
-      </div>
-      <div class="l-playerContainer">
-        <h1 class="branding branding--player"><a href="{% url "matches" %}" class="branding-link">Foosleague</a></h1>
 
-        <div class="profile profile--light">
+    <div class="l-player">
+      <div class="l-playerContainer">
+
+        <div class="profile">
           <div class="profile-player">
             {% include "partials/player.html" with player=player player_class="player--largest player--stacked" %}
           </div>
@@ -90,7 +86,7 @@
           <div class="profile-stats">
             <h1 class="stat-heading">Rank</h1>
             <div id="curve_chart" style="width: 200px; height: 100px"></div>
-            <div class="stat-group is-active stat--light">
+            <div class="stat-group is-active">
               <div class="stat">
                 <div class="stat-number">{{ player.ts_expose|floatformat:2 }}</div>
                 <div class="stat-title">Expose</div>
@@ -115,7 +111,7 @@
               <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-winlos-season">Season</a>
             </div>
 
-            <div id="stats-winlos-7" class="stat-group js-tabContent stat--light">
+            <div id="stats-winlos-7" class="stat-group js-tabContent">
               <div class="stat">
                 <div class="stat-number">{{ stats.wins.7 }}</div>
                 <div class="stat-title">Wins</div>
@@ -126,7 +122,7 @@
               </div>
             </div>
 
-            <div id="stats-winlos-30" class="stat-group js-tabContent stat--light">
+            <div id="stats-winlos-30" class="stat-group js-tabContent">
               <div class="stat">
                 <div class="stat-number">{{ stats.wins.30 }}</div>
                 <div class="stat-title">Wins</div>
@@ -137,7 +133,7 @@
               </div>
             </div>
 
-            <div id="stats-winlos-season" class="stat-group js-tabContent stat--light is-active">
+            <div id="stats-winlos-season" class="stat-group js-tabContent is-active">
               <div class="stat">
                 <div class="stat-number">{{ stats.wins.season }}</div>
                 <div class="stat-title">Wins</div>
@@ -152,7 +148,7 @@
           <div class="profile-stats">
             <h1 class="stat-heading">Streaks</h1>
 
-            <div class="stat-group is-active stat--light">
+            <div class="stat-group is-active">
               <div class="stat">
                 {% if player.win_streak > 0 %}
                   <div class="stat-number">{{ player.win_streak }} Game</div>
@@ -174,7 +170,7 @@
               </div>
             </div>
             <hr/>
-            <div class="stat-group is-active stat--light">
+            <div class="stat-group is-active">
               <div class="stat">
                   <div class="stat-title">Best Win Streak</div>
                   <div class="stat-number">{{ player.best_win_streak }} Games</div>
@@ -186,7 +182,7 @@
               </div>
             </div>
             <hr/>
-            <div class="stat-group is-active stat--light">
+            <div class="stat-group is-active">
               <div class="stat">
                   <div class="stat-title">Worst Losing Streak</div>
                   <div class="stat-number">{{ player.worst_losing_streak }} Games</div>
@@ -207,7 +203,7 @@
               <a href="#" class="stat-tab js-tab is-active" data-tab="#stats-goaldifferential-season">Season</a>
             </div>
 
-            <div id="stats-goaldifferential-7" class="stat-group js-tabContent stat--light">
+            <div id="stats-goaldifferential-7" class="stat-group js-tabContent">
               <div class="stat">
                 <div class="stat-number">{{ stats.goal_differential.7.for }}</div>
                 <div class="stat-title">For</div>
@@ -218,7 +214,7 @@
               </div>
             </div>
 
-            <div id="stats-goaldifferential-30" class="stat-group js-tabContent stat--light">
+            <div id="stats-goaldifferential-30" class="stat-group js-tabContent">
               <div class="stat">
                 <div class="stat-number">{{ stats.goal_differential.30.for }}</div>
                 <div class="stat-title">For</div>
@@ -229,7 +225,7 @@
               </div>
             </div>
 
-            <div id="stats-goaldifferential-season" class="stat-group js-tabContent stat--light is-active">
+            <div id="stats-goaldifferential-season" class="stat-group js-tabContent is-active">
               <div class="stat">
                 <div class="stat-number">{{ stats.goal_differential.season.for }}</div>
                 <div class="stat-title">For</div>
@@ -247,7 +243,7 @@
               <a href="#" class="stat-tab js-tab" data-tab="#stats-colorstats-black " >Black</a>
             </div>
 
-            <div id="stats-colorstats-red" class="stat-group js-tabContent stat--light is-active">
+            <div id="stats-colorstats-red" class="stat-group js-tabContent is-active">
               <div class="stat">
                 <div class="stat-number">{{ stats.color_stats.red.favoured }}%</div>
                 <div class="stat-title">Of Games</div>
@@ -258,7 +254,7 @@
               </div>
             </div>
 
-            <div id="stats-colorstats-black" class="stat-group js-tabContent stat--light">
+            <div id="stats-colorstats-black" class="stat-group js-tabContent">
               <div class="stat">
                 <div class="stat-number">{{ stats.color_stats.black.favoured }}%</div>
                 <div class="stat-title">Of Games</div>
@@ -292,29 +288,26 @@
         $(this).addClass('is-active').siblings().removeClass('is-active');
         $(tab).addClass('is-active').siblings('.js-tabContent').removeClass('is-active');
       });
-      $('.js-openSide').on('click', function (e) {
+
+      $('.js-nav').on('click', function (e) {
         e.preventDefault();
         if ($(this).hasClass('is-active')) {
           $(this).removeClass('is-active');
-          $('.nav').removeClass('is-active');
-          $('body').removeClass('is-disabled');
+          $('.l-site').removeClass('is-navactive');
         } else {
           $(this).addClass('is-active');
-          $('.nav').addClass('is-active');
-          $('body').addClass('is-disabled');
+          $('.l-site').addClass('is-navactive');
         }
       });
 
-      $('.js-profile').on('click', function (e) {
+      $('.js-player').on('click', function (e) {
         e.preventDefault();
         if ($(this).hasClass('is-active')) {
           $(this).removeClass('is-active');
-          $('.l-site').removeClass('is-active');
-          $('body').removeClass('is-disabled');
+          $('.l-site').removeClass('is-playeractive');
         } else {
           $(this).addClass('is-active');
-          $('.l-site').addClass('is-active');
-          $('body').addClass('is-disabled');
+          $('.l-site').addClass('is-playeractive');
         }
       });
     });
