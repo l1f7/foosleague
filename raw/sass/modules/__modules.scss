@@ -271,7 +271,7 @@
 }
 
 .heading-btn {
-  display: block;
+  display: none;
   border: 1px solid #9B9B9B;
   width: 24px;
   height: 24px;
@@ -332,5 +332,33 @@
       content: "";
       @include triangle(12px, #9B9B9B, right);
     }
+  }
+}
+
+@include media($tablet) {
+  .heading-btn {
+    display: block;
+  }
+
+  .heading-nav {
+    &:before {
+      margin: -6px 0 0 -3px;
+      border-left: none;
+      @include triangle(12px, #9B9B9B, left);
+    }
+
+    &.is-active {
+      &:after {
+        margin: -6px 0 0 -3px;
+        border-right: none;
+        @include triangle(12px, #9B9B9B, right);
+      }
+    }
+  }
+}
+
+@include media($mobile) {
+  .heading-btn {
+    display: block;
   }
 }

@@ -861,7 +861,9 @@ body {
   background: #2F3942;
   z-index: 10;
   -webkit-transition: 0.35s;
-  transition: 0.35s; }
+  transition: 0.35s;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; }
 
 .l-header {
   margin: 160px 0 30px;
@@ -902,6 +904,7 @@ body {
   width: 240px;
   z-index: 5;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   -webkit-transition: 0.35s;
   transition: 0.35s; }
 
@@ -3234,7 +3237,7 @@ body {
   color: #9B9B9B; }
 
 .heading-btn {
-  display: block;
+  display: none;
   border: 1px solid #9B9B9B;
   width: 24px;
   height: 24px;
@@ -3294,6 +3297,30 @@ body {
     border-bottom: 6px solid transparent;
     border-left: 6px solid #9B9B9B;
     border-top: 6px solid transparent; }
+
+@media screen and (min-width: 40em) and (max-width: 63.99em)  {
+  .heading-btn {
+    display: block; }
+  .heading-nav:before {
+    margin: -6px 0 0 -3px;
+    border-left: none;
+    height: 0;
+    width: 0;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid #9B9B9B;
+    border-top: 6px solid transparent; }
+  .heading-nav.is-active:after {
+    margin: -6px 0 0 -3px;
+    border-right: none;
+    height: 0;
+    width: 0;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid #9B9B9B;
+    border-top: 6px solid transparent; } }
+
+@media screen and (max-width: 39.99em)  {
+  .heading-btn {
+    display: block; } }
 
 .accessibility-dims {
   width: 48px;
