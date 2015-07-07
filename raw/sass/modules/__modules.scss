@@ -69,16 +69,16 @@
   margin-right: 5px;
   padding: 7px 15px;
   display: inline-block;
-  color: $c-navlink-color;
+  color: $c-tab-color;
   @include font(16, 400, 1);
   border-radius: 100px;
 
   &:hover {
-    color: $c-navlink-color--hover;
+    color: $c-tab-color--hover;
   }
 
   &.is-active {
-    background: $c-navitem-border--active;
+    background: $c-tab-background--active;
     font-weight: 600;
     color: $white;
   }
@@ -86,12 +86,8 @@
 
 
 .gamedetails-section {
-  padding: 20px;
   position: relative;
-  border-radius: 3px;
   margin-bottom: 5px;
-  border: 1px solid $c-standing-border;
-  background: $c-standing-bg;
   @include row();
   @include clearfix;
   color: $base-type;
@@ -171,20 +167,20 @@
 .gamedetails-scorecol {
   @include span-columns(2);
   text-align: center;
-  padding: 5px 0;
+  padding: 10px 0;
 }
 
 .gamedetails-dash {
   position: relative;
-  top: -5px;
-  padding: 0 10px;
+  top: -4px;
+  padding: 0 5px;
   display: inline-block;
-  @include font(60, 600, 1, $base-font-heading);
+  @include font(40, 600, 1, $base-font-heading);
 }
 
 .gamedetails-score {
   display: inline-block;
-  @include font(60, 600, 1, $base-font-heading);
+  @include font(48, 600, 1, $base-font-heading);
   @extend .ts-alt;
   @extend .ts-uppercase;
   color: $base-type;
@@ -264,4 +260,77 @@
   width: 100px;
   display: inline-block;
   @include font(14, 400);
+}
+
+.heading-text {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #9B9B9B;
+}
+
+.heading-btn {
+  display: block;
+  border: 1px solid #9B9B9B;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 22px;
+}
+
+.heading-nav {
+  left: 30px;
+
+  &:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -6px 0 0 -3px;
+    content: "";
+    @include triangle(12px, #9B9B9B, right);
+  }
+
+  &.is-active {
+    &:before {
+      display: none;
+    }
+
+    &:after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -6px 0 0 -3px;
+      content: "";
+      @include triangle(12px, #9B9B9B, left);
+    }
+  }
+}
+
+.heading-player {
+  right: 30px;
+
+  &:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -6px 0 0 -4px;
+    content: "";
+    @include triangle(12px, #9B9B9B, left);
+  }
+
+  &.is-active {
+    &:before {
+      display: none;
+    }
+
+    &:after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -6px 0 0 -4px;
+      content: "";
+      @include triangle(12px, #9B9B9B, right);
+    }
+  }
 }

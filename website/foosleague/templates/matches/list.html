@@ -1,18 +1,15 @@
 {% extends "base.html" %}
 
 {% block nav-dashboard %}is-active{% endblock %}
+{% block pagetitle %}Matches{% endblock %}
 
 {% block content %}
-  <div class="l-columns l-columns--centered">
-    <div class="l-col">
-      <div class="games is-loading">
-        {% for match in object_list %}
-          {% include "partials/match.html" with match=match %}
-        {% endfor %}
-      </div>
-      {% if is_paginated %}
-        {% include "partials/pagination.html" with page_obj=page_obj url="/matches" %}
-      {% endif %}
-    </div>
+  <div class="games is-loading">
+    {% for match in object_list %}
+      {% include "partials/match.html" with match=match %}
+    {% endfor %}
   </div>
+  {% if is_paginated %}
+    {% include "partials/pagination.html" with page_obj=page_obj url="/matches" %}
+  {% endif %}
 {% endblock %}

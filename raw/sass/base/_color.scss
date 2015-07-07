@@ -48,20 +48,28 @@ $c-btn-border--hover   : darken($green, 7%);
 $c-btn-bg--hover       : darken($green, 7%);
 $c-btn-color--hover    : $white;
 
-$c-site-bg       : lighten(#2F3942, 73%);
+$c-site-bg       : $white;
 $c-page-bg       : $white;
 
 $c-nav-border    :  darken($white, 5%);
-$c-navlink-color            : $base-type;
-$c-navlink-color--hover     : $black;
-$c-navlink-color--active    : $black;
-$c-navitem-border--active   : $green;
+$c-navlink-color            : #C1C3C6;
+$c-navlink-color--hover     : $white;
+$c-navlink-color--active    : $white;
+$c-navitem-border--active   : $white;
 
-$c-topbar-bg       :  $white;
+$c-tab-color              : $base-type;
+$c-tab-color--hover       : $green;
+$c-tab-color--active      : $white;
+$c-tab-background--active : $green;
+
+$c-topbar-bg       :  #2F3942;
 $c-topbar-border   :  darken($white, 15%);
 
-$c-player-bg       :  #2F3942;
-$c-player-border   :  darken($black, 15%);
+$c-player-bg       :  #FAFAFA;
+$c-player-border   :  #C3C3C3;
+
+$c-heading-bg       :  $white;
+$c-heading-border   :  darken($white, 15%);
 
 $c-header-bg       :  $white;
 $c-header-border   :  darken($white, 15%);

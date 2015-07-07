@@ -56,7 +56,7 @@
   margin: 0;
   padding: 0;
   color: $black;
-  @include font(54, 600, 1, $base-font-heading);
+  @include font(38, 600, 1, $base-font-heading);
   @extend .ts-uppercase;
   @extend .ts-alt;
 }
