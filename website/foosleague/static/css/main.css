@@ -423,13 +423,13 @@ a {
     .ms-n0 {
       font-size: 0.9375em; } }
 
-.ms-n1, .account-name, .team-name, .team-streak, .footer-text {
+.ms-n1, .account-name, .team-streak, .footer-text {
   font-size: 0.94444em; }
   @media screen and (min-width: 40em) and (max-width: 63.99em)  {
-    .ms-n1, .account-name, .team-name, .team-streak, .footer-text {
+    .ms-n1, .account-name, .team-streak, .footer-text {
       font-size: 0.88889em; } }
   @media screen and (max-width: 39.99em)  {
-    .ms-n1, .account-name, .team-name, .team-streak, .footer-text {
+    .ms-n1, .account-name, .team-streak, .footer-text {
       font-size: 0.83333em; } }
 
 .ms-n2 {
@@ -732,6 +732,12 @@ a {
   font-family: 'din-condensed-web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.1;
   font-weight: 600; }
+
+.ts-overflow {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
 
 .richtext > h5 {
   font-weight: 400; }
@@ -1726,7 +1732,7 @@ body {
 .game-score {
   border-radius: 3px;
   display: inline-block;
-  margin: 12px 0 20px;
+  margin: 12px 0 30px;
   padding: 10px 2px;
   width: 30px;
   text-align: center;
@@ -2035,6 +2041,15 @@ body {
     padding: 0;
     display: block; }
 
+.player-login {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
 .profile {
   text-align: left; }
 
@@ -2152,9 +2167,10 @@ body {
 
 .team-name {
   margin: 0 0 10px;
-  padding: 0 0 5px;
+  padding: 0 0 8px;
   display: block;
   color: #333333;
+  font-size: 17px;
   border-bottom: 1px solid #d9d9d9; }
 
 .team-logo {

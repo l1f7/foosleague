@@ -154,6 +154,13 @@ a{
   font-weight: 600;
 }
 
+.ts-overflow {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .richtext {
   > h1 {
     @extend .ms-4;
