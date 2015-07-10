@@ -5,10 +5,10 @@
 
 .team-name {
   margin: 0 0 10px;
-  padding: 0 0 5px;
+  padding: 0 0 8px;
   display: block;
   color: $black;
-  @extend .ms-n1;
+  font-size: 17px;
   @extend .ts-alt;
   @extend .ts-light;
   @extend .ts-uppercase;
