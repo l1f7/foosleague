@@ -13,7 +13,7 @@
           <h1 class="newgame-heading">Red Team</h1>
           <div class="newgame-players">
             {% for player in players %}
-              <a href="#" class="newgame-player" data-player="{{ player.id }}">
+              <a href="#" class="newgame-player" data-player="{{ player.id }}" data-rfid="{{ player.rfid_code }}">
                 {% include "partials/player.html" with player=player player_class="team-player" %}
               </a>
             {% endfor %}
@@ -40,7 +40,7 @@
           <h1 class="newgame-heading">Black Team</h1>
           <div class="newgame-players">
             {% for player in players %}
-              <a href="#" class="newgame-player" data-player="{{ player.id }}">
+              <a href="#" class="newgame-player" data-player="{{ player.id }}" data-rfid="{{ player.rfid_code }}">
                 {% include "partials/player.html" with player=player player_class="team-player" %}
               </a>
             {% endfor %}
@@ -76,6 +76,23 @@
 {% block extra_script %}
   <script>
     $(document).ready(function() {
+      var input = "";
+      var timer;
+
+      $(document).keyup(function(e) {
+        input += String.fromCharCode(e.which);
+        clearTimeout(timer);
+        timer = setTimeout(function() { input = ""; }, 500);
+        if (input.length == 10) {
+          check_input();
+        }
+        console.log(input);
+      });
+
+      function check_input() {
+        $('.newgame-player[data-rfid*="'+input+'"]:not(.is-disabled):first').click();
+      }
+
       $(document).on('click', '.newgame-player:not(.is-disabled)', function(e){
         $(this).parents('.newgame-team').find('select').val('');
         $(this).toggleClass('is-active');
