@@ -20,6 +20,8 @@ urlpatterns = patterns('',
     url(r'^seasons/', include('seasons.urls')),
     url(r'^', include('leagues.urls')),
     url(r'^$', TemplateView.as_view(template_name='tease.html'), name='tease'),
+    url(r'mirror/$', TemplateView.as_view(template_name='mirrortest.html'), name='mirror-test'),
+
     url(r'^robots\.txt/$', TemplateView.as_view(template_name='robots.txt',
         content_type='text/plain')),
 

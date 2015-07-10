@@ -25,7 +25,7 @@ class Player(TimeStampedModel):
     photo = models.ImageField(_("Photo"), upload_to='players', blank=True, max_length=400, default="")
     slack_username = models.CharField(
         _("Slack Username"), blank=True, max_length=100, help_text="This will be used for any slack integrations", default="")
-
+    rfid_code = models.CharField(_("RFID Code"), blank=True, default="", help_text="RFID Card number", max_length=20)
     # todo: move this to LeagueMember
     fooscoin = models.FloatField(_("FoosCoin"), default=500.00)
 
@@ -270,6 +270,7 @@ class StatHistory(TimeStampedModel):
     def __unicode__(self):
         return '%s' % (self.created)
 
+
 class ExposeHistory(TimeStampedModel):
     match = models.ForeignKey('matches.Match')
     ts_expose = models.FloatField(_("TrueSkill Expose"), default=0, help_text="leaderboard")
@@ -277,3 +278,5 @@ class ExposeHistory(TimeStampedModel):
 
     def __unicode__(self):
         return '%s' % (self.match)
+
+
