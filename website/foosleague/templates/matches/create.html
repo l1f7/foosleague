@@ -89,7 +89,15 @@
       });
 
       function check_input() {
-        $('.newgame-player[data-rfid*="'+input+'"]:not(.is-disabled):first').click();
+        var el = $('.newgame-player[data-rfid="'+input+'"]:not(.is-disabled):first');
+        $(el).click();
+
+        $(el).parents('.newgame-team').find('.newgame-player.is-active').each(function(i){
+          var select = i+1;
+          var team = $(this).parents('.newgame-team');
+          var player = $(this).data('player');
+          $(team).find('.newgame-player--'+ select +' select').val(player);
+        });
       }
 
       $(document).on('click', '.newgame-player:not(.is-disabled)', function(e){
