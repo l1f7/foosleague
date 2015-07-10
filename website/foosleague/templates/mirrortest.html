@@ -1,0 +1,65 @@
+<html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<style>
+body{
+    background:#000;
+    font-family: 'Open Sans Condensed', sans-serif;
+    overflow: hidden;
+}
+h1, h2, p, span{
+    color:#fff;
+}
+h1{
+    font-size: 70px;
+    font-weight: normal;
+}
+h2{ display: block; position: absolute; bottom: 30px; width: 100%; text-align: center; font-size: 100px; font-weight: normal;}
+</style>
+</head>
+<body>
+<h1 class='time'></h1>
+
+
+<h2>Hello, Mr. Barkman</h2>
+<script type='text/javascript'>
+function updateClock ( )
+    {
+    var currentTime = new Date ( );
+    var currentHours = currentTime.getHours ( );
+    var currentMinutes = currentTime.getMinutes ( );
+    var currentSeconds = currentTime.getSeconds ( );
+
+    // Pad the minutes and seconds with leading zeros, if required
+    currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+    currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
+
+    // Choose either "AM" or "PM" as appropriate
+    var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
+
+    // Convert the hours component to 12-hour format if needed
+    currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
+
+    // Convert an hours component of "0" to "12"
+    currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+
+    // Compose the string for display
+    var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " ";
+
+
+    $(".time").html(currentTimeString);
+
+ }
+function blink(e){
+    $(e).fadeTo(2500, 0.05).fadeTo(2500, 1.0)
+    blink(e)
+}
+$(document).ready(function()
+{
+   setInterval('updateClock()', 1000);
+   blink($("h2"))
+});
+</script>
+</body>
+</html>
