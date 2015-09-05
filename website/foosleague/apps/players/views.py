@@ -9,6 +9,8 @@ from teams.models import Team
 from matches.models import Match
 from leagues.models import LeagueMember
 from django.shortcuts import get_object_or_404
+from datetime import datetime
+from seasons.models import Season
 
 from .forms import PlayerForm
 
@@ -19,9 +21,12 @@ class PlayerListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         qs = super(PlayerListView, self).get_queryset(*args, **kwargs)
+        date = datetime.today()
+
+        seasons = Season.objects.filter(start__lte=date, end__gte=date)
 
         players_to_display = LeagueMember.objects.filter(league=self.request.league).values_list('player__id', flat=True)
-        players_to_display.append(Match.objects.filter(season=season[0]).values_list('team_1__players__id', 'team_2__players__id', flat=True))
+        players_to_display.append(Match.objects.filter(season=seasons[0]).values_list('team_1__players__id', 'team_2__players__id', flat=True))
 
 
 
