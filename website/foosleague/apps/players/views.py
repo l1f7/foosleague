@@ -19,7 +19,13 @@ class PlayerListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         qs = super(PlayerListView, self).get_queryset(*args, **kwargs)
-        return qs.filter(id__in=LeagueMember.objects.filter(league=self.request.league).values_list('player__id', flat=True))
+
+        players_to_display = LeagueMember.objects.filter(league=self.request.league).values_list('player__id', flat=True)
+        players_to_display.append(Match.objects.filter(season=season[0]).values_list('team_1__players__id', 'team_2__players__id', flat=True))
+
+
+
+        return qs.filter(id__in=players_to_display)
 
 
 

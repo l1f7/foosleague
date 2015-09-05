@@ -32,6 +32,7 @@ class SubdomainMiddleware(object):
             if player:
                 request.player = player
 
+
         request.league = league
 
 
