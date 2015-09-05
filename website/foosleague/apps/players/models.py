@@ -276,6 +276,9 @@ class ExposeHistory(TimeStampedModel):
     ts_expose = models.FloatField(_("TrueSkill Expose"), default=0, help_text="leaderboard")
     player = models.ForeignKey('players.Player')
 
+    season = models.ForeignKey('seasons.Season', blank=True, null=True, default=1)
+
+
     def __unicode__(self):
         return '%s' % (self.match)
 

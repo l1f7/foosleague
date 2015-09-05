@@ -37,7 +37,7 @@ class TeamDetailView(DetailView):
         team = self.get_object()
         c['matches'] = Match.objects.filter(Q(team_1=team) | Q(team_2=team), league=self.request.league)
         c['wins'] = c['matches'].filter(winner=self.get_object()).count()
-        c['loses'] = c['matches'].count() - c['wins']
+        c['losses'] = c['matches'].count() - c['wins']
 
         return c
 

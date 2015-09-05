@@ -9,7 +9,7 @@ from django.db.models import Q
 from players.models import StatHistory, ExposeHistory
 from trueskill import TrueSkill
 from leagues.models import LeagueMember
-
+from seasons.models import Season
 from datetime import datetime, timedelta
 
 
@@ -279,10 +279,15 @@ def catch_up(match):
     players = Player.objects.filter(
         id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
     player_lookup = {}
+
+    today = datetime.today()
+
+    season = Season.objects.filter(league=match.league, start__lte=today, end__gte=today)
+
     for p in players:
 
         rating = env.create_rating(p.current_mu, p.current_sigma)
-        sh, _ = ExposeHistory.objects.get_or_create(player=p, match=match)
+        sh, _ = ExposeHistory.objects.get_or_create(player=p, match=match, season=season)
         sh.ts_expose = env.expose(rating)
         sh.save()
 
@@ -304,7 +309,7 @@ def regen_expose(match):
     for p in players:
 
         rating = env.create_rating(p.current_mu, p.current_sigma)
-        sh, _ = ExposeHistory.objects.get_or_create(player=p, match=match)
+        sh, _ = ExposeHistory.objects.get_or_create(player=p, match=match, season=season)
         sh.ts_expose = env.expose(rating)
         sh.save()
 
