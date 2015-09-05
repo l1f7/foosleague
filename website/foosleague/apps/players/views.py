@@ -25,12 +25,8 @@ class PlayerListView(ListView):
 
         seasons = Season.objects.filter(start__lte=date, end__gte=date)
 
-        players_to_display = LeagueMember.objects.filter(league=self.request.league).values_list('player__id', flat=True)
-        players_to_display.append(Match.objects.filter(season=seasons[0]).values_list('team_1__players__id', 'team_2__players__id', flat=True))
 
-
-
-        return qs.filter(id__in=players_to_display)
+        return qs.filter(id__in=LeagueMember.objects.filter(league=self.request.league).values_list('player__id', flat=True)).filter(Match.objects.filter(season=seasons[0]).values_list('team_1__players__id', 'team_2__players__id', flat=True))
 
 
 
