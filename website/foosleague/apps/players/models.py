@@ -195,22 +195,23 @@ class Player(TimeStampedModel):
 
     @property
     def wins_7(self):
-        return calc_wins(self, 7)
+        return calc_wins(self, 7, season=True)
 
     @property
     def wins_30(self):
-        return calc_wins(self, 30)
+        return calc_wins(self, 30, season=True)
 
     @property
     def wins_season(self):
         return calc_wins(self, season=True)
+
     @property
     def loses_7(self):
-        return calc_loses(self, 7)
+        return calc_loses(self, 7, season=True)
 
     @property
     def loses_30(self):
-        return calc_loses(self, 30)
+        return calc_loses(self, 30, season=True)
 
     @property
     def loses_season(self):
@@ -218,20 +219,20 @@ class Player(TimeStampedModel):
 
     @property
     def goals_for_7(self):
-        return calc_goal_differential(self, 7, 'for')
+        return calc_goal_differential(self, 7, 'for', season=True)
     @property
     def goals_for_30(self):
-        return calc_goal_differential(self, 30, 'for')
+        return calc_goal_differential(self, 30, 'for', season=True)
     @property
     def rgoals_for_season(self):
         return calc_goal_differential(self, direction='for', season=True)
 
     @property
     def goals_against_7(self):
-        return calc_goal_differential(self, 7, 'against')
+        return calc_goal_differential(self, 7, 'against', season=True)
     @property
     def goals_against_30(self):
-        return calc_goal_differential(self, 30, 'against')
+        return calc_goal_differential(self, 30, 'against', season=True)
     @property
     def goals_against_season(self):
         return calc_goal_differential(self, direction='against', season=True)

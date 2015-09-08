@@ -1,6 +1,7 @@
 from django.db.models import Q, Sum
 from datetime import datetime, timedelta
 
+
 def get_streaks(player):
     matches = player.matches.order_by('created')
 
@@ -100,6 +101,8 @@ def get_streaks(player):
 
 
 def calc_wins(player, days=None, season=False):
+    from seasons.models import Season
+
     today = datetime.today()
     wins = player.matches.filter(winner__in=player.teams)
     if days:
@@ -116,6 +119,8 @@ def calc_wins(player, days=None, season=False):
 
 
 def calc_loses(player, days=None, season=False):
+    from seasons.models import Season
+
     today = datetime.today()
     loses = player.maytches.exclude(winner__in=player.teams)
     if days:
@@ -123,13 +128,15 @@ def calc_loses(player, days=None, season=False):
     if season:
         try:
             season = Season.objects.get(start__lte=today, end__gte=today)
-            wins.filter(season=season)
+            loses.filter(season=season)
         except:
             return '--'
     return loses.count()
 
 
-def calc_goal_differential(player, days=None, direction='for', season=None):
+def calc_goal_differential(player, days=None, direction='for', season=False):
+    from seasons.models import Season
+
     goals_for = 0
     goals_against = 0
     today = datetime.today()
@@ -145,7 +152,7 @@ def calc_goal_differential(player, days=None, direction='for', season=None):
         goals_for += team2_goals['goals_as_team1'] or 0
         goals_against += team2_goals['goals_against'] or 0
 
-    elif season:
+    if season:
         try:
             current_season = Season.objects.get(start__lte=today, end__gte=today)
 
