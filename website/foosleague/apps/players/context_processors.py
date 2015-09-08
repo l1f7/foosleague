@@ -15,7 +15,7 @@ def player(request):
         teams = Team.objects.filter(players=player)
         current_season = Season.objects.filter(league=request.league, start__lte=today, end__gte=today)
 
-        matches = Match.objects.filter(Q(team_1__in=teams) | Q(team_2__in=teams), league=request.league)
+        matches = Match.objects.filter(Q(team_1__in=teams) | Q(team_2__in=teams), league=request.league, season=current_season)
         wins = {
             '7': matches.filter(winner__in=teams, created__gte=today - timedelta(days=7), created__lte=today).count(),
             '30': matches.filter(winner__in=teams, created__gte=today - timedelta(days=30), created__lte=today).count(),

@@ -304,6 +304,9 @@ def catch_up(match):
 def regen_expose(match):
     env = TrueSkill(draw_probability=0)
     ratings = []
+    today = datetime.today()
+
+    season = Season.objects.filter(league=match.league, start__lte=today, end__gte=today)
 
     players = Player.objects.filter(
         id__in=LeagueMember.objects.filter(league=match.league).values_list('player__id', flat=True))
