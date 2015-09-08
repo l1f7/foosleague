@@ -38,6 +38,7 @@ def update_trueskill(match):
         p.ts_mu = winner_ratings[counter].mu
         p.ts_sigma = winner_ratings[counter].sigma
         p.save()
+
         sh, _ = StatHistory.objects.get_or_create(player=p,
                                                   match=match,
                                                   )
@@ -53,6 +54,7 @@ def update_trueskill(match):
         p.save()
         sh, _ = StatHistory.objects.get_or_create(player=p,
                                                   match=match,
+
                                                   )
         sh.season = match.season
         sh.ts_mu = loser_ratings[counter].mu

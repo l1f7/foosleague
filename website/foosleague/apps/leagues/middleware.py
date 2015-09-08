@@ -3,9 +3,11 @@ from django.http.response import HttpResponseRedirect
 from django.conf import settings
 import re
 from leagues.models import League, LeagueMember
+from seasons.models import Season
 from players.models import Player
 subdomain_pattern = re.compile('(?P<subdomain>.*?)\..*?')
 
+from datetime import datetime
 
 class SubdomainMiddleware(object):
 
@@ -32,6 +34,12 @@ class SubdomainMiddleware(object):
             if player:
                 request.player = player
 
+        try:
+            request.season = Season.objects.get(id=request.session['season'])
+        except:
+            today = datetime.today()
+            request.season = Season.objects.filter(start__lte=today, end__gte=today)[0]
+            request.session['season'] = request.season.id
 
         request.league = league
 

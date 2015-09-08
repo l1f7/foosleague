@@ -27,9 +27,7 @@ class MatchListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         qs = super(MatchListView, self).get_queryset(*args, **kwargs)
-        date = datetime.today()
-        seasons = Season.objects.filter(start__lte=date, end__gte=date)
-        qs = qs.filter(league=self.request.league, season=seasons[0])
+        qs = qs.filter(league=self.request.league, season=self.request.season)
 
         return qs
 
@@ -118,11 +116,12 @@ class MatchCreateView(LoginRequiredMixin, CreateView):
             team_2.players.add(p4)
             team_2.save()
 
-        seasons = Season.objects.filter(start__lte=date, end__gte=date)
-        season = None
-        if seasons.count():
-            season = seasons[0]
-
+        #dont use season from request, but make sure its current season
+        # seasons = Season.objects.filter(start__lte=date, end__gte=date)
+        # season = None
+        # if seasons.count():
+        #     season = seasons[0]
+        season = self.request.season
         match = Match.objects.create(team_1=team_1, team_2=team_2,
                       team_1_score=form.cleaned_data[
                           'team_1_score'], team_2_score=form.cleaned_data['team_2_score'],
