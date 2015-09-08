@@ -314,7 +314,7 @@ def regen_expose(match):
     for p in players:
 
         rating = env.create_rating(p.current_mu, p.current_sigma)
-        sh, _ = ExposeHistory.objects.get_or_create(player=p, match=match, season=season)
+        sh, _ = ExposeHistory.objects.get_or_create(player=p, match=match, season=season[0])
         sh.ts_expose = env.expose(rating)
         sh.save()
 
