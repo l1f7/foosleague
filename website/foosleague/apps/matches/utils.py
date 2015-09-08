@@ -72,9 +72,9 @@ def winning_percentage(match, team_number):
     team1 = []
     team2 = []
     for p in match.team_1.players.all():
-        team1.append(Rating(p.ts_mu, p.ts_sigma))
+        team1.append(Rating(p.current_mu, p.current_sigma))
     for p2 in match.team_2.players.all():
-        team2.append(Rating(p2.ts_mu, p2.ts_sigma))
+        team2.append(Rating(p2.current_mu, p2.current_sigma))
 
     if team_number == 1:
         return round((Pwin(team1, team2) * 100), 2)
