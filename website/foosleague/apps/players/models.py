@@ -91,16 +91,16 @@ class Player(TimeStampedModel):
                 r.append([count, e, leader[count]])
                 last = e
 
-        # list(obj)
-        # list(o)
-        # out = serializers.serialize('json', obj, fields=('created', 'ts_expose'))
         return r
 
     #todo: make this a template tag or something. has no bearing on current player
     @property
     def leader_expose(self):
-        obj = self.exposehistory_set.filter(created__gte=datetime.today()-timedelta(days=30)).order_by('created').values_list('ts_expose', flat=True)
-        leader = ExposeHistory.objects.filter(created__gte=datetime.today()-timedelta(days=30), player=Player.objects.all()[0]).order_by('created').values_list('ts_expose', flat=True)
+        from seaons.models import Season
+        today = datetime.today
+        season = Season.objects.filter(start_date__lte=today, end_date__gte=today)
+        obj = self.exposehistory_set.filter(created__gte=datetime.today()-timedelta(days=30), season=season).order_by('created').values_list('ts_expose', flat=True)
+        leader = ExposeHistory.objects.filter(created__gte=datetime.today()-timedelta(days=30), season=season, player=Player.objects.all()[0]).order_by('created').values_list('ts_expose', flat=True)
         r = []
         last = None
         for count, e in enumerate(obj):
@@ -108,19 +108,8 @@ class Player(TimeStampedModel):
                 r.append([count, leader[count]])
                 last = e
 
-        # list(obj)
-        # list(o)
-        # out = serializers.serialize('json', obj, fields=('created', 'ts_expose'))
         return r
 
-    # def expose_chart(self):
-    #     expose = self.exposehistory_set.all().order_by('created').values_list('ts_expose', flat=True)
-    #     ts = self.stathistory_set.all().order_by('created').values_list('ts_mu', flat=True)
-
-    #     stat = []
-    #     for count, e in enumerate(expose):
-    #         stat.append([e, ts[count]])
-    #     return json.dumps(stat)
     @property
     def full_fooscoin(self):
         return self.stathistory_set.all().values_list('created', 'fooscoin')
@@ -138,9 +127,12 @@ class Player(TimeStampedModel):
 
     @property
     def matches(self):
+        from seaons.models import Season
+        today = datetime.today
+        season = Season.objects.filter(start_date__lte=today, end_date__gte=today)
         if not self._matches:
             self._matches = get_model('matches.Match').objects.filter(
-                Q(team_1=self.teams) | Q(team_2=self.teams))
+                Q(team_1=self.teams) | Q(team_2=self.teams), season=season)
 
         return self._matches
 

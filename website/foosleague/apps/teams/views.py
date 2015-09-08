@@ -22,7 +22,8 @@ class TeamListView(ListView):
     template_name = "teams/list.html"
 
     def get_queryset(self, *args, **kwargs):
-        return super(TeamListView, self).get_queryset(*args, **kwargs).filter(league=self.request.league)
+        # teams_that_played
+        return super(TeamListView, self).get_queryset(*args, **kwargs).filter(league=self.request.league,)
 
 
 class TeamDetailView(DetailView):
@@ -35,7 +36,8 @@ class TeamDetailView(DetailView):
     def get_context_data(self, *args, **kwargs):
         c = super(TeamDetailView, self).get_context_data(*args, **kwargs)
         team = self.get_object()
-        c['matches'] = Match.objects.filter(Q(team_1=team) | Q(team_2=team), league=self.request.league, season=self.request.season)
+        c['matches'] = Match.objects.filter(
+            Q(team_1=team) | Q(team_2=team), league=self.request.league, season=self.request.season)
         c['wins'] = c['matches'].filter(winner=self.get_object()).count()
         c['losses'] = c['matches'].count() - c['wins']
 
