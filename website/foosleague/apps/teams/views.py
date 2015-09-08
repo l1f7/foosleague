@@ -22,7 +22,7 @@ class TeamListView(ListView):
     template_name = "teams/list.html"
 
     def get_queryset(self, *args, **kwargs):
-        return super(TeamListView, self).get_queryset(*args, **kwargs).filter(league=self.request.league, season=self.request.season)
+        return super(TeamListView, self).get_queryset(*args, **kwargs).filter(league=self.request.league)
 
 
 class TeamDetailView(DetailView):
