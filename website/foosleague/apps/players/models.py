@@ -96,7 +96,7 @@ class Player(TimeStampedModel):
     #todo: make this a template tag or something. has no bearing on current player
     @property
     def leader_expose(self):
-        from seaons.models import Season
+        from seasons.models import Season
         today = datetime.today
         season = Season.objects.filter(start_date__lte=today, end_date__gte=today)
         obj = self.exposehistory_set.filter(created__gte=datetime.today()-timedelta(days=30), season=season).order_by('created').values_list('ts_expose', flat=True)
@@ -127,7 +127,7 @@ class Player(TimeStampedModel):
 
     @property
     def matches(self):
-        from seaons.models import Season
+        from seasons.models import Season
         today = datetime.today
         season = Season.objects.filter(start_date__lte=today, end_date__gte=today)
         if not self._matches:
