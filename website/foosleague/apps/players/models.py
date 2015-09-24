@@ -111,7 +111,7 @@ class Player(TimeStampedModel):
     @property
     def leader_expose(self):
         from seasons.models import Season
-        today = datetime.today
+        today = datetime.today()
         season = Season.objects.filter(start__lte=today, end__gte=today)
 
         obj = self.exposehistory_set.filter(created__gte=datetime.today()-timedelta(days=30), season=season).order_by('created').values_list('ts_expose', flat=True)
@@ -143,7 +143,7 @@ class Player(TimeStampedModel):
     @property
     def matches(self):
         from seasons.models import Season
-        today = datetime.today
+        today = datetime.today()
         season = Season.objects.filter(start__lte=today, end__gte=today)
         if not self._matches:
             self._matches = get_model('matches.Match').objects.filter(
