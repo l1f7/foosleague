@@ -48,7 +48,7 @@ class Player(TimeStampedModel):
     @property
     def current_mu(self):
         from seasons.models import Season
-        today = datetime.today
+        today = datetime.today()
         season = Season.objects.filter(start__lte=today, end__gte=today)
         try:
             return self.stathistory_set.filter(season=season).exclude(ts_mu=0)[0].ts_mu
@@ -58,17 +58,17 @@ class Player(TimeStampedModel):
     @property
     def current_sigma(self):
         from seasons.models import Season
-        today = datetime.today
+        today = datetime.today()
         season = Season.objects.filter(start__lte=today, end__gte=today)
         try:
-            return self.stathistory_set.filter(season=season).exclude(ts_sigma=0)[0].ts_sigma
+            return self.stathistory_set.filter(season=season).exclude(ts_sigma=0).order_by('id', 'desc')[0].ts_sigma
         except:
             return 8.3333333333
 
     @property
     def current_expose(self):
         from seasons.models import Season
-        today = datetime.today
+        today = datetime.today()
         season = Season.objects.filter(start__lte=today, end__gte=today)
         try:
             return self.exposehistory_set.filter(season=season)[0].ts_expose
@@ -91,7 +91,7 @@ class Player(TimeStampedModel):
     def full_expose(self):
         from seasons.models import Season
 
-        today = datetime.today
+        today = datetime.today()
 
         season = Season.objects.filter(start__lte=today, end__gte=today)
 
