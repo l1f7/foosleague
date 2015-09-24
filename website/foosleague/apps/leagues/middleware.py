@@ -34,12 +34,12 @@ class SubdomainMiddleware(object):
             if player:
                 request.player = player
 
-        try:
-            request.season = Season.objects.get(id=request.session['season'])
-        except:
-            today = datetime.today()
-            request.season = Season.objects.filter(start__lte=today, end__gte=today)[0]
-            request.session['season'] = request.season.id
+        # try:
+        #     request.season = Season.objects.get(id=request.session['season'])
+        # except:
+        today = datetime.today()
+        request.season = Season.objects.filter(start__lte=today, end__gte=today)[0]
+        request.session['season'] = request.season.id
 
         request.league = league
 
