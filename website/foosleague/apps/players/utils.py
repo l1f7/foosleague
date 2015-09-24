@@ -104,6 +104,7 @@ def calc_wins(player, days=None, season=False):
     from seasons.models import Season
 
     today = datetime.today()
+
     wins = player.matches.filter(winner__in=player.teams)
     if days:
         wins = wins.filter(created__gte=today-timedelta(days=days), created__lte=today)

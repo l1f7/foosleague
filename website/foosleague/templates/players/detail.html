@@ -19,16 +19,16 @@
           <div id="player_chart" style="width: 100%; height: 100px"></div>
           <div class="stat-group is-active">
             <div class="stat">
-              <div class="stat-number">{{ object.ts_expose|floatformat:2 }}</div>
+              <div class="stat-number">{{ object.current_expose|floatformat:2 }}</div>
               <div class="stat-title">Expose</div>
             </div>
             <div class="u-clear"></div>
             <div class="stat stat--small">
-              <div class="stat-number">{{ object.ts_mu|floatformat:2 }}</div>
+              <div class="stat-number">{{ object.current_mu|floatformat:2 }}</div>
               <div class="stat-title">Skill</div>
             </div>
             <div class="stat stat--small">
-              <div class="stat-number">{{ object.ts_sigma|floatformat:2 }}</div>
+              <div class="stat-number">{{ object.current_sigma|floatformat:2 }}</div>
               <div class="stat-title">Sigma</div>
             </div>
           </div>
