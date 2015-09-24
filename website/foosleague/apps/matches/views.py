@@ -27,7 +27,7 @@ class MatchListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         qs = super(MatchListView, self).get_queryset(*args, **kwargs)
-        qs = qs.filter(league=self.request.league, season=self.request.season)
+        qs = qs.filter(league=self.request.league)
 
         return qs
 
