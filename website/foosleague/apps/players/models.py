@@ -89,9 +89,14 @@ class Player(TimeStampedModel):
 
     @property
     def full_expose(self):
+        from seasons.models import Season
 
-        obj = self.exposehistory_set.filter(created__gte=datetime.today()-timedelta(days=30)).order_by('created').values_list('ts_expose', flat=True)
-        leader = ExposeHistory.objects.filter(created__gte=datetime.today()-timedelta(days=30), player=Player.objects.all()[0]).order_by('created').values_list('ts_expose', flat=True)
+        today = datetime.today
+
+        season = Season.objects.filter(start__lte=today, end__gte=today)
+
+        obj = self.exposehistory_set.filter(season=season).filter(created__gte=datetime.today()-timedelta(days=30)).order_by('created').values_list('ts_expose', flat=True)
+        leader = ExposeHistory.objects.filter(season=season).filter(created__gte=datetime.today()-timedelta(days=30), player=Player.objects.all()[0]).order_by('created').values_list('ts_expose', flat=True)
 
         r = []
         last = None
@@ -108,6 +113,7 @@ class Player(TimeStampedModel):
         from seasons.models import Season
         today = datetime.today
         season = Season.objects.filter(start__lte=today, end__gte=today)
+
         obj = self.exposehistory_set.filter(created__gte=datetime.today()-timedelta(days=30), season=season).order_by('created').values_list('ts_expose', flat=True)
         leader = ExposeHistory.objects.filter(created__gte=datetime.today()-timedelta(days=30), season=season, player=Player.objects.all()[0]).order_by('created').values_list('ts_expose', flat=True)
         r = []
