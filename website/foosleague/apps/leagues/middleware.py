@@ -12,21 +12,25 @@ from datetime import datetime
 class SubdomainMiddleware(object):
 
     def process_request(self, request):
-        match = subdomain_pattern.match(request.get_host())
-        subdomain = match.group('subdomain')
+        # try:
+        #     match = subdomain_pattern.match(request.get_host())
+        #     subdomain = match.group('subdomain')
+        # except:
+        #     return HttpResponseRedirect('http://liftinteractive.foosleague.com/matches
+        #         ')
 
 
-        if subdomain != 'foosleague' and subdomain != 'www':
-            league = get_object_or_404(League.objects.filter(subdomain=subdomain))
-            # try:
-            #     lm = LeagueMember.objects.get(league=league)
-            # except:
-            #     return HttpResponseRedirect('http://foosleague.com/tease/')
+        # if subdomain != 'foosleague' and subdomain != 'www':
+        #     league = get_object_or_404(League.objects.filter(subdomain=subdomain))
+        #     # try:
+        #     #     lm = LeagueMember.objects.get(league=league)
+        #     # except:
+        #     #     return HttpResponseRedirect('http://foosleague.com/tease/')
 
 
-        else:
-            # for now
-            return HttpResponseRedirect('http://liftinteractive.foosleague.com/matches/')
+        # else:
+        #     # for now
+        #     return HttpResponseRedirect('http://liftinteractive.foosleague.com/matches/')
 
         if request.user.is_authenticated():
             #make sure user is apart of league
@@ -38,11 +42,17 @@ class SubdomainMiddleware(object):
         #     request.season = Season.objects.get(id=request.session['season'])
         # except:
         today = datetime.today()
-        request.season = Season.objects.filter(start__lte=today, end__gte=today)[0]
-        request.session['season'] = request.season.id
+        try:
+            request.season = Season.objects.filter(start__lte=today, end__gte=today)[0]
+        except IndexError:
+            request.season = None
 
-        request.league = league
-
+        try:
+            request.league = League.objects.get(id=1)
+        except:
+            l = League.objects.create(name='Lift Interactive')
+            l.save()
+            request.league = l
 
         # else:
         #     request.league = None

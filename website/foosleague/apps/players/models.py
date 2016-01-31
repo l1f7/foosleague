@@ -287,7 +287,7 @@ class ExposeHistory(TimeStampedModel):
     season = models.ForeignKey('seasons.Season', blank=True, null=True, default=1)
 
     class Meta:
-        ordering = ('-created')
+        ordering = ('-created',)
 
     def __unicode__(self):
         return '%s' % (self.match)
