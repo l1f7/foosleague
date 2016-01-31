@@ -23,7 +23,7 @@ def get_env_setting(setting):
 
 ########## EMAIL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
-# EMAIL_BACKEND = 'postmark.django_backend.EmailBackend'
+EMAIL_BACKEND = 'postmark.django_backend.EmailBackend'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
 EMAIL_SUBJECT_PREFIX = '[%s] ' % SITE_NAME
