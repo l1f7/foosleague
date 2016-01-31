@@ -164,7 +164,7 @@ DATABASES = {
 MIDDLEWARE_CLASSES = (
     # Default Django middleware.
     # 'subdomains.middleware.SubdomainURLRoutingMiddleware',
-    'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
+    # 'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -218,15 +218,15 @@ LOCAL_APPS = (
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
-INSTALLED_APPS += (
-    'opbeat.contrib.django',
-)
+# INSTALLED_APPS += (
+#     'opbeat.contrib.django',
+# )
 
-OPBEAT = {
-    'ORGANIZATION_ID': '6a1a25ac556b40cf99d018192eebe712',
-    'APP_ID': 'f1dfe28782',
-    'SECRET_TOKEN': '4b09320e6ccf12f2bf38756d7b9f7c8739c95f52',
-}
+# OPBEAT = {
+#     'ORGANIZATION_ID': '6a1a25ac556b40cf99d018192eebe712',
+#     'APP_ID': 'f1dfe28782',
+#     'SECRET_TOKEN': '4b09320e6ccf12f2bf38756d7b9f7c8739c95f52',
+# }
 
 ########## END APP CONFIGURATION
 SUIT_CONFIG = {
