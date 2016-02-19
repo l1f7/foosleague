@@ -26,14 +26,18 @@ def update_trueskill(match):
 
     winner_ratings = []
     loser_ratings = []
+    env = TrueSkill(draw_probability=0)
 
     for w in winners:
-        winner_ratings.append(Rating(w.current_mu, w.current_sigma))
+        winner_ratings.append(env.create_rating(w.current_mu, w.current_sigma))
 
     for l in losers:
-        loser_ratings.append(Rating(l.current_mu, l.current_sigma))
+        loser_ratings.append(env.create_rating(l.current_mu, l.current_sigma))
 
     winner_ratings, loser_ratings = rate([winner_ratings, loser_ratings])
+
+
+
     for counter, p in enumerate(winners):
         p.ts_mu = winner_ratings[counter].mu
         p.ts_sigma = winner_ratings[counter].sigma
