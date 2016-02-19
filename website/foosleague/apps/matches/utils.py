@@ -23,7 +23,7 @@ def update_trueskill(match):
 
     winners = winner.players.all()
     losers = loser.players.all()
-
+    import pdb; pdb.set_trace()
     winner_ratings = []
     loser_ratings = []
 

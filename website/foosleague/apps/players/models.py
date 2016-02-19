@@ -51,7 +51,7 @@ class Player(TimeStampedModel):
         today = datetime.today()
         season = Season.objects.filter(start__lte=today, end__gte=today)
         try:
-            return self.stathistory_set.filter(season=season).exclude(ts_mu=0)[0].ts_mu
+            return self.stathistory_set.filter(season=season[0]).exclude(ts_mu=0)[0].ts_mu
         except:
             return 25
 
@@ -61,7 +61,7 @@ class Player(TimeStampedModel):
         today = datetime.today()
         season = Season.objects.filter(start__lte=today, end__gte=today)
         try:
-            return self.stathistory_set.filter(season=season).exclude(ts_sigma=0).order_by('id', 'desc')[0].ts_sigma
+            return self.stathistory_set.filter(season=season[0]).exclude(ts_sigma=0).order_by('id', 'desc')[0].ts_sigma
         except:
             return 8.3333333333
 
@@ -71,7 +71,7 @@ class Player(TimeStampedModel):
         today = datetime.today()
         season = Season.objects.filter(start__lte=today, end__gte=today)
         try:
-            return self.exposehistory_set.filter(season=season)[0].ts_expose
+            return self.exposehistory_set.filter(season=season[0])[0].ts_expose
         except:
             return 0
 
