@@ -27,6 +27,11 @@ def update_trueskill(match):
     winner_ratings = []
     loser_ratings = []
     env = TrueSkill(draw_probability=0)
+    other_players = Player.objects.all().exclude(id__in=match.team_1.players.all()).exclude(id__in=match.team_2.players.all())
+    for o in other_players:
+        #add current state of all other players to the environment
+        env.create_rating(o.current_mu, o.current_sigma)
+
 
     for w in winners:
         winner_ratings.append(env.create_rating(w.current_mu, w.current_sigma))
@@ -34,7 +39,7 @@ def update_trueskill(match):
     for l in losers:
         loser_ratings.append(env.create_rating(l.current_mu, l.current_sigma))
 
-    winner_ratings, loser_ratings = rate([winner_ratings, loser_ratings])
+    winner_ratings, loser_ratings = env.rate([winner_ratings, loser_ratings])
 
 
 
